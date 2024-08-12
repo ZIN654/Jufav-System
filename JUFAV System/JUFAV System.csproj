@@ -1,0 +1,502 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\SQLite.3.13.0\build\net45\SQLite.props" Condition="Exists('..\packages\SQLite.3.13.0\build\net45\SQLite.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AFF9546B-7413-4B55-9F35-3FA1622C54C7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JUFAV_System</RootNamespace>
+    <AssemblyName>JUFAV System</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.118.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\lib\net46\System.Data.SQLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.118.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.118.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.118.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.118.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\ProductComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ProductComponent.Designer.cs">
+      <DependentUpon>ProductComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\SUPDatabox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\SUPDatabox.Designer.cs">
+      <DependentUpon>SUPDatabox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\UOMDataBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\UOMDataBox.Designer.cs">
+      <DependentUpon>UOMDataBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\US.DataBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\US.DataBox.Designer.cs">
+      <DependentUpon>US.DataBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dll\AnimationFunctions01.cs" />
+    <Compile Include="dll\CommunicateDB.cs" />
+    <Compile Include="dll\initd.cs" />
+    <Compile Include="dll\ResponsiveUI1.cs" />
+    <Compile Include="Ffirstrun\DbSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ffirstrun\DbSetup.Designer.cs">
+      <DependentUpon>DbSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ffirstrun\FirstRun.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ffirstrun\FirstRun.Designer.cs">
+      <DependentUpon>FirstRun.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Messageboxes\MessageboxAreyousure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messageboxes\MessageboxAreyousure.Designer.cs">
+      <DependentUpon>MessageboxAreyousure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\CORE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\CORE.Designer.cs">
+      <DependentUpon>CORE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\COREUTILITIES\DASHBOARD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\COREUTILITIES\DASHBOARD.Designer.cs">
+      <DependentUpon>DASHBOARD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\COREUTILITIES\Filemaintenance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\COREUTILITIES\Filemaintenance.Designer.cs">
+      <DependentUpon>Filemaintenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\COREUTILITIES\Inventory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\COREUTILITIES\Inventory.Designer.cs">
+      <DependentUpon>Inventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\COREUTILITIES\Reports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\COREUTILITIES\Reports.Designer.cs">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\COREUTILITIES\Sales.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\COREUTILITIES\Sales.Designer.cs">
+      <DependentUpon>Sales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\COREUTILITIES\Utilities.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\COREUTILITIES\Utilities.Designer.cs">
+      <DependentUpon>Utilities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\DASHBOARD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\DASHBOARD.Designer.cs">
+      <DependentUpon>DASHBOARD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\FILEMAINTENANCE\Category.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\FILEMAINTENANCE\Category.Designer.cs">
+      <DependentUpon>Category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\FILEMAINTENANCE\MarkUp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\FILEMAINTENANCE\MarkUp.Designer.cs">
+      <DependentUpon>MarkUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\FILEMAINTENANCE\Products.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\FILEMAINTENANCE\Products.Designer.cs">
+      <DependentUpon>Products.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\FILEMAINTENANCE\Sub_category.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\FILEMAINTENANCE\Sub_category.Designer.cs">
+      <DependentUpon>Sub_category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\FILEMAINTENANCE\Supplier.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\FILEMAINTENANCE\Supplier.Designer.cs">
+      <DependentUpon>Supplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\FILEMAINTENANCE\UnitOfMeasures.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\FILEMAINTENANCE\UnitOfMeasures.Designer.cs">
+      <DependentUpon>UnitOfMeasures.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\FILEMAINTENANCE\UserSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\FILEMAINTENANCE\UserSettings.Designer.cs">
+      <DependentUpon>UserSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\FILEMAINTENANCE\VAT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\FILEMAINTENANCE\VAT.Designer.cs">
+      <DependentUpon>VAT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\INVENTORY\ProductList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\INVENTORY\ProductList.Designer.cs">
+      <DependentUpon>ProductList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\INVENTORY\PurchaseOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\INVENTORY\PurchaseOrder.Designer.cs">
+      <DependentUpon>PurchaseOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\INVENTORY\PurchaseOrderReceive.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\INVENTORY\PurchaseOrderReceive.Designer.cs">
+      <DependentUpon>PurchaseOrderReceive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\INVENTORY\StockAdjustment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\INVENTORY\StockAdjustment.Designer.cs">
+      <DependentUpon>StockAdjustment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\LOGIN\Log_in.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\LOGIN\Log_in.Designer.cs">
+      <DependentUpon>Log_in.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\REPORTS\AuditTrailReports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\REPORTS\AuditTrailReports.Designer.cs">
+      <DependentUpon>AuditTrailReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\REPORTS\FinancialReports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\REPORTS\FinancialReports.Designer.cs">
+      <DependentUpon>FinancialReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\REPORTS\InventoryReports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\REPORTS\InventoryReports.Designer.cs">
+      <DependentUpon>InventoryReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\REPORTS\ProductListReports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\REPORTS\ProductListReports.Designer.cs">
+      <DependentUpon>ProductListReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\REPORTS\ReturnOrdersReports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\REPORTS\ReturnOrdersReports.Designer.cs">
+      <DependentUpon>ReturnOrdersReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\REPORTS\SalesReports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\REPORTS\SalesReports.Designer.cs">
+      <DependentUpon>SalesReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\REPORTS\StockAdjustmentsReports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\REPORTS\StockAdjustmentsReports.Designer.cs">
+      <DependentUpon>StockAdjustmentsReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\REPORTS\Top10LeastReports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\REPORTS\Top10LeastReports.Designer.cs">
+      <DependentUpon>Top10LeastReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\REPORTS\Top10MostReports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\REPORTS\Top10MostReports.Designer.cs">
+      <DependentUpon>Top10MostReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\SALES\ReservedProducts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\SALES\ReservedProducts.Designer.cs">
+      <DependentUpon>ReservedProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\SALES\SALESpanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\SALES\SALESpanel.Designer.cs">
+      <DependentUpon>SALESpanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\UTILITIES\BackupRestore.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\UTILITIES\BackupRestore.Designer.cs">
+      <DependentUpon>BackupRestore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SANDBOX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SANDBOX.Designer.cs">
+      <DependentUpon>SANDBOX.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Components\ProductComponent.resx">
+      <DependentUpon>ProductComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\SUPDatabox.resx">
+      <DependentUpon>SUPDatabox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\UOMDataBox.resx">
+      <DependentUpon>UOMDataBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\US.DataBox.resx">
+      <DependentUpon>US.DataBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ffirstrun\DbSetup.resx">
+      <DependentUpon>DbSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ffirstrun\FirstRun.resx">
+      <DependentUpon>FirstRun.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messageboxes\MessageboxAreyousure.resx">
+      <DependentUpon>MessageboxAreyousure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\CORE.resx">
+      <DependentUpon>CORE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\COREUTILITIES\DASHBOARD.resx">
+      <DependentUpon>DASHBOARD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\COREUTILITIES\Filemaintenance.resx">
+      <DependentUpon>Filemaintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\COREUTILITIES\Inventory.resx">
+      <DependentUpon>Inventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\COREUTILITIES\REPORTS.resx">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\COREUTILITIES\Sales.resx">
+      <DependentUpon>Sales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\COREUTILITIES\Utilities.resx">
+      <DependentUpon>Utilities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\DASHBOARD.resx">
+      <DependentUpon>DASHBOARD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\FILEMAINTENANCE\Category.resx">
+      <DependentUpon>Category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\FILEMAINTENANCE\MarkUp.resx">
+      <DependentUpon>MarkUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\FILEMAINTENANCE\Products.resx">
+      <DependentUpon>Products.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\FILEMAINTENANCE\Sub_category.resx">
+      <DependentUpon>Sub_category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\FILEMAINTENANCE\Supplier.resx">
+      <DependentUpon>Supplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\FILEMAINTENANCE\UnitOfMeasures.resx">
+      <DependentUpon>UnitOfMeasures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\FILEMAINTENANCE\UserSettings.resx">
+      <DependentUpon>UserSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\FILEMAINTENANCE\VAT.resx">
+      <DependentUpon>VAT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\LOGIN\Log_in.resx">
+      <DependentUpon>Log_in.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\UTILITIES\BackupRestore.resx">
+      <DependentUpon>BackupRestore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SANDBOX.resx">
+      <DependentUpon>SANDBOX.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Resources\Actor-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DEBUG DATABASE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\dash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\fm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ICon32.png" />
+    <EmbeddedResource Include="Resources\inv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\POS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Rprt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\BoxImpo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\logo.png" />
+    <EmbeddedResource Include="Resources\JFbusiness.png" />
+    <EmbeddedResource Include="Resources\JFF.ico" />
+    <EmbeddedResource Include="Resources\jfISO.png" />
+    <EmbeddedResource Include="Resources\Slantbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\JFF 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Eye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Preview Pane %281%29.png" />
+    <None Include="Resources\Search %282%29.png" />
+    <None Include="Resources\chkbox.png" />
+    <None Include="Resources\dlt.png" />
+    <None Include="Resources\error.png" />
+    <None Include="Resources\Edit %281%29.png" />
+    <None Include="Resources\Ellipsis.png" />
+    <Content Include="Resources\Hide.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SQLite.3.13.0\build\net45\SQLite.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLite.3.13.0\build\net45\SQLite.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
