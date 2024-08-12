@@ -101,7 +101,7 @@ git commit -m "your commit name"
 - To push this updates our current repo in github.
 ```
 //cmd
-git push -u -f origin
+git push origin main
 ```
 
 - For more information about git go to (Git Official Website)[https://git-scm.com/docs/git]
