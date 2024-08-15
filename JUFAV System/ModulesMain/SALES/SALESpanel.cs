@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace JUFAV_System.ModulesMain.SALES
 {
-    public partial class SALESpanel : UserControl
+    public partial class SALES : UserControl
     {
-        public SALESpanel()
+        public SALES()
         {
             InitializeComponent();
+            this.Dock = DockStyle.Fill;
         }
     }
 }

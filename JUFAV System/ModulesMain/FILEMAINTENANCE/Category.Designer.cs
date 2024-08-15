@@ -97,6 +97,7 @@
             this.addCatBTN.TabIndex = 4;
             this.addCatBTN.Text = "ADD NEW";
             this.addCatBTN.UseVisualStyleBackColor = false;
+            this.addCatBTN.Click += new System.EventHandler(this.addCatBTN_Click);
             // 
             // txtboxSearchBox
             // 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JUFAV_System.dll;
 
 namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
 {
@@ -42,10 +43,14 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
         private void AddacountClick(object sender,EventArgs e)
         {
             //show panel where enter acount information
-           
-            Messageboxes.MessageboxConfirmation masg1 = new Messageboxes.MessageboxConfirmation(Insertintodatabase,0,"ADD ACCOUNT","ARE YOU SURE YOU WANT TO ADD THIS ACCOUNT?","CONFIRM",2);
-            masg1.Show();
-            masg1.BringToFront();
+            ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
+            ModulesSecond.UsersettingsAddUser Sup = new ModulesSecond.UsersettingsAddUser();
+            ResponsiveUI1.title = "UsersettingsAddUser";
+            ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+            ResponsiveUI1.spl1.Controls.Add(Sup);
+            /// Messageboxes.MessageboxConfirmation masg1 = new Messageboxes.MessageboxConfirmation(Insertintodatabase,0,"ADD ACCOUNT","ARE YOU SURE YOU WANT TO ADD THIS ACCOUNT?","CONFIRM",2);
+            // masg1.Show();
+            // masg1.BringToFront();
         }
 
 

@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.addSubCatBTN = new System.Windows.Forms.Button();
             this.txtboxSearchBox = new System.Windows.Forms.TextBox();
             this.srchBTN = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.ItemSwitch = new System.Windows.Forms.Panel();
             this.ItemsBox = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
@@ -46,11 +48,13 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.60428F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.78418F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.46293F));
+            this.tableLayoutPanel1.Controls.Add(this.label2, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label4, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.addSubCatBTN, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtboxSearchBox, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.srchBTN, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 2, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -58,19 +62,32 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(669, 71);
             this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label2.Font = new System.Drawing.Font("Actor", 11.25F);
+            this.label2.Location = new System.Drawing.Point(159, 49);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(171, 19);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "CATEGORY";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label1.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.label1.Location = new System.Drawing.Point(3, 33);
+            this.label1.Location = new System.Drawing.Point(3, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 35);
+            this.label1.Size = new System.Drawing.Size(150, 19);
             this.label1.TabIndex = 0;
-            this.label1.Text = "SUB CATEGORY NAME:";
+            this.label1.Text = "SUB CATEGORY";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // label4
             // 
@@ -97,6 +114,7 @@
             this.addSubCatBTN.TabIndex = 4;
             this.addSubCatBTN.Text = "ADD NEW";
             this.addSubCatBTN.UseVisualStyleBackColor = false;
+            this.addSubCatBTN.Click += new System.EventHandler(this.addSubCatBTN_Click);
             // 
             // txtboxSearchBox
             // 
@@ -122,6 +140,18 @@
             this.srchBTN.Size = new System.Drawing.Size(112, 27);
             this.srchBTN.TabIndex = 7;
             this.srchBTN.UseVisualStyleBackColor = false;
+            this.srchBTN.Click += new System.EventHandler(this.srchBTN_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label3.Font = new System.Drawing.Font("Actor", 11.25F);
+            this.label3.Location = new System.Drawing.Point(336, 49);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(212, 19);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "MARK UP";
             // 
             // ItemSwitch
             // 
@@ -165,5 +195,7 @@
         private System.Windows.Forms.Button srchBTN;
         private System.Windows.Forms.Panel ItemSwitch;
         private System.Windows.Forms.Panel ItemsBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

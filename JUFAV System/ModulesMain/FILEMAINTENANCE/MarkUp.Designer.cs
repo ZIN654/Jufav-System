@@ -93,6 +93,7 @@
             this.addmkupBTN.TabIndex = 4;
             this.addmkupBTN.Text = "ADD NEW";
             this.addmkupBTN.UseVisualStyleBackColor = false;
+            this.addmkupBTN.Click += new System.EventHandler(this.addmkupBTN_Click);
             // 
             // label4
             // 

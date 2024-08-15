@@ -18,6 +18,7 @@ namespace JUFAV_System
         [STAThread]
         static void Main()
         {
+            //use INDEX syntax for retreival much efficient
             //DEBUG MODE ==============================
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

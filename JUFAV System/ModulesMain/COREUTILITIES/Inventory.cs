@@ -25,11 +25,11 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
         public void Addevents()
         {
             //INVENTORY
-            InvBTN.Click += (sender,e) => { Inventory_Press(); };
-            PoBTN.Click += (sender, e) => { Purchase_Order(); };
-            poRBTN.Click += (sender, e) => { Purchase_Order_receive(); };
-            StckAdjBTN.Click += (sender, e) => { Stock_Adjustments(); };
-            ProdLstBTN.Click += (sender, e) => { Product_list(); };
+            InvBTN.Click += Inventory_Press;
+            PoBTN.Click += Purchase_Order;
+            poRBTN.Click += Purchase_Order_receive;
+            StckAdjBTN.Click += Stock_Adjustments;
+            ProdLstBTN.Click +=Product_list;
            
 
         }
@@ -52,25 +52,43 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 switch1 = 1;
             }
         }
-        public void Inventory_Press()
+        private void Inventory_Press(object sender,EventArgs e)
         {
             InventorySwtich();
         }
-        public void Purchase_Order()
+        private void Purchase_Order(object sender,EventArgs e)
         {
-            
+            ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
+            ResponsiveUI1.title = "PurchaseOrder";
+            ModulesMain.INVENTORY.PurchaseOrder prchOrder = new ModulesMain.INVENTORY.PurchaseOrder();
+            ResponsiveUI1.spl1.Controls.Add(prchOrder);
+            ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+           
         }
-        public  void Purchase_Order_receive()
+        private void Purchase_Order_receive(object sender,EventArgs e)
         {
-
+            ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
+            ResponsiveUI1.title = "PurchaseOrderReceive";
+            ModulesMain.INVENTORY.PurchaseOrderReceive prchOrderrec = new ModulesMain.INVENTORY.PurchaseOrderReceive();
+            ResponsiveUI1.spl1.Controls.Add(prchOrderrec);
+            ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
         }
-        public void Stock_Adjustments()
+        private void Stock_Adjustments(object sender,EventArgs e)
         {
-
+            ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
+            ResponsiveUI1.title = "StockAdjustment";
+            ModulesMain.INVENTORY.StockAdjustment stockadjustments = new ModulesMain.INVENTORY.StockAdjustment();
+            ResponsiveUI1.spl1.Controls.Add(stockadjustments);
+            ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
         }
-        public void Product_list()
+        private void Product_list(object sender,EventArgs e)
         {
-
+            ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title,false)[0].Dispose();
+            ResponsiveUI1.title = "ProductList";
+            ModulesMain.INVENTORY.ProductList prdlist = new ModulesMain.INVENTORY.ProductList();
+            ResponsiveUI1.spl1.Controls.Add(prdlist);
+            ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+           
         }
     }
 }

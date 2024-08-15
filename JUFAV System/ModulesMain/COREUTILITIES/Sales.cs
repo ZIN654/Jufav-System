@@ -24,7 +24,7 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
         public void Addevents()
         {
             //use static variables for allocation
-           
+            SalesPanelBTN.Click += SalesMain;
             //when this clicked the user setting will appear this is just an divider
             SalesBTN.Click += (sender, e) =>
             {
@@ -32,6 +32,12 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
 
 
             };
+        }
+        public void releaseleaks()
+        {
+            SalesPanelBTN.Click -= SalesMain;
+
+
         }
         //=============================================METHODS CLICK============================
         public void sales1()
@@ -52,9 +58,13 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
 
         }
 
-        public void SalesMain()
+        private void SalesMain(object sender,EventArgs e)
         {
-
+            ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
+            ResponsiveUI1.title = "SALES";
+            ModulesMain.SALES.SALES sales = new ModulesMain.SALES.SALES();
+            ResponsiveUI1.spl1.Controls.Add(sales);
+            ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
         }
         public void ReservedProd()
         {

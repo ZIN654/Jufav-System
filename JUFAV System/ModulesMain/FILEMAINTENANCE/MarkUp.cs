@@ -17,5 +17,17 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
             InitializeComponent();
             this.Dock = DockStyle.Fill;
         }
+        public void releasemem()
+        {
+            addmkupBTN.Click -= addmkupBTN_Click;
+
+
+        }
+
+        private void addmkupBTN_Click(object sender, EventArgs e)
+        {
+            Components.MarkUpDatabox item1 = new Components.MarkUpDatabox();
+            ItemsBox.Controls.Add(item1);
+        }
     }
 }

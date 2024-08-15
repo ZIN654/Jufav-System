@@ -17,5 +17,22 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
             InitializeComponent();
             this.Dock = DockStyle.Fill;
         }
+        public void releaseMem()
+        {
+            addSubCatBTN.Click -= addSubCatBTN_Click;
+            srchBTN.Click -= srchBTN_Click;
+
+
+        }
+        private void addSubCatBTN_Click(object sender, EventArgs e)
+        {
+            Components.Sub_Category item1 = new Components.Sub_Category();
+            ItemsBox.Controls.Add(item1);
+        }
+
+        private void srchBTN_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
