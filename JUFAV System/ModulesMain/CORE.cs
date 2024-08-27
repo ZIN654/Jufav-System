@@ -19,39 +19,26 @@ namespace JUFAV_System.ModulesMain
     public partial class CORE : Form
     {
         public static int switchshow = 0;
-        
+        private Form loginpanel;//pag nag logout show nalang ito para hindi na ulit susumon magastos memory
         //apply margin zero later
-        public CORE()
+        public CORE(Form loginform)
         {
-
+            this.loginpanel = loginform;
             // this.container1.Controls.Add(Bcres);
             InitializeComponent();
+
             SET_CONTROLS_PARAMETER();
             addevents();
-            ResponsiveUI1.headingtitle = TITLEHEADING;
-
-          //  ModulesMain.UTILITIES.raikage akp = new ModulesMain.UTILITIES.raikage();
-           ResponsiveUI1.spl1 = panel1;
-
-
-            //debug
-            ModulesMain.DASHBOARD dash1 = new ModulesMain.DASHBOARD();
-            panel1.Controls.Add(dash1);
-            ResponsiveUI1.title = "DASHBOARD";
-
+            //  initd.opendatabase();//do not open database in any other panel since mag bubukas na sya sa 
+            //log in panel pa lang  
+            Username.Text = initd.username;
         }
         public void addevents()
         {
-            backgroundWorker1.RunWorkerAsync();
            
-            //=====================================BACK GROUND PROCESS============================SEPARETE THREAD
-            backgroundWorker1.DoWork += (sender,e) =>
-            {
-               SetTime();
-               
-            };
             //DATE SETT
             SetDate(DateTime.Now);
+            SetTime();
             //NOTE USE PANEL FOR BUTTONS TO REMOVE THE BORDER  OUTLINES TO  BECOM SEAMLES
             //refine this part clean optimize
 
@@ -70,10 +57,12 @@ namespace JUFAV_System.ModulesMain
             panel1.ControlRemoved += release;
             //un leakable
             LOGOUTBTN.Click += (sender,e) => {logout.BringToFront(); logout.Show();
-               
             };
             logout.MouseLeave += (sender, e) => { logout.Hide(); };
-            logout.Click += (sender,e) => { Environment.Exit(0); };
+            logout.Click += (sender,e) => {
+                this.Dispose();
+                loginpanel.Show();   
+            };
             showide.Click += (sender,e) => {
               if(switchshow  == 0)
                 {
@@ -105,6 +94,7 @@ namespace JUFAV_System.ModulesMain
             OPTIONS.HorizontalScroll.Enabled = false;
             //In the first run the DASHBOARD is the first will appearn
             //===========INITIALIZE BUTTONS IN OPTIONS LAYOUT PANEL==============
+            //check muna kung may access bago add.
             COREUTILITIES.Utilities Option5 = new COREUTILITIES.Utilities();
             COREUTILITIES.Reports Option4 = new COREUTILITIES.Reports();
             COREUTILITIES.Sales Option3 = new COREUTILITIES.Sales();
@@ -112,11 +102,11 @@ namespace JUFAV_System.ModulesMain
             COREUTILITIES.Filemaintenance Option1 = new COREUTILITIES.Filemaintenance();
             COREUTILITIES.DASHBOARD Option = new COREUTILITIES.DASHBOARD(TITLEHEADING);
             Control [] objects = {Option5, Option4,Option3,Option2,Option1,Option };
-            for (int i =0;i != 6;i++)
+            foreach(Control items in objects)
             {
                
-                OPTIONS.Controls.Add(objects[i]);
-                OPTIONS.Controls.SetChildIndex(objects[i],i);
+                OPTIONS.Controls.Add(items);
+                
             }
            
         }
@@ -131,26 +121,33 @@ namespace JUFAV_System.ModulesMain
         {
             //if this form disposed delete cache
             //if this form is hide pause
+            Time.Text = DateTime.Now.ToLongTimeString(); ;
             
-           while(1 == 1)
-            {
-                //send this value to the label without changeing the thread and the thread is 
-              DateTime.Now.ToLongTimeString();
-
-
-               Thread.Sleep(1000);
-              
-
-
-            }
-           
-
         }
 
         private void release(object sender,EventArgs e)
         {
             
-            Console.WriteLine("memory leaks released");
+          
+        }
+
+        private void CORE_Load(object sender, EventArgs e)
+        {
+            ResponsiveUI1.headingtitle = TITLEHEADING;
+
+            //  ModulesMain.UTILITIES.raikage akp = new ModulesMain.UTILITIES.raikage();
+            ResponsiveUI1.spl1 = panel1;
+
+
+            //debug
+            ModulesMain.DASHBOARD dash1 = new ModulesMain.DASHBOARD();
+            panel1.Controls.Add(dash1);
+            ResponsiveUI1.title = "DASHBOARD";
+        }
+
+        private void CORE_FormClosed(object sender, FormClosedEventArgs e)
+        {
+          //  initd.closedatabase();
         }
     }
 }

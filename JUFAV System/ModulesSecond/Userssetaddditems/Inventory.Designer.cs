@@ -61,6 +61,8 @@
             // 
             this.ProdList.AutoSize = true;
             this.ProdList.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ProdList.Checked = true;
+            this.ProdList.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ProdList.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ProdList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ProdList.Font = new System.Drawing.Font("Actor", 9.75F);
@@ -78,6 +80,8 @@
             // 
             this.Inventorychbox11.AutoSize = true;
             this.Inventorychbox11.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Inventorychbox11.Checked = true;
+            this.Inventorychbox11.CheckState = System.Windows.Forms.CheckState.Checked;
             this.Inventorychbox11.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Inventorychbox11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Inventorychbox11.Font = new System.Drawing.Font("Actor", 11.25F, System.Drawing.FontStyle.Bold);
@@ -88,6 +92,7 @@
             this.Inventorychbox11.Text = "INVENTORY";
             this.Inventorychbox11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Inventorychbox11.UseVisualStyleBackColor = false;
+            this.Inventorychbox11.CheckedChanged += new System.EventHandler(this.Inventorychbox11_CheckedChanged);
             this.Inventorychbox11.MouseEnter += new System.EventHandler(this.Inventorychbox11_MouseEnter);
             this.Inventorychbox11.MouseLeave += new System.EventHandler(this.Inventorychbox11_MouseLeave);
             // 
@@ -95,6 +100,8 @@
             // 
             this.StckAdj.AutoSize = true;
             this.StckAdj.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.StckAdj.Checked = true;
+            this.StckAdj.CheckState = System.Windows.Forms.CheckState.Checked;
             this.StckAdj.Cursor = System.Windows.Forms.Cursors.Hand;
             this.StckAdj.Dock = System.Windows.Forms.DockStyle.Fill;
             this.StckAdj.Font = new System.Drawing.Font("Actor", 9.75F);
@@ -112,6 +119,8 @@
             // 
             this.PurchOrdRec.AutoSize = true;
             this.PurchOrdRec.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.PurchOrdRec.Checked = true;
+            this.PurchOrdRec.CheckState = System.Windows.Forms.CheckState.Checked;
             this.PurchOrdRec.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PurchOrdRec.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PurchOrdRec.Font = new System.Drawing.Font("Actor", 9.75F);
@@ -129,6 +138,8 @@
             // 
             this.PurchOrde.AutoSize = true;
             this.PurchOrde.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.PurchOrde.Checked = true;
+            this.PurchOrde.CheckState = System.Windows.Forms.CheckState.Checked;
             this.PurchOrde.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PurchOrde.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PurchOrde.Font = new System.Drawing.Font("Actor", 9.75F);

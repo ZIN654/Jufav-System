@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirstRun));
             this.AddBTN = new System.Windows.Forms.Button();
-            this.txtbxName = new System.Windows.Forms.TextBox();
-            this.txtbxUsername = new System.Windows.Forms.TextBox();
-            this.txtbxPass = new System.Windows.Forms.TextBox();
-            this.txtbxConPas = new System.Windows.Forms.TextBox();
+            this.NAME = new System.Windows.Forms.TextBox();
+            this.USERNAME = new System.Windows.Forms.TextBox();
+            this.PASSWORD = new System.Windows.Forms.TextBox();
+            this.CONFIRM_PASSWORD = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.NameNotification = new System.Windows.Forms.PictureBox();
@@ -51,57 +52,73 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.EMAIL = new System.Windows.Forms.TextBox();
+            this.emailnot = new System.Windows.Forms.PictureBox();
+            this.Viewpass = new System.Windows.Forms.PictureBox();
+            this.Viewpasscon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameNotification)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Usernamenot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paswnot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.conpaswnot)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emailnot)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Viewpass)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Viewpasscon)).BeginInit();
             this.SuspendLayout();
             // 
             // AddBTN
             // 
-            this.AddBTN.Location = new System.Drawing.Point(194, 278);
+            this.AddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddBTN.Location = new System.Drawing.Point(194, 316);
             this.AddBTN.Name = "AddBTN";
             this.AddBTN.Size = new System.Drawing.Size(157, 33);
             this.AddBTN.TabIndex = 0;
             this.AddBTN.Text = "ADD ACCOUNT";
             this.AddBTN.UseVisualStyleBackColor = true;
             // 
-            // txtbxName
+            // NAME
             // 
-            this.txtbxName.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtbxName.Location = new System.Drawing.Point(13, 90);
-            this.txtbxName.Name = "txtbxName";
-            this.txtbxName.Size = new System.Drawing.Size(338, 20);
-            this.txtbxName.TabIndex = 1;
-            this.txtbxName.Text = "NAME:";
+            this.NAME.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.NAME.Location = new System.Drawing.Point(13, 90);
+            this.NAME.MaxLength = 50;
+            this.NAME.Name = "NAME";
+            this.NAME.Size = new System.Drawing.Size(338, 20);
+            this.NAME.TabIndex = 1;
+            this.NAME.Text = "NAME:";
             // 
-            // txtbxUsername
+            // USERNAME
             // 
-            this.txtbxUsername.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtbxUsername.Location = new System.Drawing.Point(13, 128);
-            this.txtbxUsername.Name = "txtbxUsername";
-            this.txtbxUsername.Size = new System.Drawing.Size(338, 20);
-            this.txtbxUsername.TabIndex = 2;
-            this.txtbxUsername.Text = "USERNAME";
+            this.USERNAME.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.USERNAME.Location = new System.Drawing.Point(13, 128);
+            this.USERNAME.MaxLength = 50;
+            this.USERNAME.Name = "USERNAME";
+            this.USERNAME.Size = new System.Drawing.Size(338, 20);
+            this.USERNAME.TabIndex = 2;
+            this.USERNAME.Text = "USERNAME";
             // 
-            // txtbxPass
+            // PASSWORD
             // 
-            this.txtbxPass.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtbxPass.Location = new System.Drawing.Point(13, 166);
-            this.txtbxPass.Name = "txtbxPass";
-            this.txtbxPass.Size = new System.Drawing.Size(338, 20);
-            this.txtbxPass.TabIndex = 3;
-            this.txtbxPass.Text = "PASSWORD";
+            this.PASSWORD.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.PASSWORD.Location = new System.Drawing.Point(13, 166);
+            this.PASSWORD.MaxLength = 50;
+            this.PASSWORD.Name = "PASSWORD";
+            this.PASSWORD.PasswordChar = '*';
+            this.PASSWORD.Size = new System.Drawing.Size(338, 20);
+            this.PASSWORD.TabIndex = 3;
+            this.PASSWORD.Text = "PASSWORD";
             // 
-            // txtbxConPas
+            // CONFIRM_PASSWORD
             // 
-            this.txtbxConPas.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtbxConPas.Location = new System.Drawing.Point(13, 205);
-            this.txtbxConPas.Name = "txtbxConPas";
-            this.txtbxConPas.Size = new System.Drawing.Size(338, 20);
-            this.txtbxConPas.TabIndex = 4;
-            this.txtbxConPas.Text = "CONFIRM-PASSWORD";
+            this.CONFIRM_PASSWORD.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.CONFIRM_PASSWORD.Location = new System.Drawing.Point(13, 205);
+            this.CONFIRM_PASSWORD.MaxLength = 50;
+            this.CONFIRM_PASSWORD.Name = "CONFIRM_PASSWORD";
+            this.CONFIRM_PASSWORD.PasswordChar = '*';
+            this.CONFIRM_PASSWORD.Size = new System.Drawing.Size(338, 20);
+            this.CONFIRM_PASSWORD.TabIndex = 4;
+            this.CONFIRM_PASSWORD.Text = "CONFIRM-PASSWORD";
             // 
             // label2
             // 
@@ -117,9 +134,9 @@
             // 
             this.pictureBox7.BackColor = System.Drawing.SystemColors.ControlLight;
             this.pictureBox7.Image = global::JUFAV_System.Properties.Resources.logo;
-            this.pictureBox7.Location = new System.Drawing.Point(12, 5);
+            this.pictureBox7.Location = new System.Drawing.Point(1, 2);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(56, 57);
+            this.pictureBox7.Size = new System.Drawing.Size(70, 70);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox7.TabIndex = 15;
             this.pictureBox7.TabStop = false;
@@ -232,7 +249,8 @@
             // 
             // clearBTN
             // 
-            this.clearBTN.Location = new System.Drawing.Point(14, 278);
+            this.clearBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearBTN.Location = new System.Drawing.Point(14, 316);
             this.clearBTN.Name = "clearBTN";
             this.clearBTN.Size = new System.Drawing.Size(157, 33);
             this.clearBTN.TabIndex = 26;
@@ -241,6 +259,7 @@
             // 
             // doneBTN
             // 
+            this.doneBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.doneBTN.Location = new System.Drawing.Point(196, 388);
             this.doneBTN.Name = "doneBTN";
             this.doneBTN.Size = new System.Drawing.Size(157, 33);
@@ -250,15 +269,14 @@
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Actor", 8.25F);
             this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(12, 232);
+            this.label7.Location = new System.Drawing.Point(12, 270);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(304, 42);
+            this.label7.Size = new System.Drawing.Size(339, 42);
             this.label7.TabIndex = 28;
-            this.label7.Text = "NOTE : \r\nYou can add master accounts later in other master accounts.\r\nThis Master" +
-    " accounts are for admin only.";
+            this.label7.Text = "NOTE : \r\nYou can add master accounts later in other master accounts.\r\nRemember th" +
+    "at this Master accounts are for Admins only.";
             // 
             // label8
             // 
@@ -270,7 +288,6 @@
             this.label8.Size = new System.Drawing.Size(122, 14);
             this.label8.TabIndex = 32;
             this.label8.Text = "CONFIRM_PASSWORD";
-            this.label8.Visible = false;
             // 
             // label9
             // 
@@ -282,7 +299,6 @@
             this.label9.Size = new System.Drawing.Size(67, 14);
             this.label9.TabIndex = 31;
             this.label9.Text = "PASSWORD";
-            this.label9.Visible = false;
             // 
             // label10
             // 
@@ -294,7 +310,6 @@
             this.label10.Size = new System.Drawing.Size(64, 14);
             this.label10.TabIndex = 30;
             this.label10.Text = "USERNAME";
-            this.label10.Visible = false;
             // 
             // label11
             // 
@@ -306,7 +321,77 @@
             this.label11.Size = new System.Drawing.Size(37, 14);
             this.label11.TabIndex = 29;
             this.label11.Text = "NAME";
-            this.label11.Visible = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Actor", 8.25F);
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(7, 228);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(37, 14);
+            this.label12.TabIndex = 35;
+            this.label12.Text = "EMAIL";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Actor", 8.25F);
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(188, 227);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(153, 14);
+            this.label13.TabIndex = 34;
+            this.label13.Text = "Please fill out your email Feild";
+            this.label13.Visible = false;
+            // 
+            // EMAIL
+            // 
+            this.EMAIL.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.EMAIL.Location = new System.Drawing.Point(13, 244);
+            this.EMAIL.MaxLength = 50;
+            this.EMAIL.Name = "EMAIL";
+            this.EMAIL.Size = new System.Drawing.Size(338, 20);
+            this.EMAIL.TabIndex = 33;
+            this.EMAIL.Text = "EMAIL";
+            // 
+            // emailnot
+            // 
+            this.emailnot.BackColor = System.Drawing.Color.Transparent;
+            this.emailnot.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
+            this.emailnot.Location = new System.Drawing.Point(172, 227);
+            this.emailnot.Name = "emailnot";
+            this.emailnot.Size = new System.Drawing.Size(15, 15);
+            this.emailnot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.emailnot.TabIndex = 36;
+            this.emailnot.TabStop = false;
+            this.emailnot.Visible = false;
+            // 
+            // Viewpass
+            // 
+            this.Viewpass.BackColor = System.Drawing.Color.White;
+            this.Viewpass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Viewpass.Image = global::JUFAV_System.Properties.Resources.Eye;
+            this.Viewpass.Location = new System.Drawing.Point(331, 166);
+            this.Viewpass.Name = "Viewpass";
+            this.Viewpass.Size = new System.Drawing.Size(20, 20);
+            this.Viewpass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Viewpass.TabIndex = 37;
+            this.Viewpass.TabStop = false;
+            this.Viewpass.Click += new System.EventHandler(this.Viewpass_Click);
+            // 
+            // Viewpasscon
+            // 
+            this.Viewpasscon.BackColor = System.Drawing.Color.White;
+            this.Viewpasscon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Viewpasscon.Image = global::JUFAV_System.Properties.Resources.Eye;
+            this.Viewpasscon.Location = new System.Drawing.Point(331, 205);
+            this.Viewpasscon.Name = "Viewpasscon";
+            this.Viewpasscon.Size = new System.Drawing.Size(20, 20);
+            this.Viewpasscon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Viewpasscon.TabIndex = 38;
+            this.Viewpasscon.TabStop = false;
+            this.Viewpasscon.Click += new System.EventHandler(this.Viewpasscon_Click);
             // 
             // FirstRun
             // 
@@ -314,6 +399,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(365, 433);
+            this.Controls.Add(this.Viewpasscon);
+            this.Controls.Add(this.Viewpass);
+            this.Controls.Add(this.emailnot);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.EMAIL);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
@@ -332,20 +423,25 @@
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.NameNotification);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtbxConPas);
-            this.Controls.Add(this.txtbxPass);
-            this.Controls.Add(this.txtbxUsername);
-            this.Controls.Add(this.txtbxName);
+            this.Controls.Add(this.CONFIRM_PASSWORD);
+            this.Controls.Add(this.PASSWORD);
+            this.Controls.Add(this.USERNAME);
+            this.Controls.Add(this.NAME);
             this.Controls.Add(this.AddBTN);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FirstRun";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FirstRun";
+            this.Text = "ACCOUNT CREATION FOR ADMIN";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FirstRun_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameNotification)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Usernamenot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.paswnot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.conpaswnot)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emailnot)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Viewpass)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Viewpasscon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,10 +450,10 @@
         #endregion
 
         private System.Windows.Forms.Button AddBTN;
-        private System.Windows.Forms.TextBox txtbxName;
-        private System.Windows.Forms.TextBox txtbxUsername;
-        private System.Windows.Forms.TextBox txtbxPass;
-        private System.Windows.Forms.TextBox txtbxConPas;
+        private System.Windows.Forms.TextBox NAME;
+        private System.Windows.Forms.TextBox USERNAME;
+        private System.Windows.Forms.TextBox PASSWORD;
+        private System.Windows.Forms.TextBox CONFIRM_PASSWORD;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox NameNotification;
         private System.Windows.Forms.PictureBox pictureBox7;
@@ -376,5 +472,11 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox EMAIL;
+        private System.Windows.Forms.PictureBox emailnot;
+        private System.Windows.Forms.PictureBox Viewpass;
+        private System.Windows.Forms.PictureBox Viewpasscon;
     }
 }

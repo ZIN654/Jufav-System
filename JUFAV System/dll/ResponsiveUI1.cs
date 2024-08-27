@@ -14,8 +14,23 @@ namespace JUFAV_System.dll
         //this spl1 is the panel fromm the core 
         public static Panel spl1;
         public static String title;
-        //0-FM,1-INV,2-SLS,3-RPRT,4-UTL
 
+
+
+
+      
+        //0-FM,1-INV,2-SLS,3-RPRT,4-UTL
+        public static void onenter1(CheckBox h1, Color cl1)
+        {
+            h1.BackColor = cl1;
+
+        }
+        public static void onleave(CheckBox h1, Color cl1)
+        {
+            h1.BackColor = cl1;
+
+
+        }
         //++++++++++++++++++LIBRARY FOR RESPONSIVE USER INTERFACE AND EVENT HANDLERS FOR UI RESPONSIVENESS+++++++++++++++++++++
         //for mainbuttons contains /label/panel/2 picture box
         public static void Switchnum(UserControl main, PictureBox dropdownicon, int Modulenum, int sizewidth, int from, int to)

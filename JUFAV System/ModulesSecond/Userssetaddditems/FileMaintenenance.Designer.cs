@@ -72,6 +72,8 @@
             // 
             this.UserSettings.AutoSize = true;
             this.UserSettings.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.UserSettings.Checked = true;
+            this.UserSettings.CheckState = System.Windows.Forms.CheckState.Checked;
             this.UserSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.UserSettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UserSettings.Font = new System.Drawing.Font("Actor", 9.75F);
@@ -89,6 +91,8 @@
             // 
             this.Supplier.AutoSize = true;
             this.Supplier.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Supplier.Checked = true;
+            this.Supplier.CheckState = System.Windows.Forms.CheckState.Checked;
             this.Supplier.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Supplier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Supplier.Font = new System.Drawing.Font("Actor", 9.75F);
@@ -106,6 +110,8 @@
             // 
             this.UOM.AutoSize = true;
             this.UOM.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.UOM.Checked = true;
+            this.UOM.CheckState = System.Windows.Forms.CheckState.Checked;
             this.UOM.Cursor = System.Windows.Forms.Cursors.Hand;
             this.UOM.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UOM.Font = new System.Drawing.Font("Actor", 9.75F);
@@ -123,6 +129,8 @@
             // 
             this.Category.AutoSize = true;
             this.Category.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Category.Checked = true;
+            this.Category.CheckState = System.Windows.Forms.CheckState.Checked;
             this.Category.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Category.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Category.Font = new System.Drawing.Font("Actor", 9.75F);
@@ -140,6 +148,8 @@
             // 
             this.subcat.AutoSize = true;
             this.subcat.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.subcat.Checked = true;
+            this.subcat.CheckState = System.Windows.Forms.CheckState.Checked;
             this.subcat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.subcat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.subcat.Font = new System.Drawing.Font("Actor", 9.75F);
@@ -157,6 +167,8 @@
             // 
             this.MarkUp.AutoSize = true;
             this.MarkUp.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.MarkUp.Checked = true;
+            this.MarkUp.CheckState = System.Windows.Forms.CheckState.Checked;
             this.MarkUp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.MarkUp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MarkUp.Font = new System.Drawing.Font("Actor", 9.75F);
@@ -174,6 +186,8 @@
             // 
             this.Products.AutoSize = true;
             this.Products.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Products.Checked = true;
+            this.Products.CheckState = System.Windows.Forms.CheckState.Checked;
             this.Products.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Products.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Products.Font = new System.Drawing.Font("Actor", 9.75F);
@@ -191,6 +205,8 @@
             // 
             this.vat.AutoSize = true;
             this.vat.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.vat.Checked = true;
+            this.vat.CheckState = System.Windows.Forms.CheckState.Checked;
             this.vat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.vat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vat.Font = new System.Drawing.Font("Actor", 9.75F);
@@ -208,6 +224,8 @@
             // 
             this.FILEMAINTENANCE.AutoSize = true;
             this.FILEMAINTENANCE.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.FILEMAINTENANCE.Checked = true;
+            this.FILEMAINTENANCE.CheckState = System.Windows.Forms.CheckState.Checked;
             this.FILEMAINTENANCE.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FILEMAINTENANCE.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FILEMAINTENANCE.Font = new System.Drawing.Font("Actor", 11.25F, System.Drawing.FontStyle.Bold);
@@ -218,6 +236,7 @@
             this.FILEMAINTENANCE.Text = "FILE MAINTENANCE";
             this.FILEMAINTENANCE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.FILEMAINTENANCE.UseVisualStyleBackColor = false;
+            this.FILEMAINTENANCE.CheckedChanged += new System.EventHandler(this.FILEMAINTENANCE_CheckedChanged);
             this.FILEMAINTENANCE.MouseEnter += new System.EventHandler(this.FILEMAINTENANCE_MouseEnter);
             this.FILEMAINTENANCE.MouseLeave += new System.EventHandler(this.FILEMAINTENANCE_MouseLeave);
             // 

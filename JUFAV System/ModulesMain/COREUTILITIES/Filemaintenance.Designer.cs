@@ -204,7 +204,7 @@
             this.Font = new System.Drawing.Font("Actor", 8.25F);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "Filemaintenance";
-            this.Size = new System.Drawing.Size(234, 38);
+            this.Size = new System.Drawing.Size(234, 37);
             this.ResumeLayout(false);
 
         }

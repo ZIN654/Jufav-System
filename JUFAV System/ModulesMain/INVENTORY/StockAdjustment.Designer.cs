@@ -75,6 +75,7 @@
             this.CrtPOBTN.TabIndex = 4;
             this.CrtPOBTN.Text = "CREATE STOCK ADJUSTMENTS";
             this.CrtPOBTN.UseVisualStyleBackColor = false;
+            this.CrtPOBTN.Click += new System.EventHandler(this.CrtPOBTN_Click);
             // 
             // label1
             // 

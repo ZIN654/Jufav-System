@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
-
+using System.Text.RegularExpressions;
+using System.Security.Cryptography;
 namespace JUFAV_System
 {
     public partial class SANDBOX : Form
@@ -23,15 +24,19 @@ namespace JUFAV_System
         public SANDBOX()
         {
             InitializeComponent();
-            set();
-            Thread.Sleep(1500);
-            set();
-            Thread.Sleep(1500);
-           set();
+            axWindowsMediaPlayer1.URL = @"C://Users//asus//Desktop//BACKGROUNDSLIVE//damage-gundam-live-wallpaper.mp4";
+            axWindowsMediaPlayer1.settings.autoStart = true;
+             axWindowsMediaPlayer1.settings.setMode("loop",true);
+           // set();
+           // Thread.Sleep(1500);
+           // set();
+           // Thread.Sleep(1500);
+          // set();
 
         }
         public void set()
         {
+            //for changing array starting point to read
             LastIndex.Text = users.Length.ToString();
 
 
@@ -63,6 +68,29 @@ namespace JUFAV_System
                 countlimit += check - 1;
             }
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //salt
+            //hash algorithm
+         //implement hashing algorithm using SHA-256 with salting technique
+            // finds any non word character \\W
+            //finds any space white character \\S
+            /*
+            if (Regex.IsMatch(textBox1.Text,"\\W\\S")){
+                MessageBox.Show("FIND ONE");
+
+
+
+            }
+            else
+            {
+
+                MessageBox.Show("FIND NOT ONE");
+
+            }
+            */
         }
     }
 }

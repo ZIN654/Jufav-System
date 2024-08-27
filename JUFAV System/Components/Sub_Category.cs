@@ -12,10 +12,13 @@ namespace JUFAV_System.Components
 {
     public partial class Sub_Category : UserControl
     {
-        public Sub_Category()
+        public Sub_Category(String Subcatname,object Catname,String markup)
         {
             InitializeComponent();
             this.Dock = DockStyle.Top;
+            label5.Text = Subcatname;
+            label6.Text = Catname.ToString();
+            label7.Text = markup;
         }
 
     }

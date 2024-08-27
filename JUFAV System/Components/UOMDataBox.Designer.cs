@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblname = new System.Windows.Forms.Label();
-            this.lblrole = new System.Windows.Forms.Label();
+            this.Abbreviationlbl = new System.Windows.Forms.Label();
+            this.Unitofmelbl = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.deletebtn = new System.Windows.Forms.PictureBox();
             this.editbut = new System.Windows.Forms.PictureBox();
@@ -49,8 +49,8 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.35426F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.31799F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Controls.Add(this.lblname, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.lblrole, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.Abbreviationlbl, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.Unitofmelbl, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel1, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
@@ -60,27 +60,27 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(716, 58);
             this.tableLayoutPanel2.TabIndex = 28;
             // 
-            // lblname
+            // Abbreviationlbl
             // 
-            this.lblname.AutoSize = true;
-            this.lblname.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblname.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.lblname.Location = new System.Drawing.Point(4, 1);
-            this.lblname.Name = "lblname";
-            this.lblname.Size = new System.Drawing.Size(317, 19);
-            this.lblname.TabIndex = 0;
-            this.lblname.Text = "Kilograms";
+            this.Abbreviationlbl.AutoSize = true;
+            this.Abbreviationlbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Abbreviationlbl.Font = new System.Drawing.Font("Actor", 11.25F);
+            this.Abbreviationlbl.Location = new System.Drawing.Point(4, 1);
+            this.Abbreviationlbl.Name = "Abbreviationlbl";
+            this.Abbreviationlbl.Size = new System.Drawing.Size(317, 19);
+            this.Abbreviationlbl.TabIndex = 0;
+            this.Abbreviationlbl.Text = "Kilograms";
             // 
-            // lblrole
+            // Unitofmelbl
             // 
-            this.lblrole.AutoSize = true;
-            this.lblrole.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblrole.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.lblrole.Location = new System.Drawing.Point(328, 1);
-            this.lblrole.Name = "lblrole";
-            this.lblrole.Size = new System.Drawing.Size(266, 19);
-            this.lblrole.TabIndex = 2;
-            this.lblrole.Text = "KG";
+            this.Unitofmelbl.AutoSize = true;
+            this.Unitofmelbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Unitofmelbl.Font = new System.Drawing.Font("Actor", 11.25F);
+            this.Unitofmelbl.Location = new System.Drawing.Point(328, 1);
+            this.Unitofmelbl.Name = "Unitofmelbl";
+            this.Unitofmelbl.Size = new System.Drawing.Size(266, 19);
+            this.Unitofmelbl.TabIndex = 2;
+            this.Unitofmelbl.Text = "KG";
             // 
             // panel1
             // 
@@ -137,8 +137,8 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Label lblname;
-        private System.Windows.Forms.Label lblrole;
+        private System.Windows.Forms.Label Abbreviationlbl;
+        private System.Windows.Forms.Label Unitofmelbl;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox deletebtn;
         private System.Windows.Forms.PictureBox editbut;

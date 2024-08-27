@@ -45,7 +45,23 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Konscious.Security.Cryptography.Argon2, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Konscious.Security.Cryptography.Argon2.1.3.1\lib\net46\Konscious.Security.Cryptography.Argon2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Konscious.Security.Cryptography.Blake2, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Konscious.Security.Cryptography.Blake2.1.1.1\lib\net46\Konscious.Security.Cryptography.Blake2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.8.0.0\lib\net462\System.Collections.Immutable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.118.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
@@ -61,6 +77,19 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -72,6 +101,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\AccessDenied.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\AccessDenied.Designer.cs">
+      <DependentUpon>AccessDenied.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\CategoryComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -95,6 +130,12 @@
     </Compile>
     <Compile Include="Components\PurchaseOrderComponent.Designer.cs">
       <DependentUpon>PurchaseOrderComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\StockAdjustmentsDatabox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\StockAdjustmentsDatabox.Designer.cs">
+      <DependentUpon>StockAdjustmentsDatabox.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\Sub_Category.cs">
       <SubType>UserControl</SubType>
@@ -122,6 +163,7 @@
     </Compile>
     <Compile Include="dll\AnimationFunctions01.cs" />
     <Compile Include="dll\CommunicateDB.cs" />
+    <Compile Include="dll\Globalvar.cs" />
     <Compile Include="dll\initd.cs" />
     <Compile Include="dll\ResponsiveUI1.cs" />
     <Compile Include="Ffirstrun\DbSetup.cs">
@@ -153,6 +195,12 @@
     </Compile>
     <Compile Include="ModulesMain\COREUTILITIES\DASHBOARD.Designer.cs">
       <DependentUpon>DASHBOARD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\COREUTILITIES\file.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\COREUTILITIES\file.Designer.cs">
+      <DependentUpon>file.cs</DependentUpon>
     </Compile>
     <Compile Include="ModulesMain\COREUTILITIES\Filemaintenance.cs">
       <SubType>UserControl</SubType>
@@ -340,6 +388,30 @@
     <Compile Include="ModulesMain\UTILITIES\BackupRestore.Designer.cs">
       <DependentUpon>BackupRestore.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModulesSecond\FileMaintenance\Category\AddCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesSecond\FileMaintenance\Category\AddCategory.Designer.cs">
+      <DependentUpon>AddCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesSecond\FileMaintenance\SubCategory\AddSubCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesSecond\FileMaintenance\SubCategory\AddSubCategory.Designer.cs">
+      <DependentUpon>AddSubCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesSecond\FileMaintenance\Supplier\Addsupplier.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesSecond\FileMaintenance\Supplier\Addsupplier.Designer.cs">
+      <DependentUpon>Addsupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesSecond\FileMaintenance\UnitOfMeasure\AddUnitOfMeasure.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesSecond\FileMaintenance\UnitOfMeasure\AddUnitOfMeasure.Designer.cs">
+      <DependentUpon>AddUnitOfMeasure.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModulesSecond\UsersettingsAddUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -384,6 +456,9 @@
     <Compile Include="SANDBOX.Designer.cs">
       <DependentUpon>SANDBOX.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Components\AccessDenied.resx">
+      <DependentUpon>AccessDenied.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\CategoryComponent.resx">
       <DependentUpon>CategoryComponent.cs</DependentUpon>
     </EmbeddedResource>
@@ -395,6 +470,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\PurchaseOrderComponent.resx">
       <DependentUpon>PurchaseOrderComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\StockAdjustmentsDatabox.resx">
+      <DependentUpon>StockAdjustmentsDatabox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Sub_Category.resx">
       <DependentUpon>Sub_Category.cs</DependentUpon>
@@ -422,6 +500,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModulesMain\COREUTILITIES\DASHBOARD.resx">
       <DependentUpon>DASHBOARD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\COREUTILITIES\file.resx">
+      <DependentUpon>file.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModulesMain\COREUTILITIES\Filemaintenance.resx">
       <DependentUpon>Filemaintenance.cs</DependentUpon>
@@ -489,6 +570,18 @@
     <EmbeddedResource Include="ModulesMain\UTILITIES\BackupRestore.resx">
       <DependentUpon>BackupRestore.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModulesSecond\FileMaintenance\Category\AddCategory.resx">
+      <DependentUpon>AddCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesSecond\FileMaintenance\SubCategory\AddSubCategory.resx">
+      <DependentUpon>AddSubCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesSecond\FileMaintenance\Supplier\Addsupplier.resx">
+      <DependentUpon>Addsupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesSecond\FileMaintenance\UnitOfMeasure\AddUnitOfMeasure.resx">
+      <DependentUpon>AddUnitOfMeasure.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModulesSecond\UsersettingsAddUser.resx">
       <DependentUpon>UsersettingsAddUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -500,6 +593,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModulesSecond\Userssetaddditems\Reports.resx">
       <DependentUpon>Reports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesSecond\Userssetaddditems\Sales.resx">
+      <DependentUpon>Sales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesSecond\Userssetaddditems\Utilities.resx">
+      <DependentUpon>Utilities.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -573,6 +672,7 @@
     <None Include="Resources\Close %281%29.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\JufavLogoback.mp4" />
     <None Include="Resources\Print.png" />
     <None Include="Resources\Preview Pane %281%29.png" />
     <None Include="Resources\Search %282%29.png" />
@@ -583,6 +683,25 @@
     <None Include="Resources\Ellipsis.png" />
     <None Include="Resources\Export Pdf.png" />
     <Content Include="Resources\Hide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

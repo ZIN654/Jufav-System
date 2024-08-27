@@ -8,17 +8,129 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using JUFAV_System.dll;
+using System.Data.SQLite;
+using System.Threading;
 
 namespace JUFAV_System.ModulesSecond.Userssetaddditems
 {
     public partial class FileMaintenenance : UserControl
     {
-        public FileMaintenenance()
+        public FileMaintenenance(int RoleType)
         {
             InitializeComponent();
             this.Dock = DockStyle.Top;
+            if (RoleType == 0)
+            {
+                uncheckall();
+
+
+            }
+            else
+            {
+
+                check();
+
+            }
+            //chech if employee or admin  if admin kapag inedit ny info nya maalter nya but kung  employee
+            //hindi
+            //make sure na yung database is naka open na sa CORE
+            //wag ka na  mag oopen dito dahil mag kakaroon ng exception
         }
-        public void releaseMemory() { }
+      
+        private void Employee()
+        {
+            //if employee fetch all data
+        }
+
+
+        ///DATA INSERTION ======================================WHEN CREATING A NEW ACCOUNT
+        /// 
+        ///
+
+        public void InsertData(int id) {
+            Random rand = new Random();
+            String ModuleID = "";//Modules table each ID is 4
+          
+            for (int i = 0; i != 7; i++)
+            {
+                //take note sa concat
+                ModuleID = string.Concat(ModuleID, rand.Next(0, 9).ToString());
+            }
+            //generate id of module 
+            SQLiteCommand scom1 = new SQLiteCommand("INSERT INTO MAINMODULES VALUES (" + Convert.ToInt32(ModuleID) + "," + id +",'FileMaintenance');",initd.scon);
+            scom1.ExecuteNonQuery();
+            
+            CheckBox [] chboxes = {UserSettings,Supplier,UOM,Category,subcat,MarkUp,Products,vat};
+            for(int i = 0;i != 8;i++)
+            {
+                
+                scom1.CommandText = "INSERT INTO SUBMODULES VALUES (" + generate_submoduleID() + "," + id + ",'" + chboxes[i].Name + "',"+determineval(chboxes[i])+");";
+                scom1.ExecuteNonQuery();
+            }
+           
+        }
+        public int determineval(CheckBox ch1)
+        {
+            int val = 0;
+            if (ch1.Checked)
+            {
+                val = 1;
+
+
+            }else
+            {
+
+            
+                val = 0;
+            }
+            return val;
+        }
+        private int generate_submoduleID()
+        {
+            Random rt = new Random();
+            String SubModuleID = "";// each sub modules table 11
+            for (int g = 0; g != 9; g++)
+            {
+                
+                SubModuleID = string.Concat(SubModuleID, rt.Next(0, 9).ToString());
+            }
+            return Convert.ToInt32(SubModuleID);
+
+
+        }
+       
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         Color onenter = Color.LightGray;
         Color onLeave = Color.WhiteSmoke;
         //MOUSE ENTER ===========================================================
@@ -70,7 +182,6 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
         {
             onenter1(FILEMAINTENANCE, onenter);
         }
-
         //MOUSE LEAVE ===========================================================
         private void UserSettings_MouseLeave(object sender, EventArgs e)
         {
@@ -107,6 +218,47 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
         private void FILEMAINTENANCE_MouseLeave(object sender, EventArgs e)
         {
             onleave(FILEMAINTENANCE, onLeave);
+        }
+
+        private void FILEMAINTENANCE_CheckedChanged(object sender, EventArgs e)
+        {
+            if (FILEMAINTENANCE.Checked == false)
+            {
+                uncheckall();
+
+
+            }
+            else
+            {
+                check();
+
+
+            }
+
+        }
+        private void uncheckall()
+        {
+            UserSettings.Checked = false;
+            Supplier.Checked = false;
+            Category.Checked = false;
+            subcat.Checked = false;
+            vat.Checked = false;
+            UOM.Checked = false;
+            MarkUp.Checked = false;
+            Products.Checked = false;
+        }
+        private void check()
+        {
+            UOM.Checked = true;
+            UserSettings.Checked = true;
+            Supplier.Checked = true;
+            Category.Checked = true;
+            subcat.Checked = true;
+            vat.Checked = true;
+            MarkUp.Checked = true;
+            Products.Checked = true;
+
+
         }
     }
 

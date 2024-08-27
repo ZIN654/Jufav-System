@@ -35,6 +35,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.deletebtn = new System.Windows.Forms.PictureBox();
             this.editbut = new System.Windows.Forms.PictureBox();
+            this.rcvBTN = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deletebtn)).BeginInit();
@@ -58,7 +59,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(551, 58);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(551, 64);
             this.tableLayoutPanel2.TabIndex = 18;
             // 
             // lblname
@@ -98,12 +99,13 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.rcvBTN);
             this.panel1.Controls.Add(this.deletebtn);
             this.panel1.Controls.Add(this.editbut);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(436, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(111, 50);
+            this.panel1.Size = new System.Drawing.Size(111, 56);
             this.panel1.TabIndex = 3;
             // 
             // deletebtn
@@ -130,6 +132,19 @@
             this.editbut.TabIndex = 7;
             this.editbut.TabStop = false;
             // 
+            // rcvBTN
+            // 
+            this.rcvBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.rcvBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rcvBTN.Location = new System.Drawing.Point(0, 32);
+            this.rcvBTN.Name = "rcvBTN";
+            this.rcvBTN.Size = new System.Drawing.Size(111, 24);
+            this.rcvBTN.TabIndex = 9;
+            this.rcvBTN.Text = "RECOVER PASSWORD";
+            this.rcvBTN.UseVisualStyleBackColor = true;
+            this.rcvBTN.Visible = false;
+            this.rcvBTN.Click += new System.EventHandler(this.button1_Click);
+            // 
             // DataBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -137,7 +152,7 @@
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.tableLayoutPanel2);
             this.Name = "DataBox";
-            this.Size = new System.Drawing.Size(551, 58);
+            this.Size = new System.Drawing.Size(551, 64);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -156,5 +171,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox deletebtn;
         private System.Windows.Forms.PictureBox editbut;
+        private System.Windows.Forms.Button rcvBTN;
     }
 }

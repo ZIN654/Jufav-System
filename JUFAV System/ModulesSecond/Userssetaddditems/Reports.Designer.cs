@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
-            this.checkBox10 = new System.Windows.Forms.CheckBox();
+            this.SalsRprChbox = new System.Windows.Forms.CheckBox();
+            this.stcwhchbx = new System.Windows.Forms.CheckBox();
+            this.rprtsChbx = new System.Windows.Forms.CheckBox();
+            this.prodlstChbox = new System.Windows.Forms.CheckBox();
+            this.FinChbx = new System.Windows.Forms.CheckBox();
+            this.rtrnChbx = new System.Windows.Forms.CheckBox();
+            this.T10Mchbx = new System.Windows.Forms.CheckBox();
+            this.T10Lchbx = new System.Windows.Forms.CheckBox();
+            this.StckAdjuChkbx = new System.Windows.Forms.CheckBox();
+            this.audTChbx = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,16 +48,16 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel1.Controls.Add(this.checkBox3, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.checkBox2, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.checkBox1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.checkBox4, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.checkBox5, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.checkBox6, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.checkBox7, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.checkBox8, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.checkBox9, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.checkBox10, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.SalsRprChbox, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.stcwhchbx, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.rprtsChbx, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.prodlstChbox, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.FinChbx, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.rtrnChbx, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.T10Mchbx, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.T10Lchbx, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.StckAdjuChkbx, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.audTChbx, 1, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -70,135 +70,186 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(624, 130);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // checkBox1
+            // SalsRprChbox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox1.Font = new System.Drawing.Font("Actor", 11.25F, System.Drawing.FontStyle.Bold);
-            this.checkBox1.Location = new System.Drawing.Point(3, 3);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(201, 20);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "REPORTS";
-            this.checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.SalsRprChbox.AutoSize = true;
+            this.SalsRprChbox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.SalsRprChbox.Checked = true;
+            this.SalsRprChbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.SalsRprChbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SalsRprChbox.Font = new System.Drawing.Font("Actor", 9.75F);
+            this.SalsRprChbox.Location = new System.Drawing.Point(418, 3);
+            this.SalsRprChbox.Name = "SalsRprChbox";
+            this.SalsRprChbox.Size = new System.Drawing.Size(203, 20);
+            this.SalsRprChbox.TabIndex = 2;
+            this.SalsRprChbox.Text = "Sales Reports";
+            this.SalsRprChbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SalsRprChbox.UseVisualStyleBackColor = false;
+            this.SalsRprChbox.MouseEnter += new System.EventHandler(this.SalsRprChbox_MouseEnter);
+            this.SalsRprChbox.MouseLeave += new System.EventHandler(this.SalsRprChbox_MouseLeave);
             // 
-            // checkBox2
+            // stcwhchbx
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox2.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.checkBox2.Location = new System.Drawing.Point(210, 3);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(202, 20);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "Stock Whole Reports";
-            this.checkBox2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.stcwhchbx.AutoSize = true;
+            this.stcwhchbx.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.stcwhchbx.Checked = true;
+            this.stcwhchbx.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.stcwhchbx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.stcwhchbx.Font = new System.Drawing.Font("Actor", 9.75F);
+            this.stcwhchbx.Location = new System.Drawing.Point(210, 3);
+            this.stcwhchbx.Name = "stcwhchbx";
+            this.stcwhchbx.Size = new System.Drawing.Size(202, 20);
+            this.stcwhchbx.TabIndex = 1;
+            this.stcwhchbx.Text = "Stock Whole Reports";
+            this.stcwhchbx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.stcwhchbx.UseVisualStyleBackColor = false;
+            this.stcwhchbx.MouseEnter += new System.EventHandler(this.stcwhchbx_MouseEnter);
+            this.stcwhchbx.MouseLeave += new System.EventHandler(this.stcwhchbx_MouseLeave);
             // 
-            // checkBox3
+            // rprtsChbx
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox3.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.checkBox3.Location = new System.Drawing.Point(418, 3);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(203, 20);
-            this.checkBox3.TabIndex = 2;
-            this.checkBox3.Text = "Sales Reports";
-            this.checkBox3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.rprtsChbx.AutoSize = true;
+            this.rprtsChbx.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.rprtsChbx.Checked = true;
+            this.rprtsChbx.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.rprtsChbx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rprtsChbx.Font = new System.Drawing.Font("Actor", 11.25F, System.Drawing.FontStyle.Bold);
+            this.rprtsChbx.Location = new System.Drawing.Point(3, 3);
+            this.rprtsChbx.Name = "rprtsChbx";
+            this.rprtsChbx.Size = new System.Drawing.Size(201, 20);
+            this.rprtsChbx.TabIndex = 0;
+            this.rprtsChbx.Text = "REPORTS";
+            this.rprtsChbx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rprtsChbx.UseVisualStyleBackColor = false;
+            this.rprtsChbx.CheckedChanged += new System.EventHandler(this.rprtsChbx_CheckedChanged);
+            this.rprtsChbx.MouseEnter += new System.EventHandler(this.rprtsChbx_MouseEnter);
+            this.rprtsChbx.MouseLeave += new System.EventHandler(this.rprtsChbx_MouseLeave);
             // 
-            // checkBox4
+            // prodlstChbox
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox4.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.checkBox4.Location = new System.Drawing.Point(210, 29);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(202, 20);
-            this.checkBox4.TabIndex = 3;
-            this.checkBox4.Text = "Product List Reports";
-            this.checkBox4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.prodlstChbox.AutoSize = true;
+            this.prodlstChbox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.prodlstChbox.Checked = true;
+            this.prodlstChbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.prodlstChbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.prodlstChbox.Font = new System.Drawing.Font("Actor", 9.75F);
+            this.prodlstChbox.Location = new System.Drawing.Point(210, 29);
+            this.prodlstChbox.Name = "prodlstChbox";
+            this.prodlstChbox.Size = new System.Drawing.Size(202, 20);
+            this.prodlstChbox.TabIndex = 3;
+            this.prodlstChbox.Text = "Product List Reports";
+            this.prodlstChbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.prodlstChbox.UseVisualStyleBackColor = false;
+            this.prodlstChbox.MouseEnter += new System.EventHandler(this.prodlstChbox_MouseEnter);
+            this.prodlstChbox.MouseLeave += new System.EventHandler(this.prodlstChbox_MouseLeave);
             // 
-            // checkBox5
+            // FinChbx
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox5.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.checkBox5.Location = new System.Drawing.Point(418, 29);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(203, 20);
-            this.checkBox5.TabIndex = 4;
-            this.checkBox5.Text = "Financial Reports";
-            this.checkBox5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.FinChbx.AutoSize = true;
+            this.FinChbx.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.FinChbx.Checked = true;
+            this.FinChbx.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.FinChbx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FinChbx.Font = new System.Drawing.Font("Actor", 9.75F);
+            this.FinChbx.Location = new System.Drawing.Point(418, 29);
+            this.FinChbx.Name = "FinChbx";
+            this.FinChbx.Size = new System.Drawing.Size(203, 20);
+            this.FinChbx.TabIndex = 4;
+            this.FinChbx.Text = "Financial Reports";
+            this.FinChbx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.FinChbx.UseVisualStyleBackColor = false;
+            this.FinChbx.MouseEnter += new System.EventHandler(this.FinChbx_MouseEnter);
+            this.FinChbx.MouseLeave += new System.EventHandler(this.FinChbx_MouseLeave);
             // 
-            // checkBox6
+            // rtrnChbx
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox6.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.checkBox6.Location = new System.Drawing.Point(210, 55);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(202, 20);
-            this.checkBox6.TabIndex = 5;
-            this.checkBox6.Text = "Return Orders";
-            this.checkBox6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.rtrnChbx.AutoSize = true;
+            this.rtrnChbx.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.rtrnChbx.Checked = true;
+            this.rtrnChbx.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.rtrnChbx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtrnChbx.Font = new System.Drawing.Font("Actor", 9.75F);
+            this.rtrnChbx.Location = new System.Drawing.Point(210, 55);
+            this.rtrnChbx.Name = "rtrnChbx";
+            this.rtrnChbx.Size = new System.Drawing.Size(202, 20);
+            this.rtrnChbx.TabIndex = 5;
+            this.rtrnChbx.Text = "Return Orders";
+            this.rtrnChbx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rtrnChbx.UseVisualStyleBackColor = false;
+            this.rtrnChbx.MouseEnter += new System.EventHandler(this.rtrnChbx_MouseEnter);
+            this.rtrnChbx.MouseLeave += new System.EventHandler(this.rtrnChbx_MouseLeave);
             // 
-            // checkBox7
+            // T10Mchbx
             // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox7.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.checkBox7.Location = new System.Drawing.Point(418, 55);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(203, 20);
-            this.checkBox7.TabIndex = 6;
-            this.checkBox7.Text = "Top 10 Most Purchased";
-            this.checkBox7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox7.UseVisualStyleBackColor = true;
+            this.T10Mchbx.AutoSize = true;
+            this.T10Mchbx.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.T10Mchbx.Checked = true;
+            this.T10Mchbx.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.T10Mchbx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.T10Mchbx.Font = new System.Drawing.Font("Actor", 9.75F);
+            this.T10Mchbx.Location = new System.Drawing.Point(418, 55);
+            this.T10Mchbx.Name = "T10Mchbx";
+            this.T10Mchbx.Size = new System.Drawing.Size(203, 20);
+            this.T10Mchbx.TabIndex = 6;
+            this.T10Mchbx.Text = "Top 10 Most Purchased";
+            this.T10Mchbx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.T10Mchbx.UseVisualStyleBackColor = false;
+            this.T10Mchbx.MouseEnter += new System.EventHandler(this.T10Mchbx_MouseEnter);
+            this.T10Mchbx.MouseLeave += new System.EventHandler(this.T10Mchbx_MouseLeave);
             // 
-            // checkBox8
+            // T10Lchbx
             // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox8.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.checkBox8.Location = new System.Drawing.Point(210, 81);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(202, 20);
-            this.checkBox8.TabIndex = 7;
-            this.checkBox8.Text = "Top 10 Least Purchased";
-            this.checkBox8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox8.UseVisualStyleBackColor = true;
+            this.T10Lchbx.AutoSize = true;
+            this.T10Lchbx.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.T10Lchbx.Checked = true;
+            this.T10Lchbx.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.T10Lchbx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.T10Lchbx.Font = new System.Drawing.Font("Actor", 9.75F);
+            this.T10Lchbx.Location = new System.Drawing.Point(210, 81);
+            this.T10Lchbx.Name = "T10Lchbx";
+            this.T10Lchbx.Size = new System.Drawing.Size(202, 20);
+            this.T10Lchbx.TabIndex = 7;
+            this.T10Lchbx.Text = "Top 10 Least Purchased";
+            this.T10Lchbx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.T10Lchbx.UseVisualStyleBackColor = false;
+            this.T10Lchbx.MouseEnter += new System.EventHandler(this.T10Lchbx_MouseEnter);
+            this.T10Lchbx.MouseLeave += new System.EventHandler(this.T10Lchbx_MouseLeave);
             // 
-            // checkBox9
+            // StckAdjuChkbx
             // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox9.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.checkBox9.Location = new System.Drawing.Point(418, 81);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(203, 20);
-            this.checkBox9.TabIndex = 8;
-            this.checkBox9.Text = "Stock Adjustments Reports";
-            this.checkBox9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox9.UseVisualStyleBackColor = true;
+            this.StckAdjuChkbx.AutoSize = true;
+            this.StckAdjuChkbx.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.StckAdjuChkbx.Checked = true;
+            this.StckAdjuChkbx.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.StckAdjuChkbx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.StckAdjuChkbx.Font = new System.Drawing.Font("Actor", 9.75F);
+            this.StckAdjuChkbx.Location = new System.Drawing.Point(418, 81);
+            this.StckAdjuChkbx.Name = "StckAdjuChkbx";
+            this.StckAdjuChkbx.Size = new System.Drawing.Size(203, 20);
+            this.StckAdjuChkbx.TabIndex = 8;
+            this.StckAdjuChkbx.Text = "Stock Adjustments Reports";
+            this.StckAdjuChkbx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.StckAdjuChkbx.UseVisualStyleBackColor = false;
+            this.StckAdjuChkbx.MouseEnter += new System.EventHandler(this.StckAdjuChkbx_MouseEnter);
+            this.StckAdjuChkbx.MouseLeave += new System.EventHandler(this.StckAdjuChkbx_MouseLeave);
             // 
-            // checkBox10
+            // audTChbx
             // 
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox10.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.checkBox10.Location = new System.Drawing.Point(210, 107);
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(202, 20);
-            this.checkBox10.TabIndex = 9;
-            this.checkBox10.Text = "Audit Trail";
-            this.checkBox10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox10.UseVisualStyleBackColor = true;
+            this.audTChbx.AutoSize = true;
+            this.audTChbx.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.audTChbx.Checked = true;
+            this.audTChbx.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.audTChbx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.audTChbx.Font = new System.Drawing.Font("Actor", 9.75F);
+            this.audTChbx.Location = new System.Drawing.Point(210, 107);
+            this.audTChbx.Name = "audTChbx";
+            this.audTChbx.Size = new System.Drawing.Size(202, 20);
+            this.audTChbx.TabIndex = 9;
+            this.audTChbx.Text = "Audit Trail";
+            this.audTChbx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.audTChbx.UseVisualStyleBackColor = false;
+            this.audTChbx.MouseEnter += new System.EventHandler(this.audTChbx_MouseEnter);
+            this.audTChbx.MouseLeave += new System.EventHandler(this.audTChbx_MouseLeave);
             // 
             // Reports
             // 
@@ -217,15 +268,15 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.CheckBox checkBox7;
-        private System.Windows.Forms.CheckBox checkBox8;
-        private System.Windows.Forms.CheckBox checkBox9;
-        private System.Windows.Forms.CheckBox checkBox10;
+        private System.Windows.Forms.CheckBox SalsRprChbox;
+        private System.Windows.Forms.CheckBox stcwhchbx;
+        private System.Windows.Forms.CheckBox rprtsChbx;
+        private System.Windows.Forms.CheckBox prodlstChbox;
+        private System.Windows.Forms.CheckBox FinChbx;
+        private System.Windows.Forms.CheckBox rtrnChbx;
+        private System.Windows.Forms.CheckBox T10Mchbx;
+        private System.Windows.Forms.CheckBox T10Lchbx;
+        private System.Windows.Forms.CheckBox StckAdjuChkbx;
+        private System.Windows.Forms.CheckBox audTChbx;
     }
 }

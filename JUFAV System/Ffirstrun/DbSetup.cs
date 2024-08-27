@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Data.SQLite;
 using System.IO;
 using System.Collections;
+using JUFAV_System.dll;
+using System.Threading;
 
 
 
@@ -17,57 +19,62 @@ namespace JUFAV_System
 {
     public partial class DBsetup : Form
     {
+
         public DBsetup()
         {
+            
             InitializeComponent();
-            initdbDebug();
+          
+           
         }
 
-        public void initdbDebug()
+        private void DBsetup_Shown(object sender, EventArgs e)
         {
+            MessageBox.Show("This process only runs once so please be patient","DATABSE SETUP" ,MessageBoxButtons.OK,MessageBoxIcon.Information);
+            Startboot();
 
-            //add exceptions for secure confirmations 
 
-            //and then repeat if error perhaps giving the user a directory where the user can specify whic path is the database will be  insatlled
-            String path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            Directory.CreateDirectory(path + "/JUFAVSQLITE");
-            //appdata/roaming
-            String assign = @path + "//" + "JUFAVSQLITE" + "//" + "jufavdb.sqlite";//MYFolder
+        }
+        public void Startboot()
+        {
+            initd sql1 = new initd();
+          
+            delay(14, progressBar1);
+            sql1.CreatePath();
+
             
-
-
-            //sqlite file creation 
-           // SQLiteConnection.CreateFile(assign);
-
-            SQLiteConnection pas = new SQLiteConnection(@"Data Source=" + assign);
-            SQLiteCommand scm = new SQLiteCommand("SELECT * FROM SAMPLE", pas);
-            pas.Open();
+            delay(14, progressBar1);
+            sql1.checkpath();
 
            
-
-           // scm.ExecuteNonQuery();
-
-            //pas.Close();
-           SQLiteDataReader reader1 = scm.ExecuteReader();
-            Hashtable ps1 = new Hashtable();
-            while (reader1.Read())
-            {
-                ps1.Add(reader1["ID"].ToString(),reader1["NAME"].ToString());
-                Console.WriteLine("ID :" + reader1.GetValue(0).ToString() + " " + "usernames : " + reader1.GetValue(1).ToString() + "|  Passwprds : " + reader1.GetValue(2).ToString());
-            }
+            delay(14, progressBar1);
+            sql1.CreateDatabase();
+            delay(14, progressBar1);
             
-            /*
-            //dataset to load
-            SQLiteDataAdapter ps = new SQLiteDataAdapter("SELECT * FROM SAMLPE",pas);
-            DataSet ds1 = new DataSet();
-            ps.Fill(ds1);
-            */
-            
-         
+           
+            sql1.TestConnection(sql1.Constring);
+            delay(14, progressBar1);
+            sql1.InitializeTable();
+            delay(14, progressBar1);
+            sql1.InitTableFilemaintenance();
+            label1.Text = "PROCESSING" + " COMPLETED";
+            delay(14, progressBar1);
 
 
-
-
+            this.Hide();
+            Ffirstrun.FirstRun f1 = new Ffirstrun.FirstRun();
+            f1.Show();
+            f1.BringToFront();
+            //after ma set up 
         }
+        public void delay(int value, ProgressBar sb1)
+        {
+            for (int i = 0; i != value; i++)
+            {
+                sb1.Value += 1;
+                Thread.Sleep(100);
+            }
+        }
+
     }
 }

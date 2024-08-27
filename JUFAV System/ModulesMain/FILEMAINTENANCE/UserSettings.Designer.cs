@@ -128,7 +128,7 @@
             // 
             // rcverpassBTN
             // 
-            this.rcverpassBTN.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.rcverpassBTN.BackColor = System.Drawing.SystemColors.Control;
             this.rcverpassBTN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rcverpassBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rcverpassBTN.Font = new System.Drawing.Font("Actor", 11.25F);
@@ -138,6 +138,7 @@
             this.rcverpassBTN.TabIndex = 5;
             this.rcverpassBTN.Text = "RECOVER PASSWORD";
             this.rcverpassBTN.UseVisualStyleBackColor = false;
+            this.rcverpassBTN.Click += new System.EventHandler(this.rcverpassBTN_Click);
             // 
             // txtboxSearchBox
             // 
@@ -192,7 +193,6 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button addaccountBTN;
-        private System.Windows.Forms.Button rcverpassBTN;
         private System.Windows.Forms.TextBox txtboxSearchBox;
         private System.Windows.Forms.Button srchBTN;
         private System.Windows.Forms.Label label1;
@@ -200,5 +200,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel ItemsBox;
+        private System.Windows.Forms.Button rcverpassBTN;
     }
 }

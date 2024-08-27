@@ -22,7 +22,7 @@ namespace JUFAV_System.Messageboxes
             setmsgboxtype(msgboxeventtype,BTNconfirmTitle,title,msg);
             seticon(icontype);
             addevents(msgboxeventtype);
-
+            
         }
 
 
@@ -95,6 +95,7 @@ namespace JUFAV_System.Messageboxes
             btnclose.Click -= btnclose_Click;
 
         }
-       
+
+      
     }
 }

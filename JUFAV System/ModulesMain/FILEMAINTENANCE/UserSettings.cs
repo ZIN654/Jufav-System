@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using JUFAV_System.dll;
+using System.Data.SQLite;
 
 namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
 {
     public partial class UserSettings : UserControl
     {
+        private  int trigger = 1;
+      
         public UserSettings()
         {
             InitializeComponent();
@@ -37,7 +40,23 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
 
         private void UserSettings_Load(object sender, EventArgs e)
         {
-            //load data from database 
+            SQLiteCommand scom = new SQLiteCommand("SELECT * FROM USER_INFO;",initd.scon);
+           SQLiteDataReader sq1 = scom.ExecuteReader();
+            while (sq1.Read())
+            {
+               //if the current user was deleted his/her own account usin his/her account it might show a warning to prevent the inconsistency like : unable  to delete account since it is logged in unless use another Master account
+                Components.DataBox item1 = new Components.DataBox(ItemsBox);
+               
+                item1.Controls.Find("lblname",true)[0].Text = sq1["NAME"].ToString();
+                item1.Controls.Find("lblusername", true)[0].Text = sq1["USERNAME"].ToString();
+                item1.Controls.Find("lblrole", true)[0].Text = determinerole(Convert.ToInt32(sq1["ROLES"]));
+                ItemsBox.Controls.Add(item1);
+               
+
+               
+
+            }
+            //load all data from database 
             //add containter  containing the data from database
         }
         private void AddacountClick(object sender,EventArgs e)
@@ -61,12 +80,56 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
             //INSERT DATABSE
 
             //debug
-            Components.DataBox datadebug1 = new Components.DataBox();
+            Components.DataBox datadebug1 = new Components.DataBox(ItemsBox);
             ItemsBox.Controls.Add(datadebug1);
             Console.WriteLine("THE ITEM IS SUCCESSFULLY INSERTED INTO DATABASE");
 
 
             
         }
+        private String determinerole(int role)
+        {
+            string Main = "";
+            if (role == 1)
+            {
+                Main = "ADMINISTRATOR";
+
+            }
+            else {
+
+                Main = "EMPLOYEE";
+            }
+            return Main;
+
+        }
+
+        private void rcverpassBTN_Click(object sender, EventArgs e)
+        {
+            changevisibility();
+        }
+        public void changevisibility()
+        {
+            bool state;
+
+            if (trigger == 1) {
+                state = true;
+                trigger = 0;
+                rcverpassBTN.BackColor = SystemColors.ControlDarkDark;
+               
+            }
+            else {
+                state = false;
+                trigger = 1;
+                rcverpassBTN.BackColor = SystemColors.Control;
+            }
+            for (int i = 0; i != ItemsBox.Controls.Count; i++)
+            {
+                ItemsBox.Controls.Find("rcvBTN", true)[i].Visible = state;
+
+            }
+
+
+        }
+
     }
 }

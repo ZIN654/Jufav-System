@@ -12,10 +12,11 @@ namespace JUFAV_System.Components
 {
     public partial class CategoryComponent : UserControl
     {
-        public CategoryComponent()
+        public CategoryComponent(String text)
         {
             InitializeComponent();
             this.Dock = DockStyle.Top;
+            label1.Text = text;
         }
     }
 }

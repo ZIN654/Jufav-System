@@ -42,7 +42,6 @@
             this.Date = new System.Windows.Forms.Label();
             this.TITLEHEADING = new System.Windows.Forms.Label();
             this.showide = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.SplitCon)).BeginInit();
             this.SplitCon.Panel1.SuspendLayout();
             this.SplitCon.Panel2.SuspendLayout();
@@ -234,6 +233,8 @@
             this.Name = "CORE";
             this.Text = "CORE";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CORE_FormClosed);
+            this.Load += new System.EventHandler(this.CORE_Load);
             this.SplitCon.Panel1.ResumeLayout(false);
             this.SplitCon.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SplitCon)).EndInit();
@@ -262,7 +263,6 @@
         private System.Windows.Forms.Label Time;
         private System.Windows.Forms.Label Date;
         private System.Windows.Forms.Label TITLEHEADING;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Panel panel1;
     }
 }
