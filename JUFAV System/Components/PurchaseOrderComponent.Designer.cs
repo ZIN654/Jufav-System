@@ -183,7 +183,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::JUFAV_System.Properties.Resources.Export_Pdf;
+            this.pictureBox1.Image = global::JUFAV_System.Properties.Resources.ExportPdf;
             this.pictureBox1.Location = new System.Drawing.Point(27, 4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(25, 25);
@@ -215,6 +215,7 @@
             this.Name = "PurchaseOrderComponent";
             this.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.Size = new System.Drawing.Size(690, 81);
+            this.Leave += new System.EventHandler(this.PurchaseOrderComponent_Leave);
             this.Items.ResumeLayout(false);
             this.Items.PerformLayout();
             this.panel1.ResumeLayout(false);

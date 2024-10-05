@@ -20,18 +20,69 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
         private static Hashtable category = new Hashtable();
         private bool isverfied1;
         private bool isverfied2;
-        public AddSubCategory()
+        int idtoedit1;
+        int summontype1;
+        public AddSubCategory(int summontype,int idtoedit,String Category)
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
-            onload();
+            summontype1=  summontype;
+            if (summontype == 0)
+            {
+                onload();//loads items of the category
+                addBTN.Text = "UPDATE SUBCATEGORY";
+                idtoedit1 = idtoedit;
+                onload2();//loads the current data 
+                comboBox1.Text = Category;
+
+            }
+            else
+            {
+                onload();
+
+
+            }
+           
             //verify na numbers lang ang makakapasok sa markup
             //di pwedeng mag typ si user sa combo box
         }
+        private void onload2()
+        {
+            //load database
+          
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM SUBCATEGORY WHERE SUBCATEGORYID = "+idtoedit1+";",initd.scon);
+            SQLiteDataReader sread1 = scom1.ExecuteReader();
+            while (sread1.Read())
+            {
+                SubCattxtbox.Text = sread1["SUBCATEGORYDESC"].ToString();
+                comboBox2.Text = sread1["MARKUPVALUE"].ToString();
 
+            }
+
+
+
+
+        }
+        private void update()
+        {
+            this.Cursor = Cursors.WaitCursor;
+            //Update function here 
+            SQLiteCommand scom1 = new SQLiteCommand("UPDATE SUBCATEGORY SET SUBCATEGORYDESC = '" + SubCattxtbox.Text + "',CATEGORYID = (SELECT CATEGORYID FROM CATEGORY WHERE CATEGORYDESC = '"+comboBox1.Text+ "'),MARKUPVALUE = "+Convert.ToDouble(comboBox2.Text)+" WHERE SUBCATEGORYID = " + idtoedit1 + ";", initd.scon);
+            scom1.ExecuteNonQuery();
+            scom1 = null;
+
+            this.Cursor = Cursors.Default;
+
+            Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(goback, 0, "UPDATE CATEGORY", "ITEM SUCCESSFULLY UPDATED! \n WOULD YOU LIKE TO GO BACK AT THE FRONT PAGE?", "OK", 0);
+            msg2.Show();
+
+
+            
+        }
 
        private void onload()
         {
+            //use dispose
             category.Clear();
             SQLiteCommand scom1 = new SQLiteCommand("SELECT CATEGORYDESC,CATEGORYID FROM CATEGORY;", initd.scon);
             SQLiteDataReader sq1 = scom1.ExecuteReader();
@@ -41,8 +92,16 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
                 comboBox1.Items.Add(sq1["CATEGORYDESC"].ToString());
             }
             sq1.Close();
+            scom1.CommandText = "SELECT * FROM MARKUP";
+            sq1 = scom1.ExecuteReader();
+            while (sq1.Read())
+            {
+                comboBox2.Items.Add(sq1["MARKUPVALUE"].ToString());
+
+
+            }
             //insert into combobox
-            
+
 
         }
         //core
@@ -92,8 +151,20 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
             if (isverfied2 == true && isverfied1 == true)
             {
                 //are you sure 
-                Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(Insertdata, 0, "ADD UNIT OF MEASURE", "ARE YOU SURE YOU WANT TO ADD THIS NEW UNIT OF MEASURE?", "ADD", 2);
-                msg1.Show();
+                if (summontype1 == 1)
+                {
+
+                    Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(Insertdata, 0, "ADD NEW SUBCATEGORY", "ARE YOU SURE YOU WANT TO ADD THIS NEW SUBCATEGORY?", "ADD", 2);
+                    msg1.Show();
+
+                }
+                else
+                {
+                    Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(update, 0, "UPDATE SUBCATEGORY", "ARE YOU SURE YOU WANT TO UPDATE THIS SUBCATEGORY?", "UPDATE", 2);
+                    msg1.Show();
+
+
+                }
             }
 
         }
@@ -126,7 +197,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
             {
                 unitid = string.Concat(unitid, rs1.Next(0, 9).ToString());
             }
-           
+           //make msg box if user entered a text in markup value
             SQLiteCommand scom = new SQLiteCommand("INSERT INTO SUBCATEGORY VALUES (" + Convert.ToInt32(unitid) + "," + initd.UserID + "," + category[comboBox1.Text] + ",'" + SubCattxtbox.Text + "'," + Convert.ToInt32(comboBox2.Text) + ");", initd.scon);
             scom.ExecuteNonQuery();
             this.Cursor = Cursors.Default;
@@ -150,7 +221,6 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
             hide();
             verify();
         }
-
         private void CANCELBTN_Click(object sender, EventArgs e)
         {
             goback();

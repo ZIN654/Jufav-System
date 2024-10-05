@@ -17,16 +17,56 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
     {
         public bool isverfied1 ;
         public bool isverfied2 ;
-     
-        public AddUnitOfMeasure()
+        int idtoedit;
+        int summontype1 = 0;
+        public AddUnitOfMeasure(int summontype,int IdtoEdit)
         {
             InitializeComponent();
             
             this.Dock = DockStyle.Fill;
+            summontype1 = summontype;
+            if (summontype == 0)
+            {
+                //Edit mode
+                loaddata(IdtoEdit);
+                idtoedit = IdtoEdit;
+                addBTN.Text = "UPDATE UNIT";
+
+            }
+        }
+        private void loaddata(int idtoedit)
+        {
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM UNITOFMEASURE WHERE UNITID = " + idtoedit + ";", initd.scon);
+            SQLiteDataReader srea1 = scom1.ExecuteReader();
+            while (srea1.Read())
+            {
+                UofMtxtbox.Text = srea1["UNITDESC"].ToString();
+                Abbreviatiotxtbox.Text = srea1["UNITABBREVIATION"].ToString();
+            }
+            srea1.Close();
+            srea1 = null;
+            scom1 = null;
+
+
+
+        }
+        private void UpdateDB()
+        {
+            this.Cursor = Cursors.WaitCursor;
+            Console.WriteLine("EDIT");
+            SQLiteCommand scom1 = new SQLiteCommand("UPDATE UNITOFMEASURE SET UNITDESC = '"+ UofMtxtbox.Text + "',UNITABBREVIATION = '"+ Abbreviatiotxtbox.Text + "' WHERE UNITID = "+idtoedit+";", initd.scon);
+            scom1.ExecuteNonQuery();
+            scom1 = null;
+            //TO DO LATER
+            this.Cursor = Cursors.Default;
+
+            Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(goback, 0, "UPDATE UNIT OF MEASURE", "ITEM SUCCESSFULLY UPDATED! \n WOULD YOU LIKE TO GO BACK AT THE FRONT PAGE?", "OK", 0);
+            msg2.Show();
+
         }
 
 
-        public void verify()
+        public void verify(int summonmode)
         {
             isverfied1 = true;
             isverfied2 = true;
@@ -72,8 +112,22 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
             if (isverfied2 == true && isverfied1 == true)
             {
                 //are you sure 
-                Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(Insertdata,0,"ADD UNIT OF MEASURE","ARE YOU SURE YOU WANT TO ADD THIS NEW UNIT OF MEASURE?","ADD",2);
-                msg1.Show();
+
+                if (summontype1 == 1) {
+
+
+                    Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(Insertdata, 0, "ADD UNIT OF MEASURE", "ARE YOU SURE YOU WANT TO ADD THIS NEW UNIT OF MEASURE?", "ADD", 2);
+                    msg1.Show();
+
+
+                } else
+                {
+
+                    Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(UpdateDB, 0, "UPDATE UNIT OF MEASURE", "ARE YOU SURE YOU WANT TO UPDATE THIS UNIT OF MEASURE?", "ADD", 2);
+                    msg1.Show();
+
+                }
+                
             }
 
         }
@@ -106,7 +160,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
                 unitid = string.Concat(unitid, rs1.Next(0, 9).ToString());
             }
 
-            SQLiteCommand scom = new SQLiteCommand("INSERT INTO UNITOFMEASURE VALUES ("+Convert.ToInt32(unitid)+"," + initd.UserID + ",'" + Abbreviatiotxtbox.Text+"','" +UofMtxtbox.Text+"');", initd.scon);
+            SQLiteCommand scom = new SQLiteCommand("INSERT INTO UNITOFMEASURE VALUES ("+Convert.ToInt32(unitid)+"," + initd.UserID + ",'" + UofMtxtbox.Text + "','" + Abbreviatiotxtbox.Text+"');", initd.scon);
             scom.ExecuteNonQuery();
             this.Cursor = Cursors.Default;
 
@@ -118,17 +172,13 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
         private void addBTN_Click(object sender, EventArgs e)
         {
             hide();
-            verify();
+            verify(summontype1);
         }
 
         private void CANCELBTN_Click(object sender, EventArgs e)
         {
             //relode again
-            ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
-            ModulesMain.FILEMAINTENANCE.UnitOfMeasures unit1 = new ModulesMain.FILEMAINTENANCE.UnitOfMeasures();
-            ResponsiveUI1.title = "UnitOfMeasures";
-            ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
-            ResponsiveUI1.spl1.Controls.Add(unit1);
+            goback();
 
 
 

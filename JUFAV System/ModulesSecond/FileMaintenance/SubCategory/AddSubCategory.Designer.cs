@@ -31,15 +31,15 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SubCattxtbox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.subCatnot = new System.Windows.Forms.Label();
             this.subCatIm = new System.Windows.Forms.PictureBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.subCatnot = new System.Windows.Forms.Label();
             this.catnotassignment = new System.Windows.Forms.Label();
             this.catimg = new System.Windows.Forms.PictureBox();
             this.markupnot = new System.Windows.Forms.Label();
@@ -98,6 +98,46 @@
             this.panel2.Size = new System.Drawing.Size(525, 160);
             this.panel2.TabIndex = 1;
             // 
+            // comboBox2
+            // 
+            this.comboBox2.Font = new System.Drawing.Font("Actor", 12F);
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(241, 106);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(464, 29);
+            this.comboBox2.TabIndex = 6;
+            this.comboBox2.Text = "type value for custom markup or select from the drop box";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Actor", 14.25F);
+            this.label4.Location = new System.Drawing.Point(10, 109);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(93, 23);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "MARK-UP";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Actor", 14.25F);
+            this.label3.Location = new System.Drawing.Point(10, 63);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(225, 23);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "CATEGORY ASSIGNMENT";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Actor", 12F);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(241, 60);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(464, 29);
+            this.comboBox1.TabIndex = 3;
+            // 
             // SubCattxtbox
             // 
             this.SubCattxtbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -141,18 +181,6 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(184, 160);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
-            // subCatnot
-            // 
-            this.subCatnot.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.subCatnot.ForeColor = System.Drawing.Color.Red;
-            this.subCatnot.Location = new System.Drawing.Point(28, 18);
-            this.subCatnot.Name = "subCatnot";
-            this.subCatnot.Size = new System.Drawing.Size(186, 17);
-            this.subCatnot.TabIndex = 54;
-            this.subCatnot.Text = "Please fill out the Sub Category Name Field";
-            this.subCatnot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.subCatnot.Visible = false;
-            // 
             // subCatIm
             // 
             this.subCatIm.BackColor = System.Drawing.Color.Transparent;
@@ -165,44 +193,17 @@
             this.subCatIm.TabStop = false;
             this.subCatIm.Visible = false;
             // 
-            // comboBox1
+            // subCatnot
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Actor", 12F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(241, 60);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(464, 29);
-            this.comboBox1.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.label3.Location = new System.Drawing.Point(10, 63);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(225, 23);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "CATEGORY ASSIGNMENT";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.label4.Location = new System.Drawing.Point(10, 109);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 23);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "MARK-UP";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Font = new System.Drawing.Font("Actor", 12F);
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(241, 106);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(464, 29);
-            this.comboBox2.TabIndex = 6;
-            this.comboBox2.Text = "type value for custom markup or select from the drop box";
+            this.subCatnot.Font = new System.Drawing.Font("Actor", 8.25F);
+            this.subCatnot.ForeColor = System.Drawing.Color.Red;
+            this.subCatnot.Location = new System.Drawing.Point(28, 18);
+            this.subCatnot.Name = "subCatnot";
+            this.subCatnot.Size = new System.Drawing.Size(186, 17);
+            this.subCatnot.TabIndex = 54;
+            this.subCatnot.Text = "Please fill out the Sub Category Name Field";
+            this.subCatnot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.subCatnot.Visible = false;
             // 
             // catnotassignment
             // 

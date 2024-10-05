@@ -10,6 +10,12 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
+using JUFAV_System.dll;
+using System.Data.SqlClient;
+
+
+using System.Data.SQLite;
+
 namespace JUFAV_System
 {
     public partial class SANDBOX : Form
@@ -24,15 +30,18 @@ namespace JUFAV_System
         public SANDBOX()
         {
             InitializeComponent();
-            axWindowsMediaPlayer1.URL = @"C://Users//asus//Desktop//BACKGROUNDSLIVE//damage-gundam-live-wallpaper.mp4";
-            axWindowsMediaPlayer1.settings.autoStart = true;
-             axWindowsMediaPlayer1.settings.setMode("loop",true);
-           // set();
-           // Thread.Sleep(1500);
-           // set();
-           // Thread.Sleep(1500);
-          // set();
 
+            // set();
+            // Thread.Sleep(1500);
+            // set();
+            // Thread.Sleep(1500);
+            // set();
+            loaddata();
+
+        }
+        public void loaddata()
+        {
+         
         }
         public void set()
         {

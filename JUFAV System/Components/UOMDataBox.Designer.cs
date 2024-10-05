@@ -103,18 +103,20 @@
             this.deletebtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.deletebtn.TabIndex = 6;
             this.deletebtn.TabStop = false;
+            this.deletebtn.Click += new System.EventHandler(this.deletebtn_Click);
             // 
             // editbut
             // 
             this.editbut.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.editbut.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.editbut.Image = global::JUFAV_System.Properties.Resources.Edit__1_;
+            this.editbut.Image = global::JUFAV_System.Properties.Resources.Edit;
             this.editbut.Location = new System.Drawing.Point(52, 0);
             this.editbut.Name = "editbut";
             this.editbut.Size = new System.Drawing.Size(25, 25);
             this.editbut.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.editbut.TabIndex = 5;
             this.editbut.TabStop = false;
+            this.editbut.Click += new System.EventHandler(this.editbut_Click);
             // 
             // UOMDataBox
             // 
@@ -124,6 +126,7 @@
             this.Controls.Add(this.tableLayoutPanel2);
             this.Name = "UOMDataBox";
             this.Size = new System.Drawing.Size(716, 58);
+            this.Leave += new System.EventHandler(this.UOMDataBox_Leave);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.panel1.ResumeLayout(false);

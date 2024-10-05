@@ -433,7 +433,7 @@
             this.Name = "FirstRun";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ACCOUNT CREATION FOR ADMIN";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FirstRun_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FirstRun_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameNotification)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Usernamenot)).EndInit();

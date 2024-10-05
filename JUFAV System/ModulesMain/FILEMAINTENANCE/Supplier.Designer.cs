@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.srchBTN = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.addSupplierBTN = new System.Windows.Forms.Button();
-            this.txtboxSearchBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtboxSearchBox = new System.Windows.Forms.TextBox();
             this.ItemsBox = new System.Windows.Forms.Panel();
-            this.srchBTN = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +48,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.31687F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.42857F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.35374F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
             this.tableLayoutPanel1.Controls.Add(this.srchBTN, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 1);
@@ -67,6 +67,21 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(701, 71);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // srchBTN
+            // 
+            this.srchBTN.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.srchBTN.BackgroundImage = global::JUFAV_System.Properties.Resources.Search;
+            this.srchBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.srchBTN.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.srchBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.srchBTN.Font = new System.Drawing.Font("Actor", 11.25F);
+            this.srchBTN.Location = new System.Drawing.Point(586, 3);
+            this.srchBTN.Name = "srchBTN";
+            this.srchBTN.Size = new System.Drawing.Size(112, 27);
+            this.srchBTN.TabIndex = 8;
+            this.srchBTN.UseVisualStyleBackColor = false;
+            this.srchBTN.Click += new System.EventHandler(this.srchBTN_Click);
             // 
             // label1
             // 
@@ -112,7 +127,7 @@
             this.label4.Location = new System.Drawing.Point(386, 49);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.label4.Size = new System.Drawing.Size(195, 19);
+            this.label4.Size = new System.Drawing.Size(194, 19);
             this.label4.TabIndex = 3;
             this.label4.Text = "ADDRESS";
             this.label4.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -130,6 +145,18 @@
             this.addSupplierBTN.Text = "ADD SUPPLIER";
             this.addSupplierBTN.UseVisualStyleBackColor = false;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label5.Font = new System.Drawing.Font("Actor", 11.25F);
+            this.label5.Location = new System.Drawing.Point(586, 49);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(112, 19);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "ACTION";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            // 
             // txtboxSearchBox
             // 
             this.txtboxSearchBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -137,20 +164,10 @@
             this.txtboxSearchBox.Location = new System.Drawing.Point(386, 4);
             this.txtboxSearchBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
             this.txtboxSearchBox.Name = "txtboxSearchBox";
-            this.txtboxSearchBox.Size = new System.Drawing.Size(195, 26);
+            this.txtboxSearchBox.Size = new System.Drawing.Size(194, 26);
             this.txtboxSearchBox.TabIndex = 6;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label5.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.label5.Location = new System.Drawing.Point(587, 49);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 19);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "ACTION";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.txtboxSearchBox.Text = "SEARCH BY COMPANY NAME";
+            this.txtboxSearchBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtboxSearchBox_MouseClick);
             // 
             // ItemsBox
             // 
@@ -161,20 +178,6 @@
             this.ItemsBox.Size = new System.Drawing.Size(701, 323);
             this.ItemsBox.TabIndex = 2;
             // 
-            // srchBTN
-            // 
-            this.srchBTN.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.srchBTN.BackgroundImage = global::JUFAV_System.Properties.Resources.Search__2_;
-            this.srchBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.srchBTN.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.srchBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.srchBTN.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.srchBTN.Location = new System.Drawing.Point(587, 3);
-            this.srchBTN.Name = "srchBTN";
-            this.srchBTN.Size = new System.Drawing.Size(111, 27);
-            this.srchBTN.TabIndex = 8;
-            this.srchBTN.UseVisualStyleBackColor = false;
-            // 
             // Supplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -183,6 +186,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Supplier";
             this.Size = new System.Drawing.Size(701, 394);
+            this.Leave += new System.EventHandler(this.Supplier_Leave);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

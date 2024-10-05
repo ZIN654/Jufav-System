@@ -10,25 +10,39 @@ using System.Windows.Forms;
 using JUFAV_System.dll;
 using System.Data.SQLite;
 using System.Threading;
+using System.Collections;
 
 namespace JUFAV_System.ModulesSecond.Userssetaddditems
 {
     public partial class FileMaintenenance : UserControl
     {
-        public FileMaintenenance(int RoleType)
+        public Hashtable items1 = new Hashtable();
+        public String usertoedit;
+        public FileMaintenenance(int RoleType,int summontype, String username)
         {
             InitializeComponent();
             this.Dock = DockStyle.Top;
-            if (RoleType == 0)
+            this.usertoedit = username;
+            if (summontype == 1)
             {
-                uncheckall();
+                ///load it in usual way 
+                    if (RoleType == 0)
+                    {
+                        uncheckall();
 
 
+                    }
+                    else
+                    {
+
+                        check();
+
+                    }
             }
             else
             {
-
-                check();
+                //load it with the current data infp of the user
+                LoadAccesslevel(username);
 
             }
             //chech if employee or admin  if admin kapag inedit ny info nya maalter nya but kung  employee
@@ -36,10 +50,61 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
             //make sure na yung database is naka open na sa CORE
             //wag ka na  mag oopen dito dahil mag kakaroon ng exception
         }
-      
-        private void Employee()
+        //
+        public void update1()
         {
-            //if employee fetch all data
+
+            //forlopp each check box
+            CheckBox[] items = { UserSettings, Supplier, UOM, Category, subcat, MarkUp, Products, vat };
+            for (int i = 0; i != 8; i++)
+            {
+                //UPDATE ANOMALY
+                SQLiteCommand SCOM1 = new SQLiteCommand("UPDATE SUBMODULES SET HASACCESS =" + items[i].Checked + " WHERE SUBMODULENAME LIKE '" + items[i].Name.ToString() + "%' AND USERID = (SELECT USERID FROM USER_INFO WHERE USERNAME = '" + this.usertoedit + "');", initd.scon);
+                SCOM1.ExecuteNonQuery();
+                Thread.Sleep(500);
+
+
+            }
+        }
+        private void LoadAccesslevel(String ussername)
+        {
+            CheckBox[] items = { UserSettings, Supplier, UOM, Category, subcat, MarkUp, Products, vat };
+            items1.Clear();
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM SUBMODULES WHERE USERID = (SELECT USERIDS FROM USER_INFO WHERE USERNAME = '" + ussername + "');", initd.scon);
+            SQLiteDataReader sq1 = scom1.ExecuteReader();
+            while (sq1.Read())
+            {
+                items1.Add(sq1["SUBMODULENAME"], determinenum(Convert.ToInt32(sq1["HASACCESS"])));
+                Console.WriteLine(sq1["SUBMODULENAME"].ToString() + sq1["HASACCESS"].ToString());
+            }
+
+            for (int i = 0; i != items.Length; i++)
+            {
+                items[i].Checked = (bool)items1[items[i].Name.ToString()];
+            }
+
+            sq1.Close();
+
+
+        }
+        public bool determinenum(int val)
+        {
+            bool returnval = false;
+            if (val == 1)
+            {
+                returnval = true;
+            }
+            else
+            {
+                returnval = false;
+            }
+            return returnval;
+        }
+        private void OnloadType0()
+        {
+            //if employee fetch all data of acccess level of the emplyee
+
+
         }
 
 

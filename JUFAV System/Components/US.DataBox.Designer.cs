@@ -33,9 +33,9 @@
             this.lblusername = new System.Windows.Forms.Label();
             this.lblrole = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.rcvBTN = new System.Windows.Forms.Button();
             this.deletebtn = new System.Windows.Forms.PictureBox();
             this.editbut = new System.Windows.Forms.PictureBox();
-            this.rcvBTN = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deletebtn)).BeginInit();
@@ -108,6 +108,19 @@
             this.panel1.Size = new System.Drawing.Size(111, 56);
             this.panel1.TabIndex = 3;
             // 
+            // rcvBTN
+            // 
+            this.rcvBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.rcvBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rcvBTN.Location = new System.Drawing.Point(0, 32);
+            this.rcvBTN.Name = "rcvBTN";
+            this.rcvBTN.Size = new System.Drawing.Size(111, 24);
+            this.rcvBTN.TabIndex = 9;
+            this.rcvBTN.Text = "RECOVER PASSWORD";
+            this.rcvBTN.UseVisualStyleBackColor = true;
+            this.rcvBTN.Visible = false;
+            this.rcvBTN.Click += new System.EventHandler(this.button1_Click);
+            // 
             // deletebtn
             // 
             this.deletebtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -124,26 +137,14 @@
             // 
             this.editbut.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.editbut.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.editbut.Image = global::JUFAV_System.Properties.Resources.Edit__1_;
+            this.editbut.Image = global::JUFAV_System.Properties.Resources.Edit;
             this.editbut.Location = new System.Drawing.Point(51, 1);
             this.editbut.Name = "editbut";
             this.editbut.Size = new System.Drawing.Size(25, 25);
             this.editbut.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.editbut.TabIndex = 7;
             this.editbut.TabStop = false;
-            // 
-            // rcvBTN
-            // 
-            this.rcvBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.rcvBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rcvBTN.Location = new System.Drawing.Point(0, 32);
-            this.rcvBTN.Name = "rcvBTN";
-            this.rcvBTN.Size = new System.Drawing.Size(111, 24);
-            this.rcvBTN.TabIndex = 9;
-            this.rcvBTN.Text = "RECOVER PASSWORD";
-            this.rcvBTN.UseVisualStyleBackColor = true;
-            this.rcvBTN.Visible = false;
-            this.rcvBTN.Click += new System.EventHandler(this.button1_Click);
+            this.editbut.Click += new System.EventHandler(this.editbut_Click);
             // 
             // DataBox
             // 
@@ -153,6 +154,7 @@
             this.Controls.Add(this.tableLayoutPanel2);
             this.Name = "DataBox";
             this.Size = new System.Drawing.Size(551, 64);
+            this.Leave += new System.EventHandler(this.DataBox_Leave);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.panel1.ResumeLayout(false);

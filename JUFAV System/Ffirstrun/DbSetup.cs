@@ -38,29 +38,33 @@ namespace JUFAV_System
         public void Startboot()
         {
             initd sql1 = new initd();
-          
+            this.Cursor = Cursors.WaitCursor;
             delay(14, progressBar1);
+            label1.Text = "PROCESSING" + ": CREATING DIRECTORY";
             sql1.CreatePath();
-
-            
+           
+            label1.Text = "PROCESSING" + ": CHECKING DIRECTORY";
             delay(14, progressBar1);
             sql1.checkpath();
+           
 
-           
             delay(14, progressBar1);
+            label1.Text = "PROCESSING" + ": CREATING DATABASE";
             sql1.CreateDatabase();
-            delay(14, progressBar1);
             
-           
+            delay(14, progressBar1);
+
+            label1.Text = "PROCESSING" + ": TESTING CONNECTION DATABASE";
             sql1.TestConnection(sql1.Constring);
             delay(14, progressBar1);
+            label1.Text = "PROCESSING" + ": INITIALIZING TABLES";
             sql1.InitializeTable();
             delay(14, progressBar1);
+            label1.Text = "PROCESSING" + "CREATING TABLE FILEMAINTENANCE";
             sql1.InitTableFilemaintenance();
-            label1.Text = "PROCESSING" + " COMPLETED";
             delay(14, progressBar1);
-
-
+            label1.Text = "DATABASE SETUP COMPLETE";
+            this.Cursor = Cursors.Default;
             this.Hide();
             Ffirstrun.FirstRun f1 = new Ffirstrun.FirstRun();
             f1.Show();

@@ -171,18 +171,20 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::JUFAV_System.Properties.Resources.Edit__1_;
+            this.pictureBox1.Image = global::JUFAV_System.Properties.Resources.Edit;
             this.pictureBox1.Location = new System.Drawing.Point(24, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(25, 25);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // ProductComponent
             // 
@@ -192,6 +194,7 @@
             this.Controls.Add(this.tableLayoutPanel3);
             this.Name = "ProductComponent";
             this.Size = new System.Drawing.Size(721, 58);
+            this.Leave += new System.EventHandler(this.ProductComponent_Leave);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.panel1.ResumeLayout(false);

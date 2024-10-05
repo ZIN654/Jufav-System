@@ -36,9 +36,9 @@
             this.txtboxSearchBox = new System.Windows.Forms.TextBox();
             this.srchBTN = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.ItemSwitch = new System.Windows.Forms.Panel();
             this.ItemsBox = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -127,12 +127,13 @@
             this.txtboxSearchBox.Name = "txtboxSearchBox";
             this.txtboxSearchBox.Size = new System.Drawing.Size(212, 26);
             this.txtboxSearchBox.TabIndex = 6;
-            this.txtboxSearchBox.Text = "SEARCH";
+            this.txtboxSearchBox.Text = "SEARCH BY SUBCATEGORY NAME";
+            this.txtboxSearchBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtboxSearchBox_MouseClick);
             // 
             // srchBTN
             // 
             this.srchBTN.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.srchBTN.BackgroundImage = global::JUFAV_System.Properties.Resources.Search__2_;
+            this.srchBTN.BackgroundImage = global::JUFAV_System.Properties.Resources.Search;
             this.srchBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.srchBTN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.srchBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -155,6 +156,16 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "MARK UP";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(159, 3);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(171, 21);
+            this.comboBox1.TabIndex = 9;
+            this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
+            // 
             // ItemSwitch
             // 
             this.ItemSwitch.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -171,15 +182,6 @@
             this.ItemsBox.Name = "ItemsBox";
             this.ItemsBox.Size = new System.Drawing.Size(669, 402);
             this.ItemsBox.TabIndex = 4;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(159, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(171, 21);
-            this.comboBox1.TabIndex = 9;
-            this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
             // Sub_category
             // 

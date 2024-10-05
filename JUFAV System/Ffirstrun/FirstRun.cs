@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using JUFAV_System.Properties;
 using JUFAV_System.dll;
 using System.Data.SQLite;
+using System.Threading;
 //using System.Security.Cryptography;
 using Konscious.Security.Cryptography;
 
@@ -18,8 +19,16 @@ namespace JUFAV_System.Ffirstrun
 {
     public partial class FirstRun : Form
     {
-        public static bool isverfied1;
-        public static bool isverfied2;
+        bool isverfied1;
+        bool isverfied2;
+        public bool reason;
+        public int AdminAccountLimit = 5;
+        //if account has same name email .mag kaka error sa hashtable once na mag insert ulet
+        //prevent user from inserting the same information.
+        //pag nag update ako ng username at iba pang user info make sure na wala itongka pares
+        //pag lumapmpas ng 5 show msg box and disable controls and hindi naden makakagawa si admin ng iba pang admin accounts sa kabilang side
+        //Pag same Email,Username,Name mag kakaerror sa retrieval kapag inistore sa hashtable since same sila
+        //kapag nag delete si user ng isang user lahat ng data maaarchive 
         //just pass the value from herre to next form to hold the info then if the  databas is created insert it into the database
         //then if the settup is complete change into the log in partt
 
@@ -34,6 +43,7 @@ namespace JUFAV_System.Ffirstrun
             AddBTN.Click += (sender,e) => { addaccounts(); };
             clearBTN.Click += (sender, e) => { clear(); };
             doneBTN.Click += Done;
+           
             
 
         }
@@ -52,6 +62,7 @@ namespace JUFAV_System.Ffirstrun
         {
             hide();
             verify();
+            hasaccount();
            
 
         }
@@ -122,7 +133,19 @@ namespace JUFAV_System.Ffirstrun
           
 
         }
-       
+        private void checkaccount(int count)
+        {
+            if (5 == count)
+            {
+                AddBTN.Enabled = false;
+                clearBTN.Enabled = false;
+                NAME.Enabled = false;
+                USERNAME.Enabled = false;
+                PASSWORD.Enabled = false;
+                CONFIRM_PASSWORD.Enabled = false;
+                EMAIL.Enabled = false;
+            }
+        }
         public void hide()
         {
             PictureBox[] notificationimage = { paswnot, Usernamenot, NameNotification, conpaswnot, emailnot };
@@ -144,16 +167,21 @@ namespace JUFAV_System.Ffirstrun
             //revise initd 
             if (hasaccount() != 0) {
                 this.Hide();
+                reason = false;
                 ModulesMain.LOGIN.JUFAV_LOGIN log = new ModulesMain.LOGIN.JUFAV_LOGIN();
                 log.Show();
          
             }
             else
             {
-                MessageBox.Show("YOU DONT HAVE ACCOUNTS PLEASE CREATE ACCOUNTS FIRST","ACCOUNT CREATION",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                reason = true;
+               
+                MessageBox.Show("YOU DONT HAVE ACCOUNTS. PLEASE CREATE ACCOUNTS FIRST","ACCOUNT CREATION",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
 
       
             }
+
+
         }
         public int hasaccount()
         {
@@ -165,11 +193,16 @@ namespace JUFAV_System.Ffirstrun
             {
                 accountcount++;
             }
+            reader1.Close();
+            label1.Text = "Available Slots Left : " + (AdminAccountLimit - accountcount);
+            reader1 = null;
             scom = null;
+            checkaccount(accountcount);
             return accountcount;
         }
         public void insertintodb()
         {
+            this.Cursor = Cursors.WaitCursor;
             Random rs1 = new Random();
             String id = "";
             String iduserinfo = "";
@@ -193,42 +226,47 @@ namespace JUFAV_System.Ffirstrun
             
            scom.CommandText = "INSERT INTO USER_INFO VALUES(" + iduserinfo + "," + id + ",'" + NAME.Text + "','" + USERNAME.Text+ "','" + EMAIL.Text + "','" + PASSWORD.Text + "'," + 1 + ");";
             scom.ExecuteNonQuery();
-            new ModulesSecond.Userssetaddditems.FileMaintenenance(1).InsertData(Convert.ToInt32(id));
-            new ModulesSecond.Userssetaddditems.Inventory(1).InsertData(Convert.ToInt32(id));
-            new ModulesSecond.Userssetaddditems.Sales(1).InsertData(Convert.ToInt32(id));
-            new ModulesSecond.Userssetaddditems.Reports(1).InsertData(Convert.ToInt32(id));
-            new ModulesSecond.Userssetaddditems.Utilities(1).InsertData(Convert.ToInt32(id));
+            Thread.Sleep(500);
+            new ModulesSecond.Userssetaddditems.FileMaintenenance(1,1,"").InsertData(Convert.ToInt32(id));
+            Thread.Sleep(500);
+            new ModulesSecond.Userssetaddditems.Inventory(1,1, "").InsertData(Convert.ToInt32(id));
+            Thread.Sleep(500);
+            new ModulesSecond.Userssetaddditems.Sales(1,1,"").InsertData(Convert.ToInt32(id));
+            Thread.Sleep(500);
+            new ModulesSecond.Userssetaddditems.Reports(1,1,"").InsertData(Convert.ToInt32(id));
+            Thread.Sleep(500);
+            new ModulesSecond.Userssetaddditems.Utilities(1,1,"").InsertData(Convert.ToInt32(id));
+            Thread.Sleep(500);
             MessageBox.Show("ACCOUNT SUCCESSFULLY CREATED!");
-            
-        }
+            this.Cursor = Cursors.Default;
 
+        }
         private void Viewpass_Click(object sender, EventArgs e)
         {
             if (PASSWORD.PasswordChar == '*')
             {
                 PASSWORD.PasswordChar = '\0';
-                Viewpass.Image = JUFAV_System.Properties.Resources.Eye;
+                Viewpass.Image = JUFAV_System.Properties.Resources.Hide;
 
             }
             else
             {
                 PASSWORD.PasswordChar = '*';
-                Viewpass.Image = JUFAV_System.Properties.Resources.Hide;
+                Viewpass.Image = JUFAV_System.Properties.Resources.Eye;
 
             }
         }
-
         private void Viewpasscon_Click(object sender, EventArgs e)
         {
             if (CONFIRM_PASSWORD.PasswordChar == '*')
             {
                 CONFIRM_PASSWORD.PasswordChar = '\0';
-                Viewpasscon.Image = JUFAV_System.Properties.Resources.Eye;
+                Viewpasscon.Image = JUFAV_System.Properties.Resources.Hide;
             }
             else
             {
                 CONFIRM_PASSWORD.PasswordChar = '*';
-                Viewpasscon.Image = JUFAV_System.Properties.Resources.Hide;
+                Viewpasscon.Image = JUFAV_System.Properties.Resources.Eye;
 
 
             }
@@ -240,9 +278,11 @@ namespace JUFAV_System.Ffirstrun
 
 
         }
-        private void FirstRun_FormClosed(object sender, FormClosedEventArgs e)
+        private void FirstRun_FormClosing(object sender, FormClosingEventArgs e)
         {
-            initd.closedatabase();
+            Done(sender, e);
+            e.Cancel = reason;
+            
         }
     }
 }

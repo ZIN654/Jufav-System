@@ -92,10 +92,11 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 {
                 //226
                 //Size.Height = new Size();
-               // AnimationFunctions01.Lerp1(38f, 342, 1, 1, this.Size);
-              
-                    this.Size = new Size(sizewidth, 342);
-                    switch1 = 0;
+
+
+                this.Size = new Size(sizewidth, 342);
+               // AnimationFunctions01.Lerp1(38, 342, 1, this);
+                switch1 = 0;
                 }
                 else
                 {

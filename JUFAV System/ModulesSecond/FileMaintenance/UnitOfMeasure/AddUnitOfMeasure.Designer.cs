@@ -219,7 +219,7 @@
             this.addBTN.Name = "addBTN";
             this.addBTN.Size = new System.Drawing.Size(218, 34);
             this.addBTN.TabIndex = 1;
-            this.addBTN.Text = "ADD";
+            this.addBTN.Text = "ADD UOM";
             this.addBTN.UseVisualStyleBackColor = true;
             this.addBTN.Click += new System.EventHandler(this.addBTN_Click);
             // 

@@ -9,7 +9,7 @@ namespace JUFAV_System.dll
 {
     class ResponsiveUI1
     {
-        private static int [] switches = {0,0,0,0,0};
+
         public static Label headingtitle;
         //this spl1 is the panel fromm the core 
         public static Panel spl1;
@@ -33,23 +33,7 @@ namespace JUFAV_System.dll
         }
         //++++++++++++++++++LIBRARY FOR RESPONSIVE USER INTERFACE AND EVENT HANDLERS FOR UI RESPONSIVENESS+++++++++++++++++++++
         //for mainbuttons contains /label/panel/2 picture box
-        public static void Switchnum(UserControl main, PictureBox dropdownicon, int Modulenum, int sizewidth, int from, int to)
-        {
-            if (switches[Modulenum] == 1)
-            {
-
-                main.Size = new Size(sizewidth, to);
-                switches[Modulenum] = 0;
-                
-            }
-            else
-            {
-
-                main.Size = new Size(sizewidth, from);
-                switches[Modulenum] = 1;
-               
-            }
-        }
+      
         public static void EventhandlerMouseEnterExit(Panel Button,Label title,PictureBox icon,PictureBox Dropdownicon,KnownColor colorwhenhover,KnownColor coloronexit)
         {
             Button.MouseEnter += (sender,e) => { Button.BackColor = Color.FromKnownColor(colorwhenhover);};
@@ -167,7 +151,7 @@ namespace JUFAV_System.dll
 
  
         }
-        ////========================================FOR CHECKBOX==================================================
+      
         
 
 

@@ -9,26 +9,89 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using JUFAV_System.dll;
 using System.Data.SQLite;
+using System.Collections;
+using System.Threading;
 namespace JUFAV_System.ModulesSecond.Userssetaddditems
 {
     public partial class Utilities : UserControl
     {
-        public Utilities(int RoleType)
+        public Hashtable items1 = new Hashtable();
+        public String usertoedit;
+        public Utilities(int RoleType,int summontype,String username)
         {
+           
             InitializeComponent();
             this.Dock = DockStyle.Top;
-            if (RoleType == 0)
-            {
-                uncheckall();
+            this.usertoedit = username;
+            if (summontype == 1) {
+               
+                if (RoleType == 0)
+                {
+                    uncheckall();
+                }
+                else
+                {
 
+                    check();
 
+                }
             }
             else
             {
-
-                check();
+                //load dataa for updating
+                LoadAccesslevel(username);
 
             }
+        }
+        private void LoadAccesslevel(String ussername)
+        {
+            items1.Clear();
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM SUBMODULES WHERE USERID = (SELECT USERIDS FROM USER_INFO WHERE USERNAME = '"+ussername+"');",initd.scon);
+            SQLiteDataReader sq1 = scom1.ExecuteReader();
+            while (sq1.Read())
+            {
+                items1.Add(sq1["SUBMODULENAME"],determinenum(Convert.ToInt32(sq1["HASACCESS"])));
+               Console.WriteLine(sq1["SUBMODULENAME"].ToString() + sq1["HASACCESS"].ToString());
+            }
+         
+           BaRChbox.Checked = (bool)items1[BaRChbox.Name.ToString()];  
+           archChbox.Checked = (bool)items1[archChbox.Name.ToString()];
+           sq1.Close();
+
+         
+        }
+        public bool determinenum(int val)
+        {
+            bool returnval = false;
+            if(val == 1)
+            {
+                returnval = true;
+            }
+            else
+            {
+                returnval = false;
+            }
+            return returnval;
+        }
+
+
+        public void update1()
+        {
+            
+            //forlopp each check box
+            CheckBox[] items = {BaRChbox,archChbox};
+            for (int i = 0;i != 2;i++)
+            {
+                //UPDATE ANOMALY
+                SQLiteCommand SCOM1 = new SQLiteCommand("UPDATE SUBMODULES SET HASACCESS =" + items[i].Checked +" WHERE SUBMODULENAME LIKE '"+items[i].Name.ToString() + "%' AND USERID = (SELECT USERID FROM USER_INFO WHERE USERNAME = '"+ this.usertoedit +"');", initd.scon);
+                SCOM1.ExecuteNonQuery();
+                Thread.Sleep(500);
+        
+
+            }
+            
+
+
         }
         Color onenter = Color.LightGray;
         Color onLeave = Color.WhiteSmoke;
@@ -78,9 +141,9 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
             //generate id of module 
             SQLiteCommand scom1 = new SQLiteCommand("INSERT INTO MAINMODULES VALUES (" + Convert.ToInt32(ModuleID) + "," + id + ",'Utilities');", initd.scon);
             scom1.ExecuteNonQuery();
-
+            //error here di makuha ung archchbox
             CheckBox[] chboxes = { BaRChbox,archChbox};
-            for (int i = 0; i != 1; i++)
+            for (int i = 0; i != 2; i++)
             {
 
                 scom1.CommandText = "INSERT INTO SUBMODULES VALUES (" + generate_submoduleID() + "," + id + ",'" + chboxes[i].Name + "'," + determineval(chboxes[i]) + ");";

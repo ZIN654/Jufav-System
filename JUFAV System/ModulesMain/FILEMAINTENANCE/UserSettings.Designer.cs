@@ -153,7 +153,7 @@
             // srchBTN
             // 
             this.srchBTN.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.srchBTN.BackgroundImage = global::JUFAV_System.Properties.Resources.Search__2_;
+            this.srchBTN.BackgroundImage = global::JUFAV_System.Properties.Resources.Search;
             this.srchBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.srchBTN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.srchBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

@@ -59,7 +59,7 @@
             this.pictureBox2.Image = global::JUFAV_System.Properties.Resources.Print;
             this.pictureBox2.Location = new System.Drawing.Point(76, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(31, 22);
+            this.pictureBox2.Size = new System.Drawing.Size(33, 22);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
@@ -72,10 +72,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::JUFAV_System.Properties.Resources.Export_Pdf;
+            this.pictureBox1.Image = global::JUFAV_System.Properties.Resources.ExportPdf;
             this.pictureBox1.Location = new System.Drawing.Point(6, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(31, 22);
+            this.pictureBox1.Size = new System.Drawing.Size(33, 22);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -85,7 +85,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Location = new System.Drawing.Point(586, 0);
+            this.label1.Location = new System.Drawing.Point(584, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 23);
             this.label1.TabIndex = 1;
@@ -100,7 +100,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.02662F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.69925F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 111F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
@@ -123,10 +123,10 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(583, 23);
+            this.panel1.Location = new System.Drawing.Point(581, 23);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(113, 30);
+            this.panel1.Size = new System.Drawing.Size(115, 30);
             this.panel1.TabIndex = 5;
             // 
             // panel2
@@ -162,11 +162,11 @@
             // 
             // button1
             // 
-            this.button1.BackgroundImage = global::JUFAV_System.Properties.Resources.Search__2_;
+            this.button1.BackgroundImage = global::JUFAV_System.Properties.Resources.Search;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1.Dock = System.Windows.Forms.DockStyle.Right;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(548, 3);
+            this.button1.Location = new System.Drawing.Point(546, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(32, 17);
             this.button1.TabIndex = 1;
@@ -189,7 +189,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(173, 3);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(146, 21);
+            this.comboBox1.Size = new System.Drawing.Size(145, 21);
             this.comboBox1.TabIndex = 3;
             // 
             // comboBox2
@@ -198,13 +198,13 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(173, 26);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(146, 21);
+            this.comboBox2.Size = new System.Drawing.Size(145, 21);
             this.comboBox2.TabIndex = 4;
             // 
             // textBox1
             // 
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(385, 3);
+            this.textBox1.Location = new System.Drawing.Point(383, 3);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(155, 20);
             this.textBox1.TabIndex = 0;

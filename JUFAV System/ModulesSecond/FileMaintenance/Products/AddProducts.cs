@@ -1,0 +1,409 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using JUFAV_System.dll;
+using System.Data.SQLite;
+using System.Collections;
+using System.Text.RegularExpressions;
+
+
+namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
+{
+    public partial class AddProducts : UserControl
+    {
+        Dictionary<string,int> category;
+        Dictionary<string,int> Subcategory;
+        Dictionary<string,int> UoM;
+        Hashtable categoryinfo;
+        int summonmode;
+        int idtoedit1;
+       bool isverfied1 = true;
+       bool isverfied2 = true;
+        bool isverified3 = false;
+
+        public AddProducts(int summontype, int idtoedit)
+        {
+            InitializeComponent();
+            this.Dock = DockStyle.Fill;
+            summonmode = summontype;
+            category = new Dictionary<string , int>();
+            Subcategory = new Dictionary<string, int>();
+            UoM = new Dictionary<string, int>();
+
+            categoryinfo = new Hashtable();
+            //note na dapatat mag iinsert sya ng name ng product
+
+            if (summontype == 0)
+            {
+                idtoedit1 = idtoedit;
+
+
+
+            }
+            else
+            {
+                label14.Text = Prodnametxtbox.Text;
+                onload();
+             
+
+            }
+           
+
+        }
+        private void onload()
+        {
+            category.Clear();
+            Subcategory.Clear();
+            UoM.Clear();
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM CATEGORY;", initd.scon);
+            SQLiteDataReader sq1 = scom1.ExecuteReader();
+            while (sq1.Read())
+            {
+                CategoryCOmbo.Items.Add(sq1["CATEGORYDESC"]);
+                category.Add(sq1["CATEGORYDESC"].ToString(),Convert.ToInt32(sq1["CATEGORYID"]));
+                
+
+
+            }
+            sq1.Close();
+            scom1.CommandText = "SELECT  * FROM SUBCATEGORY";
+            sq1 = scom1.ExecuteReader();
+            while (sq1.Read())
+            {
+                SubCatCombo.Items.Add(sq1["SUBCATEGORYDESC"]);
+                Subcategory.Add(sq1["SUBCATEGORYDESC"].ToString(),Convert.ToInt32(sq1["SUBCATEGORYID"]));
+
+
+            }
+            sq1.Close();
+            scom1.CommandText = "SELECT  * FROM UNITOFMEASURE";
+            sq1 = scom1.ExecuteReader();
+            while (sq1.Read())
+            {
+                Unittypecombobox.Items.Add(sq1["UNITDESC"]);
+                UoM.Add(sq1["UNITDESC"].ToString(),Convert.ToInt32(sq1["UNITID"]));
+
+            }
+
+
+        }
+        private void insert()
+        {
+
+            this.Cursor = Cursors.WaitCursor;
+            //auto increment or manual generation ID?id say auto increment sinceproducts are too many
+            //USERID INT NOT NULL,CATEGORYID INT NOT NULL,SUBCATEGORYID INT NOT NULL,UOMID INT NOT NULL,PRODUCTNAME VARCHAR(50),ORIGINALPICE INT,QUANTITY INT,PERISHABLEPRODUCT VARCHAR(2),ISBATCH VARCHAR(2),EXPIRINGDATE DATE
+            SQLiteCommand sq1 = new SQLiteCommand("INSERT INTO PRODUCTS (USERID,CATEGORYID,SUBCATEGORYID,UOMID,PRODUCTNAME,ORIGINALPICE,QUANTITY,PERISHABLEPRODUCT,ISBATCH,EXPIRINGDATE)VALUES(" + initd.UserID + "," + Convert.ToInt32(category[CategoryCOmbo.Text])+"," + Convert.ToInt32(Subcategory[SubCatCombo.Text])+"," + Convert.ToInt32(UoM[Unittypecombobox.Text])+",'" +Prodnametxtbox.Text+"'," + Convert.ToInt32(OriginalPricetxtbox.Text)+"," + Convert.ToInt32(InitialStcktxtbox.Text) +","+determinevalue2(prsishablechbox.Checked) +"," +determinevalue()+",'" +date()+ "');",initd.scon);
+            sq1.ExecuteNonQuery();
+
+            this.Cursor = Cursors.Default;
+
+            Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(goback, 0, "ADD PRODUCT", "ITEM SUCCESSFULLY ADDED! \n WOULD YOU LIKE TO GO BACK AT THE FRONT PAGE?", "OK", 0);
+            msg2.Show();
+
+        }
+        private void update()
+        {
+        }
+        private void onload2Filter(String texttofilter)
+        {
+            categoryinfo.Clear();
+            SubCatCombo.Items.Clear();
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM CATEGORY WHERE CATEGORYDESC = '" + texttofilter + "';", initd.scon);
+            SQLiteDataReader sq1 = scom1.ExecuteReader();
+            while (sq1.Read())
+            {
+                categoryinfo.Add(sq1["CATEGORYDESC"], sq1["CATEGORYID"]);
+
+            }
+            sq1.Close();
+            scom1.CommandText = "SELECT * FROM SUBCATEGORY WHERE CATEGORYID = " + Convert.ToInt32(categoryinfo[texttofilter]) + ";";
+            sq1 = scom1.ExecuteReader();
+            while (sq1.Read())
+            {
+                SubCatCombo.Items.Add(sq1["SUBCATEGORYDESC"]);
+
+
+            }
+
+
+
+        }
+        public void verify(int summonmode)
+        {
+            isverfied1 = true;
+            isverfied2 = true;
+          
+            //define
+             
+            Control[] textboxes = { CategoryCOmbo,SubCatCombo,Prodnametxtbox,mkuptxtbox1,OriginalPricetxtbox,Unittypecombobox,InitialStcktxtbox};
+            PictureBox[] notificationimage = {CatSubIm, CatSubIm, ProdnameImg, MarkUp, OrigPUnitImg, OrigPUnitImg, InitStckImg };
+            Label[] textnoti = { Catnot, Catnot, ProdnameNot, MKupnot, OrigPriceUnittypenot, OrigPriceUnittypenot, initnot};
+            //check pass and conf is =
+            if (CategoryCOmbo.Text == "" || SubCatCombo.Text == "" || Prodnametxtbox.Text == "" || OriginalPricetxtbox.Text == "" || Unittypecombobox.Text == "" || InitialStcktxtbox.Text == "")
+            {
+                for (int i = 0; i != 7; i++)
+                {
+                    if (textboxes[i].Text == "")
+                    {
+                        // MessageBox.Show("error please Enter input from textbox text : " + textboxes[i].Name);
+                        notificationimage[i].Visible = true;
+                        textnoti[i].Visible = true;
+                        isverfied1 = false;
+                        break;
+                    }
+                }
+
+
+            }
+            else
+            {
+                for (int i = 0; i != 7; i++)
+                {
+                    // \\W\\S
+                    if (Regex.IsMatch(textboxes[i].Text, @"\W"))
+                    {
+                        Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "NON CHARACTER INPUT", "Please Remove a non - letter character in " + textboxes[i].Name + " field where text '" + textboxes[i].Text + "' contains the non letter character.", "RETRY", 1);
+                        ms.Show();
+                        isverfied2 = false;
+                        break;
+                    }
+                   
+
+                }
+            }
+          
+            //verifiy if user inputed non digit in the textbox
+          
+            if (isverfied2 == true && isverfied1 == true)
+            {
+                //are you sure 
+
+                
+                
+                if (summonmode == 1)
+                {
+                    Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(insert, 0, "ADD NEW PRODUCT", "ARE YOU SURE YOU WANT TO ADD THIS NEW PRODUCT?", "ADD", 2);
+                    msg1.Show();
+
+
+
+                }
+                else
+                {
+                    Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(update, 0, "UPDATE PRODUCT", "ARE YOU SURE YOU WANT TO UPDATE THIS PRODUCT?", "UPDATE", 2);
+                    msg1.Show();
+                }
+               
+
+            }
+            
+             
+
+        }
+        public void hide()
+        {
+
+            PictureBox[] notificationimage = { CatSubIm, CatSubIm, ProdnameImg, MarkUp, OrigPUnitImg, OrigPUnitImg, InitStckImg };
+            Label[] textnoti = { Catnot, Catnot, ProdnameNot, MKupnot, OrigPriceUnittypenot, OrigPriceUnittypenot, initnot };
+            for (int i = 0; i != 6; i++)
+            {
+
+
+                notificationimage[i].Visible = false;
+                textnoti[i].Visible = false;
+
+
+
+            }
+
+        }
+        public void verify2()
+        {
+            isverified3 = true;
+            Control[] textboxes = {mkuptxtbox1, OriginalPricetxtbox, InitialStcktxtbox };
+            for (int i = 0;i!= 3;i++)
+            {
+                if (Regex.IsMatch(textboxes[i].Text, "\\D"))
+                {
+                    Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "NON NUMBER INPUT", "Please Remove a non - Number character in " + textboxes[i].Name + " field where text '" + textboxes[i].Text + "' contains the non letter character.", "RETRY", 1);
+                    ms.Show();
+                    isverified3 = false;
+                    break;
+                } 
+
+            }
+
+        }
+        private int determinevalue()
+        {
+            int ret = 0;
+            if (prsishablechbox.Checked == true && SingleProdBTN.Checked == true)
+            {
+
+                ret = 1;
+                //non batch is equal to 1
+            }
+            else
+            {
+                //batch products is equal to zero
+                ret = 0;
+
+
+            }
+
+            return ret;
+        }
+        private int determinevalue2(bool text)
+        {
+            int ret = 0;
+            if (text == true)
+            {
+                ret = 1;
+
+
+            }
+            else
+            {
+                ret = 0;
+
+
+            }
+
+            return ret;
+        }
+        private String date()
+        {
+            string toret = "";
+            if (prsishablechbox.Checked == false)
+            {
+
+                toret = "0000-00-00";
+                //nonn perishable
+            }
+            else if (prsishablechbox.Checked == true && SingleProdBTN.Checked == true)
+            {
+                toret = dateTimePicker1.Text;
+                //peroshable single product
+              
+            }
+            else
+            {
+
+                toret = "0000-00-00";
+                //batch product
+
+            }
+
+            return toret;
+        }
+        private void BatchProdRadioBTN_CheckedChanged(object sender, EventArgs e)
+        {
+            if (BatchProdRadioBTN.Checked == true)
+            {
+                label14.Text = Prodnametxtbox.Text;
+
+                SingleProdBTN.Checked = false;
+                batchprodadd.Enabled = true;
+                itemsBox.Enabled = true;
+                
+            }
+            else
+            {
+                label14.Text = Prodnametxtbox.Text;
+
+                SingleProdBTN.Checked = true;
+                batchprodadd.Enabled = false;
+                itemsBox.Enabled = false;
+
+            }
+        }
+        private void SingleProdBTN_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SingleProdBTN.Checked == true)
+            {
+            
+                BatchProdRadioBTN.Checked = false;
+               
+
+            }
+            else
+            {
+                BatchProdRadioBTN.Checked = true;
+
+            }
+        }
+        private void prsishablechbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (prsishablechbox.Checked == true)
+            {
+                //insert addbatch
+                singlprod.Enabled = true;
+                batchprod.Enabled = true;
+                itemsBox.Enabled = true;
+
+            }
+            else
+            {
+                singlprod.Enabled = false;
+                batchprod.Enabled = false;
+                itemsBox.Enabled = false;
+
+
+            }
+        }
+        private void AddBatchBTn_Click(object sender, EventArgs e)
+        {
+            //exeption messages and warning boxes bruh
+           // Components.BatchingDataBox bt1 = new Components.BatchingDataBox(label14.Text,Batchno.Text,dateexpiration.Text,Convert.ToInt32(StockQuantitytxtbox.Text));
+           // itemsBox.Controls.Add(bt1);
+        }
+        private void CANCELBTN_Click(object sender, EventArgs e)
+        {
+            goback();
+        }
+        private void goback()
+        {
+            ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
+            ModulesMain.FILEMAINTENANCE.Products unit1 = new ModulesMain.FILEMAINTENANCE.Products();
+            ResponsiveUI1.title = "Products";
+            ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+            ResponsiveUI1.spl1.Controls.Add(unit1);
+
+        }
+        private void CategoryCOmbo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            onload2Filter(CategoryCOmbo.Text);
+            SubCatCombo.ResetText();
+        }
+
+        private void addMainBTN_Click(object sender, EventArgs e)
+        {
+            hide();
+            verify2();
+            if (isverified3 == true)
+            {
+                verify(summonmode);
+            }
+           
+
+        }
+
+        private void AddProducts_Leave(object sender, EventArgs e)
+        {
+            category = null;
+            Subcategory = null;
+            UoM = null;
+            categoryinfo = null;
+        }
+
+
+        //ONclOSE ALL HASTABLE WILL BE VANISHED
+    }
+}

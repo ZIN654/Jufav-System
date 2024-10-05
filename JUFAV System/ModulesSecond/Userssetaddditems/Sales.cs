@@ -9,27 +9,88 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using JUFAV_System.dll;
 using System.Data.SQLite;
+using System.Threading;
+using System.Collections;
 
 namespace JUFAV_System.ModulesSecond.Userssetaddditems
 {
     public partial class Sales : UserControl
     {
-        public Sales(int RoleType)
+        public Hashtable items1 = new Hashtable();
+        public String usertoedit;
+        public Sales(int RoleType,int summontype, String username)
         {
             InitializeComponent();
             this.Dock = DockStyle.Top;
-            if (RoleType == 0)
+            this.usertoedit = username;
+            if (summontype == 1)
             {
-                uncheckall();
+                if (RoleType == 0)
+                {
+                    uncheckall();
 
 
+                }
+                else
+                {
+
+                    check();
+
+                }
             }
             else
             {
+                //load data for updating
+                LoadAccesslevel(username);
 
-                check();
 
             }
+        }
+        public void update1()
+        {
+            //forlopp each check box
+            CheckBox[] items = {Saleschbx,ResprodChbox };
+            for (int i = 0; i != 2; i++)
+            {
+                //UPDATE ANOMALY
+                SQLiteCommand SCOM1 = new SQLiteCommand("UPDATE SUBMODULES SET HASACCESS =" + items[i].Checked + " WHERE SUBMODULENAME LIKE '" + items[i].Name.ToString() + "%' AND USERID = (SELECT USERID FROM USER_INFO WHERE USERNAME = '" + this.usertoedit + "');", initd.scon);
+                SCOM1.ExecuteNonQuery();
+                Thread.Sleep(500);
+
+
+            }
+        }
+        // 
+        private void LoadAccesslevel(String ussername)
+        {
+            
+            items1.Clear();
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM SUBMODULES WHERE USERID = (SELECT USERIDS FROM USER_INFO WHERE USERNAME = '" + ussername + "');", initd.scon);
+            SQLiteDataReader sq1 = scom1.ExecuteReader();
+            while (sq1.Read())
+            {
+                items1.Add(sq1["SUBMODULENAME"], determinenum(Convert.ToInt32(sq1["HASACCESS"])));
+                Console.WriteLine(sq1["SUBMODULENAME"].ToString() + sq1["HASACCESS"].ToString());
+            }
+            ResprodChbox.Checked = (bool)items1[ResprodChbox.Name.ToString()];
+            Saleschbox.Checked = (bool)items1[Saleschbx.Name.ToString()];
+
+            sq1.Close();
+
+
+        }
+        public bool determinenum(int val)
+        {
+            bool returnval = false;
+            if (val == 1)
+            {
+                returnval = true;
+            }
+            else
+            {
+                returnval = false;
+            }
+            return returnval;
         }
         Color onenter = Color.LightGray;
         Color onLeave = Color.WhiteSmoke;
@@ -79,7 +140,7 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
             scom1.ExecuteNonQuery();
 
             CheckBox[] chboxes = {Saleschbx,ResprodChbox };
-            for (int i = 0; i != 1; i++)
+            for (int i = 0; i != 2; i++)
             {
 
                 scom1.CommandText = "INSERT INTO SUBMODULES VALUES (" + generate_submoduleID() + "," + id + ",'" + chboxes[i].Name + "'," + determineval(chboxes[i]) + ");";

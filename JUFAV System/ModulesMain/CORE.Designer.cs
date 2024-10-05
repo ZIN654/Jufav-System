@@ -231,7 +231,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CORE";
-            this.Text = "CORE";
+            this.Text = "JUFAV SALES AND INVENTORY SYSTEM";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CORE_FormClosed);
             this.Load += new System.EventHandler(this.CORE_Load);

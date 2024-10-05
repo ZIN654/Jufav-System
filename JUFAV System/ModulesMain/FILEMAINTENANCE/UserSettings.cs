@@ -40,16 +40,14 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
 
         private void UserSettings_Load(object sender, EventArgs e)
         {
+            initd.hs1.Clear();
             SQLiteCommand scom = new SQLiteCommand("SELECT * FROM USER_INFO;",initd.scon);
            SQLiteDataReader sq1 = scom.ExecuteReader();
             while (sq1.Read())
             {
                //if the current user was deleted his/her own account usin his/her account it might show a warning to prevent the inconsistency like : unable  to delete account since it is logged in unless use another Master account
-                Components.DataBox item1 = new Components.DataBox(ItemsBox);
-               
-                item1.Controls.Find("lblname",true)[0].Text = sq1["NAME"].ToString();
-                item1.Controls.Find("lblusername", true)[0].Text = sq1["USERNAME"].ToString();
-                item1.Controls.Find("lblrole", true)[0].Text = determinerole(Convert.ToInt32(sq1["ROLES"]));
+                Components.DataBox item1 = new Components.DataBox(ItemsBox, sq1["NAME"].ToString(), sq1["USERNAME"].ToString(), determinerole(Convert.ToInt32(sq1["ROLES"])));
+                initd.hs1.Add(sq1["USERNAME"],sq1["USERIDS"]);
                 ItemsBox.Controls.Add(item1);
                
 
@@ -63,7 +61,7 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
         {
             //show panel where enter acount information
             ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
-            ModulesSecond.UsersettingsAddUser Sup = new ModulesSecond.UsersettingsAddUser();
+            ModulesSecond.UsersettingsAddUser Sup = new ModulesSecond.UsersettingsAddUser(1,"");
             ResponsiveUI1.title = "UsersettingsAddUser";
             ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
             ResponsiveUI1.spl1.Controls.Add(Sup);
@@ -75,18 +73,7 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
 
 
 
-        private void Insertintodatabase()
-        {
-            //INSERT DATABSE
 
-            //debug
-            Components.DataBox datadebug1 = new Components.DataBox(ItemsBox);
-            ItemsBox.Controls.Add(datadebug1);
-            Console.WriteLine("THE ITEM IS SUCCESSFULLY INSERTED INTO DATABASE");
-
-
-            
-        }
         private String determinerole(int role)
         {
             string Main = "";

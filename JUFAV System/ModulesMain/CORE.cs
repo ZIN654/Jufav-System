@@ -35,7 +35,7 @@ namespace JUFAV_System.ModulesMain
         }
         public void addevents()
         {
-           
+           //LARGE SPIKE HERE 
             //DATE SETT
             SetDate(DateTime.Now);
             SetTime();
@@ -56,6 +56,7 @@ namespace JUFAV_System.ModulesMain
             //leakable
             panel1.ControlRemoved += release;
             //un leakable
+            //LARGE SPIKE HERE 
             LOGOUTBTN.Click += (sender,e) => {logout.BringToFront(); logout.Show();
             };
             logout.MouseLeave += (sender, e) => { logout.Hide(); };

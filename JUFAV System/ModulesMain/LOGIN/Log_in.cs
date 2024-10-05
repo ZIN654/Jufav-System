@@ -25,15 +25,17 @@ namespace JUFAV_System.ModulesMain.LOGIN
         {
             InitializeComponent();
             addevents();
-            //temporary
+
             axWindowsMediaPlayer1.uiMode = "None";
-            //replace with your own path .dapat makuha yung path ng file kung saan sya mag iinstall 
-            axWindowsMediaPlayer1.URL = @"C://Users//asus//Desktop//CAPSTONE 2//JUFAV System//JUFAV System//Resources//JufavLogoback.mp4";
+
+            //temporary 
+            axWindowsMediaPlayer1.URL = @"C://Users//asus//Desktop//CAPSTONE 2//JUFAV SYSTEM NEW - Copy//Jufav-System//JUFAV System//Resources//JufavLogoback.mp4";
+           //set this one if publishing
+            //axWindowsMediaPlayer1.URL = @Environment.CurrentDirectory + "//Resources//JufavLogoback.mp4";
             axWindowsMediaPlayer1.settings.autoStart = true;
             axWindowsMediaPlayer1.Ctlenabled = false;
             axWindowsMediaPlayer1.stretchToFit = true;
-            axWindowsMediaPlayer1.settings.setMode("loop",true);
-            //
+            axWindowsMediaPlayer1.settings.setMode("loop", true);
             initd.closedatabase();
             initd.opendatabase();
             //Directory.GetFiles;
@@ -125,7 +127,9 @@ namespace JUFAV_System.ModulesMain.LOGIN
             SQLiteDataReader sread = scom.ExecuteReader();
             while(sread.Read())
             {
+                //hindi pwede ang same username thats why we shoudl create a counter measure 
                 account.Add(sread["USERNAME"],sread["PASSWORDS"]);
+                //kapag gumagawa ng account make sure na yung ininsert na user  name ay walang ka same value
                 Console.WriteLine(sread["USERNAME"]);
                 Console.WriteLine(sread["PASSWORDS"]);
 
@@ -137,6 +141,7 @@ namespace JUFAV_System.ModulesMain.LOGIN
         {
            //check kung admin tas kunin yungmga access level sa modules sa modulesmain na yun each button click check kung available aky user 
            //2 options store globaly ung data ng access level or each click retreive ? may audit trail pa tandaaan mo 
+           //LARGE SPIKE HERE 
             if (account.ContainsKey(txtBxUSER.Text.ToString()) == true)
             {
                 //paano to please explain

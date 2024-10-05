@@ -9,28 +9,92 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using JUFAV_System.dll;
+using System.Threading;
+using System.Collections;
 
 namespace JUFAV_System.ModulesSecond.Userssetaddditems
 {
     public partial class Inventory : UserControl
     {
-        public Inventory(int RoleType)
+        public Hashtable items1 = new Hashtable();
+        public String usertoedit;
+        public Inventory(int RoleType,int summontype, String username)
         {
             InitializeComponent();
             this.Dock = DockStyle.Top;
-            if (RoleType == 0)
+            this.usertoedit = username;
+            if (summontype == 1)
             {
-                uncheckall();
+                if (RoleType == 0)
+                {
+                    uncheckall();
 
 
+                }
+                else
+                {
+
+                    check();
+
+                }
             }
             else
             {
-
-                check();
+                //load current access level of the user
+                LoadAccesslevel(username);
 
             }
         }
+        // 
+        public void update1()
+        {
+
+            //forlopp each check box
+            CheckBox[] items = { StckAdj, PurchOrde, ProdList, PurchOrdRec };
+            for (int i = 0; i != 4; i++)
+            {
+                //UPDATE ANOMALY
+                SQLiteCommand SCOM1 = new SQLiteCommand("UPDATE SUBMODULES SET HASACCESS =" + items[i].Checked + " WHERE SUBMODULENAME LIKE '" + items[i].Name.ToString() + "%' AND USERID = (SELECT USERID FROM USER_INFO WHERE USERNAME = '" + this.usertoedit + "');", initd.scon);
+                SCOM1.ExecuteNonQuery();
+                Thread.Sleep(500);
+
+
+            }
+        }
+        private void LoadAccesslevel(String ussername)
+        {
+            CheckBox[] items = { StckAdj, PurchOrde, ProdList, PurchOrdRec };
+            items1.Clear();
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM SUBMODULES WHERE USERID = (SELECT USERIDS FROM USER_INFO WHERE USERNAME = '" + ussername + "');", initd.scon);
+            SQLiteDataReader sq1 = scom1.ExecuteReader();
+            while (sq1.Read())
+            {
+                items1.Add(sq1["SUBMODULENAME"], determinenum(Convert.ToInt32(sq1["HASACCESS"])));
+                Console.WriteLine(sq1["SUBMODULENAME"].ToString() + sq1["HASACCESS"].ToString());
+            }
+            for (int i = 0; i != items.Length; i++)
+            {
+                items[i].Checked = (bool)items1[items[i].Name.ToString()];
+            }
+
+            sq1.Close();
+
+
+        }
+        public bool determinenum(int val)
+        {
+            bool returnval = false;
+            if (val == 1)
+            {
+                returnval = true;
+            }
+            else
+            {
+                returnval = false;
+            }
+            return returnval;
+        }
+
         public void releasemem()
         {
 
@@ -124,7 +188,7 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
             scom1.ExecuteNonQuery();
 
             CheckBox[] chboxes = {StckAdj,PurchOrde,PurchOrdRec,ProdList };
-            for (int i = 0; i != 3; i++)
+            for (int i = 0; i != 4; i++)
             {
 
                 scom1.CommandText = "INSERT INTO SUBMODULES VALUES (" + generate_submoduleID() + "," + id + ",'" + chboxes[i].Name + "'," + determineval(chboxes[i]) + ");";

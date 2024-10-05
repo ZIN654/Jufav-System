@@ -16,25 +16,31 @@ namespace JUFAV_System.Components
     {
 
         private Panel itembox;
-        public DataBox(Panel itemsbox)
+        public String username1;
+        public DataBox(Panel itemsbox,String name,String Username,String role)
         {
             
             InitializeComponent();
             this.itembox = itemsbox;
             this.Dock = DockStyle.Top;
             addevents();
+            lblname.Text = name;
+            lblusername.Text = Username;
+            lblrole.Text = role;
+            this.username1 = Username;
+            Console.WriteLine(Username + username1);
         }
         public void addevents()
         {
             deletebtn.Click += deleteBTNClick;
+            
 
         }
         private void deleteBTNClick(object sender,EventArgs e)
         {
             determine();
             
-        }
-        
+        } 
         private void successfully()
         {
            
@@ -96,7 +102,29 @@ namespace JUFAV_System.Components
             
             
         }
+        private void goedit()
+        {
+            //updating tayo ngayon
+            ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
+           
+            ModulesSecond.UsersettingsAddUser unit1 = new ModulesSecond.UsersettingsAddUser(0,this.username1);
+            initd.UsernameToedit = this.username1;
+            unit1.Name = "EDITUSERACCOUNT";
+            ResponsiveUI1.title = unit1.Name;
+            ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+            ResponsiveUI1.spl1.Controls.Add(unit1);
 
-       
-}
+        }
+        private void editbut_Click(object sender, EventArgs e)
+        {
+            goedit();
+        }
+
+        private void DataBox_Leave(object sender, EventArgs e)
+        {
+            editbut.Click += null;
+            deletebtn.Click += null;
+            rcvBTN.Click += null;
+        }
+    }
 }

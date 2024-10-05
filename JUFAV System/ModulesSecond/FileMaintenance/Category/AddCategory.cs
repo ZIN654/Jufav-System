@@ -17,11 +17,51 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
     {
         public bool isverfied1 = true;
         public bool isverfied2 = true;
-        public AddCategory()
+        int summontype1;
+        int idtoedit1;
+        public AddCategory(int summontype,int idtoedit)
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
+            summontype1 = summontype;
+            if (summontype == 0)
+            {
+                idtoedit1 = idtoedit;
+                loaddata(idtoedit);
+                addBTN.Text = "UPDATE CATEGORY";
+               
+
+
+            }
         }
+        private void loaddata(int id)
+        {
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM CATEGORY WHERE CATEGORYID = "+id+";",initd.scon);
+            SQLiteDataReader sread1 = scom1.ExecuteReader();
+            while (sread1.Read())
+            {
+                Cattxtbox.Text = sread1["CATEGORYDESC"].ToString();
+
+            }
+            sread1.Close();
+            sread1 = null;
+            scom1 = null;
+
+        }
+        private void update()
+        {
+            this.Cursor = Cursors.WaitCursor;
+            SQLiteCommand scom1 = new SQLiteCommand("UPDATE CATEGORY SET CATEGORYDESC = '" +Cattxtbox.Text +"' WHERE CATEGORYID = " + idtoedit1 + ";", initd.scon);
+            scom1.ExecuteNonQuery();
+            scom1 = null;
+
+            this.Cursor = Cursors.Default;
+
+            Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(goback, 0, "UPDATE CATEGORY", "ITEM SUCCESSFULLY UPDATED! \n WOULD YOU LIKE TO GO BACK AT THE FRONT PAGE?", "OK", 0);
+            msg2.Show();
+        }
+
+
         //core
         public void verify()
         {
@@ -69,8 +109,24 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
             if (isverfied2 == true && isverfied1 == true)
             {
                 //are you sure 
-                Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(Insertdata, 0, "ADD UNIT OF MEASURE", "ARE YOU SURE YOU WANT TO ADD THIS NEW UNIT OF MEASURE?", "ADD", 2);
-                msg1.Show();
+                if (summontype1 == 1)
+                {
+
+                    Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(Insertdata, 0, "ADD CATEGORY", "ARE YOU SURE YOU WANT TO ADD THIS NEW CATEGORY?", "ADD", 2);
+                    msg1.Show();
+
+
+                }
+                else
+                {
+
+
+                    Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(update, 0, "UPDATE CATEGORY", "ARE YOU SURE YOU WANT TO  UPDATE THIS CATEGORY?", "ADD", 2);
+                    msg1.Show();
+
+
+                }
+               
             }
 
         }
@@ -120,6 +176,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
             ResponsiveUI1.spl1.Controls.Add(unit1);
 
         }
+      
         //core
 
 

@@ -77,13 +77,14 @@
             // pictureBox2
             // 
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Image = global::JUFAV_System.Properties.Resources.Edit__1_;
+            this.pictureBox2.Image = global::JUFAV_System.Properties.Resources.Edit;
             this.pictureBox2.Location = new System.Drawing.Point(120, 0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(25, 25);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox1
             // 
@@ -95,6 +96,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // CategoryComponent
             // 
@@ -104,6 +106,7 @@
             this.Controls.Add(this.tableLayoutPanel2);
             this.Name = "CategoryComponent";
             this.Size = new System.Drawing.Size(611, 58);
+            this.Leave += new System.EventHandler(this.CategoryComponent_Leave);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.panel1.ResumeLayout(false);

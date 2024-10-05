@@ -173,7 +173,7 @@
             // 
             // button1
             // 
-            this.button1.BackgroundImage = global::JUFAV_System.Properties.Resources.Search__2_;
+            this.button1.BackgroundImage = global::JUFAV_System.Properties.Resources.Search;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

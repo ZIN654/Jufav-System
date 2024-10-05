@@ -31,12 +31,13 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.SubCatCombo = new System.Windows.Forms.ComboBox();
             this.txtboxSearchBox = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CategoryCombo = new System.Windows.Forms.ComboBox();
             this.addprdBTN = new System.Windows.Forms.Button();
+            this.srchBTN = new System.Windows.Forms.Button();
             this.ItemSwitch = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,7 +49,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.ItemsBox = new System.Windows.Forms.Panel();
-            this.srchBTN = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -62,7 +62,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.25665F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.00469F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.38312F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
             this.tableLayoutPanel1.Controls.Add(this.panel2, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtboxSearchBox, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
@@ -80,11 +80,11 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.comboBox2);
+            this.panel2.Controls.Add(this.SubCatCombo);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(305, 3);
+            this.panel2.Location = new System.Drawing.Point(296, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(140, 33);
+            this.panel2.Size = new System.Drawing.Size(135, 33);
             this.panel2.TabIndex = 9;
             // 
             // label3
@@ -98,34 +98,35 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "SUB-CATEGORY";
             // 
-            // comboBox2
+            // SubCatCombo
             // 
-            this.comboBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(0, 12);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(140, 21);
-            this.comboBox2.TabIndex = 0;
+            this.SubCatCombo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.SubCatCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SubCatCombo.FormattingEnabled = true;
+            this.SubCatCombo.Location = new System.Drawing.Point(0, 12);
+            this.SubCatCombo.Name = "SubCatCombo";
+            this.SubCatCombo.Size = new System.Drawing.Size(135, 21);
+            this.SubCatCombo.TabIndex = 0;
             // 
             // txtboxSearchBox
             // 
             this.txtboxSearchBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtboxSearchBox.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.txtboxSearchBox.Location = new System.Drawing.Point(451, 4);
+            this.txtboxSearchBox.Location = new System.Drawing.Point(437, 4);
             this.txtboxSearchBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
             this.txtboxSearchBox.Name = "txtboxSearchBox";
-            this.txtboxSearchBox.Size = new System.Drawing.Size(180, 26);
+            this.txtboxSearchBox.Size = new System.Drawing.Size(175, 26);
             this.txtboxSearchBox.TabIndex = 7;
             this.txtboxSearchBox.Text = "SEARCH";
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.CategoryCombo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(151, 3);
+            this.panel1.Location = new System.Drawing.Point(147, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(148, 33);
+            this.panel1.Size = new System.Drawing.Size(143, 33);
             this.panel1.TabIndex = 8;
             // 
             // label2
@@ -139,14 +140,16 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "CATEGORY";
             // 
-            // comboBox1
+            // CategoryCombo
             // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(0, 12);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(148, 21);
-            this.comboBox1.TabIndex = 0;
+            this.CategoryCombo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.CategoryCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CategoryCombo.FormattingEnabled = true;
+            this.CategoryCombo.Location = new System.Drawing.Point(0, 12);
+            this.CategoryCombo.Name = "CategoryCombo";
+            this.CategoryCombo.Size = new System.Drawing.Size(143, 21);
+            this.CategoryCombo.TabIndex = 0;
+            this.CategoryCombo.SelectedValueChanged += new System.EventHandler(this.CategoryCombo_SelectedValueChanged);
             // 
             // addprdBTN
             // 
@@ -156,10 +159,24 @@
             this.addprdBTN.Font = new System.Drawing.Font("Actor", 11.25F);
             this.addprdBTN.Location = new System.Drawing.Point(3, 3);
             this.addprdBTN.Name = "addprdBTN";
-            this.addprdBTN.Size = new System.Drawing.Size(142, 27);
+            this.addprdBTN.Size = new System.Drawing.Size(138, 27);
             this.addprdBTN.TabIndex = 4;
             this.addprdBTN.Text = "ADD PRODUCT";
             this.addprdBTN.UseVisualStyleBackColor = false;
+            // 
+            // srchBTN
+            // 
+            this.srchBTN.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.srchBTN.BackgroundImage = global::JUFAV_System.Properties.Resources.Search;
+            this.srchBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.srchBTN.Dock = System.Windows.Forms.DockStyle.Top;
+            this.srchBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.srchBTN.Font = new System.Drawing.Font("Actor", 11.25F);
+            this.srchBTN.Location = new System.Drawing.Point(618, 3);
+            this.srchBTN.Name = "srchBTN";
+            this.srchBTN.Size = new System.Drawing.Size(102, 27);
+            this.srchBTN.TabIndex = 7;
+            this.srchBTN.UseVisualStyleBackColor = false;
             // 
             // ItemSwitch
             // 
@@ -300,20 +317,6 @@
             this.ItemsBox.Size = new System.Drawing.Size(723, 399);
             this.ItemsBox.TabIndex = 7;
             // 
-            // srchBTN
-            // 
-            this.srchBTN.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.srchBTN.BackgroundImage = global::JUFAV_System.Properties.Resources.Search__2_;
-            this.srchBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.srchBTN.Dock = System.Windows.Forms.DockStyle.Top;
-            this.srchBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.srchBTN.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.srchBTN.Location = new System.Drawing.Point(637, 3);
-            this.srchBTN.Name = "srchBTN";
-            this.srchBTN.Size = new System.Drawing.Size(83, 27);
-            this.srchBTN.TabIndex = 7;
-            this.srchBTN.UseVisualStyleBackColor = false;
-            // 
             // Products
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -344,10 +347,10 @@
         private System.Windows.Forms.Button srchBTN;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CategoryCombo;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox SubCatCombo;
         private System.Windows.Forms.Panel ItemSwitch;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label1;

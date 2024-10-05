@@ -36,5 +36,11 @@ namespace JUFAV_System.Components
         {
 
         }
+
+        private void PurchaseOrderComponent_Leave(object sender, EventArgs e)
+        {
+            pictureBox1.Click += null;
+            pictureBox2.Click += null;
+        }
     }
 }

@@ -108,12 +108,13 @@
             this.txtboxSearchBox.Name = "txtboxSearchBox";
             this.txtboxSearchBox.Size = new System.Drawing.Size(217, 26);
             this.txtboxSearchBox.TabIndex = 6;
-            this.txtboxSearchBox.Text = "SEARCH";
+            this.txtboxSearchBox.Text = "SEARCH BY CATEGORY NAME";
+            this.txtboxSearchBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtboxSearchBox_MouseClick);
             // 
             // srchBTN
             // 
             this.srchBTN.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.srchBTN.BackgroundImage = global::JUFAV_System.Properties.Resources.Search__2_;
+            this.srchBTN.BackgroundImage = global::JUFAV_System.Properties.Resources.Search;
             this.srchBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.srchBTN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.srchBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -123,6 +124,7 @@
             this.srchBTN.Size = new System.Drawing.Size(114, 27);
             this.srchBTN.TabIndex = 7;
             this.srchBTN.UseVisualStyleBackColor = false;
+            this.srchBTN.Click += new System.EventHandler(this.srchBTN_Click);
             // 
             // ItemSwitch
             // 

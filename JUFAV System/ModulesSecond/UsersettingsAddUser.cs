@@ -19,17 +19,114 @@ namespace JUFAV_System.ModulesSecond
     {
         public bool isverfied1;
         public bool isverfied2;
+        public int summontype;
+        public String username;
         public ModulesSecond.Userssetaddditems.FileMaintenenance Gitem1;
         public ModulesSecond.Userssetaddditems.Inventory Gitem2;
         public ModulesSecond.Userssetaddditems.Reports Gitem3;
         public ModulesSecond.Userssetaddditems.Sales Gitem4;
         public ModulesSecond.Userssetaddditems.Utilities Gitem5;
-        public UsersettingsAddUser()
+        public UsersettingsAddUser(int typeofsummon,String username)
         {
+           
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             CheckifAdmin();
-            onload();
+            this.summontype = typeofsummon;
+            this.username = username;
+            if (typeofsummon == 1)
+            {
+                onload();
+            }
+            else
+            {
+               
+                onloadtype0(username);
+                //update here load current data of the user account 
+                button1.Text = "UPDATE ACCOUNT";
+               
+              
+                
+            }
+            
+        }
+        private void updatedata(String username)
+        {
+           //make sure na yung verification sa txt box ay gumagana paden
+            //"UPDATE FROM SUBMODULES SET WHERE USERID = (SELECT USERID FROM USER_INFO WHERE USERNAME = '" +username+"');"
+            //array if chbox then for loop? to execute the query or just hereby declare each chbox name in set()
+            this.Cursor = Cursors.WaitCursor;
+             Gitem5.update1();//execute the method directly into the utlitities databox checkbox same with other databox
+             Gitem4.update1();
+             Gitem3.update1();
+             Gitem2.update1();
+             Gitem1.update1();
+             UpdateUserInfo();
+
+
+
+            this.Cursor = Cursors.Default;
+
+
+        }
+        private void onloadtype0(String username)
+        {
+            ModulesSecond.Userssetaddditems.FileMaintenenance item1 = new Userssetaddditems.FileMaintenenance(fetchRole(), 0,username);
+            ModulesSecond.Userssetaddditems.Inventory item2 = new Userssetaddditems.Inventory(fetchRole(), 0,username);
+            ModulesSecond.Userssetaddditems.Reports item4 = new Userssetaddditems.Reports(fetchRole(), 0,username);
+            ModulesSecond.Userssetaddditems.Sales item3 = new Userssetaddditems.Sales(fetchRole(), 0,username);
+            ModulesSecond.Userssetaddditems.Utilities item5 = new Userssetaddditems.Utilities(fetchRole(), 0,username);
+
+            this.Gitem1 = item1;
+            this.Gitem2 = item2;
+            this.Gitem3 = item4;
+            this.Gitem4 = item3;
+            this.Gitem5 = item5;
+            UserControl[] sp1 = { item5, item4, item3, item2, item1 };
+            foreach (UserControl i in sp1)
+            {
+                ItemsBox.Controls.Add(i);
+                //
+               // Thread.Sleep(500);
+            }
+            //also load some data based on the username
+          
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM USER_INFO WHERE USERIDS = (SELECT USERIDS FROM USER_INFO WHERE USERNAME = '" + username+"' );",initd.scon);
+            SQLiteDataReader sq1 = scom1.ExecuteReader();
+            while (sq1.Read())
+            {
+               NAME_FIELD.Text =  sq1["NAME"].ToString();
+                USERNAME_FIELD.Text =  sq1["USERNAME"].ToString();
+               PASSWORD_FIELD.Text =  sq1["PASSWORDS"].ToString();
+                CONFIRM_PASSWORD_FIELD.Text  = sq1["PASSWORDS"].ToString();
+                EMAIL_FIELD.Text = sq1["EMAIL"].ToString();
+               RoleBox.Text = sq1["ROLES"].ToString();
+            }
+            sq1.Close();
+            sq1 = null;
+            scom1 = null;
+
+
+        }
+        private void UpdateUserInfo()
+        {
+            SQLiteCommand scom1 = new SQLiteCommand("UPDATE USER_INFO SET NAME = '"+NAME_FIELD.Text+"',USERNAME = '"+USERNAME_FIELD.Text+"',PASSWORDS = '"+PASSWORD_FIELD.Text+"',EMAIL = '"+EMAIL_FIELD.Text+"',ROLES = "+fetchRole()+" WHERE USERIDS = (SELECT USERIDS FROM USER_INFO WHERE USERNAME = '" + username + "' );", initd.scon);
+            SQLiteDataReader sq1 = scom1.ExecuteReader();
+            while (sq1.Read())
+            {
+                NAME_FIELD.Text = sq1["NAME"].ToString();
+                USERNAME_FIELD.Text = sq1["USERNAME"].ToString();
+                PASSWORD_FIELD.Text = sq1["PASSWORDS"].ToString();
+                CONFIRM_PASSWORD_FIELD.Text = sq1["PASSWORDS"].ToString();
+                EMAIL_FIELD.Text = sq1["EMAIL"].ToString();
+                RoleBox.Text = sq1["ROLES"].ToString();
+            }
+            sq1.Close();
+            sq1 = null;
+            scom1 = null;
+
+
+
         }
         public void onload()
         {
@@ -38,11 +135,11 @@ namespace JUFAV_System.ModulesSecond
             ItemsBox.VerticalScroll.Visible = true;
             ItemsBox.VerticalScroll.Enabled = true;
 
-            ModulesSecond.Userssetaddditems.FileMaintenenance item1 = new Userssetaddditems.FileMaintenenance(fetchRole());
-            ModulesSecond.Userssetaddditems.Inventory item2 = new Userssetaddditems.Inventory(fetchRole());
-            ModulesSecond.Userssetaddditems.Reports item4 = new Userssetaddditems.Reports(fetchRole());
-            ModulesSecond.Userssetaddditems.Sales item3 = new Userssetaddditems.Sales(fetchRole());
-            ModulesSecond.Userssetaddditems.Utilities item5 = new Userssetaddditems.Utilities(fetchRole());
+            ModulesSecond.Userssetaddditems.FileMaintenenance item1 = new Userssetaddditems.FileMaintenenance(fetchRole(),1, "");
+            ModulesSecond.Userssetaddditems.Inventory item2 = new Userssetaddditems.Inventory(fetchRole(),1, "");
+            ModulesSecond.Userssetaddditems.Reports item4 = new Userssetaddditems.Reports(fetchRole(),1, "");
+            ModulesSecond.Userssetaddditems.Sales item3 = new Userssetaddditems.Sales(fetchRole(),1, "");
+            ModulesSecond.Userssetaddditems.Utilities item5 = new Userssetaddditems.Utilities(fetchRole(),1,"");
             this.Gitem1 = item1;
             this.Gitem2 = item2;
             this.Gitem3 = item4;
@@ -112,19 +209,42 @@ namespace JUFAV_System.ModulesSecond
         private void successfullyinsertedOK()
         {
             //execute query first and database
+            //error
+            String[] messages = { "ACCOUNT SUCCESSFULY UPDATED,   WOULD YOU LIKE TO GO BACK IN THE USER SETTINGS FRONT PAGE?", "ACCOUNT SUCCESSFULY CREATED,   WOULD YOU LIKE TO GO BACK IN THE USER SETTINGS FRONT PAGE?" };
+            String[] titles = {"UPDATE ACCOUNT" , "ACCOUNT CREATION" };
+            int messagetypes = 0;
+            if (summontype == 0)
+            {
+                messagetypes = 0;
+                updatedata(username);
+            }
+            else
+            {
+                messagetypes = 1;
+                inserintoDB();
+            }
 
-
-            inserintoDB();
-            Messageboxes.MessageboxConfirmation sp2 = new MessageboxConfirmation(backtousersettings, 0, "ACCOUNT CREATION", "ACCOUNT SUCCESSFULY CREATED,   WOULD YOU LIKE TO GO BACK IN THE USER SETTINGS FRONT PAGE?", "OK", 0);
+            
+            Messageboxes.MessageboxConfirmation sp2 = new MessageboxConfirmation(backtousersettings, 0,titles[messagetypes], messages[messagetypes], "OK", 0);
             sp2.Show();
             sp2.BringToFront();
 
-          
+
 
         }
         private void areyousure()
         {
-            Messageboxes.MessageboxConfirmation ms = new MessageboxConfirmation(successfullyinsertedOK, 0, "CONFIRM BEFORE INSERTING", "ARE YOU SURE YOU INPUTED THE RIGHT VALUES?", "OK", 2);
+            String[] titles = { "CONFIRM BEFORE UPDATING", "CONFIRM BEFORE INSERTING" };
+            int messagetypes = 0;
+            if (summontype == 1)
+            {
+                messagetypes = 0;
+            }
+            else
+            {
+                messagetypes = 1;
+            }
+            Messageboxes.MessageboxConfirmation ms = new MessageboxConfirmation(successfullyinsertedOK, 0, titles[messagetypes], "ARE YOU SURE YOU INPUTED THE RIGHT VALUES?", "OK", 2);
             ms.Show();
             //Insert into database
 
@@ -147,7 +267,7 @@ namespace JUFAV_System.ModulesSecond
            
             if (isadmin == 1)
             {
-                Globalvar.Glo_isadmin = isadmin;
+              
                 Console.WriteLine(isadmin);
                 //check all checkboexes
 
@@ -156,7 +276,7 @@ namespace JUFAV_System.ModulesSecond
             else
             {
                 Console.WriteLine(isadmin);
-                Globalvar.Glo_isadmin = isadmin;
+              
 
             }
             //check all no need to fetch in database
@@ -289,6 +409,8 @@ namespace JUFAV_System.ModulesSecond
 
         private void RoleBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //when role box selected changed
+
             String[] names = { "FileMaintenenance", "Inventory", "Sales", "Reports", "Utilities" };
             for (int i = 0;i!= 5;i++)
             {
@@ -296,11 +418,11 @@ namespace JUFAV_System.ModulesSecond
 
 
             }
-            ModulesSecond.Userssetaddditems.FileMaintenenance item1 = new Userssetaddditems.FileMaintenenance(fetchRole());
-            ModulesSecond.Userssetaddditems.Inventory item2 = new Userssetaddditems.Inventory(fetchRole());
-            ModulesSecond.Userssetaddditems.Reports item4 = new Userssetaddditems.Reports(fetchRole());
-            ModulesSecond.Userssetaddditems.Sales item3 = new Userssetaddditems.Sales(fetchRole());
-            ModulesSecond.Userssetaddditems.Utilities item5 = new Userssetaddditems.Utilities(fetchRole());
+            ModulesSecond.Userssetaddditems.FileMaintenenance item1 = new Userssetaddditems.FileMaintenenance(fetchRole(),1, "");
+            ModulesSecond.Userssetaddditems.Inventory item2 = new Userssetaddditems.Inventory(fetchRole(),1, "");
+            ModulesSecond.Userssetaddditems.Reports item4 = new Userssetaddditems.Reports(fetchRole(),1, "");
+            ModulesSecond.Userssetaddditems.Sales item3 = new Userssetaddditems.Sales(fetchRole(),1, "");
+            ModulesSecond.Userssetaddditems.Utilities item5 = new Userssetaddditems.Utilities(fetchRole(),1,"");
             this.Gitem1 = item1;
             this.Gitem2 = item2;
             this.Gitem3 = item4;

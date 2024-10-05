@@ -21,12 +21,19 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             onload();
+            comboBox1.Items.Add("All items");
             onloadcombo();
+
             //add filtering tools select from where cat = combobox.text : woods then add emm only with cat that has woods
         }
         private void onload()
         {
             subcatinfo.Clear();
+            foreach(UserControl i in ItemsBox.Controls)
+            {
+                i.Dispose();
+            }
+            ItemsBox.Controls.Clear();
             SQLiteCommand scom1 = new SQLiteCommand("SELECT CATEGORYDESC,CATEGORYID FROM CATEGORY;", initd.scon);
             SQLiteDataReader sq1 = scom1.ExecuteReader();
             while (sq1.Read()) {
@@ -34,11 +41,11 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
             }
             sq1.Close();
             ///delay a bit
-            scom1.CommandText = "SELECT SUBCATEGORYDESC,MARKUPVALUE,CATEGORYID FROM SUBCATEGORY;";
+            scom1.CommandText = "SELECT SUBCATEGORYID,SUBCATEGORYDESC,MARKUPVALUE,CATEGORYID FROM SUBCATEGORY;";
             SQLiteDataReader sq2 = scom1.ExecuteReader();
             while (sq2.Read())
             {
-                Components.Sub_Category item1 = new Components.Sub_Category(sq2["SUBCATEGORYDESC"].ToString(), subcatinfo[sq2["CATEGORYID"]], sq2["MARKUPVALUE"].ToString());
+                Components.Sub_Category item1 = new Components.Sub_Category(sq2["SUBCATEGORYDESC"].ToString(), subcatinfo[sq2["CATEGORYID"]].ToString(), sq2["MARKUPVALUE"].ToString(),Convert.ToInt32(sq2["SUBCATEGORYID"]));
                 ItemsBox.Controls.Add(item1);
             }
              
@@ -58,12 +65,12 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
             }
             sq1.Close();
             ///delay a bit
-            scom1.CommandText = "SELECT SUBCATEGORYDESC,MARKUPVALUE,CATEGORYID FROM SUBCATEGORY WHERE CATEGORYID = "+subfilter[filterval]+ ";";
+            scom1.CommandText = "SELECT SUBCATEGORYID,SUBCATEGORYDESC,MARKUPVALUE,CATEGORYID FROM SUBCATEGORY WHERE CATEGORYID = "+subfilter[filterval]+ ";";
             SQLiteDataReader sq2 = scom1.ExecuteReader();
             ItemsBox.Controls.Clear();//much better kung dispose ang gagamitin
             while (sq2.Read())
             {
-                Components.Sub_Category item1 = new Components.Sub_Category(sq2["SUBCATEGORYDESC"].ToString(), subcatinfo[sq2["CATEGORYID"]], sq2["MARKUPVALUE"].ToString());
+                Components.Sub_Category item1 = new Components.Sub_Category(sq2["SUBCATEGORYDESC"].ToString(), subcatinfo[sq2["CATEGORYID"]], sq2["MARKUPVALUE"].ToString(),Convert.ToInt32(sq2["SUBCATEGORYID"]));
                 ItemsBox.Controls.Add(item1);
             }
 
@@ -73,6 +80,7 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
 
         private void onloadcombo()
         {
+
             SQLiteCommand scom1 = new SQLiteCommand("SELECT CATEGORYDESC,CATEGORYID FROM CATEGORY;", initd.scon);
             SQLiteDataReader sq1 = scom1.ExecuteReader();
             while (sq1.Read())
@@ -92,7 +100,7 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
         private void addSubCatBTN_Click(object sender, EventArgs e)
         {
             ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
-            ModulesSecond.FileMaintenance.SubCategory.AddSubCategory unit1 = new ModulesSecond.FileMaintenance.SubCategory.AddSubCategory();
+            ModulesSecond.FileMaintenance.SubCategory.AddSubCategory unit1 = new ModulesSecond.FileMaintenance.SubCategory.AddSubCategory(1,0,"");
             ResponsiveUI1.title = "AddSubCategory";
             ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
             ResponsiveUI1.spl1.Controls.Add(unit1);
@@ -100,24 +108,52 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
 
         private void srchBTN_Click(object sender, EventArgs e)
         {
-
+            search(txtboxSearchBox.Text);
         }
-
+        private  void search(String text)
+        {
+            foreach (UserControl i in ItemsBox.Controls)
+            {
+                i.Dispose();
+            }
+            ItemsBox.Controls.Clear();
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT SUBCATEGORYID,SUBCATEGORYDESC,MARKUPVALUE,CATEGORYID FROM SUBCATEGORY WHERE SUBCATEGORYDESC LIKE '%"+text+"%';", initd.scon);
+            SQLiteDataReader sq2 = scom1.ExecuteReader();
+            while (sq2.Read())
+            {
+                Components.Sub_Category item1 = new Components.Sub_Category(sq2["SUBCATEGORYDESC"].ToString(), subcatinfo[sq2["CATEGORYID"]].ToString(), sq2["MARKUPVALUE"].ToString(), Convert.ToInt32(sq2["SUBCATEGORYID"]));
+                ItemsBox.Controls.Add(item1);
+            }
+            scom1 = null;
+            sq2 = null;
+        }
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
             //kung yung combobox ay wlang laman use load else 
             if (comboBox1.Text == "")
             {
                 onload();
+            }
+            else if (comboBox1.Text == "All items")
+            {
+
+                onload();
 
             }
             else
             {
                 Filter(comboBox1.Text);
+            }
+          //on close items box dispose
+        }
 
+        private void txtboxSearchBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (txtboxSearchBox.Text != "")
+            {
+                txtboxSearchBox.Text = "";
 
             }
-           
         }
     }
 }

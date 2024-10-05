@@ -26,6 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,6 +36,13 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>JUFAV_System.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\JFF.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -161,9 +169,6 @@
     <Compile Include="Components\US.DataBox.Designer.cs">
       <DependentUpon>US.DataBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="dll\AnimationFunctions01.cs" />
-    <Compile Include="dll\CommunicateDB.cs" />
-    <Compile Include="dll\Globalvar.cs" />
     <Compile Include="dll\initd.cs" />
     <Compile Include="dll\ResponsiveUI1.cs" />
     <Compile Include="Ffirstrun\DbSetup.cs">
@@ -394,6 +399,18 @@
     <Compile Include="ModulesSecond\FileMaintenance\Category\AddCategory.Designer.cs">
       <DependentUpon>AddCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModulesSecond\FileMaintenance\markup\AddMarkup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesSecond\FileMaintenance\markup\AddMarkup.Designer.cs">
+      <DependentUpon>AddMarkup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesSecond\FileMaintenance\Products\AddProducts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesSecond\FileMaintenance\Products\AddProducts.Designer.cs">
+      <DependentUpon>AddProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModulesSecond\FileMaintenance\SubCategory\AddSubCategory.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -450,6 +467,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SANDBOX.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -573,6 +595,12 @@
     <EmbeddedResource Include="ModulesSecond\FileMaintenance\Category\AddCategory.resx">
       <DependentUpon>AddCategory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModulesSecond\FileMaintenance\markup\AddMarkup.resx">
+      <DependentUpon>AddMarkup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesSecond\FileMaintenance\Products\AddProducts.resx">
+      <DependentUpon>AddProducts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModulesSecond\FileMaintenance\SubCategory\AddSubCategory.resx">
       <DependentUpon>AddSubCategory.cs</DependentUpon>
     </EmbeddedResource>
@@ -613,11 +641,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -632,6 +655,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DEBUG DATABASE\" />
+    <Folder Include="ModulesSecond\FileMaintenance\vat\" />
+    <Folder Include="ModulesSecond\Inventory\" />
+    <Folder Include="x64\" />
+    <Folder Include="x86\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\dash.png" />
@@ -669,17 +696,20 @@
     <None Include="Resources\Eye.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Close %281%29.png" />
+    <None Include="Resources\Close.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\UTILITIES.png" />
+    <None Include="Resources\Minus.png" />
+    <None Include="Resources\Plus.png" />
     <None Include="Resources\JufavLogoback.mp4" />
     <None Include="Resources\Print.png" />
-    <None Include="Resources\Preview Pane %281%29.png" />
-    <None Include="Resources\Search %282%29.png" />
+    <None Include="Resources\Preview Pane.png" />
+    <None Include="Resources\Search.png" />
     <None Include="Resources\chkbox.png" />
     <None Include="Resources\dlt.png" />
     <None Include="Resources\error.png" />
-    <None Include="Resources\Edit %281%29.png" />
+    <None Include="Resources\Edit.png" />
     <None Include="Resources\Ellipsis.png" />
     <None Include="Resources\Export Pdf.png" />
     <Content Include="Resources\Hide.png" />
