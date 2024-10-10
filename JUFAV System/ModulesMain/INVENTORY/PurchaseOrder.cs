@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JUFAV_System.dll;
 
 namespace JUFAV_System.ModulesMain.INVENTORY
 {
@@ -46,8 +47,11 @@ namespace JUFAV_System.ModulesMain.INVENTORY
         private void CrtPOBTN_Click(object sender, EventArgs e)
         {
             //temporary 
-            Components.PurchaseOrderComponent item1 = new Components.PurchaseOrderComponent();
-            ItemsBox.Controls.Add(item1);
+            ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
+            ModulesSecond.Inventory.AddPurchaseOrder cat1 = new ModulesSecond.Inventory.AddPurchaseOrder();
+            ResponsiveUI1.title = "AddPurchaseOrder";
+            ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+            ResponsiveUI1.spl1.Controls.Add(cat1);
         }
 
         private void srchBTN_Click(object sender, EventArgs e)

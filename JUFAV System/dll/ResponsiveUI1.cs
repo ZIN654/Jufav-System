@@ -13,7 +13,9 @@ namespace JUFAV_System.dll
         public static Label headingtitle;
         //this spl1 is the panel fromm the core 
         public static Panel spl1;
-        public static String title;
+        public static String title = "";
+        //panel for login
+        
 
 
 

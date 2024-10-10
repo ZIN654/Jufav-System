@@ -20,6 +20,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
         Dictionary<string,int> category;
         Dictionary<string,int> Subcategory;
         Dictionary<string,int> UoM;
+        Dictionary<string, int> Supplier;
         Hashtable categoryinfo;
         int summonmode;
         int idtoedit1;
@@ -35,8 +36,10 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
             category = new Dictionary<string , int>();
             Subcategory = new Dictionary<string, int>();
             UoM = new Dictionary<string, int>();
-
             categoryinfo = new Hashtable();
+            Supplier = new Dictionary<string, int>();
+            Supplier.Add("Unknown",00000);
+            splcmbox.Items.Add("Unknown");
             //note na dapatat mag iinsert sya ng name ng product
 
             if (summontype == 0)
@@ -90,7 +93,17 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
                 UoM.Add(sq1["UNITDESC"].ToString(),Convert.ToInt32(sq1["UNITID"]));
 
             }
+            sq1.Close();
+            scom1.CommandText = "SELECT  * FROM SUPPLIERS";
+            sq1 = scom1.ExecuteReader();
+            while (sq1.Read())
+            {
+                splcmbox.Items.Add(sq1["SUPPLIERNAME"].ToString());
+                Supplier.Add(sq1["SUPPLIERNAME"].ToString(), Convert.ToInt32(sq1["SUPPLIERID"]));
 
+            }
+            sq1 = null;
+            scom1 = null;
 
         }
         private void insert()
@@ -99,7 +112,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
             this.Cursor = Cursors.WaitCursor;
             //auto increment or manual generation ID?id say auto increment sinceproducts are too many
             //USERID INT NOT NULL,CATEGORYID INT NOT NULL,SUBCATEGORYID INT NOT NULL,UOMID INT NOT NULL,PRODUCTNAME VARCHAR(50),ORIGINALPICE INT,QUANTITY INT,PERISHABLEPRODUCT VARCHAR(2),ISBATCH VARCHAR(2),EXPIRINGDATE DATE
-            SQLiteCommand sq1 = new SQLiteCommand("INSERT INTO PRODUCTS (USERID,CATEGORYID,SUBCATEGORYID,UOMID,PRODUCTNAME,ORIGINALPICE,QUANTITY,PERISHABLEPRODUCT,ISBATCH,EXPIRINGDATE)VALUES(" + initd.UserID + "," + Convert.ToInt32(category[CategoryCOmbo.Text])+"," + Convert.ToInt32(Subcategory[SubCatCombo.Text])+"," + Convert.ToInt32(UoM[Unittypecombobox.Text])+",'" +Prodnametxtbox.Text+"'," + Convert.ToInt32(OriginalPricetxtbox.Text)+"," + Convert.ToInt32(InitialStcktxtbox.Text) +","+determinevalue2(prsishablechbox.Checked) +"," +determinevalue()+",'" +date()+ "');",initd.scon);
+            SQLiteCommand sq1 = new SQLiteCommand("INSERT INTO PRODUCTS (USERID,CATEGORYID,SUBCATEGORYID,UOMID,PRODUCTNAME,ORIGINALPICE,QUANTITY,SUPPLIERID,PERISHABLEPRODUCT,ISBATCH,EXPIRINGDATE)VALUES(" + initd.UserID + "," + Convert.ToInt32(category[CategoryCOmbo.Text])+"," + Convert.ToInt32(Subcategory[SubCatCombo.Text])+"," + Convert.ToInt32(UoM[Unittypecombobox.Text])+",'" +Prodnametxtbox.Text+"'," + Convert.ToInt32(OriginalPricetxtbox.Text)+"," + Convert.ToInt32(InitialStcktxtbox.Text) +"," + Convert.ToInt32(Supplier[splcmbox.Text]) + ","+determinevalue2(prsishablechbox.Checked) +"," +determinevalue()+",'" +date()+ "');",initd.scon);
             sq1.ExecuteNonQuery();
 
             this.Cursor = Cursors.Default;

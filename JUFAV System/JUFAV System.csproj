@@ -127,6 +127,24 @@
     <Compile Include="Components\MarkUpDatabox.Designer.cs">
       <DependentUpon>MarkUpDatabox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\OfferedProdPODatabox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\OfferedProdPODatabox.Designer.cs">
+      <DependentUpon>OfferedProdPODatabox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\OfferedProdsPODataBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\OfferedProdsPODataBox.Designer.cs">
+      <DependentUpon>OfferedProdsPODataBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\POlistDataBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\POlistDataBox.Designer.cs">
+      <DependentUpon>POlistDataBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\ProductComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -315,6 +333,18 @@
     <Compile Include="ModulesMain\INVENTORY\StockAdjustment.Designer.cs">
       <DependentUpon>StockAdjustment.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModulesMain\LOGIN\Fogotpass.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\LOGIN\Fogotpass.Designer.cs">
+      <DependentUpon>Fogotpass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\LOGIN\LoginPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\LOGIN\LoginPanel.Designer.cs">
+      <DependentUpon>LoginPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModulesMain\LOGIN\Log_in.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -429,6 +459,12 @@
     <Compile Include="ModulesSecond\FileMaintenance\UnitOfMeasure\AddUnitOfMeasure.Designer.cs">
       <DependentUpon>AddUnitOfMeasure.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModulesSecond\Inventory\AddPurchaseOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesSecond\Inventory\AddPurchaseOrder.Designer.cs">
+      <DependentUpon>AddPurchaseOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModulesSecond\UsersettingsAddUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -486,6 +522,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\MarkUpDatabox.resx">
       <DependentUpon>MarkUpDatabox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\OfferedProdPODatabox.resx">
+      <DependentUpon>OfferedProdPODatabox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\OfferedProdsPODataBox.resx">
+      <DependentUpon>OfferedProdsPODataBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\POlistDataBox.resx">
+      <DependentUpon>POlistDataBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\ProductComponent.resx">
       <DependentUpon>ProductComponent.cs</DependentUpon>
@@ -580,6 +625,12 @@
     <EmbeddedResource Include="ModulesMain\INVENTORY\StockAdjustment.resx">
       <DependentUpon>StockAdjustment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\LOGIN\Fogotpass.resx">
+      <DependentUpon>Fogotpass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\LOGIN\LoginPanel.resx">
+      <DependentUpon>LoginPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModulesMain\LOGIN\Log_in.resx">
       <DependentUpon>Log_in.cs</DependentUpon>
     </EmbeddedResource>
@@ -609,6 +660,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModulesSecond\FileMaintenance\UnitOfMeasure\AddUnitOfMeasure.resx">
       <DependentUpon>AddUnitOfMeasure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesSecond\Inventory\AddPurchaseOrder.resx">
+      <DependentUpon>AddPurchaseOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModulesSecond\UsersettingsAddUser.resx">
       <DependentUpon>UsersettingsAddUser.cs</DependentUpon>
@@ -656,7 +710,6 @@
   <ItemGroup>
     <Folder Include="DEBUG DATABASE\" />
     <Folder Include="ModulesSecond\FileMaintenance\vat\" />
-    <Folder Include="ModulesSecond\Inventory\" />
     <Folder Include="x64\" />
     <Folder Include="x86\" />
   </ItemGroup>

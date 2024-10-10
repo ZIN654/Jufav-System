@@ -23,8 +23,11 @@ namespace JUFAV_System
             String path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/JUFAVSQLITE";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             if (Directory.Exists(path) == true) {//if database||folderpath||file is not  existing  
-               Application.Run(new ModulesMain.LOGIN.JUFAV_LOGIN());
+             Application.Run(new ModulesMain.LOGIN.JUFAV_LOGIN());
+                //Application.Run(new SANDBOX());
+
             }
             else
             {     

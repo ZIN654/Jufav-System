@@ -12,6 +12,15 @@ using System.Text.RegularExpressions;
 using System.Security.Cryptography;
 using JUFAV_System.dll;
 using System.Data.SqlClient;
+//EMAIL SMTP LIBS
+using System.Net.Mail;
+using System.Net;
+//network detection
+using System.Net.NetworkInformation;
+
+
+
+
 
 
 using System.Data.SQLite;
@@ -25,6 +34,10 @@ namespace JUFAV_System
         public static int loopset = 0;//kung saan mag iistart ulet yung loop
         public static int current = 0;//kung saan last tumigil yung loop
         public static int countlimit = 10;
+        //networking
+
+       
+
         //check length /record the index start count if 10 na yung item record mo kung saang index so we can read it based on that gaya ng starting point 0
         //ang starting point ay 0 then ang show count ay 10  
         public SANDBOX()
@@ -46,7 +59,7 @@ namespace JUFAV_System
         public void set()
         {
             //for changing array starting point to read
-            LastIndex.Text = users.Length.ToString();
+          //  LastIndex.Text = users.Length.ToString();
 
 
             //before loop begins musst check kung yung natirang last part ay equally or greater 10
@@ -100,6 +113,54 @@ namespace JUFAV_System
 
             }
             */
+        }
+        private void detectNet()
+        {
+           
+            String hostnam = Dns.GetHostName().ToString();
+            String ip = Dns.GetHostByName(hostnam).AddressList[0].ToString();
+            if ("127.0.0.1" == ip){
+                MessageBox.Show(this, "PLEASE CONNECT TO INTERNET AND TRY AGAIN", "INTERNET CONNECTION", MessageBoxButtons.OK); }
+            else {
+                //sendemail();
+                MessageBox.Show(this, "NETWORK IS AVAILABLE SENDING EMAIL", "INTERNET CONNECTION", MessageBoxButtons.OK);
+            }
+            hostnam = null;
+            ip = null; 
+        }
+        private void sendemail()
+        {
+            //email sending test study
+            string fromMail = "";
+            string frompassword = "";
+
+            MailMessage message = new MailMessage();
+            message.From = new MailAddress(fromMail);
+            message.Subject = "TEST SUBJECT";
+            message.To.Add(new MailAddress("RECEIVERGMAIL"));
+            message.Body = "<html><body>TEST BODY</body></html>";
+            message.IsBodyHtml = true;
+
+            var smtpClient = new SmtpClient("smtp.gmail.com")
+            {
+                //another way to setup the properties of a class.librariy
+                Port = 587,
+                Credentials = new NetworkCredential(fromMail,frompassword),
+                EnableSsl = true,
+
+            };
+            //sends the message
+            smtpClient.Send(message);
+          
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            detectNet();
+           
+           
+
+
+               
         }
     }
 }

@@ -84,6 +84,8 @@
             this.StockQuantitytxtbox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.AddBatchBTn = new System.Windows.Forms.Button();
+            this.Suplir = new System.Windows.Forms.Label();
+            this.splcmbox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.pan.SuspendLayout();
@@ -164,7 +166,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.45481F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.54519F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(991, 217);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(991, 263);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
             // label1
@@ -173,12 +175,14 @@
             this.label1.Font = new System.Drawing.Font("Actor", 12F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(170, 18);
+            this.label1.Size = new System.Drawing.Size(170, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "ADD NEW PRODUCT";
             // 
             // pan
             // 
+            this.pan.Controls.Add(this.splcmbox);
+            this.pan.Controls.Add(this.Suplir);
             this.pan.Controls.Add(this.InitialStcktxtbox);
             this.pan.Controls.Add(this.label9);
             this.pan.Controls.Add(this.Unittypecombobox);
@@ -195,15 +199,15 @@
             this.pan.Controls.Add(this.Prodnametxtbox);
             this.pan.Controls.Add(this.label2);
             this.pan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pan.Location = new System.Drawing.Point(3, 21);
+            this.pan.Location = new System.Drawing.Point(3, 25);
             this.pan.Name = "pan";
-            this.pan.Size = new System.Drawing.Size(717, 193);
+            this.pan.Size = new System.Drawing.Size(717, 235);
             this.pan.TabIndex = 1;
             // 
             // InitialStcktxtbox
             // 
             this.InitialStcktxtbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InitialStcktxtbox.Location = new System.Drawing.Point(170, 152);
+            this.InitialStcktxtbox.Location = new System.Drawing.Point(170, 185);
             this.InitialStcktxtbox.Name = "InitialStcktxtbox";
             this.InitialStcktxtbox.Size = new System.Drawing.Size(211, 26);
             this.InitialStcktxtbox.TabIndex = 15;
@@ -212,7 +216,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.label9.Location = new System.Drawing.Point(3, 153);
+            this.label9.Location = new System.Drawing.Point(3, 186);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(133, 23);
             this.label9.TabIndex = 14;
@@ -222,7 +226,7 @@
             // 
             this.Unittypecombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Unittypecombobox.FormattingEnabled = true;
-            this.Unittypecombobox.Location = new System.Drawing.Point(540, 117);
+            this.Unittypecombobox.Location = new System.Drawing.Point(540, 150);
             this.Unittypecombobox.Name = "Unittypecombobox";
             this.Unittypecombobox.Size = new System.Drawing.Size(165, 21);
             this.Unittypecombobox.TabIndex = 13;
@@ -231,7 +235,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.label8.Location = new System.Drawing.Point(387, 118);
+            this.label8.Location = new System.Drawing.Point(387, 151);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(99, 23);
             this.label8.TabIndex = 12;
@@ -240,7 +244,7 @@
             // OriginalPricetxtbox
             // 
             this.OriginalPricetxtbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OriginalPricetxtbox.Location = new System.Drawing.Point(170, 115);
+            this.OriginalPricetxtbox.Location = new System.Drawing.Point(170, 148);
             this.OriginalPricetxtbox.Name = "OriginalPricetxtbox";
             this.OriginalPricetxtbox.Size = new System.Drawing.Size(211, 26);
             this.OriginalPricetxtbox.TabIndex = 11;
@@ -249,7 +253,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.label7.Location = new System.Drawing.Point(3, 116);
+            this.label7.Location = new System.Drawing.Point(3, 149);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(150, 23);
             this.label7.TabIndex = 10;
@@ -259,7 +263,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.label6.Location = new System.Drawing.Point(387, 79);
+            this.label6.Location = new System.Drawing.Point(387, 112);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(241, 23);
             this.label6.TabIndex = 9;
@@ -269,7 +273,7 @@
             // 
             this.mkuptxtbox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mkuptxtbox1.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.mkuptxtbox1.Location = new System.Drawing.Point(170, 78);
+            this.mkuptxtbox1.Location = new System.Drawing.Point(170, 111);
             this.mkuptxtbox1.Name = "mkuptxtbox1";
             this.mkuptxtbox1.Size = new System.Drawing.Size(211, 26);
             this.mkuptxtbox1.TabIndex = 8;
@@ -279,7 +283,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.label5.Location = new System.Drawing.Point(3, 79);
+            this.label5.Location = new System.Drawing.Point(3, 112);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(168, 23);
             this.label5.TabIndex = 7;
@@ -326,7 +330,7 @@
             // Prodnametxtbox
             // 
             this.Prodnametxtbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Prodnametxtbox.Location = new System.Drawing.Point(170, 41);
+            this.Prodnametxtbox.Location = new System.Drawing.Point(170, 74);
             this.Prodnametxtbox.Name = "Prodnametxtbox";
             this.Prodnametxtbox.Size = new System.Drawing.Size(535, 26);
             this.Prodnametxtbox.TabIndex = 2;
@@ -335,7 +339,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.label2.Location = new System.Drawing.Point(3, 42);
+            this.label2.Location = new System.Drawing.Point(3, 75);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(155, 23);
             this.label2.TabIndex = 0;
@@ -354,9 +358,9 @@
             this.panel1.Controls.Add(this.CatSubIm);
             this.panel1.Controls.Add(this.Catnot);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(726, 21);
+            this.panel1.Location = new System.Drawing.Point(726, 25);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(262, 193);
+            this.panel1.Size = new System.Drawing.Size(262, 235);
             this.panel1.TabIndex = 2;
             // 
             // InitStckImg
@@ -556,9 +560,9 @@
             this.itemsBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemsBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.itemsBox.Enabled = false;
-            this.itemsBox.Location = new System.Drawing.Point(0, 401);
+            this.itemsBox.Location = new System.Drawing.Point(0, 447);
             this.itemsBox.Name = "itemsBox";
-            this.itemsBox.Size = new System.Drawing.Size(991, 132);
+            this.itemsBox.Size = new System.Drawing.Size(991, 86);
             this.itemsBox.TabIndex = 7;
             // 
             // singlprod
@@ -597,7 +601,7 @@
             this.tableLayoutPanel3.Controls.Add(this.batchprod, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.singlprod, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 217);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 263);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.65753F));
@@ -612,14 +616,14 @@
             this.batchprodadd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.0982F));
             this.batchprodadd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.9018F));
             this.batchprodadd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 327F));
-            this.batchprodadd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 209F));
+            this.batchprodadd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 211F));
             this.batchprodadd.Controls.Add(this.panel2, 1, 0);
             this.batchprodadd.Controls.Add(this.panel3, 2, 0);
             this.batchprodadd.Controls.Add(this.label14, 0, 0);
             this.batchprodadd.Controls.Add(this.panel4, 3, 0);
             this.batchprodadd.Dock = System.Windows.Forms.DockStyle.Top;
             this.batchprodadd.Enabled = false;
-            this.batchprodadd.Location = new System.Drawing.Point(0, 333);
+            this.batchprodadd.Location = new System.Drawing.Point(0, 379);
             this.batchprodadd.Name = "batchprodadd";
             this.batchprodadd.RowCount = 1;
             this.batchprodadd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -631,10 +635,10 @@
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.Batchno);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(222, 1);
+            this.panel2.Location = new System.Drawing.Point(221, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(229, 66);
+            this.panel2.Size = new System.Drawing.Size(228, 66);
             this.panel2.TabIndex = 0;
             // 
             // label12
@@ -667,7 +671,7 @@
             this.panel3.Controls.Add(this.label13);
             this.panel3.Controls.Add(this.dateexpiration);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(452, 1);
+            this.panel3.Location = new System.Drawing.Point(450, 1);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(327, 66);
@@ -710,10 +714,10 @@
             this.panel4.Controls.Add(this.label15);
             this.panel4.Controls.Add(this.AddBatchBTn);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(780, 1);
+            this.panel4.Location = new System.Drawing.Point(778, 1);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(210, 66);
+            this.panel4.Size = new System.Drawing.Size(212, 66);
             this.panel4.TabIndex = 3;
             // 
             // pictureBox1
@@ -764,6 +768,24 @@
             this.AddBatchBTn.Text = "ADD";
             this.AddBatchBTn.UseVisualStyleBackColor = true;
             this.AddBatchBTn.Click += new System.EventHandler(this.AddBatchBTn_Click);
+            // 
+            // Suplir
+            // 
+            this.Suplir.AutoSize = true;
+            this.Suplir.Font = new System.Drawing.Font("Actor", 14.25F);
+            this.Suplir.Location = new System.Drawing.Point(3, 41);
+            this.Suplir.Name = "Suplir";
+            this.Suplir.Size = new System.Drawing.Size(94, 23);
+            this.Suplir.TabIndex = 16;
+            this.Suplir.Text = "SUPPLIER";
+            // 
+            // splcmbox
+            // 
+            this.splcmbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.splcmbox.Location = new System.Drawing.Point(171, 42);
+            this.splcmbox.Name = "splcmbox";
+            this.splcmbox.Size = new System.Drawing.Size(534, 21);
+            this.splcmbox.TabIndex = 17;
             // 
             // AddProducts
             // 
@@ -866,5 +888,7 @@
         private System.Windows.Forms.Label MKupnot;
         private System.Windows.Forms.PictureBox ProdnameImg;
         private System.Windows.Forms.Label ProdnameNot;
+        private System.Windows.Forms.ComboBox splcmbox;
+        private System.Windows.Forms.Label Suplir;
     }
 }

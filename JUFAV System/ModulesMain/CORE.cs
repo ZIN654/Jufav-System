@@ -19,9 +19,10 @@ namespace JUFAV_System.ModulesMain
     public partial class CORE : Form
     {
         public static int switchshow = 0;
-        private Form loginpanel;//pag nag logout show nalang ito para hindi na ulit susumon magastos memory
+        private  UserControl loginpanel;//pag nag logout show nalang ito para hindi na ulit susumon magastos memory
+        Panel itemsbox1;
         //apply margin zero later
-        public CORE(Form loginform)
+        public CORE(UserControl loginform,Panel itemsbox)
         {
             this.loginpanel = loginform;
             // this.container1.Controls.Add(Bcres);
@@ -29,6 +30,7 @@ namespace JUFAV_System.ModulesMain
 
             SET_CONTROLS_PARAMETER();
             addevents();
+            itemsbox1 = itemsbox;
             //  initd.opendatabase();//do not open database in any other panel since mag bubukas na sya sa 
             //log in panel pa lang  
             Username.Text = initd.username;
@@ -116,6 +118,7 @@ namespace JUFAV_System.ModulesMain
             //One time run only each load of the panel
             //time date must be moving 
             //set null when no longer needed garabage collector na bahala
+          
             Date.Text = today.ToShortDateString();
         }
         public void SetTime()
@@ -148,7 +151,8 @@ namespace JUFAV_System.ModulesMain
 
         private void CORE_FormClosed(object sender, FormClosedEventArgs e)
         {
-          //  initd.closedatabase();
+            ResponsiveUI1.title = "LoginPanel";
+            ResponsiveUI1.spl1 = itemsbox1;
         }
     }
 }
