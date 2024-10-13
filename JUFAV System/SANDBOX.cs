@@ -17,6 +17,7 @@ using System.Net.Mail;
 using System.Net;
 //network detection
 using System.Net.NetworkInformation;
+using System.Globalization;
 
 
 
@@ -155,12 +156,14 @@ namespace JUFAV_System
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            detectNet();
-           
-           
+            // detectNet();
+            
+            label1.Text = DateTime.Parse(dateTimePicker1.Text).ToShortDateString();
+            //Console.WriteLine(Regex.IsMatch(MESSAGE.Text, @"@gmail.com"));
 
 
-               
+
+
         }
     }
 }

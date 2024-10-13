@@ -23,6 +23,7 @@ namespace JUFAV_System.Ffirstrun
         bool isverfied2;
         public bool reason;
         public int AdminAccountLimit = 5;
+       
         //if account has same name email .mag kaka error sa hashtable once na mag insert ulet
         //prevent user from inserting the same information.
         //pag nag update ako ng username at iba pang user info make sure na wala itongka pares
@@ -47,9 +48,6 @@ namespace JUFAV_System.Ffirstrun
             
 
         }
-
-
-
         public void clear()
         {
             NAME.Text = "";
@@ -60,15 +58,33 @@ namespace JUFAV_System.Ffirstrun
         }
         public void addaccounts()
         {
+            checkDuplicateVerifyEmail();
             hide();
             verify();
             hasaccount();
-           
-
         }
-
-
-
+        public void checkDuplicateVerifyEmail()
+        {
+            //important things when checking for duplicate is : name/
+            //search must be selected in all  fields
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM USER_INFO WHERE USERNAME LIKE '%"+USERNAME.Text+"%'",initd.scon);
+            SQLiteDataReader sread1 = scom1.ExecuteReader();
+            while (sread1.Read())
+            {
+                if (USERNAME.Text == sread1["USERNAME"].ToString())
+                {
+                    MessageBox.Show(this,"THIS USERNAME IS USED PLEASE CHOOSE OTHER USERNAME","USERNAME DUPLICATION",MessageBoxButtons.OK);
+                    USERNAME.Text = "";
+                }
+            }
+            
+            if (Regex.IsMatch(EMAIL.Text,"@gmail.com") == false)
+            {
+                MessageBox.Show(this, "Invalid email,Please try again", "Email not Valid", MessageBoxButtons.OK);
+                EMAIL.Text = "";
+            }
+            
+        }
         public void verify()
         {
             isverfied1 = true;

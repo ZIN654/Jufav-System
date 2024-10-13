@@ -14,7 +14,7 @@ namespace JUFAV_System.Components
 {
     public partial class SUPDatabox : UserControl
     {
-        private int id;
+        public int id;
         public SUPDatabox(String Suppliername,String COntacPerson,String ContactNum,String Address,int ID)
         {
             InitializeComponent();

@@ -62,7 +62,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.25665F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.00469F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.38312F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 108F));
             this.tableLayoutPanel1.Controls.Add(this.panel2, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtboxSearchBox, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
@@ -82,7 +82,7 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.SubCatCombo);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(296, 3);
+            this.panel2.Location = new System.Drawing.Point(295, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(135, 33);
             this.panel2.TabIndex = 9;
@@ -112,10 +112,10 @@
             // 
             this.txtboxSearchBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtboxSearchBox.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.txtboxSearchBox.Location = new System.Drawing.Point(437, 4);
+            this.txtboxSearchBox.Location = new System.Drawing.Point(436, 4);
             this.txtboxSearchBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
             this.txtboxSearchBox.Name = "txtboxSearchBox";
-            this.txtboxSearchBox.Size = new System.Drawing.Size(175, 26);
+            this.txtboxSearchBox.Size = new System.Drawing.Size(174, 26);
             this.txtboxSearchBox.TabIndex = 7;
             this.txtboxSearchBox.Text = "SEARCH";
             // 
@@ -124,7 +124,7 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.CategoryCombo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(147, 3);
+            this.panel1.Location = new System.Drawing.Point(146, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(143, 33);
             this.panel1.TabIndex = 8;
@@ -159,7 +159,7 @@
             this.addprdBTN.Font = new System.Drawing.Font("Actor", 11.25F);
             this.addprdBTN.Location = new System.Drawing.Point(3, 3);
             this.addprdBTN.Name = "addprdBTN";
-            this.addprdBTN.Size = new System.Drawing.Size(138, 27);
+            this.addprdBTN.Size = new System.Drawing.Size(137, 27);
             this.addprdBTN.TabIndex = 4;
             this.addprdBTN.Text = "ADD PRODUCT";
             this.addprdBTN.UseVisualStyleBackColor = false;
@@ -172,9 +172,9 @@
             this.srchBTN.Dock = System.Windows.Forms.DockStyle.Top;
             this.srchBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.srchBTN.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.srchBTN.Location = new System.Drawing.Point(618, 3);
+            this.srchBTN.Location = new System.Drawing.Point(616, 3);
             this.srchBTN.Name = "srchBTN";
-            this.srchBTN.Size = new System.Drawing.Size(102, 27);
+            this.srchBTN.Size = new System.Drawing.Size(104, 27);
             this.srchBTN.TabIndex = 7;
             this.srchBTN.UseVisualStyleBackColor = false;
             // 

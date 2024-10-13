@@ -19,6 +19,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
         public bool isverfied2 = true;
         int summontype1;
         int idtoedit1;
+
         public AddCategory(int summontype,int idtoedit)
         {
             InitializeComponent();
@@ -46,6 +47,30 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
             sread1.Close();
             sread1 = null;
             scom1 = null;
+
+        }
+        public void checkDuplicate()
+        {
+            //important things when checking for duplicate is : name/
+            //search must be selected in all  fields
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM CATEGORY WHERE CATEGORYDESC LIKE '%" + Cattxtbox.Text + "%'", initd.scon);
+            SQLiteDataReader sread1 = scom1.ExecuteReader();
+            while (sread1.Read())
+            {
+                if (Cattxtbox.Text == sread1["CATEGORYDESC"].ToString())
+                {
+                    Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(goback, 1, "CATEGORY NAME", "THE CATEGORY NAME IS ALREADY IN USE \n PLEASE USE OTHER NAME.", "OK", 0);
+                    msg2.Show();
+                    Cattxtbox.Text = "";
+                }
+            }
+            /*
+            if (Regex.IsMatch(Cattxtbox.Text, "@gmail.com") == false)
+            {
+                MessageBox.Show(this, "Invalid email,Please try again", "Email not Valid", MessageBoxButtons.OK);
+                Cattxtbox.Text = "";
+            }
+            */
 
         }
         private void update()
@@ -183,6 +208,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
 
         private void addBTN_Click(object sender, EventArgs e)
         {
+            checkDuplicate();
             hide();
             verify();
         }

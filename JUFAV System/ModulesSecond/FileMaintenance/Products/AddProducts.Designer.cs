@@ -34,6 +34,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.pan = new System.Windows.Forms.Panel();
+            this.splcmbox = new System.Windows.Forms.ComboBox();
+            this.Suplir = new System.Windows.Forms.Label();
             this.InitialStcktxtbox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.Unittypecombobox = new System.Windows.Forms.ComboBox();
@@ -84,8 +86,6 @@
             this.StockQuantitytxtbox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.AddBatchBTn = new System.Windows.Forms.Button();
-            this.Suplir = new System.Windows.Forms.Label();
-            this.splcmbox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.pan.SuspendLayout();
@@ -204,6 +204,24 @@
             this.pan.Size = new System.Drawing.Size(717, 235);
             this.pan.TabIndex = 1;
             // 
+            // splcmbox
+            // 
+            this.splcmbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.splcmbox.Location = new System.Drawing.Point(171, 42);
+            this.splcmbox.Name = "splcmbox";
+            this.splcmbox.Size = new System.Drawing.Size(534, 21);
+            this.splcmbox.TabIndex = 17;
+            // 
+            // Suplir
+            // 
+            this.Suplir.AutoSize = true;
+            this.Suplir.Font = new System.Drawing.Font("Actor", 14.25F);
+            this.Suplir.Location = new System.Drawing.Point(3, 41);
+            this.Suplir.Name = "Suplir";
+            this.Suplir.Size = new System.Drawing.Size(94, 23);
+            this.Suplir.TabIndex = 16;
+            this.Suplir.Text = "SUPPLIER";
+            // 
             // InitialStcktxtbox
             // 
             this.InitialStcktxtbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -265,9 +283,9 @@
             this.label6.Font = new System.Drawing.Font("Actor", 14.25F);
             this.label6.Location = new System.Drawing.Point(387, 112);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(241, 23);
+            this.label6.Size = new System.Drawing.Size(247, 23);
             this.label6.TabIndex = 9;
-            this.label6.Text = "CURRENT MARK-UP : 23.00";
+            this.label6.Text = "CURRENT MARK-UP : 00.00";
             // 
             // mkuptxtbox1
             // 
@@ -278,6 +296,7 @@
             this.mkuptxtbox1.Size = new System.Drawing.Size(211, 26);
             this.mkuptxtbox1.TabIndex = 8;
             this.mkuptxtbox1.Text = "leave blank if not use";
+            this.mkuptxtbox1.TextChanged += new System.EventHandler(this.mkuptxtbox1_TextChanged);
             // 
             // label5
             // 
@@ -297,6 +316,7 @@
             this.SubCatCombo.Name = "SubCatCombo";
             this.SubCatCombo.Size = new System.Drawing.Size(165, 21);
             this.SubCatCombo.TabIndex = 6;
+            this.SubCatCombo.SelectedIndexChanged += new System.EventHandler(this.SubCatCombo_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -616,7 +636,7 @@
             this.batchprodadd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.0982F));
             this.batchprodadd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.9018F));
             this.batchprodadd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 327F));
-            this.batchprodadd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 211F));
+            this.batchprodadd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 213F));
             this.batchprodadd.Controls.Add(this.panel2, 1, 0);
             this.batchprodadd.Controls.Add(this.panel3, 2, 0);
             this.batchprodadd.Controls.Add(this.label14, 0, 0);
@@ -635,10 +655,10 @@
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.Batchno);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(221, 1);
+            this.panel2.Location = new System.Drawing.Point(220, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(228, 66);
+            this.panel2.Size = new System.Drawing.Size(227, 66);
             this.panel2.TabIndex = 0;
             // 
             // label12
@@ -671,7 +691,7 @@
             this.panel3.Controls.Add(this.label13);
             this.panel3.Controls.Add(this.dateexpiration);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(450, 1);
+            this.panel3.Location = new System.Drawing.Point(448, 1);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(327, 66);
@@ -714,10 +734,10 @@
             this.panel4.Controls.Add(this.label15);
             this.panel4.Controls.Add(this.AddBatchBTn);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(778, 1);
+            this.panel4.Location = new System.Drawing.Point(776, 1);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(212, 66);
+            this.panel4.Size = new System.Drawing.Size(214, 66);
             this.panel4.TabIndex = 3;
             // 
             // pictureBox1
@@ -768,24 +788,6 @@
             this.AddBatchBTn.Text = "ADD";
             this.AddBatchBTn.UseVisualStyleBackColor = true;
             this.AddBatchBTn.Click += new System.EventHandler(this.AddBatchBTn_Click);
-            // 
-            // Suplir
-            // 
-            this.Suplir.AutoSize = true;
-            this.Suplir.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.Suplir.Location = new System.Drawing.Point(3, 41);
-            this.Suplir.Name = "Suplir";
-            this.Suplir.Size = new System.Drawing.Size(94, 23);
-            this.Suplir.TabIndex = 16;
-            this.Suplir.Text = "SUPPLIER";
-            // 
-            // splcmbox
-            // 
-            this.splcmbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.splcmbox.Location = new System.Drawing.Point(171, 42);
-            this.splcmbox.Name = "splcmbox";
-            this.splcmbox.Size = new System.Drawing.Size(534, 21);
-            this.splcmbox.TabIndex = 17;
             // 
             // AddProducts
             // 

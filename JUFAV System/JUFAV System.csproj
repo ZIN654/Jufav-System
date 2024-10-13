@@ -145,6 +145,12 @@
     <Compile Include="Components\POlistDataBox.Designer.cs">
       <DependentUpon>POlistDataBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\ProdListtDataBoxComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ProdListtDataBoxComponent.Designer.cs">
+      <DependentUpon>ProdListtDataBoxComponent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\ProductComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -531,6 +537,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\POlistDataBox.resx">
       <DependentUpon>POlistDataBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ProdListtDataBoxComponent.resx">
+      <DependentUpon>ProdListtDataBoxComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\ProductComponent.resx">
       <DependentUpon>ProductComponent.cs</DependentUpon>

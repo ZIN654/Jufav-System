@@ -100,13 +100,13 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.Font = new System.Drawing.Font("Actor", 12F);
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(241, 106);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(464, 29);
             this.comboBox2.TabIndex = 6;
-            this.comboBox2.Text = "type value for custom markup or select from the drop box";
             // 
             // label4
             // 

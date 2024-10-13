@@ -67,7 +67,7 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
             SQLiteDataReader read1 = sq1.ExecuteReader();
             while (read1.Read())
             {
-                Components.ProductComponent prod1 = new Components.ProductComponent(read1["PRODUCTNAME"].ToString(), read1["CATEGORYID"].ToString(), read1["SUBCATEGORYID"].ToString(), Convert.ToInt32(read1["QUANTITY"]),read1["UOMID"].ToString(), Convert.ToDouble(read1["ORIGINALPICE"]),Convert.ToDouble(read1["ORIGINALPICE"]),Convert.ToInt32(read1["PRODUCTID"]));
+                Components.ProductComponent prod1 = new Components.ProductComponent(read1["PRODUCTNAME"].ToString(), read1["CATEGORYID"].ToString(), read1["SUBCATEGORYID"].ToString(), Convert.ToInt32(read1["QUANTITY"]),read1["UOMID"].ToString(), Convert.ToDouble(read1["ORIGINALPICE"]),Convert.ToDouble(read1["ORIGINALPICE"]) + Convert.ToDouble(read1["MARKUPVALUE"]), Convert.ToInt32(read1["PRODUCTID"]));
                 ItemsBox.Controls.Add(prod1);
                 
             }

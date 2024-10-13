@@ -34,6 +34,32 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
 
             }
         }
+        public void checkDuplicate()
+        {
+            //important things when checking for duplicate is : name/
+            //search must be selected in all  fields
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM UNITOFMEASURE WHERE UNITDESC LIKE '%" + UofMtxtbox.Text + "%' OR UNITABBREVIATION LIKE '%" + Abbreviatiotxtbox.Text + "%'", initd.scon);
+            SQLiteDataReader sread1 = scom1.ExecuteReader();
+            while (sread1.Read())
+            {
+                //UNITDESC VARCHAR(50),UNITABBREVIATION 
+                if (UofMtxtbox.Text == sread1["UNITDESC"].ToString() || Abbreviatiotxtbox.Text == sread1["UNITABBREVIATION"].ToString())
+                {
+                    Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(goback, 1, "UOM UPDATE", "THE INSERTED UNIT DESCRIPTION IS ALREADY IN USE \n PLEASE USE OTHER NAME.", "OK", 0);
+                    msg2.Show();
+                    UofMtxtbox.Text = "";
+                    Abbreviatiotxtbox.Text = "";
+                }
+            }
+            /*
+            if (Regex.IsMatch(Cattxtbox.Text, "@gmail.com") == false)
+            {
+                MessageBox.Show(this, "Invalid email,Please try again", "Email not Valid", MessageBoxButtons.OK);
+                Cattxtbox.Text = "";
+            }
+            */
+
+        }
         private void loaddata(int idtoedit)
         {
             SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM UNITOFMEASURE WHERE UNITID = " + idtoedit + ";", initd.scon);
@@ -171,6 +197,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
 
         private void addBTN_Click(object sender, EventArgs e)
         {
+            checkDuplicate();
             hide();
             verify(summontype1);
         }

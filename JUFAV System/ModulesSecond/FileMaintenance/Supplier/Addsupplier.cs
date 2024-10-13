@@ -56,7 +56,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Supplier
         {
             this.Cursor = Cursors.WaitCursor;
             //SQLIETE using idtoedit  (SUPPLIERID INT NOT NULL PRIMARY KEY,USERID INT,SUPPLIERNAME VARCHAR(50),CONTACTPERSON VARCHAR(50),CONTACTNUMBER VARCHAR(50),COMPANYADDRESS VARCHAR(100)
-            SQLiteCommand sq1 = new SQLiteCommand("UPDATE SUPPLIERS SET SUPPLIERNAME = '"+ ComapnynametxtBX.Text + "',CONTACTPERSON= '"+ ContactPersontxtbox.Text + "',CONTACTNUMBER = '"+ ContactNotxtbox.Text+ "' ,COMPANYADDRESS = '"+Addresstxtbox.Text+"' ;", initd.scon);
+            SQLiteCommand sq1 = new SQLiteCommand("UPDATE SUPPLIERS SET SUPPLIERNAME = '"+ ComapnynametxtBX.Text + "',CONTACTPERSON= '"+ ContactPersontxtbox.Text + "',CONTACTNUMBER = '"+ ContactNotxtbox.Text+ "' ,COMPANYADDRESS = '"+Addresstxtbox.Text+"' WHERE SUPPLIERID = "+idtoedit1+";", initd.scon);
             sq1.ExecuteNonQuery();
             sq1 = null;
 

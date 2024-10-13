@@ -21,9 +21,11 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
         Dictionary<string,int> Subcategory;
         Dictionary<string,int> UoM;
         Dictionary<string, int> Supplier;
+        Dictionary<string, double> SubcategoryMarkup;
         Hashtable categoryinfo;
         int summonmode;
         int idtoedit1;
+        double markuptuse;
        bool isverfied1 = true;
        bool isverfied2 = true;
         bool isverified3 = false;
@@ -38,6 +40,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
             UoM = new Dictionary<string, int>();
             categoryinfo = new Hashtable();
             Supplier = new Dictionary<string, int>();
+            SubcategoryMarkup = new Dictionary<string, double>();
             Supplier.Add("Unknown",00000);
             splcmbox.Items.Add("Unknown");
             //note na dapatat mag iinsert sya ng name ng product
@@ -64,6 +67,8 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
             category.Clear();
             Subcategory.Clear();
             UoM.Clear();
+            Supplier.Clear();
+            SubcategoryMarkup.Clear();
             SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM CATEGORY;", initd.scon);
             SQLiteDataReader sq1 = scom1.ExecuteReader();
             while (sq1.Read())
@@ -81,7 +86,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
             {
                 SubCatCombo.Items.Add(sq1["SUBCATEGORYDESC"]);
                 Subcategory.Add(sq1["SUBCATEGORYDESC"].ToString(),Convert.ToInt32(sq1["SUBCATEGORYID"]));
-
+                SubcategoryMarkup.Add(sq1["SUBCATEGORYDESC"].ToString(), Convert.ToDouble(sq1["MARKUPVALUE"]));
 
             }
             sq1.Close();
@@ -112,7 +117,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
             this.Cursor = Cursors.WaitCursor;
             //auto increment or manual generation ID?id say auto increment sinceproducts are too many
             //USERID INT NOT NULL,CATEGORYID INT NOT NULL,SUBCATEGORYID INT NOT NULL,UOMID INT NOT NULL,PRODUCTNAME VARCHAR(50),ORIGINALPICE INT,QUANTITY INT,PERISHABLEPRODUCT VARCHAR(2),ISBATCH VARCHAR(2),EXPIRINGDATE DATE
-            SQLiteCommand sq1 = new SQLiteCommand("INSERT INTO PRODUCTS (USERID,CATEGORYID,SUBCATEGORYID,UOMID,PRODUCTNAME,ORIGINALPICE,QUANTITY,SUPPLIERID,PERISHABLEPRODUCT,ISBATCH,EXPIRINGDATE)VALUES(" + initd.UserID + "," + Convert.ToInt32(category[CategoryCOmbo.Text])+"," + Convert.ToInt32(Subcategory[SubCatCombo.Text])+"," + Convert.ToInt32(UoM[Unittypecombobox.Text])+",'" +Prodnametxtbox.Text+"'," + Convert.ToInt32(OriginalPricetxtbox.Text)+"," + Convert.ToInt32(InitialStcktxtbox.Text) +"," + Convert.ToInt32(Supplier[splcmbox.Text]) + ","+determinevalue2(prsishablechbox.Checked) +"," +determinevalue()+",'" +date()+ "');",initd.scon);
+            SQLiteCommand sq1 = new SQLiteCommand("INSERT INTO PRODUCTS (USERID,CATEGORYID,SUBCATEGORYID,UOMID,PRODUCTNAME,ORIGINALPICE,MARKUPVALUE,QUANTITY,SUPPLIERID,PERISHABLEPRODUCT,ISBATCH,EXPIRINGDATE)VALUES(" + initd.UserID + "," + Convert.ToInt32(category[CategoryCOmbo.Text])+"," + Convert.ToInt32(Subcategory[SubCatCombo.Text])+"," + Convert.ToInt32(UoM[Unittypecombobox.Text])+",'" +Prodnametxtbox.Text+"'," + Convert.ToInt32(OriginalPricetxtbox.Text)+","+markuptuse+"," + Convert.ToInt32(InitialStcktxtbox.Text) +"," + Convert.ToInt32(Supplier[splcmbox.Text]) + ","+determinevalue2(prsishablechbox.Checked) +"," +determinevalue()+",'" +date()+ "');",initd.scon);
             sq1.ExecuteNonQuery();
 
             this.Cursor = Cursors.Default;
@@ -123,6 +128,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
         }
         private void update()
         {
+            //updates the data of theitem except for the Quantity
         }
         private void onload2Filter(String texttofilter)
         {
@@ -257,7 +263,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
         private int determinevalue()
         {
             int ret = 0;
-            if (prsishablechbox.Checked == true && SingleProdBTN.Checked == true)
+            if (prsishablechbox.Checked == true && SingleProdBTN.Checked == false)
             {
 
                 ret = 1;
@@ -297,25 +303,52 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
             if (prsishablechbox.Checked == false)
             {
 
-                toret = "0000-00-00";
+                toret = "01/12/1999";
+                //toret = DateTime.Parse("00/00/0000").ToShortDateString();
+
                 //nonn perishable
             }
             else if (prsishablechbox.Checked == true && SingleProdBTN.Checked == true)
             {
-                toret = dateTimePicker1.Text;
+                toret = DateTime.Parse(dateTimePicker1.Text).ToShortDateString();
+          
                 //peroshable single product
               
             }
             else
             {
 
-                toret = "0000-00-00";
+                toret = "01/12/1999";
                 //batch product
 
             }
 
             return toret;
         }
+        private void goback()
+        {
+            ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
+            ModulesMain.FILEMAINTENANCE.Products unit1 = new ModulesMain.FILEMAINTENANCE.Products();
+            ResponsiveUI1.title = "Products";
+            ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+            ResponsiveUI1.spl1.Controls.Add(unit1);
+
+        }
+        private void DetermineMarkup()
+        {
+
+            if (mkuptxtbox1.Text == "leave blank if not use")
+            {
+                markuptuse = Convert.ToDouble(SubcategoryMarkup[SubCatCombo.Text.ToString()]);
+                mkuptxtbox1.Text = markuptuse.ToString();
+                label6.Text = "CURRENT MARK-UP : " + SubcategoryMarkup[SubCatCombo.Text.ToString()].ToString();
+            }
+            else
+            {
+                markuptuse = Convert.ToDouble(mkuptxtbox1.Text);
+            }
+        }
+
         private void BatchProdRadioBTN_CheckedChanged(object sender, EventArgs e)
         {
             if (BatchProdRadioBTN.Checked == true)
@@ -381,15 +414,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
         {
             goback();
         }
-        private void goback()
-        {
-            ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
-            ModulesMain.FILEMAINTENANCE.Products unit1 = new ModulesMain.FILEMAINTENANCE.Products();
-            ResponsiveUI1.title = "Products";
-            ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
-            ResponsiveUI1.spl1.Controls.Add(unit1);
-
-        }
+      
         private void CategoryCOmbo_SelectedIndexChanged(object sender, EventArgs e)
         {
             onload2Filter(CategoryCOmbo.Text);
@@ -399,6 +424,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
         private void addMainBTN_Click(object sender, EventArgs e)
         {
             hide();
+            DetermineMarkup();
             verify2();
             if (isverified3 == true)
             {
@@ -414,6 +440,16 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
             Subcategory = null;
             UoM = null;
             categoryinfo = null;
+        }
+
+        private void SubCatCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label6.Text = "CURRENT MARK-UP : " + SubcategoryMarkup[SubCatCombo.Text.ToString()].ToString();
+        }
+
+        private void mkuptxtbox1_TextChanged(object sender, EventArgs e)
+        {
+            label6.Text = "CURRENT MARK-UP : " + mkuptxtbox1.Text;
         }
 
 
