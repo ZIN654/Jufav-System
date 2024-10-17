@@ -86,7 +86,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.94924F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.69925F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 146F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
@@ -110,10 +110,10 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.printBtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(802, 27);
+            this.panel1.Location = new System.Drawing.Point(800, 27);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(146, 26);
+            this.panel1.Size = new System.Drawing.Size(148, 26);
             this.panel1.TabIndex = 5;
             // 
             // pictureBox1
@@ -128,7 +128,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(6, 4);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(41, 18);
+            this.pictureBox1.Size = new System.Drawing.Size(43, 18);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -146,7 +146,7 @@
             this.printBtn.Location = new System.Drawing.Point(98, 4);
             this.printBtn.Margin = new System.Windows.Forms.Padding(0);
             this.printBtn.Name = "printBtn";
-            this.printBtn.Size = new System.Drawing.Size(42, 18);
+            this.printBtn.Size = new System.Drawing.Size(44, 18);
             this.printBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.printBtn.TabIndex = 3;
             this.printBtn.TabStop = false;
@@ -160,7 +160,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(112, 21);
+            this.panel2.Size = new System.Drawing.Size(111, 21);
             this.panel2.TabIndex = 3;
             // 
             // label4
@@ -177,7 +177,7 @@
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label2.Location = new System.Drawing.Point(24, 0);
+            this.label2.Location = new System.Drawing.Point(23, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 21);
             this.label2.TabIndex = 1;
@@ -190,7 +190,7 @@
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1.Dock = System.Windows.Forms.DockStyle.Right;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(762, 0);
+            this.button1.Location = new System.Drawing.Point(760, 0);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(40, 27);
@@ -202,7 +202,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label3.Location = new System.Drawing.Point(24, 27);
+            this.label3.Location = new System.Drawing.Point(23, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 26);
             this.label3.TabIndex = 2;
@@ -214,9 +214,9 @@
             this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(121, 3);
+            this.comboBox1.Location = new System.Drawing.Point(120, 3);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(184, 21);
+            this.comboBox1.Size = new System.Drawing.Size(183, 21);
             this.comboBox1.TabIndex = 3;
             this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
@@ -225,16 +225,16 @@
             this.comboBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(121, 30);
+            this.comboBox2.Location = new System.Drawing.Point(120, 30);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(184, 21);
+            this.comboBox2.Size = new System.Drawing.Size(183, 21);
             this.comboBox2.TabIndex = 4;
             this.comboBox2.SelectedValueChanged += new System.EventHandler(this.comboBox2_SelectedValueChanged);
             // 
             // srchbox
             // 
             this.srchbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.srchbox.Location = new System.Drawing.Point(539, 3);
+            this.srchbox.Location = new System.Drawing.Point(537, 3);
             this.srchbox.Name = "srchbox";
             this.srchbox.Size = new System.Drawing.Size(220, 20);
             this.srchbox.TabIndex = 0;
@@ -244,7 +244,7 @@
             this.panel3.Controls.Add(this.batchdchbx);
             this.panel3.Controls.Add(this.prshblchbx);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(308, 0);
+            this.panel3.Location = new System.Drawing.Point(306, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(228, 27);
@@ -305,7 +305,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 96F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tableLayoutPanel2.Controls.Add(this.label10, 9, 0);
             this.tableLayoutPanel2.Controls.Add(this.label9, 8, 0);
             this.tableLayoutPanel2.Controls.Add(this.label8, 7, 0);
@@ -330,7 +330,7 @@
             this.label10.AutoSize = true;
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label10.Font = new System.Drawing.Font("Actor", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label10.Location = new System.Drawing.Point(842, 1);
+            this.label10.Location = new System.Drawing.Point(840, 1);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(64, 27);
             this.label10.TabIndex = 9;
@@ -342,7 +342,7 @@
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label9.Font = new System.Drawing.Font("Actor", 6.75F, System.Drawing.FontStyle.Bold);
-            this.label9.Location = new System.Drawing.Point(745, 1);
+            this.label9.Location = new System.Drawing.Point(743, 1);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(90, 27);
             this.label9.TabIndex = 8;
@@ -354,7 +354,7 @@
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Font = new System.Drawing.Font("Actor", 6.75F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(662, 1);
+            this.label8.Location = new System.Drawing.Point(660, 1);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(76, 27);
             this.label8.TabIndex = 7;
@@ -366,7 +366,7 @@
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Font = new System.Drawing.Font("Actor", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(586, 1);
+            this.label7.Location = new System.Drawing.Point(584, 1);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 27);
             this.label7.TabIndex = 6;
@@ -378,7 +378,7 @@
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Font = new System.Drawing.Font("Actor", 6.75F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(516, 1);
+            this.label6.Location = new System.Drawing.Point(514, 1);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 27);
             this.label6.TabIndex = 5;
@@ -390,7 +390,7 @@
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Actor", 6.75F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(398, 1);
+            this.label5.Location = new System.Drawing.Point(396, 1);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(111, 27);
             this.label5.TabIndex = 4;
@@ -402,7 +402,7 @@
             this.label11.AutoSize = true;
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label11.Font = new System.Drawing.Font("Actor", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label11.Location = new System.Drawing.Point(319, 1);
+            this.label11.Location = new System.Drawing.Point(317, 1);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(72, 27);
             this.label11.TabIndex = 3;
@@ -414,7 +414,7 @@
             this.label12.AutoSize = true;
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label12.Font = new System.Drawing.Font("Actor", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label12.Location = new System.Drawing.Point(212, 1);
+            this.label12.Location = new System.Drawing.Point(210, 1);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(100, 27);
             this.label12.TabIndex = 2;
@@ -426,9 +426,9 @@
             this.label13.AutoSize = true;
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label13.Font = new System.Drawing.Font("Actor", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label13.Location = new System.Drawing.Point(146, 1);
+            this.label13.Location = new System.Drawing.Point(145, 1);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(59, 27);
+            this.label13.Size = new System.Drawing.Size(58, 27);
             this.label13.TabIndex = 1;
             this.label13.Text = "CATEGORY";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -440,7 +440,7 @@
             this.label14.Font = new System.Drawing.Font("Actor", 8.25F, System.Drawing.FontStyle.Bold);
             this.label14.Location = new System.Drawing.Point(4, 1);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(135, 27);
+            this.label14.Size = new System.Drawing.Size(134, 27);
             this.label14.TabIndex = 0;
             this.label14.Text = "PRODUCT NAME";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

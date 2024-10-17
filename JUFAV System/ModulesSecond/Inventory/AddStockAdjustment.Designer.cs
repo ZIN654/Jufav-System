@@ -62,7 +62,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.03755F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.83284F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.comboBox2, 1, 2);
@@ -85,10 +85,10 @@
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(837, 27);
+            this.panel1.Location = new System.Drawing.Point(834, 27);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(28, 26);
+            this.panel1.Size = new System.Drawing.Size(31, 26);
             this.panel1.TabIndex = 5;
             // 
             // label3
@@ -109,7 +109,7 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(107, 56);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(233, 21);
+            this.comboBox2.Size = new System.Drawing.Size(232, 21);
             this.comboBox2.TabIndex = 4;
             // 
             // comboBox1
@@ -119,7 +119,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(107, 30);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(233, 21);
+            this.comboBox1.Size = new System.Drawing.Size(232, 21);
             this.comboBox1.TabIndex = 3;
             // 
             // panel2
@@ -157,10 +157,10 @@
             this.panel3.Controls.Add(this.batchdchbx);
             this.panel3.Controls.Add(this.prshblchbx);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(343, 27);
+            this.panel3.Location = new System.Drawing.Point(342, 27);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(239, 26);
+            this.panel3.Size = new System.Drawing.Size(238, 26);
             this.panel3.TabIndex = 6;
             // 
             // batchdchbx
@@ -187,10 +187,10 @@
             // 
             this.srchbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.srchbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.srchbox.Location = new System.Drawing.Point(582, 28);
+            this.srchbox.Location = new System.Drawing.Point(580, 28);
             this.srchbox.Margin = new System.Windows.Forms.Padding(0, 1, 0, 3);
             this.srchbox.Name = "srchbox";
-            this.srchbox.Size = new System.Drawing.Size(214, 24);
+            this.srchbox.Size = new System.Drawing.Size(213, 24);
             this.srchbox.TabIndex = 0;
             this.srchbox.WordWrap = false;
             // 
@@ -200,7 +200,7 @@
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(796, 27);
+            this.button1.Location = new System.Drawing.Point(793, 27);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(41, 26);
@@ -213,7 +213,7 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(107, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(233, 16);
+            this.label6.Size = new System.Drawing.Size(173, 27);
             this.label6.TabIndex = 7;
             this.label6.Text = "SELECT PRODUCT TO ADJUST";
             // 
@@ -224,7 +224,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.37945F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.62055F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 227F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.label14, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label11, 1, 0);
@@ -243,9 +243,9 @@
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Actor", 9F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(754, 1);
+            this.label1.Location = new System.Drawing.Point(752, 1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 27);
+            this.label1.Size = new System.Drawing.Size(109, 27);
             this.label1.TabIndex = 9;
             this.label1.Text = "ACTIONS";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -257,7 +257,7 @@
             this.label14.Font = new System.Drawing.Font("Actor", 8.25F, System.Drawing.FontStyle.Bold);
             this.label14.Location = new System.Drawing.Point(4, 1);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(350, 27);
+            this.label14.Size = new System.Drawing.Size(348, 27);
             this.label14.TabIndex = 0;
             this.label14.Text = "PRODUCT NAME";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -267,7 +267,7 @@
             this.label11.AutoSize = true;
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label11.Font = new System.Drawing.Font("Actor", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label11.Location = new System.Drawing.Point(361, 1);
+            this.label11.Location = new System.Drawing.Point(359, 1);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(158, 27);
             this.label11.TabIndex = 3;
@@ -279,7 +279,7 @@
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Actor", 9F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(526, 1);
+            this.label5.Location = new System.Drawing.Point(524, 1);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(221, 27);
             this.label5.TabIndex = 4;
@@ -288,6 +288,7 @@
             // 
             // itemsBoxs
             // 
+            this.itemsBoxs.AutoScroll = true;
             this.itemsBoxs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemsBoxs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.itemsBoxs.Location = new System.Drawing.Point(0, 113);

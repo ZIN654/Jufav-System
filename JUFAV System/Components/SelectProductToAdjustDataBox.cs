@@ -32,8 +32,9 @@ namespace JUFAV_System.Components
         }
         private void changescence()
         {
-            Messageboxes.StockAdjustmentEditQuantity as1 = new Messageboxes.StockAdjustmentEditQuantity();
-            as1.ShowDialog(this);
+
+           Messageboxes.StockAdjustmentEditQuantity as1 = new Messageboxes.StockAdjustmentEditQuantity(label1.Text,Convert.ToDouble(label2.Text),"","",false,"",ProductID);
+           as1.ShowDialog(this);
         }
     }
 }
