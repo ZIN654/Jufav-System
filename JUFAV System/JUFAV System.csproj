@@ -45,6 +45,14 @@
     <ApplicationIcon>Resources\JFF.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Apitron.PDF.Controls, Version=1.0.175.0, Culture=neutral, PublicKeyToken=6e759dbb0039406e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Apitron.PDF.Controls.1.0.175\lib\net48\Apitron.PDF.Controls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Apitron.PDF.Rasterizer, Version=3.0.175.0, Culture=neutral, PublicKeyToken=6e759dbb0039406e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Apitron.PDF.Controls.1.0.175\lib\net48\Apitron.PDF.Rasterizer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -59,6 +67,25 @@
     </Reference>
     <Reference Include="Konscious.Security.Cryptography.Blake2, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Konscious.Security.Cryptography.Blake2.1.1.1\lib\net46\Konscious.Security.Cryptography.Blake2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MigraDoc.DocumentObjectModel-gdi">
+      <HintPath>x64\MigraDoc.DocumentObjectModel-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.Rendering-gdi">
+      <HintPath>x64\MigraDoc.Rendering-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.RtfRendering-gdi">
+      <HintPath>x64\MigraDoc.RtfRendering-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp-gdi">
+      <HintPath>x64\PdfSharp-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting-gdi">
+      <HintPath>x64\PdfSharp.Charting-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="PDFtoPrinter, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFtoPrinter.1.2.0\lib\net47\PDFtoPrinter.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -94,6 +121,7 @@
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Printing" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>True</Private>
@@ -163,6 +191,12 @@
     <Compile Include="Components\PurchaseOrderComponent.Designer.cs">
       <DependentUpon>PurchaseOrderComponent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\SelectProductToAdjustDataBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\SelectProductToAdjustDataBox.Designer.cs">
+      <DependentUpon>SelectProductToAdjustDataBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\StockAdjustmentsDatabox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -212,6 +246,18 @@
     </Compile>
     <Compile Include="Messageboxes\MessageboxAreyousure.Designer.cs">
       <DependentUpon>MessageboxAreyousure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Messageboxes\PdfFileViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messageboxes\PdfFileViewer.Designer.cs">
+      <DependentUpon>PdfFileViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Messageboxes\StockAdjustmentEditQuantity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messageboxes\StockAdjustmentEditQuantity.Designer.cs">
+      <DependentUpon>StockAdjustmentEditQuantity.cs</DependentUpon>
     </Compile>
     <Compile Include="ModulesMain\CORE.cs">
       <SubType>Form</SubType>
@@ -471,6 +517,12 @@
     <Compile Include="ModulesSecond\Inventory\AddPurchaseOrder.Designer.cs">
       <DependentUpon>AddPurchaseOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModulesSecond\Inventory\AddStockAdjustment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesSecond\Inventory\AddStockAdjustment.Designer.cs">
+      <DependentUpon>AddStockAdjustment.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModulesSecond\UsersettingsAddUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -547,6 +599,9 @@
     <EmbeddedResource Include="Components\PurchaseOrderComponent.resx">
       <DependentUpon>PurchaseOrderComponent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\SelectProductToAdjustDataBox.resx">
+      <DependentUpon>SelectProductToAdjustDataBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\StockAdjustmentsDatabox.resx">
       <DependentUpon>StockAdjustmentsDatabox.cs</DependentUpon>
     </EmbeddedResource>
@@ -570,6 +625,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Messageboxes\MessageboxAreyousure.resx">
       <DependentUpon>MessageboxAreyousure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messageboxes\PdfFileViewer.resx">
+      <DependentUpon>PdfFileViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messageboxes\StockAdjustmentEditQuantity.resx">
+      <DependentUpon>StockAdjustmentEditQuantity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModulesMain\CORE.resx">
       <DependentUpon>CORE.cs</DependentUpon>
@@ -672,6 +733,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModulesSecond\Inventory\AddPurchaseOrder.resx">
       <DependentUpon>AddPurchaseOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesSecond\Inventory\AddStockAdjustment.resx">
+      <DependentUpon>AddStockAdjustment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModulesSecond\UsersettingsAddUser.resx">
       <DependentUpon>UsersettingsAddUser.cs</DependentUpon>
@@ -804,9 +868,11 @@
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
     <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\PDFtoPrinter.1.2.0\build\PDFtoPrinter.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PDFtoPrinter.1.2.0\build\PDFtoPrinter.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+  <Import Project="..\packages\PDFtoPrinter.1.2.0\build\PDFtoPrinter.targets" Condition="Exists('..\packages\PDFtoPrinter.1.2.0\build\PDFtoPrinter.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

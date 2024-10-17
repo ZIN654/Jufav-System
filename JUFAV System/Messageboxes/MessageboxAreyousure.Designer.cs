@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.msgboxCore = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnclose = new System.Windows.Forms.Button();
-            this.icon = new System.Windows.Forms.PictureBox();
-            this.lblmsg = new System.Windows.Forms.Label();
-            this.btnconfirm = new System.Windows.Forms.Button();
-            this.lbltitle = new System.Windows.Forms.Label();
             this.mainmsgbox = new System.Windows.Forms.TableLayoutPanel();
+            this.lbltitle = new System.Windows.Forms.Label();
+            this.btnconfirm = new System.Windows.Forms.Button();
+            this.lblmsg = new System.Windows.Forms.Label();
+            this.icon = new System.Windows.Forms.PictureBox();
+            this.btnclose = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.msgboxCore.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             this.mainmsgbox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // msgboxCore
@@ -56,90 +56,6 @@
             this.msgboxCore.Name = "msgboxCore";
             this.msgboxCore.Size = new System.Drawing.Size(386, 173);
             this.msgboxCore.TabIndex = 0;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Controls.Add(this.msgboxCore, 1, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1176, 538);
-            this.tableLayoutPanel1.TabIndex = 1;
-            // 
-            // btnclose
-            // 
-            this.btnclose.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnclose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnclose.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnclose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnclose.Font = new System.Drawing.Font("Actor", 12F);
-            this.btnclose.ForeColor = System.Drawing.Color.Black;
-            this.btnclose.Location = new System.Drawing.Point(252, 135);
-            this.btnclose.Name = "btnclose";
-            this.btnclose.Size = new System.Drawing.Size(129, 33);
-            this.btnclose.TabIndex = 1;
-            this.btnclose.Text = "CLOSE";
-            this.btnclose.UseVisualStyleBackColor = false;
-            // 
-            // icon
-            // 
-            this.icon.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.icon.Location = new System.Drawing.Point(25, 43);
-            this.icon.Name = "icon";
-            this.icon.Size = new System.Drawing.Size(85, 74);
-            this.icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.icon.TabIndex = 4;
-            this.icon.TabStop = false;
-            // 
-            // lblmsg
-            // 
-            this.lblmsg.AutoSize = true;
-            this.lblmsg.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblmsg.Font = new System.Drawing.Font("Actor", 12F);
-            this.lblmsg.ForeColor = System.Drawing.Color.Black;
-            this.lblmsg.Location = new System.Drawing.Point(136, 28);
-            this.lblmsg.Margin = new System.Windows.Forms.Padding(0);
-            this.lblmsg.Name = "lblmsg";
-            this.lblmsg.Size = new System.Drawing.Size(248, 104);
-            this.lblmsg.TabIndex = 3;
-            this.lblmsg.Text = "MESSAGE";
-            this.lblmsg.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnconfirm
-            // 
-            this.btnconfirm.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnconfirm.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnconfirm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnconfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnconfirm.Font = new System.Drawing.Font("Actor", 12F);
-            this.btnconfirm.ForeColor = System.Drawing.Color.Black;
-            this.btnconfirm.Location = new System.Drawing.Point(3, 135);
-            this.btnconfirm.Name = "btnconfirm";
-            this.btnconfirm.Size = new System.Drawing.Size(130, 33);
-            this.btnconfirm.TabIndex = 2;
-            this.btnconfirm.Text = "CONFIRM";
-            this.btnconfirm.UseVisualStyleBackColor = false;
-            // 
-            // lbltitle
-            // 
-            this.lbltitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbltitle.Font = new System.Drawing.Font("Actor", 9F);
-            this.lbltitle.ForeColor = System.Drawing.Color.Black;
-            this.lbltitle.Location = new System.Drawing.Point(3, 5);
-            this.lbltitle.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-            this.lbltitle.Name = "lbltitle";
-            this.lbltitle.Size = new System.Drawing.Size(130, 23);
-            this.lbltitle.TabIndex = 0;
-            this.lbltitle.Text = "lbl1";
             // 
             // mainmsgbox
             // 
@@ -163,6 +79,90 @@
             this.mainmsgbox.Size = new System.Drawing.Size(384, 171);
             this.mainmsgbox.TabIndex = 0;
             // 
+            // lbltitle
+            // 
+            this.lbltitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbltitle.Font = new System.Drawing.Font("Actor", 9F);
+            this.lbltitle.ForeColor = System.Drawing.Color.Black;
+            this.lbltitle.Location = new System.Drawing.Point(3, 5);
+            this.lbltitle.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+            this.lbltitle.Name = "lbltitle";
+            this.lbltitle.Size = new System.Drawing.Size(130, 23);
+            this.lbltitle.TabIndex = 0;
+            this.lbltitle.Text = "lbl1";
+            // 
+            // btnconfirm
+            // 
+            this.btnconfirm.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnconfirm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnconfirm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnconfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnconfirm.Font = new System.Drawing.Font("Actor", 12F);
+            this.btnconfirm.ForeColor = System.Drawing.Color.Black;
+            this.btnconfirm.Location = new System.Drawing.Point(3, 135);
+            this.btnconfirm.Name = "btnconfirm";
+            this.btnconfirm.Size = new System.Drawing.Size(130, 33);
+            this.btnconfirm.TabIndex = 2;
+            this.btnconfirm.Text = "CONFIRM";
+            this.btnconfirm.UseVisualStyleBackColor = false;
+            // 
+            // lblmsg
+            // 
+            this.lblmsg.AutoSize = true;
+            this.lblmsg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblmsg.Font = new System.Drawing.Font("Actor", 12F);
+            this.lblmsg.ForeColor = System.Drawing.Color.Black;
+            this.lblmsg.Location = new System.Drawing.Point(136, 28);
+            this.lblmsg.Margin = new System.Windows.Forms.Padding(0);
+            this.lblmsg.Name = "lblmsg";
+            this.lblmsg.Size = new System.Drawing.Size(248, 104);
+            this.lblmsg.TabIndex = 3;
+            this.lblmsg.Text = "MESSAGE";
+            this.lblmsg.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // icon
+            // 
+            this.icon.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.icon.Location = new System.Drawing.Point(25, 43);
+            this.icon.Name = "icon";
+            this.icon.Size = new System.Drawing.Size(85, 74);
+            this.icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.icon.TabIndex = 4;
+            this.icon.TabStop = false;
+            // 
+            // btnclose
+            // 
+            this.btnclose.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnclose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnclose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnclose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnclose.Font = new System.Drawing.Font("Actor", 12F);
+            this.btnclose.ForeColor = System.Drawing.Color.Black;
+            this.btnclose.Location = new System.Drawing.Point(252, 135);
+            this.btnclose.Name = "btnclose";
+            this.btnclose.Size = new System.Drawing.Size(129, 33);
+            this.btnclose.TabIndex = 1;
+            this.btnclose.Text = "CLOSE";
+            this.btnclose.UseVisualStyleBackColor = false;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.Controls.Add(this.msgboxCore, 1, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1176, 538);
+            this.tableLayoutPanel1.TabIndex = 1;
+            // 
             // MessageboxConfirmation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -180,10 +180,10 @@
             this.TransparencyKey = System.Drawing.Color.Transparent;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.msgboxCore.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
             this.mainmsgbox.ResumeLayout(false);
             this.mainmsgbox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
