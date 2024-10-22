@@ -13,6 +13,7 @@ using System.IO;
 using System.Drawing.Printing;
 using PDFtoPrinter;
 using JUFAV_System.Properties;
+using System.ServiceProcess;
 
 namespace JUFAV_System.Messageboxes
 {
@@ -64,18 +65,40 @@ namespace JUFAV_System.Messageboxes
         }
         private void printPDf()
         {
-            var printer = new PDFtoPrinterPrinter();
-            printer.Print(new PrintingOptions(comboBox1.Text,path1));
+            //if the specified printer is non message bo will appear  and if printer is not active messag box will appear
+            if (comboBox1.Text == "")
+            {
+                MessageBox.Show(this,"Please Choose A printer to use In order to print the document","Select Printer",MessageBoxButtons.YesNo);
+            }
+            else
+            {
+                this.Cursor = Cursors.WaitCursor;
+                //bug here the file is being used 
+                var printer = new PDFtoPrinterPrinter();
+                printer.Print(new PrintingOptions(comboBox1.Text, path1));
+                this.Cursor = Cursors.Default;
+
+
+            }
 
         }
         private void fetchprinters()
         {
+            try { 
             foreach (String printers in PrinterSettings.InstalledPrinters)
             {
                 comboBox1.Items.Add(printers);
-
             }
+                }catch (Exception e)
+            {
+               MessageBox.Show("Spooler is not active. Please try again later OR manually start the Print Spooler in Services");
+               
+                    //Occurs when "Print Spooler" is not active or running
 
+                    //ServiceController spoolerrun = new ServiceController("Spooler",SystemInformation.UserName.ToString());
+                   // spoolerrun.Start();
+            }
+            
 
         }
         private void Print_Click(object sender, EventArgs e)

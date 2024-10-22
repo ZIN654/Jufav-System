@@ -31,6 +31,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
             this.Cursor = Cursors.Default;
 
         }
+   
         private void loadinfo()
         {
             Category.Clear();
@@ -42,6 +43,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
             {
 
                 Category.Add(Convert.ToInt32(sq1["CATEGORYID"]), sq1["CATEGORYDESC"].ToString());
+                CatComboBox1.Items.Add(sq1["CATEGORYDESC"].ToString());
 
             }
             sq1.Close();
@@ -49,7 +51,9 @@ namespace JUFAV_System.ModulesSecond.Inventory
             sq1 = scom1.ExecuteReader();
             while (sq1.Read())
             {
+               
                 SubCat.Add(Convert.ToInt32(sq1["SUBCATEGORYID"]), sq1["SUBCATEGORYDESC"].ToString());
+                SubCatComboBox2.Items.Add(sq1["SUBCATEGORYDESC"].ToString());
             }
             sq1.Close();
             scom1.CommandText = "SELECT UNITDESC,UNITID FROM UNITOFMEASURE";

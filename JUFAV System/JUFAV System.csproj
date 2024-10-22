@@ -44,6 +44,9 @@
   <PropertyGroup>
     <ApplicationIcon>Resources\JFF.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Apitron.PDF.Controls, Version=1.0.175.0, Culture=neutral, PublicKeyToken=6e759dbb0039406e, processorArchitecture=MSIL">
       <HintPath>..\packages\Apitron.PDF.Controls.1.0.175\lib\net48\Apitron.PDF.Controls.dll</HintPath>
@@ -126,6 +129,7 @@
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -167,6 +171,12 @@
     <Compile Include="Components\OfferedProdsPODataBox.Designer.cs">
       <DependentUpon>OfferedProdsPODataBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\OutOfStocksDataBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\OutOfStocksDataBox.Designer.cs">
+      <DependentUpon>OutOfStocksDataBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\POlistDataBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -196,6 +206,12 @@
     </Compile>
     <Compile Include="Components\SelectProductToAdjustDataBox.Designer.cs">
       <DependentUpon>SelectProductToAdjustDataBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\SmalloptionDashBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\SmalloptionDashBoard.Designer.cs">
+      <DependentUpon>SmalloptionDashBoard.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\StockAdjustmentsDatabox.cs">
       <SubType>UserControl</SubType>
@@ -587,6 +603,9 @@
     <EmbeddedResource Include="Components\OfferedProdsPODataBox.resx">
       <DependentUpon>OfferedProdsPODataBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\OutOfStocksDataBox.resx">
+      <DependentUpon>OutOfStocksDataBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\POlistDataBox.resx">
       <DependentUpon>POlistDataBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -601,6 +620,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\SelectProductToAdjustDataBox.resx">
       <DependentUpon>SelectProductToAdjustDataBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\SmalloptionDashBoard.resx">
+      <DependentUpon>SmalloptionDashBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\StockAdjustmentsDatabox.resx">
       <DependentUpon>StockAdjustmentsDatabox.cs</DependentUpon>
@@ -763,6 +785,7 @@
     <EmbeddedResource Include="SANDBOX.resx">
       <DependentUpon>SANDBOX.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

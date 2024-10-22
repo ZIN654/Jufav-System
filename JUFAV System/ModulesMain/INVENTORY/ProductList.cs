@@ -21,7 +21,7 @@ namespace JUFAV_System.ModulesMain.INVENTORY
 {
     public partial class ProductList : UserControl
     {
-        int count = 0; //avoids exeception being used
+        int count = 2; //avoids exeception being used create function to increase when exception occured
         Dictionary<int, string> category;
         Dictionary<int, string> Subcategory;
         Dictionary<int, string> UoM;
@@ -33,7 +33,7 @@ namespace JUFAV_System.ModulesMain.INVENTORY
        
         PdfDocumentRenderer pfd1;
         Document doc;
-        Document doc2 ;
+        Document doc2;
         PdfDocumentRenderer pfd2;
         public ProductList()
         {

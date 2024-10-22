@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using JUFAV_System.dll;
+using System.Data.SQLite;
 
 namespace JUFAV_System.ModulesMain.INVENTORY
 {
@@ -17,7 +18,7 @@ namespace JUFAV_System.ModulesMain.INVENTORY
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
-            
+            loadData();
         }
         public void releaseLeak()
         {
@@ -26,7 +27,19 @@ namespace JUFAV_System.ModulesMain.INVENTORY
 
 
         }
-
+        private void loadData()
+        {
+            SQLiteCommand sq1 = new SQLiteCommand("SELECT * FROM STOCKADJUSTMENTS;", initd.scon);
+            SQLiteDataReader sread1 = sq1.ExecuteReader();
+            while (sread1.Read())
+            {
+                Components.StockAdjustmentsDatabox stck1 = new Components.StockAdjustmentsDatabox(sread1["DATEOFADJUSTMENT"].ToString(),sread1["PRODUCTNAME"].ToString(),sread1["ADJUSTMENTTYPE"].ToString(),Convert.ToInt32(sread1["PREVIOUSQUANTITY"]), Convert.ToInt32(sread1["ADJUSTEDQUANTITY"]), sread1["REASON"].ToString());
+                ItemsBox.Controls.Add(stck1);
+            }
+            sread1.Close();
+            sq1 = null;
+            sread1 = null;
+        }
         private void CrtPOBTN_Click(object sender, EventArgs e)
         {
 

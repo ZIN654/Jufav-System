@@ -34,6 +34,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
         public void loaddatabase()
         {
             splr1.Clear();
+
             SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM SUPPLIERS",initd.scon);
             SQLiteDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
@@ -45,7 +46,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
             sread1.Close();
             if (splr1.Count != 0)
             {
-                splr.SelectedIndex = 0;
+               splr.SelectedIndex = 0;
                 scom1.CommandText = "SELECT * FROM PRODUCTS WHERE SUPPLIERID = " + splr1[splr.Text] + ";";
                 sread1 = scom1.ExecuteReader();
                 while (sread1.Read())
@@ -85,7 +86,8 @@ namespace JUFAV_System.ModulesSecond.Inventory
 
         private void splr_SelectedIndexChanged(object sender, EventArgs e)
         {
-            filterer();
+
+           // filterer();
         }
         private void AddPurchaseOrder_Leave(object sender, EventArgs e)
         {

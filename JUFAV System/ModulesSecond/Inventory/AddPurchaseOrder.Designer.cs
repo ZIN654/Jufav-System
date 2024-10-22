@@ -89,7 +89,7 @@
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 513F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 514F));
             this.tableLayoutPanel1.Controls.Add(this.dateissued, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
@@ -131,7 +131,7 @@
             this.panel1.Location = new System.Drawing.Point(1, 23);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(309, 30);
+            this.panel1.Size = new System.Drawing.Size(308, 30);
             this.panel1.TabIndex = 1;
             // 
             // splr
@@ -161,10 +161,10 @@
             this.panel2.Controls.Add(this.dateTimePicker1);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(311, 23);
+            this.panel2.Location = new System.Drawing.Point(310, 23);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(513, 30);
+            this.panel2.Size = new System.Drawing.Size(514, 30);
             this.panel2.TabIndex = 4;
             // 
             // dateTimePicker1
@@ -189,7 +189,7 @@
             this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 397F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 398F));
             this.tableLayoutPanel2.Controls.Add(this.panel6, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 340);
@@ -205,10 +205,10 @@
             this.panel6.Controls.Add(this.button2);
             this.panel6.Controls.Add(this.button1);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(427, 1);
+            this.panel6.Location = new System.Drawing.Point(426, 1);
             this.panel6.Margin = new System.Windows.Forms.Padding(0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(397, 35);
+            this.panel6.Size = new System.Drawing.Size(398, 35);
             this.panel6.TabIndex = 0;
             // 
             // button2
@@ -226,7 +226,7 @@
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Right;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(207, 0);
+            this.button1.Location = new System.Drawing.Point(208, 0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(190, 35);
             this.button1.TabIndex = 0;
@@ -341,7 +341,7 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.11455F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.88545F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 51F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 48F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel5.Controls.Add(this.label16, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.label17, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.label18, 0, 0);
@@ -358,7 +358,7 @@
             this.label16.AutoSize = true;
             this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label16.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label16.Location = new System.Drawing.Point(205, 1);
+            this.label16.Location = new System.Drawing.Point(203, 1);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(45, 15);
             this.label16.TabIndex = 2;
@@ -368,7 +368,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label17.Location = new System.Drawing.Point(167, 1);
+            this.label17.Location = new System.Drawing.Point(165, 1);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(29, 15);
             this.label17.TabIndex = 1;
@@ -459,7 +459,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.5654F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel4.Controls.Add(this.label13, 4, 0);
             this.tableLayoutPanel4.Controls.Add(this.label11, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.label10, 1, 0);
@@ -477,7 +477,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label13.Location = new System.Drawing.Point(416, 1);
+            this.label13.Location = new System.Drawing.Point(414, 1);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(39, 14);
             this.label13.TabIndex = 4;
@@ -487,7 +487,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label11.Location = new System.Drawing.Point(237, 1);
+            this.label11.Location = new System.Drawing.Point(235, 1);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(60, 14);
             this.label11.TabIndex = 2;
@@ -497,7 +497,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label10.Location = new System.Drawing.Point(193, 1);
+            this.label10.Location = new System.Drawing.Point(192, 1);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(33, 14);
             this.label10.TabIndex = 1;
@@ -517,7 +517,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label12.Location = new System.Drawing.Point(331, 1);
+            this.label12.Location = new System.Drawing.Point(329, 1);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(63, 14);
             this.label12.TabIndex = 3;

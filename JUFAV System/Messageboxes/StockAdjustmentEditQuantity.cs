@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using JUFAV_System.dll;
+
 namespace JUFAV_System.Messageboxes
 {
     public partial class StockAdjustmentEditQuantity : Form
@@ -35,24 +36,72 @@ namespace JUFAV_System.Messageboxes
             }
            
         }
-      
         private void UpdateDatabaseInsertAdjustments()
         {
             this.Cursor = Cursors.WaitCursor;
-            /*
-             * updates the database but also insert a new item in StockAdjustmentTable
-            SQLiteCommand scom1 = new SQLiteCommand("UPDATE PRODUCTS SET  ",initd.scon);
+            
+             // updates the database but also insert a new item in StockAdjustmentTable
+            SQLiteCommand scom1 = new SQLiteCommand("UPDATE PRODUCTS SET QUANTITY = "+Convert.ToDouble(UpdateQuantity.Text)+"  WHERE PRODUCTID = "+ProductID1+";",initd.scon);
             scom1.ExecuteNonQuery();
-            */
-            this.Cursor = Cursors.Default;
-           
-            Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(CloseForm, 0, "ADJUST STOCK", "ADJUSTMENTS SUCCESSFULLY APPLIED! \n WOOULD YOU LIKE TO GO BACK AT THE FRONT PAGE?", "OK", 0);
-         
-            ms.Show();
 
-           //but when just pressed close this form will auto  close
+            //STOCKADJUSTMENTID,USERID,DATEOFADJUSTMENT,PRODUCTID,PRODUCTNAME,ADJUSTMENTTYPE,PREVIOUSQUANTITY,ADJUSTEDQUANTITY,REASON 
+            //STOCKADJUSTMENTID,USERS,DATEOFADJUSTMENT,PRODUCTID,PRODUCTNAME,ADJUSTMENTTYPE,PREVIOUSQUANTITY,ADJUSTEDQUANTITY,REASON
+            //error here insertion of adjustments
+            scom1.CommandText = "INSERT INTO STOCKADJUSTMENTS VALUES("+generateID()+","+initd.UserID+",'"+DateTime.Now.ToShortDateString()+"',"+ProductID1+",'"+prodName.Text+"','"+ determinetypeofAdjustment(determineadjustment(Convert.ToInt32(CurrentVallbl.Text), Convert.ToInt32(UpdateQuantity.Text))) +"',"+ Convert.ToInt32(CurrentVallbl.Text) +","+ (Convert.ToInt32(UpdateQuantity.Text) - Convert.ToInt32(CurrentVallbl.Text)) + ",'"+ DetermineReason().ToString() +"');";
+            scom1.ExecuteNonQuery();
+
+
+
+            this.Cursor = Cursors.Default; 
+            Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(CloseForm, 0, "ADJUST STOCK", "ADJUSTMENTS SUCCESSFULLY APPLIED! \n WOOULD YOU LIKE TO GO BACK AT THE FRONT PAGE?", "OK", 0);    
+            ms.Show();
+            //but when just pressed close this form will auto  close
             //go back at the Stock adjustment module and insrt the newly created adjustments
 
+        }
+        private String DetermineReason()
+        {
+            String reasons = "";
+            CheckBox[] Reasons = {DEFECT,EXPIRED,MISPLACED,RtrnBCust,OTHERS};
+            foreach (CheckBox I in Reasons)
+            {
+                if (I.Checked == true)
+                {
+                    reasons = reasons + I.Text + ", ";
+                }
+            }
+            return reasons;
+        }
+        private String determinetypeofAdjustment(int adjtype)
+        {
+            String adjustment = "DECREMENT";
+            if (adjtype == 0)
+            {
+                adjustment = "INCREMENT";
+
+            }
+            return adjustment;
+        }
+        private int determineadjustment(float oldvalue,float newvalue)
+        {
+            //determine what kind of adjustment user made in the quantity of the
+            int adjtype = 0;
+            if (oldvalue > newvalue)
+            {
+                adjtype = 1;
+            }
+            return adjtype;
+        }
+        private int generateID()
+        {
+            String IDStck = "";
+            Random rs1 = new Random();
+            for (int i = 0; i != 8;i++)
+            {
+                IDStck = IDStck +  rs1.Next(0,10).ToString();
+            }
+            Console.WriteLine(IDStck);
+            return Convert.ToInt32(IDStck);
         }
         private void CloseForm()
         {
@@ -66,13 +115,12 @@ namespace JUFAV_System.Messageboxes
 
 
         }
-
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            //Console.WriteLine(DetermineReason());
             Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(UpdateDatabaseInsertAdjustments, 0, "ADJUST STOCK", "ARE YOU SURE YOU WANT TO APPLY THIS ADJUSTMENT?", "OK", 2);
             ms.Show();
         }
-
         private void CANCELbtn_Click(object sender, EventArgs e)
         {
             this.Close();

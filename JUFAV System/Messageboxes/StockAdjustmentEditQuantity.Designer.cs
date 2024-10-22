@@ -340,7 +340,7 @@
             this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.18679F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.81321F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 174F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
             this.tableLayoutPanel4.Controls.Add(this.btnConfirm, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.CANCELbtn, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -357,9 +357,9 @@
             this.btnConfirm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirm.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.btnConfirm.Location = new System.Drawing.Point(351, 3);
+            this.btnConfirm.Location = new System.Drawing.Point(350, 3);
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(169, 29);
+            this.btnConfirm.Size = new System.Drawing.Size(170, 29);
             this.btnConfirm.TabIndex = 14;
             this.btnConfirm.Text = "CONFIRM ADJUSTMENT";
             this.btnConfirm.UseVisualStyleBackColor = true;
@@ -371,7 +371,7 @@
             this.CANCELbtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CANCELbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CANCELbtn.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.CANCELbtn.Location = new System.Drawing.Point(220, 3);
+            this.CANCELbtn.Location = new System.Drawing.Point(219, 3);
             this.CANCELbtn.Name = "CANCELbtn";
             this.CANCELbtn.Size = new System.Drawing.Size(125, 29);
             this.CANCELbtn.TabIndex = 15;
@@ -385,7 +385,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.98566F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.01434F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 159F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 176F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 177F));
             this.tableLayoutPanel2.Controls.Add(this.prodName, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.label9, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.ProdCat, 2, 2);
@@ -428,7 +428,7 @@
             this.label9.Font = new System.Drawing.Font("Actor", 9.75F);
             this.label9.Location = new System.Drawing.Point(145, 41);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(39, 43);
+            this.label9.Size = new System.Drawing.Size(38, 43);
             this.label9.TabIndex = 21;
             this.label9.Text = "label11";
             // 
@@ -439,7 +439,7 @@
             this.ProdCat.Cursor = System.Windows.Forms.Cursors.Default;
             this.ProdCat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ProdCat.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.ProdCat.Location = new System.Drawing.Point(190, 41);
+            this.ProdCat.Location = new System.Drawing.Point(189, 41);
             this.ProdCat.Name = "ProdCat";
             this.ProdCat.Size = new System.Drawing.Size(153, 43);
             this.ProdCat.TabIndex = 5;
@@ -463,9 +463,9 @@
             this.ProdSubCat.Cursor = System.Windows.Forms.Cursors.Default;
             this.ProdSubCat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ProdSubCat.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.ProdSubCat.Location = new System.Drawing.Point(349, 41);
+            this.ProdSubCat.Location = new System.Drawing.Point(348, 41);
             this.ProdSubCat.Name = "ProdSubCat";
-            this.ProdSubCat.Size = new System.Drawing.Size(171, 43);
+            this.ProdSubCat.Size = new System.Drawing.Size(172, 43);
             this.ProdSubCat.TabIndex = 4;
             this.ProdSubCat.Text = "label9";
             // 
@@ -476,9 +476,9 @@
             this.label4.Cursor = System.Windows.Forms.Cursors.Default;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Actor", 9F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(349, 18);
+            this.label4.Location = new System.Drawing.Point(348, 18);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(171, 23);
+            this.label4.Size = new System.Drawing.Size(172, 23);
             this.label4.TabIndex = 3;
             this.label4.Text = "SUB-CATEGORY";
             // 
@@ -489,7 +489,7 @@
             this.label3.Cursor = System.Windows.Forms.Cursors.Default;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Actor", 9F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(190, 18);
+            this.label3.Location = new System.Drawing.Point(189, 18);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(153, 23);
             this.label3.TabIndex = 2;
@@ -504,7 +504,7 @@
             this.label10.Font = new System.Drawing.Font("Actor", 9F, System.Drawing.FontStyle.Bold);
             this.label10.Location = new System.Drawing.Point(145, 18);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(39, 23);
+            this.label10.Size = new System.Drawing.Size(38, 23);
             this.label10.TabIndex = 21;
             this.label10.Text = "UNIT";
             // 
