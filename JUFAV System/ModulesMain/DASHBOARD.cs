@@ -23,7 +23,8 @@ namespace JUFAV_System.ModulesMain
             loadLowOnstocks();
         }
         private void loaddata()
-        {   
+        {
+            initd.titleofprint = "LOW ON STOCKS PRODUCTS";
             String[] queries = { "SELECT COUNT(*) AS VALUE FROM PRODUCTS WHERE QUANTITY < 3;", "SELECT COUNT(*) AS VALUE FROM PRODUCTS WHERE QUANTITY < 5;", "SELECT COUNT(*) AS VALUE FROM PRODUCTS WHERE QUANTITY = 0;", "SELECT COUNT(*) AS VALUE FROM PRODUCTS WHERE QUANTITY < 3;" };
             Label[] labels = {label5,label6,label7,label8};
             SQLiteCommand scom1 = new SQLiteCommand("", initd.scon);
@@ -108,7 +109,6 @@ namespace JUFAV_System.ModulesMain
             sread1 = null;
             scom1 = null;
         }
-        //must fix bugs 
         private void loadProdWithinReorder()
         {
             foreach (UserControl i in itemsbox1.Controls)
@@ -116,7 +116,7 @@ namespace JUFAV_System.ModulesMain
                 i.Dispose();
             }
             itemsbox1.Controls.Clear();
-            label9.Text = "LOW ON STOCKS PRODUCTS";
+            label9.Text = "PRODUCTS WITHIN REORDER POINT";
             SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM PRODUCTS WHERE QUANTITY < 3;", initd.scon);
             SQLiteDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
@@ -135,7 +135,7 @@ namespace JUFAV_System.ModulesMain
                 i.Dispose();
             }
             itemsbox1.Controls.Clear();
-            label9.Text = "LOW ON STOCKS PRODUCTS";
+            label9.Text = "EXPIRED PRODUCTS";
             SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM PRODUCTS WHERE QUANTITY < 3;", initd.scon);
             SQLiteDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
@@ -147,29 +147,31 @@ namespace JUFAV_System.ModulesMain
             sread1 = null;
             scom1 = null;
         }
-
         private void OutOfStocksbtn_Click(object sender, EventArgs e)
         {
             
             loadOutOfstocks();
+            initd.titleofprint = "OUT_OF_STOCKS";
         }
         private void LowStocksProd_Click(object sender, EventArgs e)
         {
             loadLowOnstocks();
+            initd.titleofprint = "LOW_ON_STOCKS_PRODUCTS";
         }
         private void ProdWithinreorder_Click(object sender, EventArgs e)
         {
             loadProdWithinReorder();
+            initd.titleofprint = "PRODUCTS_WITHIN_REORDER_POINT";
         }
         private void ExpiredBTN_Click(object sender, EventArgs e)
         {
             loadExpiredProd();
+            initd.titleofprint = "EXPIRED_PRODUCTS";
         }
-
         private void Options_Click(object sender, EventArgs e)
         {
             Components.SmalloptionDashBoard item1 = new Components.SmalloptionDashBoard();
-            item1.Location = new Point(Options.Location.X - 100, Options.Location.Y +150);//fic bug
+            item1.Location = new Point(Options.Location.X - 150, Options.Location.Y +150);//fic bug
             this.Controls.Add(item1);
             item1.BringToFront();
         }

@@ -17,11 +17,14 @@ namespace JUFAV_System.ModulesSecond.Inventory
     public partial class AddPurchaseOrder : UserControl
     {
         Dictionary<String, int> splr1;
-        int[] total;
+       
+        private static int total = 0;
+        int swtichtriger = 0;
         public AddPurchaseOrder()
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
+            initd.tousetotalPO = subtotalvallbl;
             // panel4.Refresh();
             initd.Subtotal = null;//garbage collector na bahala
             splr1 = new Dictionary<String, int>();
@@ -30,7 +33,6 @@ namespace JUFAV_System.ModulesSecond.Inventory
             loaddatabase();
             dateissued.Text = "DATE ISSUED: " + DateTime.Now.ToShortDateString(); ;
         }
-
         public void loaddatabase()
         {
             splr1.Clear();
@@ -62,7 +64,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
             sread1.Close();
             scom1 = null;
             sread1 = null;
-
+            swtichtriger = 1;
 
         }
         private void filterer()
@@ -86,8 +88,10 @@ namespace JUFAV_System.ModulesSecond.Inventory
 
         private void splr_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-           // filterer();
+            if (swtichtriger == 1)
+            {
+                filterer();
+            }
         }
         private void AddPurchaseOrder_Leave(object sender, EventArgs e)
         {
@@ -95,16 +99,18 @@ namespace JUFAV_System.ModulesSecond.Inventory
            
            
         }
-
+        public static void totals(Label lbltoset)//calls in the each button press
+        {
+          
+           
+        }
         private void ItemsBoxPoList_ControlAdded(object sender, ControlEventArgs e)
         {
-            foreach(KeyValuePair<int,int> i in initd.Subtotal)
-            {
-                Console.WriteLine(i.ToString());
-                //bug here fix it 
-            }
-           // total.Sum();
-
+            totals(subtotalvallbl);
         }
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }  
     }
 }

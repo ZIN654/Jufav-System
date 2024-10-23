@@ -23,9 +23,12 @@ namespace JUFAV_System.dll
         public static String UsernameToedit;
         public static Hashtable hs1 = new Hashtable();
         public static SQLiteConnection scon = new SQLiteConnection();
+
         //FOR DATA HANDLING
         public static Dictionary<int, int> Subtotal;
         public static int Subtotalid = 1;
+        public static String titleofprint;
+        public static Label tousetotalPO;
         //only runs once //if the database does not exist reruns again
         //create path 
         //create database 
@@ -37,6 +40,8 @@ namespace JUFAV_System.dll
             //and then repeat if error perhaps giving the user a directory where the user can specify whic path is the database will be  insatlled
             String path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             Directory.CreateDirectory(path + "/JUFAVSQLITE");
+            Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/JUFAVREPORTS");
+            Directory.CreateDirectory(path + "/JUFAVSQLITE/REPORTSTemp");
             //appdata/roaming
             String assign = @path + "//" + "JUFAVSQLITE" + "//" + "jufavdb.sqlite";//MYFolder
             this.Constring =  assign;
@@ -147,7 +152,7 @@ namespace JUFAV_System.dll
         public void InitTableInventory()
         {
             
-            String[] Querys = { "CREATE TABLE STOCKADJUSTMENTS(STOCKADJUSTMENTID INT NOT  NULL PRIMARY KEY,USERID INT,DATEOFADJUSTMENT VARCHAR(12),PRODUCTID INT,PRODUCTNAME VARCHAR(50),ADJUSTMENTTYPE VARCHAR(2),PREVIOUSQUANTITY FLOAT,ADJUSTEDQUANTITY FLOAT,REASON VARCHAR(50),FOREIGN KEY (USERID) REFERENCES USERS(USERID),FOREIGN KEY (PRODUCTID) REFERENCES PRODUCTS(PRODUCTID))"};
+            String[] Querys = { "CREATE TABLE STOCKADJUSTMENTS(STOCKADJUSTMENTID INT NOT  NULL PRIMARY KEY,USERID INT,DATEOFADJUSTMENT VARCHAR(12),PRODUCTID INT,PRODUCTNAME VARCHAR(50),ADJUSTMENTTYPE VARCHAR(2),PREVIOUSQUANTITY FLOAT,ADJUSTEDQUANTITY FLOAT,REASON VARCHAR(50),FOREIGN KEY (USERID) REFERENCES USERS(USERID),FOREIGN KEY (PRODUCTID) REFERENCES PRODUCTS(PRODUCTID))", "CREATE TABLE PURCHASEORDER(POID INT NOT NULL PRIMARY KEY,USERID INT,ORDERDATE VARCHAR(50),SUPPLIER VARCHAR(50),TIMES VARCHAR(50),TOTALPRODUCTS VARCHAR(50),TOTALCOST FLOAT,ORDERSTATUS VARCHAR(2),FOREIGN  KEY (USERID) REFERENCES USERS(USERID) ON DELETE CASCADE);" };
             scon.ConnectionString = @"Data Source=" + Constring;
             scon.Open();
             foreach (String i in Querys)

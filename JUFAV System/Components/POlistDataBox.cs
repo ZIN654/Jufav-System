@@ -18,7 +18,7 @@ namespace JUFAV_System.Components
         int itemcount = 1;//pag inserting convert to double
         public double Origprice1;
         int subtotID1;
-       
+        Label labeltexttouse = initd.tousetotalPO;
         public POlistDataBox(String Prodname,String UOM,double Origprice,int ProdID,int subtotID)
         {
             InitializeComponent();
@@ -61,21 +61,17 @@ namespace JUFAV_System.Components
             }
             TotalValue.Text = (itemcount * Origprice1).ToString();
             //problem here setting the subtotal of the  label
-
-
-
         }
-
         private void TrashBTN_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
         private void DecrementBTN_Click(object sender, EventArgs e)
         {
-
-            //not consistent
+          //not consistent
             itemcount--;
             quantitytxtbox.Text = itemcount.ToString();
+          
         }
         private void IncrmentBTN_Click(object sender, EventArgs e)
         {
@@ -85,9 +81,7 @@ namespace JUFAV_System.Components
         private void quantitytxtbox_TextChanged(object sender, EventArgs e)
         {
             detectnonDigit();
-            //updates the data in the subtotal dictionarry 
-            initd.Subtotal[subtotID1] = Convert.ToInt32(TotalValue.Text);
-            //each time controll added a event may trigger that way we can summ all the inserted items in the itemsboxlist PO
+           
         }
     }
 }

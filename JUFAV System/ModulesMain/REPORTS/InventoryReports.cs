@@ -15,6 +15,7 @@ namespace JUFAV_System.ModulesMain.REPORTS
         public InventoryReports()
         {
             InitializeComponent();
+            this.Dock = DockStyle.Fill;
         }
     }
 }

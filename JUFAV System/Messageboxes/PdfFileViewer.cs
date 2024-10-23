@@ -19,10 +19,11 @@ namespace JUFAV_System.Messageboxes
 {
     public partial class PdfFileViewer : Form
     {
-       
+        FileStream fs1;
         PDFViewer pdfviwer1;
         String path1;
-        public PdfFileViewer(String path,int summontype)
+        String path2s;
+        public PdfFileViewer(String path,int summontype,String path2)
         {
             InitializeComponent();
             
@@ -33,6 +34,7 @@ namespace JUFAV_System.Messageboxes
             {
                 OPTIONS.Visible = true;
                 path1 = path;
+                path2s = path2;
                 fetchprinters();
 
             }
@@ -49,16 +51,15 @@ namespace JUFAV_System.Messageboxes
             pdfviwer1.BringToFront();
             try
             {
-                FileStream fs1 = new FileStream(path1,FileMode.Open);
+                fs1 = new FileStream(path1,FileMode.Open,FileAccess.ReadWrite,FileShare.ReadWrite);
                 pdfviwer1.Document = new Document(fs1);
-
+               /// fs1.Unlock(0, 100);
+                //fs1.Close();//prevents from beinng used
 
             }
             catch (NullReferenceException e)
             {
                 MessageBox.Show("Pdf does not exist");
-
-
             }
 
 
@@ -68,14 +69,16 @@ namespace JUFAV_System.Messageboxes
             //if the specified printer is non message bo will appear  and if printer is not active messag box will appear
             if (comboBox1.Text == "")
             {
-                MessageBox.Show(this,"Please Choose A printer to use In order to print the document","Select Printer",MessageBoxButtons.YesNo);
+                MessageBox.Show(this,"Please Choose A printer to use In order to print the document","Select Printer",MessageBoxButtons.OK);
             }
             else
             {
+
                 this.Cursor = Cursors.WaitCursor;
                 //bug here the file is being used 
                 var printer = new PDFtoPrinterPrinter();
-                printer.Print(new PrintingOptions(comboBox1.Text, path1));
+                //prints the path in the app data
+                printer.Print(new PrintingOptions(comboBox1.Text, path2s));
                 this.Cursor = Cursors.Default;
 
 
@@ -104,6 +107,15 @@ namespace JUFAV_System.Messageboxes
         private void Print_Click(object sender, EventArgs e)
         {
             printPDf();
+        }
+
+        private void PdfFileViewer_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //realease memory
+            fs1 = null;
+            pdfviwer1 = null;
+            this.Dispose();
+           
         }
     }
 }

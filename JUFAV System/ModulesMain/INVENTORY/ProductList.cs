@@ -245,7 +245,7 @@ namespace JUFAV_System.ModulesMain.INVENTORY
                 return false;
             }
         }
-          private int determineVal2(bool todet)
+        private int determineVal2(bool todet)
         {
             if (todet == true)
             {
@@ -255,6 +255,11 @@ namespace JUFAV_System.ModulesMain.INVENTORY
             {
                 return 0;
             }
+        }
+        private String processdate(DateTime dt1)
+        {
+            String datetostring = Regex.Replace(dt1.ToShortDateString(), "/", "_");
+            return datetostring;
         }
         private void GeneratePdf(String path)
         {
@@ -267,8 +272,9 @@ namespace JUFAV_System.ModulesMain.INVENTORY
                 pfd1.Document = doc;
                 pfd1.RenderDocument();
                 pfd1.PdfDocument.Save(path);
-         
-
+            pfd2.PdfDocument.Close();
+            doc2 = null;
+            pfd2 = null;
 
         }
         private void GeneratePdf2(String path)
@@ -282,19 +288,16 @@ namespace JUFAV_System.ModulesMain.INVENTORY
             pfd2.Document = doc2;
             pfd2.RenderDocument();
             pfd2.PdfDocument.Save(path);//file is being used exception
-            
-        }
-        private String processdate(DateTime dt1)
-        {
-            String datetostring = Regex.Replace(dt1.ToShortDateString(), "/", "_");
-            return datetostring;
+            pfd2.PdfDocument.Close();
+            doc2 = null;
+            pfd2 = null;
         }
         private void Insertdata(Document docu1)
         {
             //define sectiomn
             this.Cursor = Cursors.WaitCursor;
             Section section1 = docu1.AddSection();
-            //insert image logo
+            //insert image logo kapag gagawa ng purchase order
 
 
 
@@ -369,7 +372,7 @@ namespace JUFAV_System.ModulesMain.INVENTORY
         private void previewfile()
         {
             this.Cursor = Cursors.WaitCursor;
-            Messageboxes.PdfFileViewer pdfviewer1 = new Messageboxes.PdfFileViewer(saveFileDialog1.FileName,0);
+            Messageboxes.PdfFileViewer pdfviewer1 = new Messageboxes.PdfFileViewer(saveFileDialog1.FileName,0,"");//just view
             pdfviewer1.Text = "Preview of PDF file";
             this.Cursor = Cursors.Default;
             pdfviewer1.Show();
@@ -378,6 +381,8 @@ namespace JUFAV_System.ModulesMain.INVENTORY
            
            
         }
+
+
         private void setitem()
         {
             
@@ -449,10 +454,13 @@ namespace JUFAV_System.ModulesMain.INVENTORY
         }
         private void printBtn_Click(object sender, EventArgs e)
         {
+            String path2 = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\JUFAVSQLITE/REPORTSTemp/" + "ProductListJufav_" + processdate(DateTime.Now) + "_" + count + ".pdf";
+            //uses two path one for documents and next is for printing purposes which is created in Appdata Folder
             String path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "ProductListJufav_" + processdate(DateTime.Now) + "_"+count+".pdf";
                  this.Cursor = Cursors.WaitCursor;
                  GeneratePdf2(path);//path to app data
-                 Messageboxes.PdfFileViewer pdfviewer1 = new Messageboxes.PdfFileViewer(path, 1);
+                 GeneratePdf2(path2);
+            Messageboxes.PdfFileViewer pdfviewer1 = new Messageboxes.PdfFileViewer(path, 1,path2);
                  pdfviewer1.Text = "PRINT DOCUMENT FILE";
                  pdfviewer1.ShowDialog(this);
                  this.Cursor = Cursors.Default;

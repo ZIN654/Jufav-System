@@ -726,6 +726,9 @@
     <EmbeddedResource Include="ModulesMain\LOGIN\Log_in.resx">
       <DependentUpon>Log_in.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\REPORTS\InventoryReports.resx">
+      <DependentUpon>InventoryReports.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModulesMain\SALES\ReservedProducts.resx">
       <DependentUpon>ReservedProducts.cs</DependentUpon>
     </EmbeddedResource>

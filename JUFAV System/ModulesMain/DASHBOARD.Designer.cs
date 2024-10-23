@@ -31,38 +31,38 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DASHBOARD));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.LowStocksProd = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.ProdWithinreorder = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.OutOfStocksbtn = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.ExpiredBTN = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.itemsbox1 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.Options = new System.Windows.Forms.PictureBox();
-            this.LowStocksProd = new System.Windows.Forms.PictureBox();
-            this.ProdWithinreorder = new System.Windows.Forms.PictureBox();
-            this.OutOfStocksbtn = new System.Windows.Forms.PictureBox();
-            this.ExpiredBTN = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Options)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LowStocksProd)).BeginInit();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProdWithinreorder)).BeginInit();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OutOfStocksbtn)).BeginInit();
+            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ExpiredBTN)).BeginInit();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Options)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -96,6 +96,19 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(229, 143);
             this.panel2.TabIndex = 0;
+            // 
+            // LowStocksProd
+            // 
+            this.LowStocksProd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.LowStocksProd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.LowStocksProd.Image = ((System.Drawing.Image)(resources.GetObject("LowStocksProd.Image")));
+            this.LowStocksProd.Location = new System.Drawing.Point(194, 110);
+            this.LowStocksProd.Name = "LowStocksProd";
+            this.LowStocksProd.Size = new System.Drawing.Size(33, 31);
+            this.LowStocksProd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.LowStocksProd.TabIndex = 2;
+            this.LowStocksProd.TabStop = false;
+            this.LowStocksProd.Click += new System.EventHandler(this.LowStocksProd_Click);
             // 
             // label5
             // 
@@ -131,6 +144,19 @@
             this.panel3.Size = new System.Drawing.Size(229, 143);
             this.panel3.TabIndex = 1;
             // 
+            // ProdWithinreorder
+            // 
+            this.ProdWithinreorder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProdWithinreorder.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ProdWithinreorder.Image = ((System.Drawing.Image)(resources.GetObject("ProdWithinreorder.Image")));
+            this.ProdWithinreorder.Location = new System.Drawing.Point(194, 110);
+            this.ProdWithinreorder.Name = "ProdWithinreorder";
+            this.ProdWithinreorder.Size = new System.Drawing.Size(33, 31);
+            this.ProdWithinreorder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ProdWithinreorder.TabIndex = 3;
+            this.ProdWithinreorder.TabStop = false;
+            this.ProdWithinreorder.Click += new System.EventHandler(this.ProdWithinreorder_Click);
+            // 
             // label6
             // 
             this.label6.Dock = System.Windows.Forms.DockStyle.Top;
@@ -165,6 +191,19 @@
             this.panel4.Size = new System.Drawing.Size(229, 143);
             this.panel4.TabIndex = 2;
             // 
+            // OutOfStocksbtn
+            // 
+            this.OutOfStocksbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.OutOfStocksbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.OutOfStocksbtn.Image = ((System.Drawing.Image)(resources.GetObject("OutOfStocksbtn.Image")));
+            this.OutOfStocksbtn.Location = new System.Drawing.Point(194, 110);
+            this.OutOfStocksbtn.Name = "OutOfStocksbtn";
+            this.OutOfStocksbtn.Size = new System.Drawing.Size(33, 31);
+            this.OutOfStocksbtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.OutOfStocksbtn.TabIndex = 3;
+            this.OutOfStocksbtn.TabStop = false;
+            this.OutOfStocksbtn.Click += new System.EventHandler(this.OutOfStocksbtn_Click);
+            // 
             // label7
             // 
             this.label7.Dock = System.Windows.Forms.DockStyle.Top;
@@ -198,6 +237,19 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(230, 143);
             this.panel5.TabIndex = 3;
+            // 
+            // ExpiredBTN
+            // 
+            this.ExpiredBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExpiredBTN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ExpiredBTN.Image = ((System.Drawing.Image)(resources.GetObject("ExpiredBTN.Image")));
+            this.ExpiredBTN.Location = new System.Drawing.Point(195, 110);
+            this.ExpiredBTN.Name = "ExpiredBTN";
+            this.ExpiredBTN.Size = new System.Drawing.Size(33, 31);
+            this.ExpiredBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ExpiredBTN.TabIndex = 3;
+            this.ExpiredBTN.TabStop = false;
+            this.ExpiredBTN.Click += new System.EventHandler(this.ExpiredBTN_Click);
             // 
             // label8
             // 
@@ -250,10 +302,23 @@
             this.label9.Font = new System.Drawing.Font("Actor", 11.25F);
             this.label9.Location = new System.Drawing.Point(0, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(150, 21);
+            this.label9.Size = new System.Drawing.Size(300, 21);
             this.label9.TabIndex = 0;
             this.label9.Text = "EXPIRED PRODUCTS";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Options
+            // 
+            this.Options.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Options.Dock = System.Windows.Forms.DockStyle.Right;
+            this.Options.Image = global::JUFAV_System.Properties.Resources.Ellipsis;
+            this.Options.Location = new System.Drawing.Point(900, 0);
+            this.Options.Name = "Options";
+            this.Options.Size = new System.Drawing.Size(33, 21);
+            this.Options.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Options.TabIndex = 1;
+            this.Options.TabStop = false;
+            this.Options.Click += new System.EventHandler(this.Options_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -270,71 +335,6 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(941, 386);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
-            // Options
-            // 
-            this.Options.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Options.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Options.Image = global::JUFAV_System.Properties.Resources.Ellipsis;
-            this.Options.Location = new System.Drawing.Point(900, 0);
-            this.Options.Name = "Options";
-            this.Options.Size = new System.Drawing.Size(33, 21);
-            this.Options.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Options.TabIndex = 1;
-            this.Options.TabStop = false;
-            this.Options.Click += new System.EventHandler(this.Options_Click);
-            // 
-            // LowStocksProd
-            // 
-            this.LowStocksProd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.LowStocksProd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LowStocksProd.Image = ((System.Drawing.Image)(resources.GetObject("LowStocksProd.Image")));
-            this.LowStocksProd.Location = new System.Drawing.Point(194, 110);
-            this.LowStocksProd.Name = "LowStocksProd";
-            this.LowStocksProd.Size = new System.Drawing.Size(33, 31);
-            this.LowStocksProd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.LowStocksProd.TabIndex = 2;
-            this.LowStocksProd.TabStop = false;
-            this.LowStocksProd.Click += new System.EventHandler(this.LowStocksProd_Click);
-            // 
-            // ProdWithinreorder
-            // 
-            this.ProdWithinreorder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProdWithinreorder.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ProdWithinreorder.Image = ((System.Drawing.Image)(resources.GetObject("ProdWithinreorder.Image")));
-            this.ProdWithinreorder.Location = new System.Drawing.Point(194, 110);
-            this.ProdWithinreorder.Name = "ProdWithinreorder";
-            this.ProdWithinreorder.Size = new System.Drawing.Size(33, 31);
-            this.ProdWithinreorder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ProdWithinreorder.TabIndex = 3;
-            this.ProdWithinreorder.TabStop = false;
-            this.ProdWithinreorder.Click += new System.EventHandler(this.ProdWithinreorder_Click);
-            // 
-            // OutOfStocksbtn
-            // 
-            this.OutOfStocksbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OutOfStocksbtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.OutOfStocksbtn.Image = ((System.Drawing.Image)(resources.GetObject("OutOfStocksbtn.Image")));
-            this.OutOfStocksbtn.Location = new System.Drawing.Point(194, 110);
-            this.OutOfStocksbtn.Name = "OutOfStocksbtn";
-            this.OutOfStocksbtn.Size = new System.Drawing.Size(33, 31);
-            this.OutOfStocksbtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.OutOfStocksbtn.TabIndex = 3;
-            this.OutOfStocksbtn.TabStop = false;
-            this.OutOfStocksbtn.Click += new System.EventHandler(this.OutOfStocksbtn_Click);
-            // 
-            // ExpiredBTN
-            // 
-            this.ExpiredBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExpiredBTN.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ExpiredBTN.Image = ((System.Drawing.Image)(resources.GetObject("ExpiredBTN.Image")));
-            this.ExpiredBTN.Location = new System.Drawing.Point(195, 110);
-            this.ExpiredBTN.Name = "ExpiredBTN";
-            this.ExpiredBTN.Size = new System.Drawing.Size(33, 31);
-            this.ExpiredBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ExpiredBTN.TabIndex = 3;
-            this.ExpiredBTN.TabStop = false;
-            this.ExpiredBTN.Click += new System.EventHandler(this.ExpiredBTN_Click);
-            // 
             // DASHBOARD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -347,20 +347,20 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LowStocksProd)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProdWithinreorder)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OutOfStocksbtn)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpiredBTN)).EndInit();
             this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Options)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Options)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LowStocksProd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProdWithinreorder)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OutOfStocksbtn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExpiredBTN)).EndInit();
             this.ResumeLayout(false);
 
         }

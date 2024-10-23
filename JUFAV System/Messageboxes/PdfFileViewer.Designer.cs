@@ -87,6 +87,7 @@
             this.Name = "PdfFileViewer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PdfFileViewer";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PdfFileViewer_FormClosed);
             this.OPTIONS.ResumeLayout(false);
             this.OPTIONS.PerformLayout();
             this.ResumeLayout(false);
