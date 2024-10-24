@@ -154,11 +154,19 @@ namespace JUFAV_System
             smtpClient.Send(message);
           
         }
+
+
+        public int[] sample = new int[23];
+        
         private void button1_Click(object sender, EventArgs e)
         {
+          
+            // label1.Text=;
+            Console.WriteLine(sample.Sum());
+
             // detectNet();
-            
-            label1.Text = DateTime.Parse(dateTimePicker1.Text).ToShortDateString();
+
+            //label1.Text = DateTime.Parse(dateTimePicker1.Text).ToShortDateString();
             //Console.WriteLine(Regex.IsMatch(MESSAGE.Text, @"@gmail.com"));
 
 

@@ -17,21 +17,21 @@ namespace JUFAV_System.ModulesSecond.Inventory
     public partial class AddPurchaseOrder : UserControl
     {
         Dictionary<String, int> splr1;
-       
         private static int total = 0;
         int swtichtriger = 0;
+        //find way na kapag nag insert sya nanamn ng same item mag aad nalng sa same container
+        //use find();
         public AddPurchaseOrder()
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
-            initd.tousetotalPO = subtotalvallbl;
-            // panel4.Refresh();
-            initd.Subtotal = null;//garbage collector na bahala
+            initd.toexe = this;
             splr1 = new Dictionary<String, int>();
-            initd.Subtotal = new Dictionary<int, int>();
+         
 
             loaddatabase();
             dateissued.Text = "DATE ISSUED: " + DateTime.Now.ToShortDateString(); ;
+            generatePOID();
         }
         public void loaddatabase()
         {
@@ -83,9 +83,28 @@ namespace JUFAV_System.ModulesSecond.Inventory
             scom1 = null;
             sread1 = null;
         }
-
-
-
+        public void totalall()
+        {
+            initd.number.Clear();
+            GC.Collect();
+            foreach (UserControl i in ItemsBoxPoList.Controls)
+            {
+                initd.number.Add(Convert.ToDouble(i.Controls.Find("TotalValue", true)[0].Text));
+            }
+            subtotalvallbl.Text = initd.number.Sum().ToString() + ".00";
+        }
+        private void generatePOID()
+        {
+            String id = "";
+            Random ran1 = new Random();
+            for (int i = 0; i != 5; i++)
+            {
+                id = id + ran1.Next(1, 10);
+            }
+            ran1 = null;
+            initd.POID = Convert.ToInt32(id);
+            id = "";
+        }
         private void splr_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (swtichtriger == 1)
@@ -96,17 +115,13 @@ namespace JUFAV_System.ModulesSecond.Inventory
         private void AddPurchaseOrder_Leave(object sender, EventArgs e)
         {
             splr1 = null;
+            initd.toexe = null;
+            GC.Collect();
            
-           
-        }
-        public static void totals(Label lbltoset)//calls in the each button press
-        {
-          
-           
-        }
+        }   
         private void ItemsBoxPoList_ControlAdded(object sender, ControlEventArgs e)
         {
-            totals(subtotalvallbl);
+            totalall();
         }
         private void button2_Click(object sender, EventArgs e)
         {
