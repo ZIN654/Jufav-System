@@ -47,7 +47,7 @@ namespace JUFAV_System.Messageboxes
             //STOCKADJUSTMENTID,USERID,DATEOFADJUSTMENT,PRODUCTID,PRODUCTNAME,ADJUSTMENTTYPE,PREVIOUSQUANTITY,ADJUSTEDQUANTITY,REASON 
             //STOCKADJUSTMENTID,USERS,DATEOFADJUSTMENT,PRODUCTID,PRODUCTNAME,ADJUSTMENTTYPE,PREVIOUSQUANTITY,ADJUSTEDQUANTITY,REASON
             //error here insertion of adjustments
-            scom1.CommandText = "INSERT INTO STOCKADJUSTMENTS VALUES("+generateID()+","+initd.UserID+",'"+DateTime.Now.ToShortDateString()+"',"+ProductID1+",'"+prodName.Text+"','"+ determinetypeofAdjustment(determineadjustment(Convert.ToInt32(CurrentVallbl.Text), Convert.ToInt32(UpdateQuantity.Text))) +"',"+ Convert.ToInt32(CurrentVallbl.Text) +","+ (Convert.ToInt32(UpdateQuantity.Text) - Convert.ToInt32(CurrentVallbl.Text)) + ",'"+ DetermineReason().ToString() +"');";
+            scom1.CommandText = "INSERT INTO STOCKADJUSTMENTS VALUES("+generateID()+","+initd.UserID+",'"+DateTime.Now.ToShortDateString()+"',"+ProductID1+",'"+prodName.Text+"','"+ determinetypeofAdjustment(determineadjustment(Convert.ToInt32(CurrentVallbl.Text), Convert.ToInt32(UpdateQuantity.Text))) +"',"+ Convert.ToInt32(CurrentVallbl.Text) +","+ (Convert.ToInt32(UpdateQuantity.Text) - Convert.ToInt32(CurrentVallbl.Text)) + ",'"+ DetermineReason().ToString() +"','"+Remarks.Text+"');";
             scom1.ExecuteNonQuery();
 
 

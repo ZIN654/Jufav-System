@@ -12,7 +12,7 @@ namespace JUFAV_System.Components
 {
     public partial class StockAdjustmentsDatabox : UserControl
     {
-        public StockAdjustmentsDatabox(String Date, String Prodname,String  Adjustmenttype,int previousquantity,int Adjustedquantity,String Reason)
+        public StockAdjustmentsDatabox(String Date, String Prodname,String  Adjustmenttype,int previousquantity,int Adjustedquantity,String Reason,String Remarks)
         {
             InitializeComponent();
             this.Dock = DockStyle.Top;
@@ -22,7 +22,7 @@ namespace JUFAV_System.Components
             label4.Text = previousquantity.ToString();
             label5.Text = Adjustedquantity.ToString();
             label6.Text = Reason;
-            
+            Remarkstext.Text = Remarks;
 
         }
     }

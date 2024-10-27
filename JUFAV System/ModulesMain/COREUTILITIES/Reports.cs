@@ -47,7 +47,7 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 this.Size = new Size(this.sizewidth, 38);
                 switch1 = 1;
             }
-
+            GC.Collect();
 
 
 

@@ -55,7 +55,7 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 this.Size = new Size(sizewidth, 38);
                 switch1 = 1;
             }
-
+            GC.Collect();
         }
 
         private void SalesMain(object sender,EventArgs e)

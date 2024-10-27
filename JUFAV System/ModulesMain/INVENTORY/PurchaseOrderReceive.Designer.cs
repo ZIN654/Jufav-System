@@ -56,7 +56,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.07792F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.07792F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 269F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
             this.tableLayoutPanel1.Controls.Add(this.txtboxSearchBox, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.srchBTN, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.toRcvBTN, 1, 0);
@@ -77,7 +77,7 @@
             // 
             this.txtboxSearchBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtboxSearchBox.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.txtboxSearchBox.Location = new System.Drawing.Point(217, 4);
+            this.txtboxSearchBox.Location = new System.Drawing.Point(216, 4);
             this.txtboxSearchBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
             this.txtboxSearchBox.Name = "txtboxSearchBox";
             this.txtboxSearchBox.Size = new System.Drawing.Size(263, 26);
@@ -92,9 +92,9 @@
             this.srchBTN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.srchBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.srchBTN.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.srchBTN.Location = new System.Drawing.Point(486, 3);
+            this.srchBTN.Location = new System.Drawing.Point(485, 3);
             this.srchBTN.Name = "srchBTN";
-            this.srchBTN.Size = new System.Drawing.Size(109, 26);
+            this.srchBTN.Size = new System.Drawing.Size(110, 26);
             this.srchBTN.TabIndex = 7;
             this.srchBTN.UseVisualStyleBackColor = false;
             // 
@@ -104,7 +104,7 @@
             this.toRcvBTN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toRcvBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.toRcvBTN.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.toRcvBTN.Location = new System.Drawing.Point(75, 3);
+            this.toRcvBTN.Location = new System.Drawing.Point(74, 3);
             this.toRcvBTN.Name = "toRcvBTN";
             this.toRcvBTN.Size = new System.Drawing.Size(65, 26);
             this.toRcvBTN.TabIndex = 6;
@@ -120,7 +120,7 @@
             this.CmpltBTN.Font = new System.Drawing.Font("Actor", 11.25F);
             this.CmpltBTN.Location = new System.Drawing.Point(3, 3);
             this.CmpltBTN.Name = "CmpltBTN";
-            this.CmpltBTN.Size = new System.Drawing.Size(66, 26);
+            this.CmpltBTN.Size = new System.Drawing.Size(65, 26);
             this.CmpltBTN.TabIndex = 5;
             this.CmpltBTN.Text = "COMPLETED PURCHASE ORDER";
             this.CmpltBTN.UseVisualStyleBackColor = false;
@@ -133,7 +133,7 @@
             this.STATUSHEADING.Font = new System.Drawing.Font("Actor", 9F, System.Drawing.FontStyle.Bold);
             this.STATUSHEADING.Location = new System.Drawing.Point(3, 50);
             this.STATUSHEADING.Name = "STATUSHEADING";
-            this.STATUSHEADING.Size = new System.Drawing.Size(66, 16);
+            this.STATUSHEADING.Size = new System.Drawing.Size(65, 16);
             this.STATUSHEADING.TabIndex = 8;
             this.STATUSHEADING.Text = "TITLE";
             this.STATUSHEADING.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

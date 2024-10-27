@@ -57,7 +57,7 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
             SubCatBTN.Click += Sub_category;
             VatBTN.Click += Vat;
             ProdBTN.Click += Product;
-            MkupBTN.Click += Markup;
+            AMkupBTN.Click += Markup;
             
            
 
@@ -105,7 +105,7 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                     switch1 = 1;
                 }
 
-           
+            GC.Collect();
             // ResponsiveUI1.Switchnum(this, DropdownIcon, 0, sizewidth, 48, 434);
         }
         private void Userssettings(object sender,EventArgs e)

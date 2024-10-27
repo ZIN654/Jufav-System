@@ -18,6 +18,7 @@ namespace JUFAV_System.Components
         //from here insert mo na agad sa table ung mga pipiliiin ng user  ID lang or buong product?
         int ProdID1;
         int IdQuery;//used in when editing 
+        int triger = 0;
         int itemcount = 1;//pag inserting convert to double
         public double Origprice1;
         int subtotID1;     
@@ -25,14 +26,14 @@ namespace JUFAV_System.Components
         {
             InitializeComponent();
             this.Dock = DockStyle.Top;
-            label19.Text = Prodname;
+            ProducName1.Text = Prodname;
             label15.Text = UOM;
             label14.Text = Origprice.ToString();
             Origprice1 = Origprice;
             ProdID1 = ProdID;
             quantitytxtbox.Text = itemcount.ToString();
             subtotID1 = subtotID;
-            insertdata();
+            insertdata();//dito nag assign ng QueryID
             
         }
         private void detectnonDigit()
@@ -56,7 +57,7 @@ namespace JUFAV_System.Components
             {
                 //show messagebx
                 quantitytxtbox.Text = Regex.Replace(quantitytxtbox.Text, @"\D", "");
-                Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(null, 1, "QUANTITY", "NON  NUMBER INPUT AT QUANTITY FIELD OF " + label19.Text + " PLEASE CHANGE THE TEXT INTO A DIGIT VALUE.", "OK", 0);
+                Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(null, 1, "QUANTITY", "NON  NUMBER INPUT AT QUANTITY FIELD OF " + ProducName1.Text + " PLEASE CHANGE THE TEXT INTO A DIGIT VALUE.", "OK", 0);
                 msg2.Show();
 
             }
@@ -69,7 +70,7 @@ namespace JUFAV_System.Components
             Random ran1 = new Random();
             if (type == 1)
             {
-                for (int i = 0; i != 5; i++)
+                for (int i = 0; i != 9; i++)
                 {
                     id = id + ran1.Next(1, 10);
                 }
@@ -87,21 +88,9 @@ namespace JUFAV_System.Components
             id = "";
         }
         private void insertdata()
-        {
-            //pwde pala yon
-            initd.QueryID.Add(IdQuery = generateID(1), "INSERT INTO POITEMORDERTABLE (ORDERTABLEID,USERID,POID,ITEMID) VALUES("+generateID(0)+","+initd.UserID+","+initd.POID+","+ProdID1+")");
-            //displaying data
-           foreach (KeyValuePair<int,String> i in initd.QueryID)
-            {
-                Console.WriteLine(i.Value);
-           }
-            //insert query into init d then  pag  pinindot 
-            //pag  dinispose gamitin ung id as IDEntifier para tangalin ung value nya sa initd Hastable
-
-            //hash  table or dictionary 
-           //external code 
-
-
+        {        
+            initd.QueryID.Add(IdQuery = generateID(1), "INSERT INTO POITEMORDERTABLE (ORDERID,USERID,POID,ITEMID,QUANTITY,PRODUCTNAME,ORIGINALPRICE,TOTAL) VALUES("+generateID(0)+","+initd.UserID+","+initd.POID+","+ProdID1+","+Convert.ToInt32(quantitytxtbox.Text)+",'"+ProducName1.Text+"',"+Convert.ToDouble(label14.Text)+","+ Convert.ToDouble(TotalValue.Text)+");");
+            triger = 1;
         }
         private void TrashBTN_Click(object sender, EventArgs e)
         {
@@ -124,10 +113,15 @@ namespace JUFAV_System.Components
         private void quantitytxtbox_TextChanged(object sender, EventArgs e)
         {
             detectnonDigit();
-            initd.toexe.totalall(); 
+            if (triger == 1)
+            {
+                initd.QueryID.Remove(IdQuery);
+                IdQuery = generateID(1);
+                initd.QueryID.Add(IdQuery, "INSERT INTO POITEMORDERTABLE (ORDERID,USERID,POID,ITEMID,QUANTITY,PRODUCTNAME,ORIGINALPRICE,TOTAL) VALUES(" + generateID(0) + "," + initd.UserID + "," + initd.POID + "," + ProdID1 + "," + Convert.ToInt32(quantitytxtbox.Text) + ",'" + ProducName1.Text + "'," + Convert.ToDouble(label14.Text) + "," + Convert.ToDouble(TotalValue.Text) + ");");
+            }
+            initd.toexe.totalall();
             GC.Collect();
         }
 
-       
     }
 }

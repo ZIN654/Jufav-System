@@ -864,6 +864,7 @@
     <None Include="Resources\Edit.png" />
     <None Include="Resources\Ellipsis.png" />
     <None Include="Resources\Export Pdf.png" />
+    <Content Include="Resources\Archive.png" />
     <Content Include="Resources\Hide.png" />
   </ItemGroup>
   <ItemGroup>

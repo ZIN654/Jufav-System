@@ -65,6 +65,7 @@ namespace JUFAV_System
             delay(12, progressBar1);
 
             sql1.InitTableInventory();
+            sql1.ArcInitTableInventory();
             delay(12, progressBar1);
             this.Cursor = Cursors.Default;
             this.Hide();

@@ -30,7 +30,7 @@
         {
             this.VatBTN = new System.Windows.Forms.Button();
             this.ProdBTN = new System.Windows.Forms.Button();
-            this.MkupBTN = new System.Windows.Forms.Button();
+            this.AMkupBTN = new System.Windows.Forms.Button();
             this.SubCatBTN = new System.Windows.Forms.Button();
             this.CategoryBTN = new System.Windows.Forms.Button();
             this.UoMBTN = new System.Windows.Forms.Button();
@@ -71,21 +71,21 @@
             this.ProdBTN.Text = "Products";
             this.ProdBTN.UseVisualStyleBackColor = false;
             // 
-            // MkupBTN
+            // AMkupBTN
             // 
-            this.MkupBTN.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.MkupBTN.Dock = System.Windows.Forms.DockStyle.Top;
-            this.MkupBTN.FlatAppearance.BorderSize = 0;
-            this.MkupBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MkupBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MkupBTN.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.MkupBTN.Location = new System.Drawing.Point(0, 228);
-            this.MkupBTN.Margin = new System.Windows.Forms.Padding(0);
-            this.MkupBTN.Name = "MkupBTN";
-            this.MkupBTN.Size = new System.Drawing.Size(234, 38);
-            this.MkupBTN.TabIndex = 19;
-            this.MkupBTN.Text = "Markup";
-            this.MkupBTN.UseVisualStyleBackColor = false;
+            this.AMkupBTN.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.AMkupBTN.Dock = System.Windows.Forms.DockStyle.Top;
+            this.AMkupBTN.FlatAppearance.BorderSize = 0;
+            this.AMkupBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AMkupBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AMkupBTN.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.AMkupBTN.Location = new System.Drawing.Point(0, 228);
+            this.AMkupBTN.Margin = new System.Windows.Forms.Padding(0);
+            this.AMkupBTN.Name = "AMkupBTN";
+            this.AMkupBTN.Size = new System.Drawing.Size(234, 38);
+            this.AMkupBTN.TabIndex = 19;
+            this.AMkupBTN.Text = "Markup";
+            this.AMkupBTN.UseVisualStyleBackColor = false;
             // 
             // SubCatBTN
             // 
@@ -193,7 +193,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.VatBTN);
             this.Controls.Add(this.ProdBTN);
-            this.Controls.Add(this.MkupBTN);
+            this.Controls.Add(this.AMkupBTN);
             this.Controls.Add(this.SubCatBTN);
             this.Controls.Add(this.CategoryBTN);
             this.Controls.Add(this.UoMBTN);
@@ -212,7 +212,7 @@
         #endregion
         private System.Windows.Forms.Button VatBTN;
         private System.Windows.Forms.Button ProdBTN;
-        private System.Windows.Forms.Button MkupBTN;
+        private System.Windows.Forms.Button AMkupBTN;
         private System.Windows.Forms.Button SubCatBTN;
         private System.Windows.Forms.Button CategoryBTN;
         private System.Windows.Forms.Button UoMBTN;
