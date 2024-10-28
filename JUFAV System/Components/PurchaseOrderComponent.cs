@@ -16,6 +16,7 @@ namespace JUFAV_System.Components
     public partial class PurchaseOrderComponent : UserControl
     {
         int POID1;
+        Dictionary<String, String> DatatoUpdate = new Dictionary<string, string>(); 
         public PurchaseOrderComponent(int POIDs,String Date1,String Supplier,String time,int ItemCount,double total,String Status,String ExpectedDate)
         {
             InitializeComponent();
@@ -63,6 +64,7 @@ namespace JUFAV_System.Components
             {
                 //ang order data dapat product name at kung ilang items ung laman nya
                 dataGridView1.Rows.Add(sread1["PRODUCTNAME"].ToString(), sread1["QUANTITY"].ToString(), sread1["ORIGINALPRICE"].ToString(), sread1["TOTAL"].ToString());
+                DatatoUpdate.Add(sread1["PRODUCTID"].ToString(), sread1["QUANTITY"].ToString());
             }
             sread1.Close();
             sread1 = null;
@@ -113,12 +115,42 @@ namespace JUFAV_System.Components
             Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(this.Dispose, 0, "ARCHIVE RECORD", "RECORD SUCCESSFULLY ARCHIVED!", "OK", 0);
             ms.Show();
         }
+        private void receiveProducts()
+        {
+           // MessageBox.Show("ARE YOU SURE YOU WANT OT RECEIVE YOU ORDERS");
+            SQLiteCommand scom1 = new SQLiteCommand("", initd.scon);//use  dictionary then foreach i.valuee i.key
+            foreach (KeyValuePair<String, String> i in DatatoUpdate)
+            {
+                scom1.CommandText = "UPDATE PRODUCTS SET QUANTITY = " + Convert.ToInt32(i.Value) + "WHERE PRODUCTID = " + Convert.ToInt32(i.Key) + ";";
+                scom1.ExecuteNonQuery();
+            }
+            scom1 = null;
+            GC.Collect();
+            Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(Cancel, 0, "RECEIVE ORDER", "ORDER SUCCESSFULLY RECEIVED!", "OK", 2);
+            ms.Show();
+            //di pa sure 
+            //receive data insert to databas
+        }
+        public void determineDate()
+        {
+          //  if ()
+           // {
+
+
+
+          //  }else
+           // {
+
+
+
+          //  }
+
+
+        }
         public void receiveOrder(object sender, EventArgs e)
         {
-            MessageBox.Show("ARE YOU SURE YOU WANT OT RECEIVE YOU ORDERS");
-            SQLiteCommand scsom1 = new SQLiteCommand("UPDATE PRODUCTS SET ",initd.scon);
-          //di pa sure 
-            //receive data insert to database
+            Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(receiveProducts, 0, "RECEIVE ORDER", "ARE YOU SURE YOU WANT TO RECEIVE THIS ORDER?", "OK", 2);
+            ms.Show();
         }
         private void releaseLeaks(object sender,EventArgs e)
         {
