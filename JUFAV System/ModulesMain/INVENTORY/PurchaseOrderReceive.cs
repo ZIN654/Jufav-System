@@ -19,7 +19,7 @@ namespace JUFAV_System.ModulesMain.INVENTORY
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
-            loddataPending();
+            loddataPending(0);
         }
         public void releaseLeaks()
         {
@@ -27,24 +27,23 @@ namespace JUFAV_System.ModulesMain.INVENTORY
             toRcvBTN.Click -= toRcvBTN_Click;
 
         }
-        private void loddataPending()
+        private void loddataPending(int l)
         {
-            
+            string toload = "PENDING";
+            if (l == 1){toload = "COMPLETED";}
             foreach (UserControl i in ItemsBox.Controls)
             {
                 i.Dispose();
             }
             ItemsBox.Controls.Clear();
             GC.Collect();
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM PURCHASEORDER WHERE ORDERSTATUS = 'PENDING';", initd.scon);
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM PURCHASEORDER WHERE ORDERSTATUS = '"+toload+"';", initd.scon);
             SQLiteDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
             {
                 //POID,USERID,ORDERDATE,EXPECTEDORDERDATE,SUPPLIER,TIMES,TOTALPRODUCTS,TOTALCOST,ORDERSTATUS
-                Components.PurchaseOrderComponent ps1 = new Components.PurchaseOrderComponent(Convert.ToInt32(sread1["POID"]), sread1["ORDERDATE"].ToString(), sread1["SUPPLIER"].ToString(), sread1["TIMES"].ToString(), Convert.ToInt32(sread1["TOTALPRODUCTS"]), Convert.ToDouble(sread1["TOTALCOST"].ToString()), sread1["ORDERSTATUS"].ToString(), sread1["EXPECTEDORDERDATE"].ToString());
-                ps1.Controls.Find("CnclPOBTN", true)[0].Text = "RECEIVE ORDERS";
-                ps1.Controls.Find("CnclPOBTN", true)[0].Click -= ps1.CnclPOBTN_Click;
-                ps1.Controls.Find("CnclPOBTN", true)[0].Click += ps1.receiveOrder;
+                Components.PurchaseOrderComponent ps1 = new Components.PurchaseOrderComponent(Convert.ToInt32(sread1["POID"]), sread1["ORDERDATE"].ToString(), sread1["SUPPLIER"].ToString(), sread1["TIMES"].ToString(), Convert.ToInt32(sread1["TOTALPRODUCTS"]), Convert.ToDouble(sread1["TOTALCOST"].ToString()), sread1["ORDERSTATUS"].ToString(), sread1["EXPECTEDORDERDATE"].ToString(),0);
+                if (l == 1){ps1.Controls.Find("CnclPOBTN",true)[0].Visible = false;}
                 ItemsBox.Controls.Add(ps1);
                 //pass PO ID sa component then pag initialize ng component sa ID dun mag eexecute ilolod ung data
                 //dito load ng data
@@ -52,19 +51,14 @@ namespace JUFAV_System.ModulesMain.INVENTORY
         }
         private void toRcvBTN_Click(object sender, EventArgs e)
         {
-
+            loddataPending(0);
+            STATUSHEADING.Text = "TO RECEIVE ORDERS";
         }
-
         private void CmpltBTN_Click(object sender, EventArgs e)
         {
-
+            loddataPending(1);
+            STATUSHEADING.Text = "COMPLETED ORDERS";
         }
-        public void loaditems()
-        {
-            //database open load 
-            //use for loop to insert items while reading in the database
-
-
-        }
+       
     }
 }

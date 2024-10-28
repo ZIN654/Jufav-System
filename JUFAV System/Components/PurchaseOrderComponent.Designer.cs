@@ -38,22 +38,22 @@
             this.totalamount = new System.Windows.Forms.Label();
             this.status = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ReceivingDate = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Delete = new System.Windows.Forms.PictureBox();
             this.Archive = new System.Windows.Forms.PictureBox();
             this.Preview = new System.Windows.Forms.PictureBox();
             this.Print = new System.Windows.Forms.PictureBox();
             this.pdf = new System.Windows.Forms.PictureBox();
+            this.ReceivingDate = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Items.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Delete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Archive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Preview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Print)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pdf)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // Items
@@ -100,7 +100,6 @@
             this.CnclPOBTN.TabIndex = 8;
             this.CnclPOBTN.Text = "CANCEL ORDER";
             this.CnclPOBTN.UseVisualStyleBackColor = true;
-            this.CnclPOBTN.Click += new System.EventHandler(this.CnclPOBTN_Click);
             // 
             // POID
             // 
@@ -193,40 +192,6 @@
             this.panel1.Size = new System.Drawing.Size(153, 46);
             this.panel1.TabIndex = 8;
             // 
-            // ReceivingDate
-            // 
-            this.ReceivingDate.AutoSize = true;
-            this.ReceivingDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ReceivingDate.Location = new System.Drawing.Point(124, 46);
-            this.ReceivingDate.Name = "ReceivingDate";
-            this.ReceivingDate.Size = new System.Drawing.Size(115, 35);
-            this.ReceivingDate.TabIndex = 9;
-            this.ReceivingDate.Text = "RECEIVING DATE:";
-            this.ReceivingDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Actor", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.Crimson;
-            this.label1.Location = new System.Drawing.Point(3, 46);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 35);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "RECEIVING DATE:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 81);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(972, 208);
-            this.dataGridView1.TabIndex = 9;
-            // 
             // Delete
             // 
             this.Delete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -304,6 +269,40 @@
             this.pdf.TabIndex = 0;
             this.pdf.TabStop = false;
             // 
+            // ReceivingDate
+            // 
+            this.ReceivingDate.AutoSize = true;
+            this.ReceivingDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ReceivingDate.Location = new System.Drawing.Point(124, 46);
+            this.ReceivingDate.Name = "ReceivingDate";
+            this.ReceivingDate.Size = new System.Drawing.Size(115, 35);
+            this.ReceivingDate.TabIndex = 9;
+            this.ReceivingDate.Text = "RECEIVING DATE:";
+            this.ReceivingDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Actor", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.Crimson;
+            this.label1.Location = new System.Drawing.Point(3, 46);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(115, 35);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "RECEIVING DATE:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 81);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(972, 208);
+            this.dataGridView1.TabIndex = 9;
+            // 
             // PurchaseOrderComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -318,12 +317,12 @@
             this.Items.ResumeLayout(false);
             this.Items.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Delete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Archive)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Preview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Print)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pdf)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }

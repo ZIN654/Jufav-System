@@ -35,8 +35,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.Remarkstext = new System.Windows.Forms.Label();
+            this.viewRemarks = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel3
@@ -46,8 +51,8 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.50954F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.11747F));
             this.tableLayoutPanel3.Controls.Add(this.label6, 5, 0);
             this.tableLayoutPanel3.Controls.Add(this.label5, 4, 0);
             this.tableLayoutPanel3.Controls.Add(this.label4, 3, 0);
@@ -59,16 +64,16 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(681, 32);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(681, 51);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.label6.Location = new System.Drawing.Point(568, 0);
+            this.label6.Location = new System.Drawing.Point(546, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 17);
+            this.label6.Size = new System.Drawing.Size(132, 51);
             this.label6.TabIndex = 5;
             this.label6.Text = "EXPIRED";
             // 
@@ -122,27 +127,75 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "label2";
             // 
-            // Remarkstext
+            // viewRemarks
             // 
-            this.Remarkstext.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Remarkstext.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Remarkstext.Location = new System.Drawing.Point(345, 32);
-            this.Remarkstext.Name = "Remarkstext";
-            this.Remarkstext.Size = new System.Drawing.Size(336, 54);
-            this.Remarkstext.TabIndex = 3;
-            this.Remarkstext.Text = "REMARKS ; ";
+            this.viewRemarks.Dock = System.Windows.Forms.DockStyle.Right;
+            this.viewRemarks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.viewRemarks.Location = new System.Drawing.Point(547, 51);
+            this.viewRemarks.Name = "viewRemarks";
+            this.viewRemarks.Size = new System.Drawing.Size(134, 35);
+            this.viewRemarks.TabIndex = 3;
+            this.viewRemarks.Text = "REMARKS";
+            this.viewRemarks.UseVisualStyleBackColor = true;
+            this.viewRemarks.Click += new System.EventHandler(this.viewRemarks_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(412, 51);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(135, 35);
+            this.panel1.TabIndex = 4;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label7.Location = new System.Drawing.Point(0, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(57, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "ACTIONS:";
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::JUFAV_System.Properties.Resources.dlt;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(64, 8);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(24, 23);
+            this.button1.TabIndex = 1;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImage = global::JUFAV_System.Properties.Resources.Archive;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(94, 8);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(24, 23);
+            this.button2.TabIndex = 2;
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // StockAdjustmentsDatabox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.Remarkstext);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.viewRemarks);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Name = "StockAdjustmentsDatabox";
             this.Size = new System.Drawing.Size(681, 86);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -156,6 +209,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label Remarkstext;
+        private System.Windows.Forms.Button viewRemarks;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

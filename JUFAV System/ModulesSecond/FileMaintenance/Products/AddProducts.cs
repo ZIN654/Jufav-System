@@ -339,7 +339,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
 
             if (mkuptxtbox1.Text == "leave blank if not use")
             {
-                markuptuse = Convert.ToDouble(SubcategoryMarkup[SubCatCombo.Text.ToString()]);
+                markuptuse = Convert.ToDouble(SubcategoryMarkup[SubCatCombo.Text.ToString()]);//key was not found
                 mkuptxtbox1.Text = markuptuse.ToString();
                 label6.Text = "CURRENT MARK-UP : " + SubcategoryMarkup[SubCatCombo.Text.ToString()].ToString();
             }

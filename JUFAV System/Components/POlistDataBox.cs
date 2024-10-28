@@ -87,9 +87,16 @@ namespace JUFAV_System.Components
             return Convert.ToInt32(id);
             id = "";
         }
+        private void determineduplicates()
+        {
+            //each time 
+
+
+        }
         private void insertdata()
-        {        
-            initd.QueryID.Add(IdQuery = generateID(1), "INSERT INTO POITEMORDERTABLE (ORDERID,USERID,POID,ITEMID,QUANTITY,PRODUCTNAME,ORIGINALPRICE,TOTAL) VALUES("+generateID(0)+","+initd.UserID+","+initd.POID+","+ProdID1+","+Convert.ToInt32(quantitytxtbox.Text)+",'"+ProducName1.Text+"',"+Convert.ToDouble(label14.Text)+","+ Convert.ToDouble(TotalValue.Text)+");");
+        {
+            IdQuery = generateID(1);
+            initd.QueryID.Add(IdQuery, "INSERT INTO POITEMORDERTABLE (ORDERID,USERID,POID,ITEMID,QUANTITY,PRODUCTNAME,ORIGINALPRICE,TOTAL) VALUES("+generateID(0)+","+initd.UserID+","+initd.POID+","+ProdID1+","+Convert.ToInt32(quantitytxtbox.Text)+",'"+ProducName1.Text+"',"+Convert.ToDouble(label14.Text)+","+ Convert.ToDouble(TotalValue.Text)+");");
             triger = 1;
         }
         private void TrashBTN_Click(object sender, EventArgs e)
@@ -117,7 +124,18 @@ namespace JUFAV_System.Components
             {
                 initd.QueryID.Remove(IdQuery);
                 IdQuery = generateID(1);
-                initd.QueryID.Add(IdQuery, "INSERT INTO POITEMORDERTABLE (ORDERID,USERID,POID,ITEMID,QUANTITY,PRODUCTNAME,ORIGINALPRICE,TOTAL) VALUES(" + generateID(0) + "," + initd.UserID + "," + initd.POID + "," + ProdID1 + "," + Convert.ToInt32(quantitytxtbox.Text) + ",'" + ProducName1.Text + "'," + Convert.ToDouble(label14.Text) + "," + Convert.ToDouble(TotalValue.Text) + ");");
+                if (initd.QueryID.ContainsKey(IdQuery))
+                {//this part was only for identification in QueryID
+                    Console.WriteLine("ID is DUPPLICATED");
+                    IdQuery = generateID(1);
+                    //autoincreament
+                     initd.QueryID.Add(IdQuery, "INSERT INTO POITEMORDERTABLE (USERID,POID,ITEMID,QUANTITY,PRODUCTNAME,ORIGINALPRICE,TOTAL) VALUES(" + initd.UserID + "," + initd.POID + "," + ProdID1 + "," + Convert.ToInt32(quantitytxtbox.Text) + ",'" + ProducName1.Text + "'," + Convert.ToDouble(label14.Text) + "," + Convert.ToDouble(TotalValue.Text) + ");");
+                }
+                else
+                {
+                    initd.QueryID.Add(IdQuery, "INSERT INTO POITEMORDERTABLE (USERID,POID,ITEMID,QUANTITY,PRODUCTNAME,ORIGINALPRICE,TOTAL) VALUES(" + initd.UserID + "," + initd.POID + "," + ProdID1 + "," + Convert.ToInt32(quantitytxtbox.Text) + ",'" + ProducName1.Text + "'," + Convert.ToDouble(label14.Text) + "," + Convert.ToDouble(TotalValue.Text) + ");");
+                }
+               
             }
             initd.toexe.totalall();
             GC.Collect();

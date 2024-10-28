@@ -201,6 +201,12 @@
     <Compile Include="Components\PurchaseOrderComponent.Designer.cs">
       <DependentUpon>PurchaseOrderComponent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\RemarksBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\RemarksBox.Designer.cs">
+      <DependentUpon>RemarksBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\SelectProductToAdjustDataBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -617,6 +623,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\PurchaseOrderComponent.resx">
       <DependentUpon>PurchaseOrderComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\RemarksBox.resx">
+      <DependentUpon>RemarksBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\SelectProductToAdjustDataBox.resx">
       <DependentUpon>SelectProductToAdjustDataBox.cs</DependentUpon>

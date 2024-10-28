@@ -12,6 +12,7 @@ namespace JUFAV_System.Components
 {
     public partial class StockAdjustmentsDatabox : UserControl
     {
+        String Remarks1 = "";
         public StockAdjustmentsDatabox(String Date, String Prodname,String  Adjustmenttype,int previousquantity,int Adjustedquantity,String Reason,String Remarks)
         {
             InitializeComponent();
@@ -22,8 +23,19 @@ namespace JUFAV_System.Components
             label4.Text = previousquantity.ToString();
             label5.Text = Adjustedquantity.ToString();
             label6.Text = Reason;
-            Remarkstext.Text = Remarks;
+            Remarks1 = Remarks;
+            if (Remarks == "")
+            {
+                viewRemarks.Visible = false;
+            }
+        }
 
+        private void viewRemarks_Click(object sender, EventArgs e)
+        {  
+                Components.RemarksBox rm1 = new RemarksBox(Remarks1);
+                this.Parent.Controls.Add(rm1);
+                rm1.BringToFront();
+                rm1.Location = new Point(viewRemarks.Location.X - 150,this.Location.Y);
         }
     }
 }

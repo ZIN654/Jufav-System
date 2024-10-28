@@ -45,7 +45,7 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.TOTAL_VALUE = new System.Windows.Forms.Panel();
-            this.label24 = new System.Windows.Forms.Label();
+            this.totalamount = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.others = new System.Windows.Forms.TextBox();
@@ -166,7 +166,7 @@
             this.label5.Font = new System.Drawing.Font("Actor", 12F, System.Drawing.FontStyle.Bold);
             this.label5.Location = new System.Drawing.Point(3, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(163, 26);
+            this.label5.Size = new System.Drawing.Size(162, 26);
             this.label5.TabIndex = 0;
             this.label5.Text = "RECEIVING DATE :";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -174,9 +174,9 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePicker1.Location = new System.Drawing.Point(172, 3);
+            this.dateTimePicker1.Location = new System.Drawing.Point(171, 3);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(337, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(338, 20);
             this.dateTimePicker1.TabIndex = 1;
             // 
             // dateissued
@@ -332,7 +332,7 @@
             // TOTAL_VALUE
             // 
             this.TOTAL_VALUE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TOTAL_VALUE.Controls.Add(this.label24);
+            this.TOTAL_VALUE.Controls.Add(this.totalamount);
             this.TOTAL_VALUE.Controls.Add(this.label25);
             this.TOTAL_VALUE.Controls.Add(this.label23);
             this.TOTAL_VALUE.Controls.Add(this.others);
@@ -349,15 +349,15 @@
             this.TOTAL_VALUE.Size = new System.Drawing.Size(498, 169);
             this.TOTAL_VALUE.TabIndex = 0;
             // 
-            // label24
+            // totalamount
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Actor", 14.25F, System.Drawing.FontStyle.Bold);
-            this.label24.Location = new System.Drawing.Point(113, 128);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(119, 23);
-            this.label24.TabIndex = 18;
-            this.label24.Text = "000000.00";
+            this.totalamount.AutoSize = true;
+            this.totalamount.Font = new System.Drawing.Font("Actor", 14.25F, System.Drawing.FontStyle.Bold);
+            this.totalamount.Location = new System.Drawing.Point(113, 128);
+            this.totalamount.Name = "totalamount";
+            this.totalamount.Size = new System.Drawing.Size(119, 23);
+            this.totalamount.TabIndex = 18;
+            this.totalamount.Text = "000000.00";
             // 
             // label25
             // 
@@ -386,6 +386,8 @@
             this.others.Name = "others";
             this.others.Size = new System.Drawing.Size(229, 20);
             this.others.TabIndex = 15;
+            this.others.Text = "0";
+            this.others.TextChanged += new System.EventHandler(this.others_TextChanged);
             // 
             // label22
             // 
@@ -404,6 +406,8 @@
             this.Shipping.Name = "Shipping";
             this.Shipping.Size = new System.Drawing.Size(229, 20);
             this.Shipping.TabIndex = 13;
+            this.Shipping.Text = "0";
+            this.Shipping.TextChanged += new System.EventHandler(this.Shipping_TextChanged);
             // 
             // label21
             // 
@@ -432,6 +436,8 @@
             this.Tax.Name = "Tax";
             this.Tax.Size = new System.Drawing.Size(229, 20);
             this.Tax.TabIndex = 11;
+            this.Tax.Text = "0";
+            this.Tax.TextChanged += new System.EventHandler(this.Tax_TextChanged);
             // 
             // label6
             // 
@@ -474,7 +480,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.5654F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tableLayoutPanel4.Controls.Add(this.label13, 4, 0);
             this.tableLayoutPanel4.Controls.Add(this.label11, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.label10, 1, 0);
@@ -492,7 +498,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label13.Location = new System.Drawing.Point(410, 1);
+            this.label13.Location = new System.Drawing.Point(406, 1);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(39, 14);
             this.label13.TabIndex = 4;
@@ -502,7 +508,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label11.Location = new System.Drawing.Point(231, 1);
+            this.label11.Location = new System.Drawing.Point(227, 1);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(60, 14);
             this.label11.TabIndex = 2;
@@ -512,7 +518,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label10.Location = new System.Drawing.Point(189, 1);
+            this.label10.Location = new System.Drawing.Point(185, 1);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(33, 14);
             this.label10.TabIndex = 1;
@@ -532,7 +538,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label12.Location = new System.Drawing.Point(325, 1);
+            this.label12.Location = new System.Drawing.Point(321, 1);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(63, 14);
             this.label12.TabIndex = 3;
@@ -578,7 +584,7 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.11455F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.88545F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 51F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
             this.tableLayoutPanel5.Controls.Add(this.label16, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.label17, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.label18, 0, 0);
@@ -595,7 +601,7 @@
             this.label16.AutoSize = true;
             this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label16.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label16.Location = new System.Drawing.Point(221, 1);
+            this.label16.Location = new System.Drawing.Point(217, 1);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(45, 15);
             this.label16.TabIndex = 2;
@@ -605,7 +611,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label17.Location = new System.Drawing.Point(180, 1);
+            this.label17.Location = new System.Drawing.Point(176, 1);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(32, 15);
             this.label17.TabIndex = 1;
@@ -1143,7 +1149,7 @@
         private System.Windows.Forms.TextBox Shipping;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox Tax;
-        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label totalamount;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Panel VENDOR_INFORMATION;
         private System.Windows.Forms.Label label26;

@@ -13,7 +13,10 @@ namespace JUFAV_System.Components
     public partial class SelectProductToAdjustDataBox : UserControl
     {
         int ProductID;
-        public SelectProductToAdjustDataBox(String name,double Quantity,String UoM,int ProdID)
+        string cat;
+        string subcat;
+        bool pershable;
+        public SelectProductToAdjustDataBox(String name,double Quantity,String Category,String Subcategory,bool isperishable,String UoM,int ProdID)
         {
             InitializeComponent();
             Dock = DockStyle.Top;
@@ -21,6 +24,10 @@ namespace JUFAV_System.Components
             label1.Text = name;
             label2.Text = Quantity.ToString();
             label3.Text = UoM;
+            cat = Category;
+            subcat = Subcategory;
+            pershable = isperishable;
+
 
         }
 
@@ -33,7 +40,7 @@ namespace JUFAV_System.Components
         private void changescence()
         {
 
-           Messageboxes.StockAdjustmentEditQuantity as1 = new Messageboxes.StockAdjustmentEditQuantity(label1.Text,Convert.ToDouble(label2.Text),"","",false,"",ProductID);
+           Messageboxes.StockAdjustmentEditQuantity as1 = new Messageboxes.StockAdjustmentEditQuantity(label1.Text,Convert.ToDouble(label2.Text),cat,subcat,pershable,label3.Text,ProductID);
            as1.ShowDialog(this);
         }
     }

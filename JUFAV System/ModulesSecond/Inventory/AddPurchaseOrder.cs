@@ -75,7 +75,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
             sread1.Close();
             scom1 = null;
             sread1 = null;
-            swtichtriger = 1;
+            swtichtriger = 1;//once na maging 1 ito pwede nang tawagin ung function na splr_SelectedIndexChanged to filter inputs pag naka 0 kasi walang trigger and madoudouble yung  call ng function na splr_SelectedIndexChanged
             GC.Collect();
         }
         private void filterer()
@@ -103,6 +103,8 @@ namespace JUFAV_System.ModulesSecond.Inventory
                 initd.number.Add(Convert.ToDouble(i.Controls.Find("TotalValue", true)[0].Text));
             }
             subtotalvallbl.Text = initd.number.Sum().ToString() + ".00";
+            //verifier for non character input
+            totalamount.Text = (initd.number.Sum() + (Convert.ToDouble(Tax.Text) + Convert.ToDouble(Shipping.Text) + Convert.ToDouble(others.Text))).ToString() + ".00";
         }
         private void generatePOID()
         {
@@ -148,7 +150,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
             //detect kung wala munang laman ung itemsbox
             if (ItemsBoxPoList.Controls.Count != 0)
             {
-                SQLiteCommand scom1 = new SQLiteCommand("INSERT INTO PURCHASEORDER (POID,USERID,ORDERDATE,EXPECTEDORDERDATE,SUPPLIER,TIMES,TOTALPRODUCTS,TOTALCOST,ORDERSTATUS) VALUES (" + initd.POID + "," + initd.UserID + ",'" + DateTime.Now.ToShortDateString() + "','" + dateTimePicker1.Text + "','" + splr.Text + "','" + DateTime.Now.ToShortTimeString() + "','" + ItemsBoxPoList.Controls.Count + "'," + Convert.ToDouble(subtotalvallbl.Text) + ",'PENDING');", initd.scon);
+                SQLiteCommand scom1 = new SQLiteCommand("INSERT INTO PURCHASEORDER (POID,USERID,ORDERDATE,EXPECTEDORDERDATE,SUPPLIER,TIMES,TOTALPRODUCTS,TOTALCOST,ORDERSTATUS) VALUES (" + initd.POID + "," + initd.UserID + ",'" + DateTime.Now.ToShortDateString() + "','" + dateTimePicker1.Text + "','" + splr.Text + "','" + DateTime.Now.ToShortTimeString() + "','" + ItemsBoxPoList.Controls.Count + "'," + Convert.ToDouble(totalamount.Text) + ",'PENDING');", initd.scon);
                 scom1.ExecuteNonQuery();
                 foreach (KeyValuePair<int, String> i in initd.QueryID)
                 {
@@ -207,6 +209,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
         }
         private void verifydatainputs()
         {
+            //checks fo null and non character inputs in each text boxes
             int breaker = 0;
             bool test1 = false;
             bool test2 = false;
@@ -257,6 +260,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
         }
         private void splr_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //once na maging 1 ito pwede nang tawagin ung function na splr_SelectedIndexChanged to filter inputs pag naka 0 kasior walang trigger na if else,madoudouble yung  call ng function na splr_SelectedIndexChanged
             if (swtichtriger == 1)
             {
                 filterer();
@@ -264,16 +268,14 @@ namespace JUFAV_System.ModulesSecond.Inventory
         }
         private void AddPurchaseOrder_Leave(object sender, EventArgs e)
         {
+            //kapag nag leave na si purchase order panel mag tatangal  tayo ng mga variables and array na naka allocate sa memory
             splr1 = null;
             initd.toexe = null;
-            GC.Collect();
-           
+            GC.Collect();   //garbage collector responsible for collecting null variables to clean from  memory   
         }   
         private void ItemsBoxPoList_ControlAdded(object sender, ControlEventArgs e)
         {
             totalall();
-            //try to find foix bug here
-            //Console.WriteLine(e.Control.Controls.Find("ProducName1", true)[0].Text);
         }     
         private void DefaultAddress_CheckStateChanged(object sender, EventArgs e)
         {
@@ -354,6 +356,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
         }
         private void SUPPLIERNAME_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //kapag ung combobox na SUPPLIERNAME sa VendorInfo ay napalitan kukunin nya ung information  ng supplier na yun  tas ididisplay nya ung information tungkol dun sa supplier
             SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM SUPPLIERS WHERE SUPPLIERID = " +Convert.ToInt32(splr1[SUPPLIERNAME.Text])+ ";", initd.scon);
             SQLiteDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
@@ -368,14 +371,38 @@ namespace JUFAV_System.ModulesSecond.Inventory
             GC.Collect();
         }
         private void CreatePO_Click(object sender, EventArgs e)
-        {
-          
-            verifydatainputs();
-        
+        {     
+            verifydatainputs();  //verify muna yung input sa textbox kung may laman ba o wala then sa loob nito  
         }
         private void CancelBTn_Click(object sender, EventArgs e)
         {
             Goback();
+        }
+        private void verifier(TextBox toscan)
+        {
+            //verify inputs first
+            if (Regex.IsMatch(toscan.Text,@"^\d+$") == true)
+            {
+                totalall();
+            }
+            else
+            {
+                toscan.Text = 0.ToString();
+                Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "INVALID INPUT", "INVALID INPUT DUE TO A NON NUMERIC CHARACTER", "OK", 2);
+                ms.Show();
+            }
+        }
+        private void Shipping_TextChanged(object sender, EventArgs e)
+        {
+            verifier(Shipping);
+        }
+        private void others_TextChanged(object sender, EventArgs e)
+        {
+            verifier(others);
+        }
+        private void Tax_TextChanged(object sender, EventArgs e)
+        {
+            verifier(Tax);
         }
     }
 }

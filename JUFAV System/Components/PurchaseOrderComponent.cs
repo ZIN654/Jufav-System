@@ -16,8 +16,9 @@ namespace JUFAV_System.Components
     public partial class PurchaseOrderComponent : UserControl
     {
         int POID1;
-        Dictionary<String, String> DatatoUpdate = new Dictionary<string, string>(); 
-        public PurchaseOrderComponent(int POIDs,String Date1,String Supplier,String time,int ItemCount,double total,String Status,String ExpectedDate)
+
+        List<KeyValuePair<String,String>> DatatoUpdate = new List<KeyValuePair<string, string>>();
+        public PurchaseOrderComponent(int POIDs,String Date1,String Supplier,String time,int ItemCount,double total,String Status,String ExpectedDate,int sumomntype)
         {
             InitializeComponent();
             this.Dock = DockStyle.Top;
@@ -41,9 +42,22 @@ namespace JUFAV_System.Components
                 //CnclPOBTN.Click += reOrder;
                 //CnclPOBTN.Text = "REORDER";
             }
+            if (sumomntype == 1)
+            {
+                CnclPOBTN.Click += CnclPOBTN_Click;
+            }else
+            {
+                determineDate();
+                CnclPOBTN.Text = "RECEIVE ORDER";
+                CnclPOBTN.Click += receiveOrder;
+                Delete.Visible = true;
+                Archive.Visible = true;
+            }
+            
         }
         private void loaddata()
         {
+            
             dataGridView1.Columns.Add("PRODUCT NAME", "PRODUCT NAME");
             dataGridView1.Columns.Add("QUANTITY", "QUANTITY");
             dataGridView1.Columns.Add("UNIT COST", "UNIT COST");
@@ -64,7 +78,7 @@ namespace JUFAV_System.Components
             {
                 //ang order data dapat product name at kung ilang items ung laman nya
                 dataGridView1.Rows.Add(sread1["PRODUCTNAME"].ToString(), sread1["QUANTITY"].ToString(), sread1["ORIGINALPRICE"].ToString(), sread1["TOTAL"].ToString());
-                DatatoUpdate.Add(sread1["PRODUCTID"].ToString(), sread1["QUANTITY"].ToString());
+                DatatoUpdate.Add(new KeyValuePair<String,String>(sread1["ITEMID"].ToString(), sread1["QUANTITY"].ToString()));
             }
             sread1.Close();
             sread1 = null;
@@ -102,7 +116,7 @@ namespace JUFAV_System.Components
             foreach (String i in Queries1)
             {
                 scom1.CommandText = i;
-                scom1.ExecuteNonQuery();
+                scom1.ExecuteNonQuery();//nag duduplicate ang foreign ID
                 Thread.Sleep(250);
             }
             Thread.Sleep(2000);
@@ -115,40 +129,44 @@ namespace JUFAV_System.Components
             Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(this.Dispose, 0, "ARCHIVE RECORD", "RECORD SUCCESSFULLY ARCHIVED!", "OK", 0);
             ms.Show();
         }
+        private void completeOrder()
+        {
+            this.Cursor = Cursors.WaitCursor;
+            SQLiteCommand scom1 = new SQLiteCommand("UPDATE PURCHASEORDER SET ORDERSTATUS = 'COMPLETED' WHERE POID = " + POID1 + ";", initd.scon);
+            scom1.ExecuteNonQuery();
+            scom1 = null;
+            GC.Collect();
+            this.Cursor = Cursors.Default;
+            this.Dispose();
+        }
         private void receiveProducts()
         {
            // MessageBox.Show("ARE YOU SURE YOU WANT OT RECEIVE YOU ORDERS");
             SQLiteCommand scom1 = new SQLiteCommand("", initd.scon);//use  dictionary then foreach i.valuee i.key
             foreach (KeyValuePair<String, String> i in DatatoUpdate)
             {
-                scom1.CommandText = "UPDATE PRODUCTS SET QUANTITY = " + Convert.ToInt32(i.Value) + "WHERE PRODUCTID = " + Convert.ToInt32(i.Key) + ";";
+                scom1.CommandText = "UPDATE PRODUCTS SET QUANTITY = QUANTITY + " + Convert.ToInt32(i.Value) + " WHERE PRODUCTID = " + Convert.ToInt32(i.Key) + ";";
                 scom1.ExecuteNonQuery();
             }
             scom1 = null;
             GC.Collect();
-            Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(Cancel, 0, "RECEIVE ORDER", "ORDER SUCCESSFULLY RECEIVED!", "OK", 2);
+            completeOrder();
+            Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "RECEIVE ORDER", "ORDER SUCCESSFULLY RECEIVED!", "OK", 2);//updates the table into a completed order
             ms.Show();
             //di pa sure 
             //receive data insert to databas
         }
         public void determineDate()
         {
-          //  if ()
-           // {
-
-
-
-          //  }else
-           // {
-
-
-
-          //  }
-
-
+            CnclPOBTN.Enabled = false;
+            if (DateTime.Parse(ReceivingDate.Text.ToString()) < DateTime.Now)
+            {
+                CnclPOBTN.Enabled = true;
+            } 
         }
         public void receiveOrder(object sender, EventArgs e)
         {
+            //preview order first then check  kung ano ung  dumatng at hindi 
             Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(receiveProducts, 0, "RECEIVE ORDER", "ARE YOU SURE YOU WANT TO RECEIVE THIS ORDER?", "OK", 2);
             ms.Show();
         }
@@ -161,12 +179,6 @@ namespace JUFAV_System.Components
             Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(Cancel, 0, "CANCEL ORDER", "ARE YOU SURE YOU WANT TO CANCEL THIS ORDER?", "OK", 2);
             ms.Show();
         }
-        private void reOrder(object sender, EventArgs e)
-        {
-
-
-
-        }//tempo 
         private void Preview_Click(object sender, EventArgs e)
         {
             //292 and 81

@@ -72,19 +72,27 @@ namespace JUFAV_System.ModulesSecond.Inventory
             SQLiteDataReader sread = scom1.ExecuteReader();
             while (sread.Read())
             {
-                Components.SelectProductToAdjustDataBox db1 = new Components.SelectProductToAdjustDataBox(sread["PRODUCTNAME"].ToString(),Convert.ToDouble(sread["QUANTITY"]),Uom[Convert.ToInt32(sread["UOMID"])],Convert.ToInt32(sread["PRODUCTID"]));
+                Components.SelectProductToAdjustDataBox db1 = new Components.SelectProductToAdjustDataBox(sread["PRODUCTNAME"].ToString(),Convert.ToDouble(sread["QUANTITY"]),Category[Convert.ToInt32(sread["CATEGORYID"])].ToString(),SubCat[Convert.ToInt32(sread["SUBCATEGORYID"])].ToString(),determineperishable(Convert.ToInt32(sread["PERISHABLEPRODUCT"])), Uom[Convert.ToInt32(sread["UOMID"])].ToString(),Convert.ToInt32(sread["PRODUCTID"]));
                 itemsBoxs.Controls.Add(db1);
             }
 
 
         }
-
+        private bool determineperishable(int i)
+        {
+            bool todeter = false;
+            if (i == 1)
+            {
+                todeter = true;
+            }
+            return todeter;
+        }
         private void AddStockAdjustment_Leave(object sender, EventArgs e)
         {
             Uom = null;
             Category = null;
             SubCat = null;
-           
+            GC.Collect();     
         }
     }
 }

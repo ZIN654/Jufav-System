@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using JUFAV_System.dll;
+using System.Text.RegularExpressions;
 
 namespace JUFAV_System.Messageboxes
 {
     public partial class StockAdjustmentEditQuantity : Form
     {
-      
+        int adjustments = 0;
         int ProductID1 = 0;//to use when Updating // to place later :
         public StockAdjustmentEditQuantity(String Name, double quantity, String Category, String SubCategory,bool isperishable,String UoM, int ProductID)
         {
@@ -26,6 +27,7 @@ namespace JUFAV_System.Messageboxes
             ProdCat.Text = Category;
             ProdSubCat.Text = SubCategory;
             CurrentVallbl.Text = quantity.ToString();
+            UpdateQuantity.Text = adjustments.ToString();
             if (isperishable == false)
             {
                 EXPIRED.Enabled = false;
@@ -115,9 +117,20 @@ namespace JUFAV_System.Messageboxes
 
 
         }
+        private void verifier()
+        {
+            //verify inputs first
+            if (Regex.IsMatch(UpdateQuantity.Text, @"^\d+$") == false)
+            {
+                UpdateQuantity.Text = 0.ToString();
+                Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "INVALID INPUT", "INVALID INPUT DUE TO A NON NUMERIC CHARACTER", "OK", 2);
+                ms.Show();
+            }
+        }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             //Console.WriteLine(DetermineReason());
+            //verifyier first
             Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(UpdateDatabaseInsertAdjustments, 0, "ADJUST STOCK", "ARE YOU SURE YOU WANT TO APPLY THIS ADJUSTMENT?", "OK", 2);
             ms.Show();
         }
@@ -130,6 +143,20 @@ namespace JUFAV_System.Messageboxes
         {
             this.Dispose();
          
+        }
+        private void Increment_Click(object sender, EventArgs e)
+        {
+            adjustments++;
+            UpdateQuantity.Text = adjustments.ToString();
+        }
+        private void Decrement_Click(object sender, EventArgs e)
+        {
+            adjustments--;
+            UpdateQuantity.Text = adjustments.ToString();
+        }
+        private void UpdateQuantity_TextChanged(object sender, EventArgs e)
+        {
+            verifier();   
         }
     }
 }
