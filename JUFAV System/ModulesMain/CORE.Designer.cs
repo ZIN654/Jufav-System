@@ -145,7 +145,7 @@
             // OPTIONS
             // 
             this.OPTIONS.AutoScroll = true;
-            this.OPTIONS.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.OPTIONS.Cursor = System.Windows.Forms.Cursors.Default;
             this.OPTIONS.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OPTIONS.Location = new System.Drawing.Point(0, 274);
             this.OPTIONS.Margin = new System.Windows.Forms.Padding(0);

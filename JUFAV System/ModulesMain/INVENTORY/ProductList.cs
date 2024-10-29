@@ -272,7 +272,7 @@ namespace JUFAV_System.ModulesMain.INVENTORY
                 pfd1.Document = doc;
                 pfd1.RenderDocument();
                 pfd1.PdfDocument.Save(path);
-            pfd2.PdfDocument.Close();
+           // pfd2.PdfDocument.Close();
             doc2 = null;
             pfd2 = null;
 

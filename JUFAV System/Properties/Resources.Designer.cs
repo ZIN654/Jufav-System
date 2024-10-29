@@ -73,6 +73,16 @@ namespace JUFAV_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Backspace {
+            get {
+                object obj = ResourceManager.GetObject("Backspace", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BoxImpo {
             get {
                 object obj = ResourceManager.GetObject("BoxImpo", resourceCulture);

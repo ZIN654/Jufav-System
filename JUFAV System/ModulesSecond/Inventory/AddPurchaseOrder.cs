@@ -142,19 +142,13 @@ namespace JUFAV_System.ModulesSecond.Inventory
         private void insertinto()
         {
             this.Cursor = Cursors.WaitCursor;
-            //"TABLE PURCHASEORDER(POID,USERID,ORDERDATE,EXPECTEDORDERDATE,SUPPLIER,TIMES,TOTALPRODUCTS,TOTALCOST,ORDERSTATUS),
-            //"TABLE POITEMORDERTABLE(ORDERTABLEID,USERID,POID,ITEMID)
-            //insert to PO talbe first then into POITEMORDERTABLE with the same ID's 
-            //CREATE TABLE PO INFORMATION NG DELIVERY
-            //execute each string 
-            //detect kung wala munang laman ung itemsbox
             if (ItemsBoxPoList.Controls.Count != 0)
             {
                 SQLiteCommand scom1 = new SQLiteCommand("INSERT INTO PURCHASEORDER (POID,USERID,ORDERDATE,EXPECTEDORDERDATE,SUPPLIER,TIMES,TOTALPRODUCTS,TOTALCOST,ORDERSTATUS) VALUES (" + initd.POID + "," + initd.UserID + ",'" + DateTime.Now.ToShortDateString() + "','" + dateTimePicker1.Text + "','" + splr.Text + "','" + DateTime.Now.ToShortTimeString() + "','" + ItemsBoxPoList.Controls.Count + "'," + Convert.ToDouble(totalamount.Text) + ",'PENDING');", initd.scon);
                 scom1.ExecuteNonQuery();
                 foreach (KeyValuePair<int, String> i in initd.QueryID)
                 {
-                    scom1.CommandText = i.Value;//foreign key constraint fe
+                    scom1.CommandText = i.Value;//foreign key constraint failed
                     scom1.ExecuteNonQuery();
                     Thread.Sleep(100);
                 }

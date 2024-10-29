@@ -49,7 +49,7 @@ namespace JUFAV_System.Messageboxes
             //STOCKADJUSTMENTID,USERID,DATEOFADJUSTMENT,PRODUCTID,PRODUCTNAME,ADJUSTMENTTYPE,PREVIOUSQUANTITY,ADJUSTEDQUANTITY,REASON 
             //STOCKADJUSTMENTID,USERS,DATEOFADJUSTMENT,PRODUCTID,PRODUCTNAME,ADJUSTMENTTYPE,PREVIOUSQUANTITY,ADJUSTEDQUANTITY,REASON
             //error here insertion of adjustments
-            scom1.CommandText = "INSERT INTO STOCKADJUSTMENTS VALUES("+generateID()+","+initd.UserID+",'"+DateTime.Now.ToShortDateString()+"',"+ProductID1+",'"+prodName.Text+"','"+ determinetypeofAdjustment(determineadjustment(Convert.ToInt32(CurrentVallbl.Text), Convert.ToInt32(UpdateQuantity.Text))) +"',"+ Convert.ToInt32(CurrentVallbl.Text) +","+ (Convert.ToInt32(UpdateQuantity.Text) - Convert.ToInt32(CurrentVallbl.Text)) + ",'"+ DetermineReason().ToString() +"','"+Remarks.Text+"');";
+            scom1.CommandText = "INSERT INTO STOCKADJUSTMENTS(USERID,DATEOFADJUSTMENT,PRODUCTID,PRODUCTNAME,ADJUSTMENTTYPE,PREVIOUSQUANTITY,ADJUSTEDQUANTITY,REASON,OTHERS) VALUES(" + initd.UserID+",'"+DateTime.Now.ToShortDateString()+"',"+ProductID1+",'"+prodName.Text+"','"+ determinetypeofAdjustment(determineadjustment(Convert.ToInt32(CurrentVallbl.Text), Convert.ToInt32(UpdateQuantity.Text))) +"',"+ Convert.ToInt32(CurrentVallbl.Text) +","+ (Convert.ToInt32(UpdateQuantity.Text) - Convert.ToInt32(CurrentVallbl.Text)) + ",'"+ DetermineReason().ToString() +"','"+Remarks.Text+"');";
             scom1.ExecuteNonQuery();
 
 
@@ -94,17 +94,7 @@ namespace JUFAV_System.Messageboxes
             }
             return adjtype;
         }
-        private int generateID()
-        {
-            String IDStck = "";
-            Random rs1 = new Random();
-            for (int i = 0; i != 8;i++)
-            {
-                IDStck = IDStck +  rs1.Next(0,10).ToString();
-            }
-            Console.WriteLine(IDStck);
-            return Convert.ToInt32(IDStck);
-        }
+       
         private void CloseForm()
         {
            

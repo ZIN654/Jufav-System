@@ -37,9 +37,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.viewRemarks = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.archbtn = new System.Windows.Forms.Button();
+            this.trash = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -141,14 +141,38 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.archbtn);
+            this.panel1.Controls.Add(this.trash);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(412, 51);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(135, 35);
             this.panel1.TabIndex = 4;
+            // 
+            // archbtn
+            // 
+            this.archbtn.BackgroundImage = global::JUFAV_System.Properties.Resources.Archive;
+            this.archbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.archbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.archbtn.Location = new System.Drawing.Point(94, 8);
+            this.archbtn.Name = "archbtn";
+            this.archbtn.Size = new System.Drawing.Size(24, 23);
+            this.archbtn.TabIndex = 2;
+            this.archbtn.UseVisualStyleBackColor = true;
+            this.archbtn.Click += new System.EventHandler(this.archbtn_Click);
+            // 
+            // trash
+            // 
+            this.trash.BackgroundImage = global::JUFAV_System.Properties.Resources.dlt;
+            this.trash.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.trash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.trash.Location = new System.Drawing.Point(64, 8);
+            this.trash.Name = "trash";
+            this.trash.Size = new System.Drawing.Size(24, 23);
+            this.trash.TabIndex = 1;
+            this.trash.UseVisualStyleBackColor = true;
+            this.trash.Click += new System.EventHandler(this.trash_Click);
             // 
             // label7
             // 
@@ -159,28 +183,6 @@
             this.label7.Size = new System.Drawing.Size(57, 13);
             this.label7.TabIndex = 0;
             this.label7.Text = "ACTIONS:";
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImage = global::JUFAV_System.Properties.Resources.dlt;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(64, 8);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 23);
-            this.button1.TabIndex = 1;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.BackgroundImage = global::JUFAV_System.Properties.Resources.Archive;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(94, 8);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(24, 23);
-            this.button2.TabIndex = 2;
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // StockAdjustmentsDatabox
             // 
@@ -212,7 +214,7 @@
         private System.Windows.Forms.Button viewRemarks;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button trash;
+        private System.Windows.Forms.Button archbtn;
     }
 }

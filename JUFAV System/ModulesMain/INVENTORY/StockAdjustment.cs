@@ -33,7 +33,7 @@ namespace JUFAV_System.ModulesMain.INVENTORY
             SQLiteDataReader sread1 = sq1.ExecuteReader();
             while (sread1.Read())
             {
-                Components.StockAdjustmentsDatabox stck1 = new Components.StockAdjustmentsDatabox(sread1["DATEOFADJUSTMENT"].ToString(), sread1["PRODUCTNAME"].ToString(), sread1["ADJUSTMENTTYPE"].ToString(), Convert.ToInt32(sread1["PREVIOUSQUANTITY"]), Convert.ToInt32(sread1["ADJUSTEDQUANTITY"]), sread1["REASON"].ToString(), sread1["OTHERS"].ToString());
+                Components.StockAdjustmentsDatabox stck1 = new Components.StockAdjustmentsDatabox(sread1["DATEOFADJUSTMENT"].ToString(), sread1["PRODUCTNAME"].ToString(), sread1["ADJUSTMENTTYPE"].ToString(), Convert.ToInt32(sread1["PREVIOUSQUANTITY"]), Convert.ToInt32(sread1["ADJUSTEDQUANTITY"]), sread1["REASON"].ToString(), sread1["OTHERS"].ToString(),Convert.ToInt32(sread1["STOCKADJUSTMENTID"]));
                 ItemsBox.Controls.Add(stck1);
             }
             sread1.Close();

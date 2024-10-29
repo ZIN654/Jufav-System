@@ -95,8 +95,8 @@ namespace JUFAV_System.Components
         }
         private void insertdata()
         {
-            IdQuery = generateID(1);
-            initd.QueryID.Add(IdQuery, "INSERT INTO POITEMORDERTABLE (ORDERID,USERID,POID,ITEMID,QUANTITY,PRODUCTNAME,ORIGINALPRICE,TOTAL) VALUES("+generateID(0)+","+initd.UserID+","+initd.POID+","+ProdID1+","+Convert.ToInt32(quantitytxtbox.Text)+",'"+ProducName1.Text+"',"+Convert.ToDouble(label14.Text)+","+ Convert.ToDouble(TotalValue.Text)+");");
+            IdQuery = generateID(1);//autoincrement source ng fk error
+            initd.QueryID.Add(IdQuery, "INSERT INTO POITEMORDERTABLE (USERID,POID,ITEMID,QUANTITY,PRODUCTNAME,ORIGINALPRICE,TOTAL) VALUES("+initd.UserID+","+initd.POID+","+ProdID1+","+Convert.ToInt32(quantitytxtbox.Text)+",'"+ProducName1.Text+"',"+Convert.ToDouble(label14.Text)+","+ Convert.ToDouble(TotalValue.Text)+");");
             triger = 1;
         }
         private void TrashBTN_Click(object sender, EventArgs e)
