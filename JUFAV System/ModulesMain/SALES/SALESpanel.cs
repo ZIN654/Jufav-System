@@ -18,15 +18,26 @@ namespace JUFAV_System.ModulesMain.SALES
         Dictionary<int, string> category;
         Dictionary<int, string> Subcategory;
         Dictionary<int, string> UoM;
-        Dictionary<int, string> Supplier;
+    
 
         Dictionary<string, int> category2;
         Dictionary<string, int> Subcategory2;
         Dictionary<string, int> UoM2;
         public SALES()
         {
+           
             InitializeComponent();
+            category = new Dictionary<int, string>();
+            Subcategory = new Dictionary<int, string>();
+            UoM = new Dictionary<int, string>();
+           // limitsearch();
+
+            category2 = new Dictionary<string, int>();
+            Subcategory2 = new Dictionary<string, int>();
+            UoM2 = new Dictionary<string, int>();
             this.Dock = DockStyle.Fill;
+            loadUnits();
+
         }
         private void loadUnits()
         {
@@ -34,7 +45,7 @@ namespace JUFAV_System.ModulesMain.SALES
             category.Clear();
             Subcategory.Clear();
             UoM.Clear();
-            Supplier.Clear();
+           
             comboBox1.Items.Add("ALL ITEMS");
             comboBox2.Items.Add("ALL ITEMS");
             category2.Add("ALL ITEMS", 1001);
@@ -73,36 +84,51 @@ namespace JUFAV_System.ModulesMain.SALES
 
             }
             sq1.Close();
-            scom1.CommandText = "SELECT SUPPLIERNAME,SUPPLIERID FROM SUPPLIERS";
-            sq1 = scom1.ExecuteReader();
-            while (sq1.Read())
-            {
-                Supplier.Add(Convert.ToInt32(sq1["SUPPLIERID"]), sq1["SUPPLIERNAME"].ToString());
-
-
-            }
-            comboBox1.SelectedIndex = 0;
+            comboBox1.SelectedIndex = 0;//
             sq1 = null;
             scom1 = null;
         }
+        private void limitsearch()
+        {
+            int rowcount = 43;
+            int displaylimit = 10;
+            int pages = 0;
+            int count = 0;
+            int [] pageoffset = { };
+            for (int i = 0; i <= displaylimit; i++,count++)
+            {
+                if (i == displaylimit)
+                {
+                    Console.WriteLine("ADDING 1 OAGES");
+                    i = 0;
+                  //  pageoffset[pages] = count;
+                    pages++;
+                    break;
+                }
+            }
+            //fix bug id at PURCHASEORDER
+            //for limitung SELECT * FROM POITEMORDERTABLE ORDER BY ORDERID ASC LIMIT 3 OFFSET 5
+            //dapata pala nasa loob ito ng tofilter2 since un ung ginagamit ng dalawang combobox
+        }
         private void filtersearchbox(String text)
         {
+           
             //search anything 
-            foreach (UserControl items in topdf.Controls)
+            foreach (UserControl items in ITEMSBOX.Controls)
             {
                 items.Dispose();
             }
-            topdf.Controls.Clear();
+            ITEMSBOX.Controls.Clear();
             SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM PRODUCTS WHERE PRODUCTNAME LIKE '%" + text + "%';", initd.scon);
-            SQLiteDataReader sq1 = scom1.ExecuteReader();
-            while (sq1.Read())
+            SQLiteDataReader sread1 = scom1.ExecuteReader();
+            while (sread1.Read())
             {
-                Components.ProdListtDataBoxComponent as1 = new Components.ProdListtDataBoxComponent(sq1["PRODUCTNAME"].ToString(), category[Convert.ToInt32(sq1["CATEGORYID"])], Subcategory[Convert.ToInt32(sq1["SUBCATEGORYID"])], Convert.ToDouble(sq1["QUANTITY"]), UoM[Convert.ToInt32(sq1["UOMID"])], Convert.ToDouble(sq1["ORIGINALPICE"]), Convert.ToDouble(sq1["MARKUPVALUE"]), determineVal(Convert.ToInt32(sq1["PERISHABLEPRODUCT"])), DateTime.Parse(sq1["EXPIRINGDATE"].ToString()).ToShortDateString(), determineVal(Convert.ToInt32(sq1["ISBATCH"])), Convert.ToInt32(sq1["PRODUCTID"]));
-                topdf.Controls.Add(as1);
+                Components.SalesProductList as1 = new Components.SalesProductList(sread1["PRODUCTNAME"].ToString(), Convert.ToInt32(sread1["QUANTITY"]), UoM[Convert.ToInt32(sread1["UOMID"])], (Convert.ToInt32(sread1["ORIGINALPICE"]) + Convert.ToInt32(sread1["MARKUPVALUE"])).ToString(), Convert.ToInt32(sread1["PRODUCTID"]));
+                ITEMSBOX.Controls.Add(as1);
             }
-            sq1.Close();
+            sread1.Close();
             scom1 = null;
-            sq1 = null;
+            sread1 = null;
 
 
 
@@ -126,13 +152,13 @@ namespace JUFAV_System.ModulesMain.SALES
                 while (sread1.Read())
                 {//USERID,CATEGORYID,SUBCATEGORYID,UOMID,PRODUCTNAME,ORIGINALPICE,MARKUPVALUE,QUANTITY,SUPPLIERID,PERISHABLEPRODUCT,ISBATCH,EXPIRINGDATE
                  //supplier boss kullang
-                    Components.ProdListtDataBoxComponent as1 = new Components.ProdListtDataBoxComponent(sread1["PRODUCTNAME"].ToString(), category[Convert.ToInt32(sread1["CATEGORYID"])], Subcategory[Convert.ToInt32(sread1["SUBCATEGORYID"])], Convert.ToDouble(sread1["QUANTITY"]), UoM[Convert.ToInt32(sread1["UOMID"])], Convert.ToDouble(sread1["ORIGINALPICE"]), Convert.ToDouble(sread1["MARKUPVALUE"]), determineVal(Convert.ToInt32(sread1["PERISHABLEPRODUCT"])), DateTime.Parse(sread1["EXPIRINGDATE"].ToString()).ToShortDateString(), determineVal(Convert.ToInt32(sread1["ISBATCH"])), Convert.ToInt32(sread1["PRODUCTID"]));
+                    Components.SalesProductList as1 = new Components.SalesProductList(sread1["PRODUCTNAME"].ToString(),Convert.ToInt32(sread1["QUANTITY"]), UoM[Convert.ToInt32(sread1["UOMID"])], (Convert.ToInt32(sread1["ORIGINALPICE"])+ Convert.ToInt32(sread1["MARKUPVALUE"])).ToString(), Convert.ToInt32(sread1["PRODUCTID"]));
                     ITEMSBOX.Controls.Add(as1);
 
                 }
                 sread1.Close();
             }
-            else if (Category != 1001 && Subcat == 1002)
+            else if(Category != 1001 && Subcat == 1002)
             {
 
                 scom1.CommandText = "SELECT * FROM PRODUCTS WHERE CATEGORYID = " + Category + " ORDER BY PRODUCTNAME DESC;";
@@ -140,31 +166,29 @@ namespace JUFAV_System.ModulesMain.SALES
                 while (sread1.Read())
                 {//USERID,CATEGORYID,SUBCATEGORYID,UOMID,PRODUCTNAME,ORIGINALPICE,MARKUPVALUE,QUANTITY,SUPPLIERID,PERISHABLEPRODUCT,ISBATCH,EXPIRINGDATE
                  //supplier boss kullang
-                    Components.ProdListtDataBoxComponent as1 = new Components.ProdListtDataBoxComponent(sread1["PRODUCTNAME"].ToString(), category[Convert.ToInt32(sread1["CATEGORYID"])], Subcategory[Convert.ToInt32(sread1["SUBCATEGORYID"])], Convert.ToDouble(sread1["QUANTITY"]), UoM[Convert.ToInt32(sread1["UOMID"])], Convert.ToDouble(sread1["ORIGINALPICE"]), Convert.ToDouble(sread1["MARKUPVALUE"]), determineVal(Convert.ToInt32(sread1["PERISHABLEPRODUCT"])), DateTime.Parse(sread1["EXPIRINGDATE"].ToString()).ToShortDateString(), determineVal(Convert.ToInt32(sread1["ISBATCH"])), Convert.ToInt32(sread1["PRODUCTID"]));
+                    Components.SalesProductList as1 = new Components.SalesProductList(sread1["PRODUCTNAME"].ToString(), Convert.ToInt32(sread1["QUANTITY"]), UoM[Convert.ToInt32(sread1["UOMID"])], (Convert.ToInt32(sread1["ORIGINALPICE"]) + Convert.ToInt32(sread1["MARKUPVALUE"])).ToString(), Convert.ToInt32(sread1["PRODUCTID"]));
                     ITEMSBOX.Controls.Add(as1);
 
                 }
                 sread1.Close();
-            }
-            else
+            }else
             {
-
-                scom1.CommandText = "SELECT * FROM PRODUCTS WHERE CATEGORYID = " + Category + " AND SUBCATEGORYID = " + Subcat + " AND ISBATCH = " + batched + " AND PERISHABLEPRODUCT = " + perishable + " ORDER BY PRODUCTNAME DESC;";
+                scom1.CommandText = "SELECT * FROM PRODUCTS WHERE CATEGORYID = " + Category + " AND SUBCATEGORYID = "+Subcat+" ORDER BY PRODUCTNAME DESC;";
                 sread1 = scom1.ExecuteReader(); ;
                 while (sread1.Read())
                 {//USERID,CATEGORYID,SUBCATEGORYID,UOMID,PRODUCTNAME,ORIGINALPICE,MARKUPVALUE,QUANTITY,SUPPLIERID,PERISHABLEPRODUCT,ISBATCH,EXPIRINGDATE
                  //supplier boss kullang
-                    Components.ProdListtDataBoxComponent as1 = new Components.ProdListtDataBoxComponent(sread1["PRODUCTNAME"].ToString(), category[Convert.ToInt32(sread1["CATEGORYID"])], Subcategory[Convert.ToInt32(sread1["SUBCATEGORYID"])], Convert.ToDouble(sread1["QUANTITY"]), UoM[Convert.ToInt32(sread1["UOMID"])], Convert.ToDouble(sread1["ORIGINALPICE"]), Convert.ToDouble(sread1["MARKUPVALUE"]), determineVal(Convert.ToInt32(sread1["PERISHABLEPRODUCT"])), DateTime.Parse(sread1["EXPIRINGDATE"].ToString()).ToShortDateString(), determineVal(Convert.ToInt32(sread1["ISBATCH"])), Convert.ToInt32(sread1["PRODUCTID"]));
+                    Components.SalesProductList as1 = new Components.SalesProductList(sread1["PRODUCTNAME"].ToString(), Convert.ToInt32(sread1["QUANTITY"]), UoM[Convert.ToInt32(sread1["UOMID"])], (Convert.ToInt32(sread1["ORIGINALPICE"]) + Convert.ToInt32(sread1["MARKUPVALUE"])).ToString(), Convert.ToInt32(sread1["PRODUCTID"]));
                     ITEMSBOX.Controls.Add(as1);
 
                 }
                 sread1.Close();
 
 
+
+
             }
-
-
-
+          
         }
         private bool determineVal(int todet)
         {
@@ -232,7 +256,11 @@ namespace JUFAV_System.ModulesMain.SALES
         }
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            tofilter2(Convert.ToInt32(category2[comboBox1.Text]), Convert.ToInt32(Subcategory2[comboBox2.Text]), determineVal2(prshblchbx.Checked), determineVal2(batchdchbx.Checked), srchbox.Text);
+            tofilter2(Convert.ToInt32(category2[comboBox1.Text]), Convert.ToInt32(Subcategory2[comboBox2.Text]), srchbox.Text);
+        }
+        private void srachbox_Click(object sender, EventArgs e)
+        {
+            filtersearchbox(srchbox.Text);
         }
     }
 }

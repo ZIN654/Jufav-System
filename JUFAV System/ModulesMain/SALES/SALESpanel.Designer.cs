@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.srachbox = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,11 +47,10 @@
             this.Items = new System.Windows.Forms.Panel();
             this.ITEMSBOX = new System.Windows.Forms.Panel();
             this.Selection = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.bckpage = new System.Windows.Forms.Button();
+            this.nxtpage = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -63,18 +63,16 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.sbTtlLP = new System.Windows.Forms.TableLayoutPanel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.CLEARITEMSbtn = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.BottmButton = new System.Windows.Forms.TableLayoutPanel();
             this.VoidBTN = new System.Windows.Forms.Button();
             this.rfndBTN = new System.Windows.Forms.Button();
             this.cnfBTN = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.MainPan.SuspendLayout();
@@ -98,7 +96,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 53F));
-            this.tableLayoutPanel1.Controls.Add(this.button1, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.srachbox, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
@@ -114,6 +112,20 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(665, 39);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // srachbox
+            // 
+            this.srachbox.BackgroundImage = global::JUFAV_System.Properties.Resources.Search;
+            this.srachbox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.srachbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.srachbox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.srachbox.Location = new System.Drawing.Point(612, 13);
+            this.srachbox.Margin = new System.Windows.Forms.Padding(0);
+            this.srachbox.Name = "srachbox";
+            this.srachbox.Size = new System.Drawing.Size(53, 26);
+            this.srachbox.TabIndex = 1;
+            this.srachbox.UseVisualStyleBackColor = true;
+            this.srachbox.Click += new System.EventHandler(this.srachbox_Click);
             // 
             // label3
             // 
@@ -186,7 +198,6 @@
             this.srchbox.Name = "srchbox";
             this.srchbox.Size = new System.Drawing.Size(204, 26);
             this.srchbox.TabIndex = 0;
-            this.srchbox.Text = "Ply Wood";
             // 
             // MainPan
             // 
@@ -295,88 +306,76 @@
             this.ITEMSBOX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ITEMSBOX.Location = new System.Drawing.Point(0, 21);
             this.ITEMSBOX.Name = "ITEMSBOX";
-            this.ITEMSBOX.Size = new System.Drawing.Size(375, 306);
+            this.ITEMSBOX.Size = new System.Drawing.Size(375, 293);
             this.ITEMSBOX.TabIndex = 4;
             // 
             // Selection
             // 
+            this.Selection.Controls.Add(this.label10);
             this.Selection.Controls.Add(this.label15);
             this.Selection.Controls.Add(this.textBox4);
-            this.Selection.Controls.Add(this.button7);
-            this.Selection.Controls.Add(this.button6);
-            this.Selection.Controls.Add(this.button5);
-            this.Selection.Controls.Add(this.button4);
-            this.Selection.Controls.Add(this.button3);
+            this.Selection.Controls.Add(this.bckpage);
+            this.Selection.Controls.Add(this.nxtpage);
             this.Selection.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Selection.Location = new System.Drawing.Point(0, 327);
+            this.Selection.Location = new System.Drawing.Point(0, 314);
             this.Selection.Name = "Selection";
-            this.Selection.Size = new System.Drawing.Size(375, 24);
+            this.Selection.Size = new System.Drawing.Size(375, 37);
             this.Selection.TabIndex = 3;
             // 
-            // button7
+            // label15
             // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(313, 0);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(28, 26);
-            this.button7.TabIndex = 5;
-            this.button7.Text = "...";
-            this.button7.UseVisualStyleBackColor = true;
+            this.label15.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label15.Font = new System.Drawing.Font("Actor", 12F);
+            this.label15.Location = new System.Drawing.Point(0, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(142, 37);
+            this.label15.TabIndex = 7;
+            this.label15.Text = "DISPLAY LIMIT: ";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // button6
+            // textBox4
             // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(271, -1);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(28, 26);
-            this.button6.TabIndex = 4;
-            this.button6.Text = "2";
-            this.button6.UseVisualStyleBackColor = true;
+            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox4.Font = new System.Drawing.Font("Actor", 12F);
+            this.textBox4.Location = new System.Drawing.Point(148, 5);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(33, 27);
+            this.textBox4.TabIndex = 6;
+            this.textBox4.Text = "10";
             // 
-            // button5
+            // bckpage
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(237, -1);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(28, 26);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "1";
-            this.button5.UseVisualStyleBackColor = true;
+            this.bckpage.Dock = System.Windows.Forms.DockStyle.Right;
+            this.bckpage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bckpage.Font = new System.Drawing.Font("Actor", 15.75F, System.Drawing.FontStyle.Bold);
+            this.bckpage.Location = new System.Drawing.Point(289, 0);
+            this.bckpage.Name = "bckpage";
+            this.bckpage.Size = new System.Drawing.Size(43, 37);
+            this.bckpage.TabIndex = 2;
+            this.bckpage.Text = "<";
+            this.bckpage.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // nxtpage
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(347, -1);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(28, 26);
-            this.button4.TabIndex = 2;
-            this.button4.Text = ">";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(203, -1);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(28, 26);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "<";
-            this.button3.UseVisualStyleBackColor = true;
+            this.nxtpage.Dock = System.Windows.Forms.DockStyle.Right;
+            this.nxtpage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nxtpage.Font = new System.Drawing.Font("Actor", 15.75F, System.Drawing.FontStyle.Bold);
+            this.nxtpage.Location = new System.Drawing.Point(332, 0);
+            this.nxtpage.Name = "nxtpage";
+            this.nxtpage.Size = new System.Drawing.Size(43, 37);
+            this.nxtpage.TabIndex = 0;
+            this.nxtpage.Text = ">";
+            this.nxtpage.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.tableLayoutPanel2.ColumnCount = 5;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.86666F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.73333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.6F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.8F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.73333F));
             this.tableLayoutPanel2.Controls.Add(this.label9, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.label8, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.label7, 1, 0);
@@ -393,9 +392,9 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(228, 0);
+            this.label9.Location = new System.Drawing.Point(270, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 21);
+            this.label9.Size = new System.Drawing.Size(57, 21);
             this.label9.TabIndex = 3;
             this.label9.Text = "PRICE";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -404,20 +403,20 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(153, 0);
+            this.label8.Location = new System.Drawing.Point(219, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 21);
+            this.label8.Size = new System.Drawing.Size(45, 21);
             this.label8.TabIndex = 2;
             this.label8.Text = "UNIT";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(78, 0);
+            this.label7.Location = new System.Drawing.Point(145, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 21);
+            this.label7.Size = new System.Drawing.Size(68, 21);
             this.label7.TabIndex = 1;
             this.label7.Text = "STOCK QUANTITY";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -428,10 +427,10 @@
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Location = new System.Drawing.Point(3, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 21);
+            this.label6.Size = new System.Drawing.Size(136, 21);
             this.label6.TabIndex = 0;
             this.label6.Text = "PRDUCT NAME";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // SlctdItem
             // 
@@ -476,7 +475,7 @@
             this.HeadingOrders.ColumnCount = 3;
             this.HeadingOrders.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.95522F));
             this.HeadingOrders.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.04478F));
-            this.HeadingOrders.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.HeadingOrders.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121F));
             this.HeadingOrders.Controls.Add(this.label11, 0, 0);
             this.HeadingOrders.Controls.Add(this.label12, 0, 1);
             this.HeadingOrders.Controls.Add(this.label13, 1, 1);
@@ -520,16 +519,27 @@
             this.label13.Font = new System.Drawing.Font("Actor", 9.75F);
             this.label13.Location = new System.Drawing.Point(93, 18);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(57, 19);
+            this.label13.Size = new System.Drawing.Size(56, 19);
             this.label13.TabIndex = 2;
             this.label13.Text = "Quantity";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label16
+            // 
+            this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label16.Font = new System.Drawing.Font("Actor", 9.75F);
+            this.label16.Location = new System.Drawing.Point(155, 18);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(116, 19);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "Total Price";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // sbTtlLP
             // 
             this.sbTtlLP.ColumnCount = 1;
             this.sbTtlLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.sbTtlLP.Controls.Add(this.button2, 0, 1);
+            this.sbTtlLP.Controls.Add(this.CLEARITEMSbtn, 0, 1);
             this.sbTtlLP.Controls.Add(this.label14, 0, 0);
             this.sbTtlLP.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.sbTtlLP.Location = new System.Drawing.Point(0, 249);
@@ -540,18 +550,18 @@
             this.sbTtlLP.Size = new System.Drawing.Size(274, 67);
             this.sbTtlLP.TabIndex = 2;
             // 
-            // button2
+            // CLEARITEMSbtn
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.button2.Location = new System.Drawing.Point(0, 26);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(274, 41);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "CLEAR ITEMS";
-            this.button2.UseVisualStyleBackColor = true;
+            this.CLEARITEMSbtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CLEARITEMSbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CLEARITEMSbtn.Font = new System.Drawing.Font("Actor", 9.75F);
+            this.CLEARITEMSbtn.Location = new System.Drawing.Point(0, 26);
+            this.CLEARITEMSbtn.Margin = new System.Windows.Forms.Padding(0);
+            this.CLEARITEMSbtn.Name = "CLEARITEMSbtn";
+            this.CLEARITEMSbtn.Size = new System.Drawing.Size(274, 41);
+            this.CLEARITEMSbtn.TabIndex = 0;
+            this.CLEARITEMSbtn.Text = "CLEAR ITEMS";
+            this.CLEARITEMSbtn.UseVisualStyleBackColor = true;
             // 
             // label14
             // 
@@ -632,50 +642,16 @@
             this.cnfBTN.UseVisualStyleBackColor = false;
             this.cnfBTN.Click += new System.EventHandler(this.cnfBTN_Click);
             // 
-            // textBox4
+            // label10
             // 
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.textBox4.Location = new System.Drawing.Point(114, 1);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(33, 23);
-            this.textBox4.TabIndex = 6;
-            this.textBox4.Text = "10";
-            // 
-            // label15
-            // 
-            this.label15.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label15.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.label15.Location = new System.Drawing.Point(0, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(108, 24);
-            this.label15.TabIndex = 7;
-            this.label15.Text = "DISPLAY LIMIT: ";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label16
-            // 
-            this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label16.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.label16.Location = new System.Drawing.Point(156, 18);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(115, 19);
-            this.label16.TabIndex = 3;
-            this.label16.Text = "Total Price";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImage = global::JUFAV_System.Properties.Resources.Search;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(612, 13);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(53, 26);
-            this.button1.TabIndex = 1;
-            this.button1.UseVisualStyleBackColor = true;
+            this.label10.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label10.Font = new System.Drawing.Font("Actor", 12F);
+            this.label10.Location = new System.Drawing.Point(190, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(99, 37);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "PAGE: 1 of 3";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // SALES
             // 
@@ -716,7 +692,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button srachbox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
@@ -740,7 +716,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TableLayoutPanel sbTtlLP;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button CLEARITEMSbtn;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel ItemsBoxSelected;
         private System.Windows.Forms.Panel panel3;
@@ -751,13 +727,11 @@
         private System.Windows.Forms.TextBox srchbox;
         private System.Windows.Forms.Panel ITEMSBOX;
         private System.Windows.Forms.Panel Selection;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button bckpage;
+        private System.Windows.Forms.Button nxtpage;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label10;
     }
 }

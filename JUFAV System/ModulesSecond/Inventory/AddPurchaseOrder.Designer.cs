@@ -279,7 +279,7 @@
             this.CreatePO.Name = "CreatePO";
             this.CreatePO.Size = new System.Drawing.Size(190, 38);
             this.CreatePO.TabIndex = 0;
-            this.CreatePO.Text = "CREATE PO";
+            this.CreatePO.Text = "CREATE";
             this.CreatePO.UseVisualStyleBackColor = true;
             this.CreatePO.Click += new System.EventHandler(this.CreatePO_Click);
             // 
@@ -480,7 +480,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.5654F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
             this.tableLayoutPanel4.Controls.Add(this.label13, 4, 0);
             this.tableLayoutPanel4.Controls.Add(this.label11, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.label10, 1, 0);
@@ -498,7 +498,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label13.Location = new System.Drawing.Point(406, 1);
+            this.label13.Location = new System.Drawing.Point(404, 1);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(39, 14);
             this.label13.TabIndex = 4;
@@ -508,7 +508,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label11.Location = new System.Drawing.Point(227, 1);
+            this.label11.Location = new System.Drawing.Point(225, 1);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(60, 14);
             this.label11.TabIndex = 2;
@@ -518,7 +518,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label10.Location = new System.Drawing.Point(185, 1);
+            this.label10.Location = new System.Drawing.Point(184, 1);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(33, 14);
             this.label10.TabIndex = 1;
@@ -538,7 +538,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label12.Location = new System.Drawing.Point(321, 1);
+            this.label12.Location = new System.Drawing.Point(319, 1);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(63, 14);
             this.label12.TabIndex = 3;
@@ -584,7 +584,7 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.11455F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.88545F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 51F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanel5.Controls.Add(this.label16, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.label17, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.label18, 0, 0);
@@ -601,7 +601,7 @@
             this.label16.AutoSize = true;
             this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label16.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label16.Location = new System.Drawing.Point(217, 1);
+            this.label16.Location = new System.Drawing.Point(215, 1);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(45, 15);
             this.label16.TabIndex = 2;
@@ -611,7 +611,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label17.Location = new System.Drawing.Point(176, 1);
+            this.label17.Location = new System.Drawing.Point(175, 1);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(32, 15);
             this.label17.TabIndex = 1;
