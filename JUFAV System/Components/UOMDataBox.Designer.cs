@@ -34,10 +34,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.deletebtn = new System.Windows.Forms.PictureBox();
             this.editbut = new System.Windows.Forms.PictureBox();
+            this.ARCBTn = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deletebtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.editbut)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ARCBTn)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -84,6 +86,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.ARCBTn);
             this.panel1.Controls.Add(this.deletebtn);
             this.panel1.Controls.Add(this.editbut);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
@@ -110,13 +113,26 @@
             this.editbut.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.editbut.Cursor = System.Windows.Forms.Cursors.Hand;
             this.editbut.Image = global::JUFAV_System.Properties.Resources.Edit;
-            this.editbut.Location = new System.Drawing.Point(52, 0);
+            this.editbut.Location = new System.Drawing.Point(56, 0);
             this.editbut.Name = "editbut";
             this.editbut.Size = new System.Drawing.Size(25, 25);
             this.editbut.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.editbut.TabIndex = 5;
             this.editbut.TabStop = false;
             this.editbut.Click += new System.EventHandler(this.editbut_Click);
+            // 
+            // ARCBTn
+            // 
+            this.ARCBTn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ARCBTn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ARCBTn.Image = global::JUFAV_System.Properties.Resources.Archive;
+            this.ARCBTn.Location = new System.Drawing.Point(27, 1);
+            this.ARCBTn.Name = "ARCBTn";
+            this.ARCBTn.Size = new System.Drawing.Size(25, 25);
+            this.ARCBTn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ARCBTn.TabIndex = 7;
+            this.ARCBTn.TabStop = false;
+            this.ARCBTn.Click += new System.EventHandler(this.ARCBTn_Click);
             // 
             // UOMDataBox
             // 
@@ -132,6 +148,7 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.deletebtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.editbut)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ARCBTn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,5 +162,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox deletebtn;
         private System.Windows.Forms.PictureBox editbut;
+        private System.Windows.Forms.PictureBox ARCBTn;
     }
 }

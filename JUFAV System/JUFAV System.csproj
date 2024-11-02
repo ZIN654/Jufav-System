@@ -261,6 +261,7 @@
     <Compile Include="Components\US.DataBox.Designer.cs">
       <DependentUpon>US.DataBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="dll\algos1.cs" />
     <Compile Include="dll\initd.cs" />
     <Compile Include="dll\ResponsiveUI1.cs" />
     <Compile Include="Ffirstrun\DbSetup.cs">
@@ -298,6 +299,12 @@
     </Compile>
     <Compile Include="Messageboxes\StockAdjustmentEditQuantity.Designer.cs">
       <DependentUpon>StockAdjustmentEditQuantity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Messageboxes\typeoforder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messageboxes\typeoforder.Designer.cs">
+      <DependentUpon>typeoforder.cs</DependentUpon>
     </Compile>
     <Compile Include="ModulesMain\CORE.cs">
       <SubType>Form</SubType>
@@ -689,6 +696,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Messageboxes\StockAdjustmentEditQuantity.resx">
       <DependentUpon>StockAdjustmentEditQuantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messageboxes\typeoforder.resx">
+      <DependentUpon>typeoforder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModulesMain\CORE.resx">
       <DependentUpon>CORE.cs</DependentUpon>

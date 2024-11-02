@@ -243,11 +243,15 @@ namespace JUFAV_System.ModulesMain.SALES
         }
         private void cnfBTN_Click(object sender, EventArgs e)
         {
+            Messageboxes.typeoforder ps1 = new Messageboxes.typeoforder();
+            ps1.Show();
+            /*
             ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
             ModulesSecond.Sales.SalesPaymentMethod cat1 = new ModulesSecond.Sales.SalesPaymentMethod();
             ResponsiveUI1.title = "SalesPaymentMethod";
             ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
             ResponsiveUI1.spl1.Controls.Add(cat1);
+            */
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {

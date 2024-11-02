@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using JUFAV_System.dll;
+using System.Data.SQLite;
 
 namespace JUFAV_System.Components
 {
@@ -34,15 +35,31 @@ namespace JUFAV_System.Components
 
 
         }
+        private void delete()
+        {
+            this.Cursor = Cursors.WaitCursor;
+            SQLiteCommand scom1 = new SQLiteCommand("DELETE FROM MARKUP WHERE MARKUPID = " + id + ";", initd.scon);
+            scom1.ExecuteNonQuery();
+            scom1 = null;
+            GC.Collect();
+            this.Cursor = Cursors.Default;
+            Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(this.Dispose, 0, "DELETE RECORD", "RECORD SUCCESSFULLY DELETED!", "OK", 0);
+            ms.Show();
+
+        }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             edit();
         }
-
+        private void trash_Click(object sender, EventArgs e)
+        {
+            Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(delete, 0, "DELETE RECORD", "ARE YOU SURE YOU WANT TO DELETE THIS RECORD?", "OK", 1);
+            ms.Show();
+        }
         private void MarkUpDatabox_Leave(object sender, EventArgs e)
         {
-            pictureBox1.Click += null;
-            pictureBox2.Click += null;
-        }
+            editBTN.Click += null;
+            trash.Click += null;
+        }     
     }
 }

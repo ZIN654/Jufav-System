@@ -18,6 +18,7 @@ using System.Net;
 //network detection
 using System.Net.NetworkInformation;
 using System.Globalization;
+using JUFAV_System.dll;
 
 
 
@@ -45,12 +46,13 @@ namespace JUFAV_System
         {
             InitializeComponent();
 
+          //  algos1.
             // set();
             // Thread.Sleep(1500);
             // set();
             // Thread.Sleep(1500);
             // set();
-            loaddata();
+           // loaddata();
 
         }
         public void loaddata()
@@ -160,14 +162,16 @@ namespace JUFAV_System
         
         private void button1_Click(object sender, EventArgs e)
         {
-          
+            //String[] sam1 = { "sample1","gunpla","sample","Tarlac"};
+            //String[] sam2 = { "sample2","matrx", "sm" };
             // label1.Text=;
-            Console.WriteLine(sample.Sum());
 
+            //Console.WriteLine(algos1.determinewhichpart(sam1,new String[] { "sample","gunpla2", "s2m" },2));
+           // algos1.DetectInputifDupplicate(sam1,0);
             // detectNet();
 
             //label1.Text = DateTime.Parse(dateTimePicker1.Text).ToShortDateString();
-            //Console.WriteLine(Regex.IsMatch(MESSAGE.Text, @"@gmail.com"));
+            Console.WriteLine(algos1.determineifidentical(EMAIL.Text,MESSAGE.Text));
 
 
 

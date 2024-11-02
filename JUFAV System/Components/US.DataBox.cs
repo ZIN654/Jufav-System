@@ -23,24 +23,14 @@ namespace JUFAV_System.Components
             InitializeComponent();
             this.itembox = itemsbox;
             this.Dock = DockStyle.Top;
-            addevents();
+           
             lblname.Text = name;
             lblusername.Text = Username;
             lblrole.Text = role;
             this.username1 = Username;
             Console.WriteLine(Username + username1);
         }
-        public void addevents()
-        {
-            deletebtn.Click += deleteBTNClick;
-            
-
-        }
-        private void deleteBTNClick(object sender,EventArgs e)
-        {
-            determine();
-            
-        } 
+          
         private void successfully()
         {
            
@@ -48,7 +38,7 @@ namespace JUFAV_System.Components
             msg1.Show();
             this.Dispose();
         }
-        private void disposethis()
+        private void delete()
         {
             this.Cursor = Cursors.WaitCursor;
             int id = 0;
@@ -70,22 +60,20 @@ namespace JUFAV_System.Components
             successfully();
             
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void determine2()
         {
-            String username = "";
-            String password = "";
-            SQLiteCommand sq1 = new SQLiteCommand("SELECT USERNAME,PASSWORDS FROM USER_INFO WHERE NAME = '" + lblname.Text + "';", initd.scon);
-            SQLiteDataReader read1 = sq1.ExecuteReader();
-            while (read1.Read())
+            if (lblusername.Text == initd.username)
             {
-                username = read1["USERNAME"].ToString();
-                password = read1["PASSWORDS"].ToString();
+                Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(null, 1, "ACCOUNT ARCHIVE", "UNABLE TO ARCHIVE THIS ACCOUNT", "DELETE", 2);
+                msg1.Show();
             }
-            read1.Close();///hide yung na show na recover button
-            Messageboxes.MessageboxConfirmation showpass = new Messageboxes.MessageboxConfirmation(null,1,"PASSSWORD RECOVERY","YOUR USERNAME : " + username+ "\n" + "YOUR PASSWORD :" + password,"OK",0);
-            showpass.Show();
-            //recovers password only appears when 
-            
+            else
+            {
+                Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(archive, 0, "ACCOUNT ARCHIVE", "ARE YOU SURE YOU WANT TO ARCHIVE THIS RECORD THIS TAKES TIME AROUND 1-2 MINUTES WOULD YOU LIKE TO PROCEED?.\n NOTE: ALL OF RECORDS OF THIS ACCOUNT WILL BE ARCHIVED AS WELL.", "OK", 2);
+                ms.Show();
+            }
+
+
         }
         private void determine()
         {
@@ -96,7 +84,7 @@ namespace JUFAV_System.Components
             }
             else
             {
-                Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(disposethis, 0, "ACCOUNT DELETION", "ARE YOU SURE YOU WANT TO ARCHIVE THIS ACCOUNT?", "DELETE", 1);
+                Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(delete, 0, "ACCOUNT DELETION", "ARE YOU SURE YOU WANT TO DELETE THIS ACCOUNT? \n NOTE: ALL OF RECORDS OF THIS ACCOUNT WILL BE ARCHIVED AS WELL.", "DELETE", 1);
                 msg1.Show();
             }
             
@@ -115,16 +103,47 @@ namespace JUFAV_System.Components
             ResponsiveUI1.spl1.Controls.Add(unit1);
 
         }
+        private void archive()
+        {
+            //all tables that has the userid will be archived
+
+
+        }
         private void editbut_Click(object sender, EventArgs e)
         {
             goedit();
         }
+        private void Recover_Click(object sender, EventArgs e)
+        {
+            String username = "";
+            String password = "";
+            SQLiteCommand sq1 = new SQLiteCommand("SELECT USERNAME,PASSWORDS FROM USER_INFO WHERE NAME = '" + lblname.Text + "';", initd.scon);
+            SQLiteDataReader read1 = sq1.ExecuteReader();
+            while (read1.Read())
+            {
+                username = read1["USERNAME"].ToString();
+                password = read1["PASSWORDS"].ToString();
+            }
+            read1.Close();///hide yung na show na recover button
+            Messageboxes.MessageboxConfirmation showpass = new Messageboxes.MessageboxConfirmation(null, 1, "PASSSWORD RECOVERY", "YOUR USERNAME : '" + username + "'\n" + "YOUR PASSWORD : '" + password + "'", "OK", 0);
+            showpass.Show();
+            //recovers password only appears when 
 
+        }
+        private void deleteBTNClick(object sender, EventArgs e)
+        {
+            determine();
+
+        }
         private void DataBox_Leave(object sender, EventArgs e)
         {
             editbut.Click += null;
             deletebtn.Click += null;
             rcvBTN.Click += null;
+        }
+        private void ARCBTN_Click(object sender, EventArgs e)
+        {
+            determine2();
         }
     }
 }

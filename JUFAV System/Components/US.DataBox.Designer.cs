@@ -33,11 +33,13 @@
             this.lblusername = new System.Windows.Forms.Label();
             this.lblrole = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ARCBTN = new System.Windows.Forms.PictureBox();
             this.rcvBTN = new System.Windows.Forms.Button();
             this.deletebtn = new System.Windows.Forms.PictureBox();
             this.editbut = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ARCBTN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deletebtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.editbut)).BeginInit();
             this.SuspendLayout();
@@ -99,6 +101,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.ARCBTN);
             this.panel1.Controls.Add(this.rcvBTN);
             this.panel1.Controls.Add(this.deletebtn);
             this.panel1.Controls.Add(this.editbut);
@@ -107,6 +110,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(111, 56);
             this.panel1.TabIndex = 3;
+            // 
+            // ARCBTN
+            // 
+            this.ARCBTN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ARCBTN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ARCBTN.Image = global::JUFAV_System.Properties.Resources.Archive;
+            this.ARCBTN.Location = new System.Drawing.Point(26, 1);
+            this.ARCBTN.Name = "ARCBTN";
+            this.ARCBTN.Size = new System.Drawing.Size(25, 25);
+            this.ARCBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ARCBTN.TabIndex = 10;
+            this.ARCBTN.TabStop = false;
+            this.ARCBTN.Click += new System.EventHandler(this.ARCBTN_Click);
             // 
             // rcvBTN
             // 
@@ -119,7 +135,7 @@
             this.rcvBTN.Text = "RECOVER PASSWORD";
             this.rcvBTN.UseVisualStyleBackColor = true;
             this.rcvBTN.Visible = false;
-            this.rcvBTN.Click += new System.EventHandler(this.button1_Click);
+            this.rcvBTN.Click += new System.EventHandler(this.Recover_Click);
             // 
             // deletebtn
             // 
@@ -132,13 +148,14 @@
             this.deletebtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.deletebtn.TabIndex = 8;
             this.deletebtn.TabStop = false;
+            this.deletebtn.Click += new System.EventHandler(this.deleteBTNClick);
             // 
             // editbut
             // 
             this.editbut.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.editbut.Cursor = System.Windows.Forms.Cursors.Hand;
             this.editbut.Image = global::JUFAV_System.Properties.Resources.Edit;
-            this.editbut.Location = new System.Drawing.Point(51, 1);
+            this.editbut.Location = new System.Drawing.Point(55, 1);
             this.editbut.Name = "editbut";
             this.editbut.Size = new System.Drawing.Size(25, 25);
             this.editbut.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -158,6 +175,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ARCBTN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deletebtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.editbut)).EndInit();
             this.ResumeLayout(false);
@@ -174,5 +192,6 @@
         private System.Windows.Forms.PictureBox deletebtn;
         private System.Windows.Forms.PictureBox editbut;
         private System.Windows.Forms.Button rcvBTN;
+        private System.Windows.Forms.PictureBox ARCBTN;
     }
 }

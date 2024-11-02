@@ -20,6 +20,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
         private static Hashtable category = new Hashtable();
         private bool isverfied1;
         private bool isverfied2;
+        private bool isverfied3;
         int idtoedit1;
         int summontype1;
         public AddSubCategory(int summontype,int idtoedit,String Category)
@@ -67,7 +68,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
         {
             this.Cursor = Cursors.WaitCursor;
             //Update function here 
-            SQLiteCommand scom1 = new SQLiteCommand("UPDATE SUBCATEGORY SET SUBCATEGORYDESC = '" + SubCattxtbox.Text + "',CATEGORYID = (SELECT CATEGORYID FROM CATEGORY WHERE CATEGORYDESC = '"+comboBox1.Text+ "'),MARKUPVALUE = "+Convert.ToDouble(comboBox2.Text)+" WHERE SUBCATEGORYID = " + idtoedit1 + ";", initd.scon);
+            SQLiteCommand scom1 = new SQLiteCommand("UPDATE SUBCATEGORY SET SUBCATEGORYDESC = '" + SubCattxtbox.Text.ToLower() + "',CATEGORYID = (SELECT CATEGORYID FROM CATEGORY WHERE CATEGORYDESC = '"+comboBox1.Text+ "'),MARKUPVALUE = "+Convert.ToDouble(comboBox2.Text)+" WHERE SUBCATEGORYID = " + idtoedit1 + ";", initd.scon);
             scom1.ExecuteNonQuery();
             scom1 = null;
 
@@ -109,14 +110,14 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
         {
             isverfied1 = true;
             isverfied2 = true;
-
-            TextBox[] textboxes = { SubCattxtbox };
+            isverfied3 = true;
+            Control[] textboxes = { SubCattxtbox,comboBox1,comboBox2 };
             PictureBox[] notificationimage = { subCatIm,catimg,Markupimg };
             Label[] textnoti = { subCatnot ,catnotassignment,markupnot};
             //check pass and conf is =
-            if (SubCattxtbox.Text == "")
+            if (SubCattxtbox.Text == "" || comboBox1.Text == ""|| comboBox2.Text == "")
             {
-                for (int i = 0; i != 1; i++)
+                for (int i = 0; i != 3; i++)
                 {
                     if (textboxes[i].Text == "")
                     {
@@ -148,7 +149,21 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
 
                 }
             }
-            if (isverfied2 == true && isverfied1 == true)
+            //
+            if (summontype1 != 0) { 
+                if (isverfied2 == true && isverfied1 == true && algos1.DetectInputifDupplicate(new String[] { SubCattxtbox.Text.ToLower() },3) == false)
+                {
+                    isverfied3 = false;
+                }
+            }
+            else
+            {
+
+                isverfied3 = true;
+
+            }
+            //
+            if (isverfied2 == true && isverfied1 == true && isverfied3 == true)
             {
                 //are you sure 
                 if (summontype1 == 1)
@@ -198,8 +213,9 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
                 unitid = string.Concat(unitid, rs1.Next(0, 9).ToString());
             }
            //make msg box if user entered a text in markup value
-            SQLiteCommand scom = new SQLiteCommand("INSERT INTO SUBCATEGORY VALUES (" + Convert.ToInt32(unitid) + "," + initd.UserID + "," + category[comboBox1.Text] + ",'" + SubCattxtbox.Text + "'," + Convert.ToInt32(comboBox2.Text) + ");", initd.scon);
+            SQLiteCommand scom = new SQLiteCommand("INSERT INTO SUBCATEGORY VALUES (" + Convert.ToInt32(unitid) + "," + initd.UserID + "," + category[comboBox1.Text] + ",'" + SubCattxtbox.Text.ToLower() + "'," + Convert.ToInt32(comboBox2.Text) + ");", initd.scon);
             scom.ExecuteNonQuery();
+           
             this.Cursor = Cursors.Default;
 
 

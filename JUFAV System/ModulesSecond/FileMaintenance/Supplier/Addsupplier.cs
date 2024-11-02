@@ -34,6 +34,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Supplier
         }
         public bool isverfied1 = true;
         public bool isverfied2 = true;
+        public bool isverified3 = true;
         //core
         private void loaddata(int id)
         {
@@ -56,7 +57,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Supplier
         {
             this.Cursor = Cursors.WaitCursor;
             //SQLIETE using idtoedit  (SUPPLIERID INT NOT NULL PRIMARY KEY,USERID INT,SUPPLIERNAME VARCHAR(50),CONTACTPERSON VARCHAR(50),CONTACTNUMBER VARCHAR(50),COMPANYADDRESS VARCHAR(100)
-            SQLiteCommand sq1 = new SQLiteCommand("UPDATE SUPPLIERS SET SUPPLIERNAME = '"+ ComapnynametxtBX.Text + "',CONTACTPERSON= '"+ ContactPersontxtbox.Text + "',CONTACTNUMBER = '"+ ContactNotxtbox.Text+ "' ,COMPANYADDRESS = '"+Addresstxtbox.Text+"' WHERE SUPPLIERID = "+idtoedit1+";", initd.scon);
+            SQLiteCommand sq1 = new SQLiteCommand("UPDATE SUPPLIERS SET SUPPLIERNAME = '"+ ComapnynametxtBX.Text.ToLower() + "',CONTACTPERSON= '"+ ContactPersontxtbox.Text.ToLower() + "',CONTACTNUMBER = '"+ ContactNotxtbox.Text.ToLower() + "' ,COMPANYADDRESS = '"+Addresstxtbox.Text.ToLower() + "' WHERE SUPPLIERID = "+idtoedit1+";", initd.scon);
             sq1.ExecuteNonQuery();
             sq1 = null;
 
@@ -70,7 +71,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Supplier
         {
             isverfied1 = true;
             isverfied2 = true;
-
+            isverified3 = true;
             TextBox[] textboxes = {ComapnynametxtBX,ContactPersontxtbox,ContactNotxtbox,Addresstxtbox};
             PictureBox[] notificationimage = { CompanynameIMG,ContactPersonIMG,ContactNoIMG,addressIMG };
             Label[] textnoti = {CmpanynameNot,Contactpernot,COntactNoNot,AddressNot };
@@ -109,7 +110,21 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Supplier
 
                 }
             }
-            if (isverfied2 == true && isverfied1 == true)
+            //
+            if (summonmode != 0) {//ad for updating bug
+                if (isverfied2 == true && isverfied1 == true && algos1.DetectInputifDupplicate(new String[] { ComapnynametxtBX.Text.ToLower(), ContactPersontxtbox.Text.ToLower(), ContactNotxtbox.Text.ToLower(), Addresstxtbox.Text.ToLower() }, 0) == false)
+                {
+                    isverified3 = false;
+                }
+            }
+            else
+            {
+
+                isverified3 = true;
+
+            }
+            ///
+            if (isverfied2 == true && isverfied1 == true && isverified3 == true)
             {
                 //are you sure 
                 if (summonmode == 1)
@@ -122,7 +137,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Supplier
                 }
                 else
                 {
-                    Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(UpdateDb, 0, "UPDATE SUPPLIER", "ARE YOU SURE YOU WANT TO UPDATE THIS NEW SUPPLIER?", "ADD", 2);
+                    Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(UpdateDb, 0, "UPDATE SUPPLIER", "ARE YOU SURE YOU WANT TO UPDATE THIS NEW SUPPLIER?", "UPDATE", 2);
                     msg1.Show();
 
 
@@ -135,18 +150,12 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Supplier
         }
         public void hide()
         {
-            
             PictureBox[] notificationimage = { CompanynameIMG, ContactPersonIMG, ContactNoIMG, addressIMG };
             Label[] textnoti = { CmpanynameNot, Contactpernot, COntactNoNot, AddressNot };
-            for (int i = 0; i != 1; i++)
+            for (int i = 0; i != 4; i++)
             {
-
-
                 notificationimage[i].Visible = false;
                 textnoti[i].Visible = false;
-
-
-
             }
 
         }
@@ -163,8 +172,9 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Supplier
                 unitid = string.Concat(unitid, rs1.Next(0, 9).ToString());
             }
 
-           SQLiteCommand scom = new SQLiteCommand("INSERT INTO SUPPLIERS VALUES(" + Convert.ToInt32(unitid) + "," + initd.UserID + ",'" +ComapnynametxtBX.Text+ "','"+ ContactPersontxtbox.Text+"','" + ContactNotxtbox.Text+ "','" + Addresstxtbox.Text +"');", initd.scon);
+           SQLiteCommand scom = new SQLiteCommand("INSERT INTO SUPPLIERS VALUES(" + Convert.ToInt32(unitid) + "," + initd.UserID + ",'" +ComapnynametxtBX.Text.ToLower() + "','"+ ContactPersontxtbox.Text.ToLower() + "','" + ContactNotxtbox.Text.ToLower() + "','" + Addresstxtbox.Text.ToLower() + "');", initd.scon);
            scom.ExecuteNonQuery();
+           
             this.Cursor = Cursors.Default;
 
 
@@ -184,7 +194,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Supplier
         private void AddSupplierBTn_Click(object sender, EventArgs e)
         {
             hide();
-            verify(summonmode);
+            verify(summonmode); 
         }
 
         private void CanceleSupplierBTN_Click(object sender, EventArgs e)

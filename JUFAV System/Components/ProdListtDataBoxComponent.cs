@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SQLite;
+using JUFAV_System.dll;
 
 namespace JUFAV_System.Components
 {
@@ -22,7 +24,7 @@ namespace JUFAV_System.Components
             {
                 BATCPROD.Visible = true;
                 dataGridView1.Visible = true;
-                retrieveBatch(ProdID);
+              
 
             }
             
@@ -34,24 +36,49 @@ namespace JUFAV_System.Components
             label5.Text = UOM;
             label6.Text = Convert.ToDouble(UniCost).ToString();
             label7.Text = Convert.ToDouble(MarkUp).ToString();
-            label8.Text = isPerishable.ToString();
-            label10.Text = Isbatch.ToString();
-            ProdID1= ProdID;
+            determinebatchpersh(isPerishable,isperishable);
+            determinebatchpersh(Isbatch, batched);
+            ProdID1 = ProdID;
             if (ExpiringDate == "01/12/1999")
             {
-                label9.Text = "00/00/0000";
+                label9.Text = "";
             }else
             {
                 label9.Text = ExpiringDate;
             }
         }
-        private void retrieveBatch(int BD)
+        private void loaddata(int IDtoret)
         {
+            //to du bukas//batch products/pdf ng PO/SAles/tas sa PO pag mag aad ng order dapat nag aad sa iisang panel hindi duplicate
 
-            //queries the table and insert it in the data grid view 217 79
-
-
+            //fix revise
+            dataGridView1.Columns.Add("PRODUCT NAME", "PRODUCT NAME");
+            dataGridView1.Columns.Add("BATCHNO", "BATCHNO");
+            dataGridView1.Columns.Add("QUANTITY", "QUANTITY");
+            dataGridView1.Columns.Add("EXPIRATION DATE", "EXPIRATION DATE");
+            dataGridView1.Columns["PRODUCT NAME"].Width = 350;
+            dataGridView1.Columns["QUANTITY"].Width = 70;
+            dataGridView1.Columns["BATCHNO"].Width = 150;
+            dataGridView1.Columns["EXPIRATION DATE"].Width = 150;
+            dataGridView1.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
+            //  mamay aito
+            //insert into data gridview
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM  WHERE  = ;", initd.scon);
+            SQLiteDataReader sread1 = scom1.ExecuteReader();
+            while (sread1.Read())
+            {
+                //ang order data dapat product name at kung ilang items ung laman nya
+                dataGridView1.Rows.Add(sread1["PRODUCTNAME"].ToString(), sread1["BATCHNO"].ToString(), sread1["QUANTITY"].ToString(), sread1["EXPIRATIONDATE"].ToString());
+            }
+            sread1.Close();
+            sread1 = null;
+            scom1 = null;
+            GC.Collect();
         }
+       
 
         private void BATCPROD_Click(object sender, EventArgs e)
         {
@@ -65,6 +92,19 @@ namespace JUFAV_System.Components
                 this.Size = sz1;
             }
             
+        }
+        private void determinebatchpersh(bool data,PictureBox pc1)
+        {
+            if (data == true)
+            {
+                pc1.BackgroundImage = JUFAV_System.Properties.Resources.chkbox;
+            }
+            else
+            {
+                pc1.BackgroundImage = null;
+            }
+
+
         }
     }
 }

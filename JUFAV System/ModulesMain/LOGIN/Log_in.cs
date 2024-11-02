@@ -21,7 +21,8 @@ namespace JUFAV_System.ModulesMain.LOGIN
 {
     public partial class JUFAV_LOGIN : Form
     {
-      
+
+    
         public JUFAV_LOGIN()
         {
             InitializeComponent();
@@ -44,13 +45,12 @@ namespace JUFAV_System.ModulesMain.LOGIN
             ModulesMain.LOGIN.LoginPanel login = new ModulesMain.LOGIN.LoginPanel();//perhaps us the name of the username txtbx
             ResponsiveUI1.title = "LoginPanel";
             itemsbox.Controls.Add(login);
-
-           
-        
         }
         private void JUFAV_LOGIN_FormClosed(object sender, FormClosedEventArgs e)
         {
             initd.closedatabase();
         }
+
+    
     }
 }

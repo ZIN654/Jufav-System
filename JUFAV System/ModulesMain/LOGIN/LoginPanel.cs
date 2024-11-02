@@ -13,6 +13,7 @@ using System.Data.SQLite;
 using System.Collections;
 using System.IO;
 using System.Net;
+using System.Threading;
 
 namespace JUFAV_System.ModulesMain.LOGIN
 {
@@ -27,7 +28,7 @@ namespace JUFAV_System.ModulesMain.LOGIN
             this.Dock = DockStyle.Fill;
           
             addevents();
-            Fetchdata();
+           // Fetchdata();
         }
         public void addevents()
         {
@@ -40,11 +41,14 @@ namespace JUFAV_System.ModulesMain.LOGIN
             txtboxPASS.MouseLeave += passleave;
             txtBxUSER.MouseLeave += userleave;
         }
-
         private void loginBTN(object sender, EventArgs e)
         {
-
+            //revise
+            this.Cursor = Cursors.WaitCursor;
+            Fetchdata();
+            Thread.Sleep(500);
             verlogin();
+            this.Cursor = Cursors.Default;
         }
         private void hideshowpassBTN(object sender, EventArgs e)
         {
@@ -99,7 +103,6 @@ namespace JUFAV_System.ModulesMain.LOGIN
                 txtBxUSER.ForeColor = Color.Gray;
             }
         }
-
         //===========================DATABASE FETCHING  DATA AND VEIFY LOGIN
         public void Fetchdata()
         {
@@ -109,13 +112,15 @@ namespace JUFAV_System.ModulesMain.LOGIN
             while (sread.Read())
             {
                 //hindi pwede ang same username thats why we shoudl create a counter measure 
-                account.Add(sread["USERNAME"], sread["PASSWORDS"]);
+                account.Add(sread["USERNAME"].ToString(), sread["PASSWORDS"].ToString());
                 //kapag gumagawa ng account make sure na yung ininsert na user  name ay walang ka same value
                 Console.WriteLine(sread["USERNAME"]);
                 Console.WriteLine(sread["PASSWORDS"]);
-
                 //reader can not execute other commands when actives
             }
+            sread.Close();
+            scom = null;
+            sread = null;
 
         }
         public void verlogin()
@@ -148,16 +153,10 @@ namespace JUFAV_System.ModulesMain.LOGIN
             }
             else
             {
-                MessageBox.Show("PLEASE TRY AGAIN", "INVALID INPUTS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("PLEASE TRY AGAIN THE INSERTED USERNAME IS NOT EXISTING ", "USERNAME NOT EXISTING", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
         }
-
-
-
-
-
-
         //=====================MEMORY MANAGEMENT========================
         public void ClearLeaks()
         {
@@ -171,17 +170,6 @@ namespace JUFAV_System.ModulesMain.LOGIN
             txtBxUSER.MouseLeave -= userleave;
             //dispose memory allocation to avoid memory leaks and reduce memory consumption: garbage collector na  bahala
         }
-        private void JUFAV_LOGIN_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            initd.closedatabase();
-            ClearLeaks();
-        }
-        private void JUFAV_LOGIN_VisibleChanged(object sender, EventArgs e)
-        {
-            Fetchdata();
-        }
-
-        //network and email related
         private void detectNet()
         {
 
@@ -213,11 +201,13 @@ namespace JUFAV_System.ModulesMain.LOGIN
             ResponsiveUI1.spl1.Controls.Add(forgotpas);
 
         }
+        private void JUFAV_LOGIN_VisibleChanged(object sender, EventArgs e)
+        {
+          // Fetchdata();
+        }
         private void forgotBTN_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             detectNet();
         }
-
-     
     }
 }

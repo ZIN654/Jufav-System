@@ -47,6 +47,7 @@
             this.Items = new System.Windows.Forms.Panel();
             this.ITEMSBOX = new System.Windows.Forms.Panel();
             this.Selection = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.bckpage = new System.Windows.Forms.Button();
@@ -72,7 +73,6 @@
             this.VoidBTN = new System.Windows.Forms.Button();
             this.rfndBTN = new System.Windows.Forms.Button();
             this.cnfBTN = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.MainPan.SuspendLayout();
@@ -322,6 +322,17 @@
             this.Selection.Size = new System.Drawing.Size(375, 37);
             this.Selection.TabIndex = 3;
             // 
+            // label10
+            // 
+            this.label10.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label10.Font = new System.Drawing.Font("Actor", 12F);
+            this.label10.Location = new System.Drawing.Point(190, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(99, 37);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "PAGE: 1 of 3";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label15
             // 
             this.label15.Dock = System.Windows.Forms.DockStyle.Left;
@@ -475,7 +486,7 @@
             this.HeadingOrders.ColumnCount = 3;
             this.HeadingOrders.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.95522F));
             this.HeadingOrders.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.04478F));
-            this.HeadingOrders.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121F));
+            this.HeadingOrders.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
             this.HeadingOrders.Controls.Add(this.label11, 0, 0);
             this.HeadingOrders.Controls.Add(this.label12, 0, 1);
             this.HeadingOrders.Controls.Add(this.label13, 1, 1);
@@ -507,7 +518,7 @@
             this.label12.Font = new System.Drawing.Font("Actor", 9.75F);
             this.label12.Location = new System.Drawing.Point(3, 18);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(84, 19);
+            this.label12.Size = new System.Drawing.Size(83, 19);
             this.label12.TabIndex = 1;
             this.label12.Text = "Product Name";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -517,9 +528,9 @@
             this.label13.AutoSize = true;
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label13.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.label13.Location = new System.Drawing.Point(93, 18);
+            this.label13.Location = new System.Drawing.Point(92, 18);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(56, 19);
+            this.label13.Size = new System.Drawing.Size(55, 19);
             this.label13.TabIndex = 2;
             this.label13.Text = "Quantity";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -528,9 +539,9 @@
             // 
             this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label16.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.label16.Location = new System.Drawing.Point(155, 18);
+            this.label16.Location = new System.Drawing.Point(153, 18);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(116, 19);
+            this.label16.Size = new System.Drawing.Size(118, 19);
             this.label16.TabIndex = 3;
             this.label16.Text = "Total Price";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -641,17 +652,6 @@
             this.cnfBTN.Text = "CONFIRM ORDERS";
             this.cnfBTN.UseVisualStyleBackColor = false;
             this.cnfBTN.Click += new System.EventHandler(this.cnfBTN_Click);
-            // 
-            // label10
-            // 
-            this.label10.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label10.Font = new System.Drawing.Font("Actor", 12F);
-            this.label10.Location = new System.Drawing.Point(190, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(99, 37);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "PAGE: 1 of 3";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // SALES
             // 

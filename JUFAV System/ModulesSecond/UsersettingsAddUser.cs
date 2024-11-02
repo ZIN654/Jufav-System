@@ -188,7 +188,7 @@ namespace JUFAV_System.ModulesSecond
             {
                 iduserinfo = string.Concat(iduserinfo, rs1.Next(0, 9).ToString());
             }
-            scom.CommandText = "INSERT INTO USER_INFO VALUES(" + Convert.ToInt32(iduserinfo) + "," + Convert.ToInt32(id) + ",'" + NAME_FIELD.Text + "','" + USERNAME_FIELD.Text + "','" + EMAIL_FIELD.Text + "','" + PASSWORD_FIELD.Text + "'," + fetchRole() + ");";
+            scom.CommandText = "INSERT INTO USER_INFO VALUES(" + Convert.ToInt32(iduserinfo) + "," + Convert.ToInt32(id) + ",'" + NAME_FIELD.Text.ToLower() + "','" + USERNAME_FIELD.Text + "','" + EMAIL_FIELD.Text + "','" + PASSWORD_FIELD.Text + "'," + fetchRole() + ");";
             scom.ExecuteNonQuery();
             Thread.Sleep(1500);
             //need nila IDInserdata(,usersID);
@@ -343,7 +343,7 @@ namespace JUFAV_System.ModulesSecond
                 for (int i = 0; i != 4; i++)
                 {
                     // \\W\\S
-                    if (Regex.IsMatch(textboxes[i].Text, "\\W"))
+                    if (Regex.IsMatch(textboxes[i].Text,@"[^a-zA-Z0-9\s]"))
                     {
                         Messageboxes.MessageboxConfirmation ms = new MessageboxConfirmation(null,1, "NON CHARACTER INPUT", "Please Remove a non - letter character in " + textboxes[i].Name + " field where text '" + textboxes[i].Text + "' contains the non letter character.", "RETRY",1);
                         ms.Show();

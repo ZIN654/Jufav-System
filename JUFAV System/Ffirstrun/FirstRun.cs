@@ -58,13 +58,14 @@ namespace JUFAV_System.Ffirstrun
         }
         public void addaccounts()
         {
-            checkDuplicateVerifyEmail();
+           
             hide();
             verify();
             hasaccount();
         }
-        public void checkDuplicateVerifyEmail()
+        public bool checkDuplicateVerifyEmail()
         {
+            bool isgood = true;
             //important things when checking for duplicate is : name/
             //search must be selected in all  fields
             SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM USER_INFO WHERE USERNAME LIKE '%"+USERNAME.Text+"%'",initd.scon);
@@ -75,6 +76,8 @@ namespace JUFAV_System.Ffirstrun
                 {
                     MessageBox.Show(this,"THIS USERNAME IS USED PLEASE CHOOSE OTHER USERNAME","USERNAME DUPLICATION",MessageBoxButtons.OK);
                     USERNAME.Text = "";
+                    isgood = false;
+                    break;
                 }
             }
             
@@ -82,8 +85,9 @@ namespace JUFAV_System.Ffirstrun
             {
                 MessageBox.Show(this, "Invalid email,Please try again", "Email not Valid", MessageBoxButtons.OK);
                 EMAIL.Text = "";
+                isgood = false;
             }
-            
+            return isgood;
         }
         public void verify()
         {
@@ -127,11 +131,10 @@ namespace JUFAV_System.Ffirstrun
                          
                 }
             }
-            if (isverfied2 == true && isverfied1 == true)
+            if (isverfied2 == true && isverfied1 == true && checkDuplicateVerifyEmail() == true)
             {
                 passwordconfirm();
-            }
-           
+            }          
         }
         public void passwordconfirm()
         {
@@ -233,6 +236,8 @@ namespace JUFAV_System.Ffirstrun
             }
             SQLiteCommand scom = new SQLiteCommand("INSERT INTO USERS VALUES (" + Convert.ToInt32(id) + ");", initd.scon);
             scom.ExecuteNonQuery();
+            scom.CommandText = "INSERT INTO ARCUSERS VALUES (" + Convert.ToInt32(id) + ");";
+            scom.ExecuteNonQuery();
             for (int i = 0; i != 7; i++)
             {
 
@@ -242,8 +247,10 @@ namespace JUFAV_System.Ffirstrun
             
            scom.CommandText = "INSERT INTO USER_INFO VALUES(" + iduserinfo + "," + id + ",'" + NAME.Text + "','" + USERNAME.Text+ "','" + EMAIL.Text + "','" + PASSWORD.Text + "'," + 1 + ");";
             scom.ExecuteNonQuery();
+            scom.CommandText = "INSERT INTO ARCUSER_INFO VALUES(" + iduserinfo + "," + id + ",'" + NAME.Text + "','" + USERNAME.Text + "','" + EMAIL.Text + "','" + PASSWORD.Text + "'," + 1 + ");";
+            scom.ExecuteNonQuery();
             Thread.Sleep(500);
-            new ModulesSecond.Userssetaddditems.FileMaintenenance(1,1,"").InsertData(Convert.ToInt32(id));
+            new ModulesSecond.Userssetaddditems.FileMaintenenance(1,1,"").InsertData(Convert.ToInt32(id));//inserts allong in the arc
             Thread.Sleep(500);
             new ModulesSecond.Userssetaddditems.Inventory(1,1, "").InsertData(Convert.ToInt32(id));
             Thread.Sleep(500);

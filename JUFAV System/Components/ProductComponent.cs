@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using JUFAV_System.dll;
+using System.Data.SQLite;
+using System.Threading;
 
 namespace JUFAV_System.Components
 {
@@ -39,20 +41,50 @@ namespace JUFAV_System.Components
 
 
         }
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void archive()
         {
+            this.Cursor = Cursors.WaitCursor;
+            SQLiteCommand scom1 = new SQLiteCommand("INSERT INTO ARCPRODUCTS (PRODUCTID,USERID,CATEGORYID,SUBCATEGORYID,UOMID,PRODUCTNAME,ORIGINALPICE,MARKUPVALUE,QUANTITY,SUPPLIERID,PERISHABLEPRODUCT,ISBATCH,EXPIRINGDATE) SELECT * FROM PRODUCTS WHERE PRODUCTID = " + id + ";", initd.scon);
+            scom1.ExecuteNonQuery();
+            Thread.Sleep(2000);
+            scom1.CommandText = "DELETE FROM PRODUCTS WHERE PRODUCTID = " + id + ";";//references bug
+            scom1.ExecuteNonQuery();
+            scom1 = null;
+            GC.Collect();
+            this.Cursor = Cursors.Default;
+            Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(this.Dispose, 0, "ARCHIVE RECORD", "RECORD SUCCESSFULLY ARCHIVED!", "OK", 0);
+            ms.Show();
+        }
+        private void delete()
+        {
+            this.Cursor = Cursors.WaitCursor;
+            SQLiteCommand scom1 = new SQLiteCommand("DELETE FROM PRODUCTS WHERE PRODUCTID = " + id + ";", initd.scon);
+            scom1.ExecuteNonQuery();
+            scom1 = null;
+            GC.Collect();
+            this.Cursor = Cursors.Default;
+            Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(this.Dispose, 0, "DELETE RECORD", "RECORD SUCCESSFULLY DELETED!", "OK", 0);
+            ms.Show();
 
         }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ProductComponent_Leave(object sender, EventArgs e)
         {
-            pictureBox1.Click += null;
-            pictureBox2.Click += null;
+            EditBTN.Click += null;
+            TrashBTN.Click += null;
+        }
+        private void EditBTN_Click(object sender, EventArgs e)
+        {
+            edit();
+        }
+        private void TrashBTN_Click(object sender, EventArgs e)
+        {
+            Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(delete, 0, "DELETE RECORD", "ARE YOU SURE YOU WANT TO DELETE THIS RECORD?\n", "OK", 1);
+            ms.Show();
+        }
+        private void ArcBTN_Click(object sender, EventArgs e)
+        {
+            Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(archive, 0, "ARCHIVE RECORD", "ARE YOU SURE YOU WANT TO ARCHIVE THIS RECORD?\n THIS TAKES TIME AROUND 1-2 MINUTES WOULD YOU LIKE PROCEED?.", "OK", 2);
+            ms.Show();
         }
     }
 }

@@ -59,9 +59,11 @@ namespace JUFAV_System
             delay(12, progressBar1);
 
             sql1.InitializeTable();
+            sql1.InitializeArcTable();
             delay(12, progressBar1);
 
             sql1.InitTableFilemaintenance();
+            sql1.InitTableArcFilemaintenance();
             delay(12, progressBar1);
 
             sql1.InitTableInventory();

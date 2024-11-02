@@ -124,15 +124,21 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
             //generate id of module 
             SQLiteCommand scom1 = new SQLiteCommand("INSERT INTO MAINMODULES VALUES (" + Convert.ToInt32(ModuleID) + "," + id +",'FileMaintenance');",initd.scon);
             scom1.ExecuteNonQuery();
-            
+            scom1.CommandText = "INSERT INTO ARCMAINMODULES VALUES (" + Convert.ToInt32(ModuleID) + "," + id + ",'FileMaintenance');";
+            scom1.ExecuteNonQuery();
+
             CheckBox [] chboxes = {UserSettings,Supplier,UOM,Category,subcat,MarkUp,Products,vat};
             for(int i = 0;i != 8;i++)
             {
-                
                 scom1.CommandText = "INSERT INTO SUBMODULES VALUES (" + generate_submoduleID() + "," + id + ",'" + chboxes[i].Name + "',"+determineval(chboxes[i])+");";
                 scom1.ExecuteNonQuery();
             }
-           
+            Thread.Sleep(1500);
+            for (int i = 0; i != 8; i++)
+            {
+                scom1.CommandText = "INSERT INTO ARCSUBMODULES VALUES (" + generate_submoduleID() + "," + id + ",'" + chboxes[i].Name + "'," + determineval(chboxes[i]) + ");";
+                scom1.ExecuteNonQuery();
+            }
         }
         public int determineval(CheckBox ch1)
         {

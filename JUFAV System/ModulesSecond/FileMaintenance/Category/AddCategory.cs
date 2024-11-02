@@ -17,6 +17,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
     {
         public bool isverfied1 = true;
         public bool isverfied2 = true;
+        public bool isverfied3 = true;
         int summontype1;
         int idtoedit1;
 
@@ -76,7 +77,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
         private void update()
         {
             this.Cursor = Cursors.WaitCursor;
-            SQLiteCommand scom1 = new SQLiteCommand("UPDATE CATEGORY SET CATEGORYDESC = '" +Cattxtbox.Text +"' WHERE CATEGORYID = " + idtoedit1 + ";", initd.scon);
+            SQLiteCommand scom1 = new SQLiteCommand("UPDATE CATEGORY SET CATEGORYDESC = '" +Cattxtbox.Text.ToLower() +"' WHERE CATEGORYID = " + idtoedit1 + ";", initd.scon);
             scom1.ExecuteNonQuery();
             scom1 = null;
 
@@ -92,7 +93,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
         {
             isverfied1 = true;
             isverfied2 = true;
-
+            isverfied3 = true;
             TextBox[] textboxes = { Cattxtbox };
             PictureBox[] notificationimage = { CatIm };
             Label[] textnoti = { Catnot };
@@ -120,7 +121,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
                 for (int i = 0; i != 1; i++)
                 {
                     // \\W\\S
-                    if (Regex.IsMatch(textboxes[i].Text, "\\W"))
+                    if (Regex.IsMatch(textboxes[i].Text,@"\\W"))//regex patter  to accept a whitespace 
                     {
                         Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "NON CHARACTER INPUT", "Please Remove a non - letter character in " + textboxes[i].Name + " field where text '" + textboxes[i].Text + "' contains the non letter character.", "RETRY", 1);
                         ms.Show();
@@ -131,7 +132,21 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
 
                 }
             }
-            if (isverfied2 == true && isverfied1 == true)
+            //
+            if (summontype1 != 0) { 
+                if (isverfied2 == true && isverfied1 == true && algos1.DetectInputifDupplicate(new String[] { Cattxtbox.Text.ToLower()}, 2) == false)
+                {
+                    isverfied3 = false;
+                }
+            }
+            else
+            {
+
+                isverfied3 = true;
+
+            }
+            //
+            if (isverfied2 == true && isverfied1 == true && isverfied3 == true)
             {
                 //are you sure 
                 if (summontype1 == 1)
@@ -146,7 +161,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
                 {
 
 
-                    Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(update, 0, "UPDATE CATEGORY", "ARE YOU SURE YOU WANT TO  UPDATE THIS CATEGORY?", "ADD", 2);
+                    Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(update, 0, "UPDATE CATEGORY", "ARE YOU SURE YOU WANT TO  UPDATE THIS CATEGORY?", "UPDATE", 2);
                     msg1.Show();
 
 
@@ -184,8 +199,9 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
                 unitid = string.Concat(unitid, rs1.Next(0, 9).ToString());
             }
 
-            SQLiteCommand scom = new SQLiteCommand("INSERT INTO CATEGORY VALUES (" + Convert.ToInt32(unitid) + "," + initd.UserID + ",'" + Cattxtbox.Text + "');", initd.scon);
+            SQLiteCommand scom = new SQLiteCommand("INSERT INTO CATEGORY VALUES (" + Convert.ToInt32(unitid) + "," + initd.UserID + ",'" + Cattxtbox.Text.ToLower() + "');", initd.scon);
             scom.ExecuteNonQuery();
+           
             this.Cursor = Cursors.Default;
 
 
@@ -208,7 +224,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
 
         private void addBTN_Click(object sender, EventArgs e)
         {
-            checkDuplicate();
+         
             hide();
             verify();
         }

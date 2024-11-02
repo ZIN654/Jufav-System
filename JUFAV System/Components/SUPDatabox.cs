@@ -39,16 +39,60 @@ namespace JUFAV_System.Components
         }
         private void ArchiveRecords()
         {
-
+            try { 
+            this.Cursor = Cursors.WaitCursor;
+            String[] Querys = { "INSERT INTO ARCSUPPLIERS (SUPPLIERID,USERID,SUPPLIERNAME,CONTACTPERSON,CONTACTNUMBER,COMPANYADDRESS) SELECT * FROM SUPPLIERS;", "DELETE FROM SUPPLIERS WHERE SUPPLIERID = "+id+";" };
+            SQLiteCommand scom1 = new SQLiteCommand("",initd.scon);
+            foreach (String i in Querys)
+            {
+                scom1.CommandText = i;
+                scom1.ExecuteNonQuery();
+            }
+            scom1 = null;
             //debug delete /archive
             //test "INSERT INTO ARCHIVESUPPLIERS SELECT * FROM SUPPLIERS WHERE USERSID = "+userid+";"
-            SQLiteCommand sq1 = new SQLiteCommand("DELETE FROM SUPPLIERS WHERE SUPPLIERID = "+id+";",initd.scon);
-            sq1.ExecuteNonQuery();
-            sq1 = null;
+
             //what if other user uses same the dleted RECORD ?
             //data must not be deleted must be moved in the archive table
+            this.Cursor = Cursors.Default;
+            Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(null, 1, "SUPPLIER ARCHIVE", "SUPPLIER SUCCESSFULLY ARCHIVED", "OK", 2);
+            msg1.Show();
+            this.Dispose();
+            }
+            catch (Exception e)
+            {
+                Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "ARCHIVE RECORD", "UNABLE TO ARCHIVE RECORD BECAUSE IT WAS STILL USED BY OTHER MODULES", "OK", 1);
+                ms.Show();
+            }
+        }
+        private void successfully()
+        {
+            //archive setup
+            //deletion setup
+            Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(null, 1, "SUPPLIER DELETION", "SUPPLIER SUCCESSFULLY ARCHIVED", "OK", 2);
+            msg1.Show();
+            this.Dispose();
+        }
+        private void delete()
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                SQLiteCommand sq1 = new SQLiteCommand("DELETE FROM SUPPLIERS WHERE SUPPLIERID = " + id + ";", initd.scon);
+                sq1.ExecuteNonQuery();
+                sq1 = null;
+                //  successfully();
+                this.Cursor = Cursors.Default;
+                Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(null, 1, "SUPPLIER DELETION", "SUPPLIER SUCCESSFULLY DELETED", "OK", 2);
+                msg1.Show();
+                this.Dispose();
+            }
+            catch (Exception e)
+            {
+                Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "DELETE RECORD", "UNABLE TO DELETE RECORD BECAUSE IT WAS STILL USED BY OTHER MODULES", "OK", 1);
+                ms.Show();
 
-
+            }
 
 
         }
@@ -56,30 +100,20 @@ namespace JUFAV_System.Components
         {
             CallEdit(0);//goes to edit mode
         }
-        private void successfully()
-        {
-
-            Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(successfully, 1, "SUPPLIER DELETION", "SUPPLIER SUCCESSFULLY ARCHIVED", "OK", 2);
-            msg1.Show();
-            this.Dispose();
-        }
-        private void delete()
-        {
-            Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(ArchiveRecords, 0, "SUPPLIER DELETION", "ARE YOU SURE YOU WANT TO ARCHIVE THIS SUPPLIER?", "DELETE", 1);
-            msg1.Show();
-            successfully();
-
-
-        }
         private void deletebtn_Click(object sender, EventArgs e)
         {
-            delete();
+            Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(delete, 0, "SUPPLIER DELETION", "ARE YOU SURE YOU WANT TO DELETE THIS SUPPLIER?", "YES", 1);
+            msg1.Show();
         }
-
         private void SUPDatabox_Leave(object sender, EventArgs e)
         {
             editbut.Click += null;
             deletebtn.Click += null;
+        }
+        private void Archive_Click(object sender, EventArgs e)
+        {
+            Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(ArchiveRecords, 0, "SUPPLIER ARCHIVE", "ARE YOU SURE YOU WANT TO ARCHIVE THIS SUPPLIER?", "YES", 1);
+            msg1.Show();
         }
     }
 }

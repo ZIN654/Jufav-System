@@ -83,7 +83,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.markup
             {
                
                     // \\W\\S
-                    if (Regex.IsMatch(Markuptxtbx.Text, "\\W"))
+                    if (Regex.IsMatch(Markuptxtbx.Text,@"[^0-9]"))
                     {
                         Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "NON CHARACTER INPUT", "Please Remove a non - letter character in " + Markuptxtbx.Name+ " field where text '" + Markuptxtbx.Text + "' contains the non letter character.", "RETRY", 1);
                         ms.Show();

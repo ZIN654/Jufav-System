@@ -17,6 +17,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
     {
         public bool isverfied1 ;
         public bool isverfied2 ;
+        public bool isverfied3;
         int idtoedit;
         int summontype1 = 0;
         public AddUnitOfMeasure(int summontype,int IdtoEdit)
@@ -34,32 +35,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
 
             }
         }
-        public void checkDuplicate()
-        {
-            //important things when checking for duplicate is : name/
-            //search must be selected in all  fields
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM UNITOFMEASURE WHERE UNITDESC LIKE '%" + UofMtxtbox.Text + "%' OR UNITABBREVIATION LIKE '%" + Abbreviatiotxtbox.Text + "%'", initd.scon);
-            SQLiteDataReader sread1 = scom1.ExecuteReader();
-            while (sread1.Read())
-            {
-                //UNITDESC VARCHAR(50),UNITABBREVIATION 
-                if (UofMtxtbox.Text == sread1["UNITDESC"].ToString() || Abbreviatiotxtbox.Text == sread1["UNITABBREVIATION"].ToString())
-                {
-                    Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(goback, 1, "UOM UPDATE", "THE INSERTED UNIT DESCRIPTION IS ALREADY IN USE \n PLEASE USE OTHER NAME.", "OK", 0);
-                    msg2.Show();
-                    UofMtxtbox.Text = "";
-                    Abbreviatiotxtbox.Text = "";
-                }
-            }
-            /*
-            if (Regex.IsMatch(Cattxtbox.Text, "@gmail.com") == false)
-            {
-                MessageBox.Show(this, "Invalid email,Please try again", "Email not Valid", MessageBoxButtons.OK);
-                Cattxtbox.Text = "";
-            }
-            */
-
-        }
+   
         private void loaddata(int idtoedit)
         {
             SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM UNITOFMEASURE WHERE UNITID = " + idtoedit + ";", initd.scon);
@@ -80,7 +56,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
         {
             this.Cursor = Cursors.WaitCursor;
             Console.WriteLine("EDIT");
-            SQLiteCommand scom1 = new SQLiteCommand("UPDATE UNITOFMEASURE SET UNITDESC = '"+ UofMtxtbox.Text + "',UNITABBREVIATION = '"+ Abbreviatiotxtbox.Text + "' WHERE UNITID = "+idtoedit+";", initd.scon);
+            SQLiteCommand scom1 = new SQLiteCommand("UPDATE UNITOFMEASURE SET UNITDESC = '"+ UofMtxtbox.Text.ToLower() + "',UNITABBREVIATION = '"+ Abbreviatiotxtbox.Text.ToLower() + "' WHERE UNITID = "+idtoedit+";", initd.scon);
             scom1.ExecuteNonQuery();
             scom1 = null;
             //TO DO LATER
@@ -96,7 +72,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
         {
             isverfied1 = true;
             isverfied2 = true;
-            
+            isverfied3 = true;
             TextBox[] textboxes = {UofMtxtbox,Abbreviatiotxtbox };
             PictureBox[] notificationimage = { UofM,Abreviation };
             Label[] textnoti = { UnitOfmeaurenot,Abreviationnot };
@@ -135,7 +111,21 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
 
                 }
             }
-            if (isverfied2 == true && isverfied1 == true)
+            //
+            if(summontype1 != 0) { 
+                if (isverfied2 == true && isverfied1 == true && algos1.DetectInputifDupplicate(new String[] { UofMtxtbox.Text.ToLower(), Abbreviatiotxtbox.Text.ToLower() }, 4) == false)
+                {
+                    isverfied3 = false;
+                }
+            }
+            else
+            {
+
+                isverfied3 = true;
+
+            }
+            //
+            if (isverfied2 == true && isverfied1 == true && isverfied3 == true)
             {
                 //are you sure 
 
@@ -149,7 +139,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
                 } else
                 {
 
-                    Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(UpdateDB, 0, "UPDATE UNIT OF MEASURE", "ARE YOU SURE YOU WANT TO UPDATE THIS UNIT OF MEASURE?", "ADD", 2);
+                    Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(UpdateDB, 0, "UPDATE UNIT OF MEASURE", "ARE YOU SURE YOU WANT TO UPDATE THIS UNIT OF MEASURE?", "UPDATE", 2);
                     msg1.Show();
 
                 }
@@ -186,8 +176,9 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
                 unitid = string.Concat(unitid, rs1.Next(0, 9).ToString());
             }
 
-            SQLiteCommand scom = new SQLiteCommand("INSERT INTO UNITOFMEASURE VALUES ("+Convert.ToInt32(unitid)+"," + initd.UserID + ",'" + UofMtxtbox.Text + "','" + Abbreviatiotxtbox.Text+"');", initd.scon);
+            SQLiteCommand scom = new SQLiteCommand("INSERT INTO UNITOFMEASURE VALUES ("+Convert.ToInt32(unitid)+"," + initd.UserID + ",'" + UofMtxtbox.Text.ToLower() + "','" + Abbreviatiotxtbox.Text.ToLower()+"');", initd.scon);
             scom.ExecuteNonQuery();
+            
             this.Cursor = Cursors.Default;
 
 
@@ -197,7 +188,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
 
         private void addBTN_Click(object sender, EventArgs e)
         {
-            checkDuplicate();
+            
             hide();
             verify(summontype1);
         }

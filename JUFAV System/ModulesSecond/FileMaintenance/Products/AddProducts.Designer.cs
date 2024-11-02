@@ -86,6 +86,8 @@
             this.StockQuantitytxtbox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.AddBatchBTn = new System.Windows.Forms.Button();
+            this.splrnot = new System.Windows.Forms.PictureBox();
+            this.splrlabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.pan.SuspendLayout();
@@ -104,6 +106,7 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minusBTN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splrnot)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -154,8 +157,8 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.95661F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.04339F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.35116F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.64884F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.pan, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 1);
@@ -201,7 +204,7 @@
             this.pan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pan.Location = new System.Drawing.Point(3, 25);
             this.pan.Name = "pan";
-            this.pan.Size = new System.Drawing.Size(717, 235);
+            this.pan.Size = new System.Drawing.Size(710, 235);
             this.pan.TabIndex = 1;
             // 
             // splcmbox
@@ -367,6 +370,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.splrnot);
+            this.panel1.Controls.Add(this.splrlabel);
             this.panel1.Controls.Add(this.InitStckImg);
             this.panel1.Controls.Add(this.initnot);
             this.panel1.Controls.Add(this.OrigPUnitImg);
@@ -378,16 +383,16 @@
             this.panel1.Controls.Add(this.CatSubIm);
             this.panel1.Controls.Add(this.Catnot);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(726, 25);
+            this.panel1.Location = new System.Drawing.Point(719, 25);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(262, 235);
+            this.panel1.Size = new System.Drawing.Size(269, 235);
             this.panel1.TabIndex = 2;
             // 
             // InitStckImg
             // 
             this.InitStckImg.BackColor = System.Drawing.Color.Transparent;
             this.InitStckImg.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
-            this.InitStckImg.Location = new System.Drawing.Point(12, 155);
+            this.InitStckImg.Location = new System.Drawing.Point(12, 185);
             this.InitStckImg.Name = "InitStckImg";
             this.InitStckImg.Size = new System.Drawing.Size(15, 15);
             this.InitStckImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -399,7 +404,7 @@
             // 
             this.initnot.Font = new System.Drawing.Font("Actor", 8.25F);
             this.initnot.ForeColor = System.Drawing.Color.Red;
-            this.initnot.Location = new System.Drawing.Point(54, 155);
+            this.initnot.Location = new System.Drawing.Point(54, 185);
             this.initnot.Name = "initnot";
             this.initnot.Size = new System.Drawing.Size(186, 18);
             this.initnot.TabIndex = 62;
@@ -411,7 +416,7 @@
             // 
             this.OrigPUnitImg.BackColor = System.Drawing.Color.Transparent;
             this.OrigPUnitImg.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
-            this.OrigPUnitImg.Location = new System.Drawing.Point(12, 120);
+            this.OrigPUnitImg.Location = new System.Drawing.Point(13, 153);
             this.OrigPUnitImg.Name = "OrigPUnitImg";
             this.OrigPUnitImg.Size = new System.Drawing.Size(15, 15);
             this.OrigPUnitImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -423,9 +428,9 @@
             // 
             this.OrigPriceUnittypenot.Font = new System.Drawing.Font("Actor", 8.25F);
             this.OrigPriceUnittypenot.ForeColor = System.Drawing.Color.Red;
-            this.OrigPriceUnittypenot.Location = new System.Drawing.Point(54, 120);
+            this.OrigPriceUnittypenot.Location = new System.Drawing.Point(55, 145);
             this.OrigPriceUnittypenot.Name = "OrigPriceUnittypenot";
-            this.OrigPriceUnittypenot.Size = new System.Drawing.Size(186, 18);
+            this.OrigPriceUnittypenot.Size = new System.Drawing.Size(186, 35);
             this.OrigPriceUnittypenot.TabIndex = 60;
             this.OrigPriceUnittypenot.Text = "Please fill out the Original Price and Unittype  Field";
             this.OrigPriceUnittypenot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -435,7 +440,7 @@
             // 
             this.MarkUp.BackColor = System.Drawing.Color.Transparent;
             this.MarkUp.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
-            this.MarkUp.Location = new System.Drawing.Point(12, 85);
+            this.MarkUp.Location = new System.Drawing.Point(12, 113);
             this.MarkUp.Name = "MarkUp";
             this.MarkUp.Size = new System.Drawing.Size(15, 15);
             this.MarkUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -447,7 +452,7 @@
             // 
             this.MKupnot.Font = new System.Drawing.Font("Actor", 8.25F);
             this.MKupnot.ForeColor = System.Drawing.Color.Red;
-            this.MKupnot.Location = new System.Drawing.Point(54, 85);
+            this.MKupnot.Location = new System.Drawing.Point(54, 113);
             this.MKupnot.Name = "MKupnot";
             this.MKupnot.Size = new System.Drawing.Size(186, 18);
             this.MKupnot.TabIndex = 58;
@@ -459,7 +464,7 @@
             // 
             this.ProdnameImg.BackColor = System.Drawing.Color.Transparent;
             this.ProdnameImg.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
-            this.ProdnameImg.Location = new System.Drawing.Point(12, 49);
+            this.ProdnameImg.Location = new System.Drawing.Point(12, 80);
             this.ProdnameImg.Name = "ProdnameImg";
             this.ProdnameImg.Size = new System.Drawing.Size(15, 15);
             this.ProdnameImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -471,7 +476,7 @@
             // 
             this.ProdnameNot.Font = new System.Drawing.Font("Actor", 8.25F);
             this.ProdnameNot.ForeColor = System.Drawing.Color.Red;
-            this.ProdnameNot.Location = new System.Drawing.Point(54, 49);
+            this.ProdnameNot.Location = new System.Drawing.Point(54, 79);
             this.ProdnameNot.Name = "ProdnameNot";
             this.ProdnameNot.Size = new System.Drawing.Size(186, 18);
             this.ProdnameNot.TabIndex = 56;
@@ -495,9 +500,9 @@
             // 
             this.Catnot.Font = new System.Drawing.Font("Actor", 8.25F);
             this.Catnot.ForeColor = System.Drawing.Color.Red;
-            this.Catnot.Location = new System.Drawing.Point(54, 13);
+            this.Catnot.Location = new System.Drawing.Point(54, 3);
             this.Catnot.Name = "Catnot";
-            this.Catnot.Size = new System.Drawing.Size(186, 18);
+            this.Catnot.Size = new System.Drawing.Size(196, 36);
             this.Catnot.TabIndex = 54;
             this.Catnot.Text = "Please define the Category and Subcategory Field";
             this.Catnot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -636,7 +641,7 @@
             this.batchprodadd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.0982F));
             this.batchprodadd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.9018F));
             this.batchprodadd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 327F));
-            this.batchprodadd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 213F));
+            this.batchprodadd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 215F));
             this.batchprodadd.Controls.Add(this.panel2, 1, 0);
             this.batchprodadd.Controls.Add(this.panel3, 2, 0);
             this.batchprodadd.Controls.Add(this.label14, 0, 0);
@@ -655,10 +660,10 @@
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.Batchno);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(220, 1);
+            this.panel2.Location = new System.Drawing.Point(219, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(227, 66);
+            this.panel2.Size = new System.Drawing.Size(226, 66);
             this.panel2.TabIndex = 0;
             // 
             // label12
@@ -691,7 +696,7 @@
             this.panel3.Controls.Add(this.label13);
             this.panel3.Controls.Add(this.dateexpiration);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(448, 1);
+            this.panel3.Location = new System.Drawing.Point(446, 1);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(327, 66);
@@ -734,10 +739,10 @@
             this.panel4.Controls.Add(this.label15);
             this.panel4.Controls.Add(this.AddBatchBTn);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(776, 1);
+            this.panel4.Location = new System.Drawing.Point(774, 1);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(214, 66);
+            this.panel4.Size = new System.Drawing.Size(216, 66);
             this.panel4.TabIndex = 3;
             // 
             // pictureBox1
@@ -789,6 +794,30 @@
             this.AddBatchBTn.UseVisualStyleBackColor = true;
             this.AddBatchBTn.Click += new System.EventHandler(this.AddBatchBTn_Click);
             // 
+            // splrnot
+            // 
+            this.splrnot.BackColor = System.Drawing.Color.Transparent;
+            this.splrnot.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
+            this.splrnot.Location = new System.Drawing.Point(12, 46);
+            this.splrnot.Name = "splrnot";
+            this.splrnot.Size = new System.Drawing.Size(15, 15);
+            this.splrnot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.splrnot.TabIndex = 63;
+            this.splrnot.TabStop = false;
+            this.splrnot.Visible = false;
+            // 
+            // splrlabel
+            // 
+            this.splrlabel.Font = new System.Drawing.Font("Actor", 8.25F);
+            this.splrlabel.ForeColor = System.Drawing.Color.Red;
+            this.splrlabel.Location = new System.Drawing.Point(54, 46);
+            this.splrlabel.Name = "splrlabel";
+            this.splrlabel.Size = new System.Drawing.Size(186, 18);
+            this.splrlabel.TabIndex = 64;
+            this.splrlabel.Text = "Please define the supplier field";
+            this.splrlabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.splrlabel.Visible = false;
+            // 
             // AddProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -828,6 +857,7 @@
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minusBTN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splrnot)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -892,5 +922,7 @@
         private System.Windows.Forms.Label ProdnameNot;
         private System.Windows.Forms.ComboBox splcmbox;
         private System.Windows.Forms.Label Suplir;
+        private System.Windows.Forms.PictureBox splrnot;
+        private System.Windows.Forms.Label splrlabel;
     }
 }

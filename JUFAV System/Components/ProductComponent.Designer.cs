@@ -37,12 +37,14 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.TrashBTN = new System.Windows.Forms.PictureBox();
+            this.EditBTN = new System.Windows.Forms.PictureBox();
+            this.ArcBTN = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TrashBTN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EditBTN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ArcBTN)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel3
@@ -55,8 +57,8 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.232687F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.232687F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.80332F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.24931F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.46537F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.722222F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.88889F));
             this.tableLayoutPanel3.Controls.Add(this.label11, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label12, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label13, 2, 0);
@@ -80,7 +82,7 @@
             this.label11.Font = new System.Drawing.Font("Actor", 9.75F);
             this.label11.Location = new System.Drawing.Point(4, 1);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(152, 17);
+            this.label11.Size = new System.Drawing.Size(150, 17);
             this.label11.TabIndex = 0;
             this.label11.Text = "Plywood Original";
             // 
@@ -89,9 +91,9 @@
             this.label12.AutoSize = true;
             this.label12.Dock = System.Windows.Forms.DockStyle.Top;
             this.label12.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.label12.Location = new System.Drawing.Point(163, 1);
+            this.label12.Location = new System.Drawing.Point(161, 1);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(104, 17);
+            this.label12.Size = new System.Drawing.Size(103, 17);
             this.label12.TabIndex = 1;
             this.label12.Text = "Woods";
             // 
@@ -100,9 +102,9 @@
             this.label13.AutoSize = true;
             this.label13.Dock = System.Windows.Forms.DockStyle.Top;
             this.label13.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.label13.Location = new System.Drawing.Point(274, 1);
+            this.label13.Location = new System.Drawing.Point(271, 1);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(109, 17);
+            this.label13.Size = new System.Drawing.Size(108, 17);
             this.label13.TabIndex = 2;
             this.label13.Text = "Ply-Woods";
             // 
@@ -111,7 +113,7 @@
             this.label14.AutoSize = true;
             this.label14.Dock = System.Windows.Forms.DockStyle.Top;
             this.label14.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.label14.Location = new System.Drawing.Point(390, 1);
+            this.label14.Location = new System.Drawing.Point(386, 1);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(38, 17);
             this.label14.TabIndex = 3;
@@ -122,7 +124,7 @@
             this.label15.AutoSize = true;
             this.label15.Dock = System.Windows.Forms.DockStyle.Top;
             this.label15.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label15.Location = new System.Drawing.Point(435, 1);
+            this.label15.Location = new System.Drawing.Point(431, 1);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(38, 14);
             this.label15.TabIndex = 4;
@@ -133,9 +135,9 @@
             this.label16.AutoSize = true;
             this.label16.Dock = System.Windows.Forms.DockStyle.Top;
             this.label16.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.label16.Location = new System.Drawing.Point(480, 1);
+            this.label16.Location = new System.Drawing.Point(476, 1);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(71, 17);
+            this.label16.Size = new System.Drawing.Size(70, 17);
             this.label16.TabIndex = 5;
             this.label16.Text = "1500.00";
             // 
@@ -144,47 +146,61 @@
             this.label17.AutoSize = true;
             this.label17.Dock = System.Windows.Forms.DockStyle.Top;
             this.label17.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.label17.Location = new System.Drawing.Point(558, 1);
+            this.label17.Location = new System.Drawing.Point(553, 1);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(67, 17);
+            this.label17.Size = new System.Drawing.Size(62, 17);
             this.label17.TabIndex = 6;
             this.label17.Text = "1550.00";
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.ArcBTN);
+            this.panel1.Controls.Add(this.TrashBTN);
+            this.panel1.Controls.Add(this.EditBTN);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(632, 4);
+            this.panel1.Location = new System.Drawing.Point(622, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(85, 50);
+            this.panel1.Size = new System.Drawing.Size(95, 50);
             this.panel1.TabIndex = 7;
             // 
-            // pictureBox2
+            // TrashBTN
             // 
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Image = global::JUFAV_System.Properties.Resources.dlt;
-            this.pictureBox2.Location = new System.Drawing.Point(60, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.TrashBTN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TrashBTN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.TrashBTN.Image = global::JUFAV_System.Properties.Resources.dlt;
+            this.TrashBTN.Location = new System.Drawing.Point(65, 0);
+            this.TrashBTN.Name = "TrashBTN";
+            this.TrashBTN.Size = new System.Drawing.Size(25, 25);
+            this.TrashBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.TrashBTN.TabIndex = 1;
+            this.TrashBTN.TabStop = false;
+            this.TrashBTN.Click += new System.EventHandler(this.TrashBTN_Click);
             // 
-            // pictureBox1
+            // EditBTN
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::JUFAV_System.Properties.Resources.Edit;
-            this.pictureBox1.Location = new System.Drawing.Point(24, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.EditBTN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.EditBTN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.EditBTN.Image = global::JUFAV_System.Properties.Resources.Edit;
+            this.EditBTN.Location = new System.Drawing.Point(36, 0);
+            this.EditBTN.Name = "EditBTN";
+            this.EditBTN.Size = new System.Drawing.Size(25, 25);
+            this.EditBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.EditBTN.TabIndex = 0;
+            this.EditBTN.TabStop = false;
+            this.EditBTN.Click += new System.EventHandler(this.EditBTN_Click);
+            // 
+            // ArcBTN
+            // 
+            this.ArcBTN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ArcBTN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ArcBTN.Image = global::JUFAV_System.Properties.Resources.Archive;
+            this.ArcBTN.Location = new System.Drawing.Point(7, 0);
+            this.ArcBTN.Name = "ArcBTN";
+            this.ArcBTN.Size = new System.Drawing.Size(25, 25);
+            this.ArcBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ArcBTN.TabIndex = 2;
+            this.ArcBTN.TabStop = false;
+            this.ArcBTN.Click += new System.EventHandler(this.ArcBTN_Click);
             // 
             // ProductComponent
             // 
@@ -198,8 +214,9 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TrashBTN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EditBTN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ArcBTN)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -215,7 +232,8 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox TrashBTN;
+        private System.Windows.Forms.PictureBox EditBTN;
+        private System.Windows.Forms.PictureBox ArcBTN;
     }
 }

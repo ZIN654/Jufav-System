@@ -30,8 +30,8 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             addevent();
-           onload();
-            onload2();
+           onload2();
+            onload();
             
         }
         public void addevent()
@@ -67,7 +67,8 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
             SQLiteDataReader read1 = sq1.ExecuteReader();
             while (read1.Read())
             {
-                Components.ProductComponent prod1 = new Components.ProductComponent(read1["PRODUCTNAME"].ToString(), read1["CATEGORYID"].ToString(), read1["SUBCATEGORYID"].ToString(), Convert.ToInt32(read1["QUANTITY"]),read1["UOMID"].ToString(), Convert.ToDouble(read1["ORIGINALPICE"]),Convert.ToDouble(read1["ORIGINALPICE"]) + Convert.ToDouble(read1["MARKUPVALUE"]), Convert.ToInt32(read1["PRODUCTID"]));
+                //generic key not found
+                Components.ProductComponent prod1 = new Components.ProductComponent(read1["PRODUCTNAME"].ToString(), catinfo1[Convert.ToInt32(read1["CATEGORYID"])],subcatinfo1[Convert.ToInt32(read1["SUBCATEGORYID"].ToString())], Convert.ToInt32(read1["QUANTITY"]),Uominfo1[Convert.ToInt32(read1["UOMID"])], Convert.ToDouble(read1["ORIGINALPICE"]),Convert.ToDouble(read1["ORIGINALPICE"]) + Convert.ToDouble(read1["MARKUPVALUE"]), Convert.ToInt32(read1["PRODUCTID"]));
                 ItemsBox.Controls.Add(prod1);
                 
             }
@@ -83,6 +84,9 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
         }
         private void onload2()
         {
+            Uominfo1.Clear();
+            catinfo1.Clear();
+            subcatinfo1.Clear();
             categoryinfo.Clear();
             SubCatCombo.Items.Clear();
             SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM CATEGORY;", initd.scon);
@@ -91,6 +95,7 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
             {
                
                 CategoryCombo.Items.Add(sq1["CATEGORYDESC"]);
+                catinfo1.Add(Convert.ToInt32(sq1["CATEGORYID"]), sq1["CATEGORYDESC"].ToString());
 
             }
             sq1.Close();
@@ -99,11 +104,22 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
             while (sq1.Read())
             {
                 SubCatCombo.Items.Add(sq1["SUBCATEGORYDESC"]);
-
+                subcatinfo1.Add(Convert.ToInt32(sq1["SUBCATEGORYID"]), sq1["SUBCATEGORYDESC"].ToString());
 
             }
+            sq1.Close();
+            scom1.CommandText = "SELECT * FROM UNITOFMEASURE;";
+            sq1 = scom1.ExecuteReader();
+            while (sq1.Read())
+            {
 
+                Uominfo1.Add(Convert.ToInt32(sq1["UNITID"]), sq1["UNITDESC"].ToString());
 
+            }
+            sq1.Close();
+            sq1 = null;
+            scom1 = null;
+          //  GC.Collect();
 
         }
         private void onload2filter()

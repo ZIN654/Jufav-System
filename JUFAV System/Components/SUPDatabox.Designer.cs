@@ -36,10 +36,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.deletebtn = new System.Windows.Forms.PictureBox();
             this.editbut = new System.Windows.Forms.PictureBox();
+            this.Archive = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deletebtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.editbut)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Archive)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -111,6 +113,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.Archive);
             this.panel1.Controls.Add(this.deletebtn);
             this.panel1.Controls.Add(this.editbut);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
@@ -137,13 +140,26 @@
             this.editbut.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.editbut.Cursor = System.Windows.Forms.Cursors.Hand;
             this.editbut.Image = global::JUFAV_System.Properties.Resources.Edit;
-            this.editbut.Location = new System.Drawing.Point(30, 1);
+            this.editbut.Location = new System.Drawing.Point(37, 0);
             this.editbut.Name = "editbut";
             this.editbut.Size = new System.Drawing.Size(25, 25);
             this.editbut.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.editbut.TabIndex = 5;
             this.editbut.TabStop = false;
             this.editbut.Click += new System.EventHandler(this.editbut_Click);
+            // 
+            // Archive
+            // 
+            this.Archive.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Archive.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Archive.Image = global::JUFAV_System.Properties.Resources.Archive;
+            this.Archive.Location = new System.Drawing.Point(6, 1);
+            this.Archive.Name = "Archive";
+            this.Archive.Size = new System.Drawing.Size(25, 25);
+            this.Archive.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Archive.TabIndex = 7;
+            this.Archive.TabStop = false;
+            this.Archive.Click += new System.EventHandler(this.Archive_Click);
             // 
             // SUPDatabox
             // 
@@ -159,6 +175,7 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.deletebtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.editbut)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Archive)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,5 +191,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox deletebtn;
         private System.Windows.Forms.PictureBox editbut;
+        private System.Windows.Forms.PictureBox Archive;
     }
 }

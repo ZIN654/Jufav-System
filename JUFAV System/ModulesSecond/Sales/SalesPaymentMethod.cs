@@ -27,6 +27,9 @@ namespace JUFAV_System.ModulesSecond.Sales
 
 
         }
+        public void gcash(object sender,EventArgs e) { }
+        public void COP(object sender,EventArgs e) { }
+        public void COD(object sender,EventArgs e) { }
         private void textBox3_MouseCaptureChanged(object sender, EventArgs e)
         {
             texttouse = Deliveryfee;
