@@ -147,6 +147,12 @@
     <Compile Include="Components\AccessDenied.Designer.cs">
       <DependentUpon>AccessDenied.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\BatchDataBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\BatchDataBox.Designer.cs">
+      <DependentUpon>BatchDataBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\CategoryComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -627,6 +633,9 @@
     </Compile>
     <EmbeddedResource Include="Components\AccessDenied.resx">
       <DependentUpon>AccessDenied.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\BatchDataBox.resx">
+      <DependentUpon>BatchDataBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\CategoryComponent.resx">
       <DependentUpon>CategoryComponent.cs</DependentUpon>

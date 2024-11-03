@@ -26,6 +26,8 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
         Hashtable categoryinfo;
         int summonmode;
         int idtoedit1;
+        int quantity = 0;
+        int batchcount = 0;
         double markuptuse;
        bool isverfied1 = true;
        bool isverfied2 = true;
@@ -42,7 +44,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
             categoryinfo = new Hashtable();
             Supplier = new Dictionary<string, int>();
             SubcategoryMarkup = new Dictionary<string, double>();
-           
+            Batchno1.SelectedIndex = batchcount;
            // Supplier.Add("Unknown",00000);
             //splcmbox.Items.Add("Unknown");
             //note na dapatat mag iinsert sya ng name ng product
@@ -56,7 +58,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
             }
             else
             {
-                label14.Text = Prodnametxtbox.Text;
+                ProdName.Text = Prodnametxtbox.Text;
                 onload();
              
 
@@ -376,11 +378,25 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
             ResponsiveUI1.spl1.Controls.Add(unit1);
 
         }  
+        private int GenerateIDBatch()
+        {
+           
+           //for id ng query use auto increment sa BatchID
+            String ID = "";
+            Random ra1 = new Random();
+            for (int i= 0;i!= 8;i++)
+            {
+                ID = ID + ra1.Next(0,9).ToString();
+            }
+            ra1 = null;
+            GC.Collect();
+            return Convert.ToInt32(ID);
+        }
         private void BatchProdRadioBTN_CheckedChanged(object sender, EventArgs e)
         {
             if (BatchProdRadioBTN.Checked == true)
             {
-                label14.Text = Prodnametxtbox.Text;
+                ProdName.Text = Prodnametxtbox.Text;
 
                 SingleProdBTN.Checked = false;
                 batchprodadd.Enabled = true;
@@ -389,7 +405,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
             }
             else
             {
-                label14.Text = Prodnametxtbox.Text;
+                ProdName.Text = Prodnametxtbox.Text;
 
                 SingleProdBTN.Checked = true;
                 batchprodadd.Enabled = false;
@@ -433,9 +449,18 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
         }
         private void AddBatchBTn_Click(object sender, EventArgs e)
         {
-            //exeption messages and warning boxes bruh
-           // Components.BatchingDataBox bt1 = new Components.BatchingDataBox(label14.Text,Batchno.Text,dateexpiration.Text,Convert.ToInt32(StockQuantitytxtbox.Text));
-           // itemsBox.Controls.Add(bt1);
+            //dito mangagaling QUERY ID
+            if (batchcount >= 19)
+            {
+                MessageBox.Show("MAXIMUM BTACH HAS REACHED");
+            }
+            else
+            {
+                Components.BatchDataBox pas1 = new Components.BatchDataBox(Prodnametxtbox.Text, Batchno1.Text, dateexpiration.Text, Convert.ToInt32(StockQuantitytxtbox.Text), GenerateIDBatch());
+                itemsBox.Controls.Add(pas1);
+                Batchno1.SelectedIndex++;
+                batchcount++;
+            }
         }
         private void CANCELBTN_Click(object sender, EventArgs e)
         {
@@ -477,6 +502,31 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Products
         private void mkuptxtbox1_TextChanged(object sender, EventArgs e)
         {
             label6.Text = "CURRENT MARK-UP : " + mkuptxtbox1.Text;
+        }
+
+        private void Decrement_Click(object sender, EventArgs e)
+        {
+            quantity--;
+            StockQuantitytxtbox.Text = quantity.ToString();
+        }
+        private void INCREMENTBTN_Click(object sender, EventArgs e)
+        {
+            quantity++;
+            StockQuantitytxtbox.Text = quantity.ToString();
+        }
+        private void StockQuantitytxtbox_TextChanged(object sender, EventArgs e)
+        {
+            if (Regex.IsMatch(StockQuantitytxtbox.Text,"[^0-9]"))
+            {
+                MessageBox.Show("NUMBERS ONLY");
+                StockQuantitytxtbox.Text = 0.ToString();
+            }
+        }
+        private void itemsBox_ControlRemoved(object sender, ControlEventArgs e)
+        {
+            batchcount--;
+            Batchno1.SelectedIndex--;
+            
         }
         //ONclOSE ALL HASTABLE WILL BE VANISHED
     }
