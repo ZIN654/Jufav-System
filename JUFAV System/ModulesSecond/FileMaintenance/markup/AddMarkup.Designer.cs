@@ -105,8 +105,8 @@
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 246F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 239F));
             this.tableLayoutPanel3.Controls.Add(this.MKimg, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.MKnot, 1, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Left;
@@ -114,8 +114,8 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 5;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 14F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(184, 160);
@@ -127,7 +127,7 @@
             this.MKimg.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
             this.MKimg.Location = new System.Drawing.Point(3, 49);
             this.MKimg.Name = "MKimg";
-            this.MKimg.Size = new System.Drawing.Size(15, 15);
+            this.MKimg.Size = new System.Drawing.Size(25, 25);
             this.MKimg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.MKimg.TabIndex = 53;
             this.MKimg.TabStop = false;
@@ -135,11 +135,13 @@
             // 
             // MKnot
             // 
-            this.MKnot.Font = new System.Drawing.Font("Actor", 8.25F);
+            this.MKnot.AutoSize = true;
+            this.MKnot.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MKnot.Font = new System.Drawing.Font("Actor", 9.25F);
             this.MKnot.ForeColor = System.Drawing.Color.Red;
-            this.MKnot.Location = new System.Drawing.Point(28, 46);
+            this.MKnot.Location = new System.Drawing.Point(35, 46);
             this.MKnot.Name = "MKnot";
-            this.MKnot.Size = new System.Drawing.Size(186, 17);
+            this.MKnot.Size = new System.Drawing.Size(233, 34);
             this.MKnot.TabIndex = 54;
             this.MKnot.Text = "Please fill out the Mark up Field";
             this.MKnot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -148,18 +150,18 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 224F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 224F));
             this.tableLayoutPanel2.Controls.Add(this.CANCELBTN, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.addBTN, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 322);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 299);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(725, 81);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(725, 104);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // CANCELBTN
@@ -168,9 +170,9 @@
             this.CANCELBTN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CANCELBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CANCELBTN.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.CANCELBTN.Location = new System.Drawing.Point(253, 3);
+            this.CANCELBTN.Location = new System.Drawing.Point(280, 3);
             this.CANCELBTN.Name = "CANCELBTN";
-            this.CANCELBTN.Size = new System.Drawing.Size(244, 34);
+            this.CANCELBTN.Size = new System.Drawing.Size(218, 46);
             this.CANCELBTN.TabIndex = 0;
             this.CANCELBTN.Text = "CANCEL";
             this.CANCELBTN.UseVisualStyleBackColor = true;
@@ -182,9 +184,9 @@
             this.addBTN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addBTN.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.addBTN.Location = new System.Drawing.Point(503, 3);
+            this.addBTN.Location = new System.Drawing.Point(504, 3);
             this.addBTN.Name = "addBTN";
-            this.addBTN.Size = new System.Drawing.Size(219, 34);
+            this.addBTN.Size = new System.Drawing.Size(218, 46);
             this.addBTN.TabIndex = 1;
             this.addBTN.Text = "ADD";
             this.addBTN.UseVisualStyleBackColor = true;
@@ -203,6 +205,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MKimg)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -35,14 +35,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.ProdWithinreorder = new System.Windows.Forms.PictureBox();
+            this.OUTOFSTOCKS = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.OutOfStocksbtn = new System.Windows.Forms.PictureBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.ExpiredBTN = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -55,10 +51,8 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LowStocksProd)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProdWithinreorder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OUTOFSTOCKS)).BeginInit();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OutOfStocksbtn)).BeginInit();
-            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ExpiredBTN)).BeginInit();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Options)).BeginInit();
@@ -67,15 +61,13 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel5, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 5);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -94,7 +86,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(229, 143);
+            this.panel2.Size = new System.Drawing.Size(307, 143);
             this.panel2.TabIndex = 0;
             // 
             // LowStocksProd
@@ -102,7 +94,7 @@
             this.LowStocksProd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.LowStocksProd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LowStocksProd.Image = ((System.Drawing.Image)(resources.GetObject("LowStocksProd.Image")));
-            this.LowStocksProd.Location = new System.Drawing.Point(194, 110);
+            this.LowStocksProd.Location = new System.Drawing.Point(272, 110);
             this.LowStocksProd.Name = "LowStocksProd";
             this.LowStocksProd.Size = new System.Drawing.Size(33, 31);
             this.LowStocksProd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -116,7 +108,7 @@
             this.label5.Font = new System.Drawing.Font("Actor", 36F);
             this.label5.Location = new System.Drawing.Point(0, 19);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(227, 122);
+            this.label5.Size = new System.Drawing.Size(305, 122);
             this.label5.TabIndex = 1;
             this.label5.Text = "label5";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -135,27 +127,27 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.ProdWithinreorder);
+            this.panel3.Controls.Add(this.OUTOFSTOCKS);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(238, 3);
+            this.panel3.Location = new System.Drawing.Point(316, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(229, 143);
+            this.panel3.Size = new System.Drawing.Size(307, 143);
             this.panel3.TabIndex = 1;
             // 
-            // ProdWithinreorder
+            // OUTOFSTOCKS
             // 
-            this.ProdWithinreorder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProdWithinreorder.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ProdWithinreorder.Image = ((System.Drawing.Image)(resources.GetObject("ProdWithinreorder.Image")));
-            this.ProdWithinreorder.Location = new System.Drawing.Point(194, 110);
-            this.ProdWithinreorder.Name = "ProdWithinreorder";
-            this.ProdWithinreorder.Size = new System.Drawing.Size(33, 31);
-            this.ProdWithinreorder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ProdWithinreorder.TabIndex = 3;
-            this.ProdWithinreorder.TabStop = false;
-            this.ProdWithinreorder.Click += new System.EventHandler(this.ProdWithinreorder_Click);
+            this.OUTOFSTOCKS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.OUTOFSTOCKS.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.OUTOFSTOCKS.Image = ((System.Drawing.Image)(resources.GetObject("OUTOFSTOCKS.Image")));
+            this.OUTOFSTOCKS.Location = new System.Drawing.Point(272, 110);
+            this.OUTOFSTOCKS.Name = "OUTOFSTOCKS";
+            this.OUTOFSTOCKS.Size = new System.Drawing.Size(33, 31);
+            this.OUTOFSTOCKS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.OUTOFSTOCKS.TabIndex = 3;
+            this.OUTOFSTOCKS.TabStop = false;
+            this.OUTOFSTOCKS.Click += new System.EventHandler(this.ProdWithinreorder_Click);
             // 
             // label6
             // 
@@ -163,7 +155,7 @@
             this.label6.Font = new System.Drawing.Font("Actor", 36F);
             this.label6.Location = new System.Drawing.Point(0, 19);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(227, 122);
+            this.label6.Size = new System.Drawing.Size(305, 122);
             this.label6.TabIndex = 1;
             this.label6.Text = "label6";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -175,75 +167,28 @@
             this.label2.Font = new System.Drawing.Font("Actor", 11.25F);
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(244, 19);
+            this.label2.Size = new System.Drawing.Size(184, 19);
             this.label2.TabIndex = 0;
-            this.label2.Text = "PRODUCTS WITHIN REORDER POINT";
+            this.label2.Text = "OUT OF STOCK PRODUCTS";
             // 
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.OutOfStocksbtn);
-            this.panel4.Controls.Add(this.label7);
-            this.panel4.Controls.Add(this.label3);
+            this.panel4.Controls.Add(this.ExpiredBTN);
+            this.panel4.Controls.Add(this.label8);
+            this.panel4.Controls.Add(this.label4);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(473, 3);
+            this.panel4.Location = new System.Drawing.Point(629, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(229, 143);
+            this.panel4.Size = new System.Drawing.Size(309, 143);
             this.panel4.TabIndex = 2;
-            // 
-            // OutOfStocksbtn
-            // 
-            this.OutOfStocksbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OutOfStocksbtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.OutOfStocksbtn.Image = ((System.Drawing.Image)(resources.GetObject("OutOfStocksbtn.Image")));
-            this.OutOfStocksbtn.Location = new System.Drawing.Point(194, 110);
-            this.OutOfStocksbtn.Name = "OutOfStocksbtn";
-            this.OutOfStocksbtn.Size = new System.Drawing.Size(33, 31);
-            this.OutOfStocksbtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.OutOfStocksbtn.TabIndex = 3;
-            this.OutOfStocksbtn.TabStop = false;
-            this.OutOfStocksbtn.Click += new System.EventHandler(this.OutOfStocksbtn_Click);
-            // 
-            // label7
-            // 
-            this.label7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label7.Font = new System.Drawing.Font("Actor", 36F);
-            this.label7.Location = new System.Drawing.Point(0, 19);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(227, 122);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "label7";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.label3.Location = new System.Drawing.Point(0, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(116, 19);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "OUT OF STOCKS";
-            // 
-            // panel5
-            // 
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.ExpiredBTN);
-            this.panel5.Controls.Add(this.label8);
-            this.panel5.Controls.Add(this.label4);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(708, 3);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(230, 143);
-            this.panel5.TabIndex = 3;
             // 
             // ExpiredBTN
             // 
             this.ExpiredBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ExpiredBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ExpiredBTN.Image = ((System.Drawing.Image)(resources.GetObject("ExpiredBTN.Image")));
-            this.ExpiredBTN.Location = new System.Drawing.Point(195, 110);
+            this.ExpiredBTN.Location = new System.Drawing.Point(271, 110);
             this.ExpiredBTN.Name = "ExpiredBTN";
             this.ExpiredBTN.Size = new System.Drawing.Size(33, 31);
             this.ExpiredBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -253,11 +198,11 @@
             // 
             // label8
             // 
-            this.label8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Font = new System.Drawing.Font("Actor", 36F);
             this.label8.Location = new System.Drawing.Point(0, 19);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(228, 122);
+            this.label8.Size = new System.Drawing.Size(307, 122);
             this.label8.TabIndex = 1;
             this.label8.Text = "label8";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -350,12 +295,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.LowStocksProd)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProdWithinreorder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OUTOFSTOCKS)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OutOfStocksbtn)).EndInit();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ExpiredBTN)).EndInit();
             this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Options)).EndInit();
@@ -373,14 +315,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.PictureBox ProdWithinreorder;
+        private System.Windows.Forms.PictureBox OUTOFSTOCKS;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.PictureBox OutOfStocksbtn;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox ExpiredBTN;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label4;

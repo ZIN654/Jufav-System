@@ -39,36 +39,45 @@ namespace JUFAV_System
         {
             initd sql1 = new initd();
             this.Cursor = Cursors.WaitCursor;
-            delay(12, progressBar1);
+           //delay(12, progressBar1);
 
             sql1.CreatePath();
 
 
-            delay(12, progressBar1);
+           delay(9, progressBar1);
             sql1.checkpath();
+            
 
-
-            delay(12, progressBar1);
+           // delay(12, progressBar1);
 
             sql1.CreateDatabase();
-
-            delay(12, progressBar1);
+            delay(9, progressBar1);
+            //  delay(12, progressBar1);
 
 
             sql1.TestConnection(sql1.Constring);
-            delay(12, progressBar1);
+            delay(9, progressBar1);
+            // delay(12, progressBar1);
 
             sql1.InitializeTable();
+            delay(9, progressBar1);
             sql1.InitializeArcTable();
-            delay(12, progressBar1);
+            delay(9, progressBar1);
+            // delay(12, progressBar1);
 
             sql1.InitTableFilemaintenance();
+            delay(9, progressBar1);
             sql1.InitTableArcFilemaintenance();
-            delay(12, progressBar1);
+            delay(9, progressBar1);
+            //  delay(12, progressBar1);
 
             sql1.InitTableInventory();
+            delay(9, progressBar1);
             sql1.ArcInitTableInventory();
-            delay(12, progressBar1);
+            delay(9, progressBar1);
+            sql1.InitTableSales();
+            delay(9, progressBar1);
+            // delay(12, progressBar1);
             this.Cursor = Cursors.Default;
             this.Hide();
             Ffirstrun.FirstRun f1 = new Ffirstrun.FirstRun();
@@ -81,7 +90,6 @@ namespace JUFAV_System
             for (int i = 0; i != value; i++)
             {
                 sb1.Value += 1;
-                Thread.Sleep(100);
             }
         }
 

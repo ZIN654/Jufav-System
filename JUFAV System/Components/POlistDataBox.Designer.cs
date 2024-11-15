@@ -51,7 +51,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel7.Controls.Add(this.TotalValue, 4, 0);
             this.tableLayoutPanel7.Controls.Add(this.label14, 3, 0);
             this.tableLayoutPanel7.Controls.Add(this.label15, 1, 0);
@@ -70,31 +70,33 @@
             // 
             this.TotalValue.AutoSize = true;
             this.TotalValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TotalValue.Location = new System.Drawing.Point(589, 1);
+            this.TotalValue.Location = new System.Drawing.Point(587, 1);
             this.TotalValue.Name = "TotalValue";
             this.TotalValue.Size = new System.Drawing.Size(56, 32);
             this.TotalValue.TabIndex = 4;
             this.TotalValue.Text = "label6";
             this.TotalValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TotalValue.Visible = false;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label14.Location = new System.Drawing.Point(505, 1);
+            this.label14.Location = new System.Drawing.Point(503, 1);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(77, 32);
             this.label14.TabIndex = 3;
             this.label14.Text = "label26";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label14.Visible = false;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label15.Location = new System.Drawing.Point(332, 1);
+            this.label15.Location = new System.Drawing.Point(331, 1);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(74, 32);
+            this.label15.Size = new System.Drawing.Size(73, 32);
             this.label15.TabIndex = 1;
             this.label15.Text = "label27";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -105,7 +107,7 @@
             this.ProducName1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ProducName1.Location = new System.Drawing.Point(4, 1);
             this.ProducName1.Name = "ProducName1";
-            this.ProducName1.Size = new System.Drawing.Size(321, 32);
+            this.ProducName1.Size = new System.Drawing.Size(320, 32);
             this.ProducName1.TabIndex = 0;
             this.ProducName1.Text = "label28";
             this.ProducName1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -116,7 +118,7 @@
             this.panel10.Controls.Add(this.IncrmentBTN);
             this.panel10.Controls.Add(this.quantitytxtbox);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(410, 1);
+            this.panel10.Location = new System.Drawing.Point(408, 1);
             this.panel10.Margin = new System.Windows.Forms.Padding(0);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(91, 32);
@@ -161,10 +163,10 @@
             this.TrashBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.TrashBTN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TrashBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.TrashBTN.Location = new System.Drawing.Point(649, 1);
+            this.TrashBTN.Location = new System.Drawing.Point(647, 1);
             this.TrashBTN.Margin = new System.Windows.Forms.Padding(0);
             this.TrashBTN.Name = "TrashBTN";
-            this.TrashBTN.Size = new System.Drawing.Size(24, 32);
+            this.TrashBTN.Size = new System.Drawing.Size(26, 32);
             this.TrashBTN.TabIndex = 6;
             this.TrashBTN.UseVisualStyleBackColor = true;
             this.TrashBTN.Click += new System.EventHandler(this.TrashBTN_Click);

@@ -25,27 +25,38 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
             this.usertoedit = username;
             if (summontype == 1)
             {
-                if (RoleType == 0)
+                switch (RoleType)
                 {
-                    uncheckall();
+                    case 1:
+                        check();
+                        break;
+                    case 2:
+                        //sales
+                       
+                        uncheckall();
+                       
+                        break;
+                    case 3:
+                        check();
+                        Inventorychbox11.Enabled = false;
+                        //inventory
+                        break;
 
 
-                }
-                else
-                {
-
-                    check();
 
                 }
             }
             else
             {
-                //load current access level of the user
                 LoadAccesslevel(username);
+                //load current access level of the user
+
 
             }
         }
         // 
+     
+       
         public void update1()
         {
 
@@ -54,9 +65,9 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
             for (int i = 0; i != 4; i++)
             {
                 //UPDATE ANOMALY
-                SQLiteCommand SCOM1 = new SQLiteCommand("UPDATE SUBMODULES SET HASACCESS =" + items[i].Checked + " WHERE SUBMODULENAME LIKE '" + items[i].Name.ToString() + "%' AND USERID = (SELECT USERID FROM USER_INFO WHERE USERNAME = '" + this.usertoedit + "');", initd.scon);
+                SQLiteCommand SCOM1 = new SQLiteCommand("UPDATE SUBMODULES SET HASACCESS =" + items[i].Checked + " WHERE USERID = (SELECT USERIDS FROM USER_INFO WHERE USERNAME = '" + this.usertoedit + "') AND SUBMODULENAME LIKE '%" + items[i].Name.ToString() + "%';", initd.scon);
                 SCOM1.ExecuteNonQuery();
-                Thread.Sleep(500);
+                Thread.Sleep(100);
 
 
             }
@@ -186,21 +197,24 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
             //generate id of module 
             SQLiteCommand scom1 = new SQLiteCommand("INSERT INTO MAINMODULES VALUES (" + Convert.ToInt32(ModuleID) + "," + id + ",'Inventory');", initd.scon);
             scom1.ExecuteNonQuery();
-            scom1.CommandText = "INSERT INTO ARCMAINMODULES VALUES (" + Convert.ToInt32(ModuleID) + "," + id + ",'Inventory');";
-            scom1.ExecuteNonQuery();
+            
+            Thread.Sleep(200);
             CheckBox[] chboxes = {StckAdj,PurchOrde,PurchOrdRec,ProdList };
             for (int i = 0; i != 4; i++)
             {
 
                 scom1.CommandText = "INSERT INTO SUBMODULES VALUES (" + generate_submoduleID() + "," + id + ",'" + chboxes[i].Name + "'," + determineval(chboxes[i]) + ");";
                 scom1.ExecuteNonQuery();
+                Thread.Sleep(100);
             }
-            Thread.Sleep(1500);
+            
+            /*
             for (int i = 0; i != 4; i++)
             {
                 scom1.CommandText = "INSERT INTO ARCSUBMODULES VALUES (" + generate_submoduleID() + "," + id + ",'" + chboxes[i].Name + "'," + determineval(chboxes[i]) + ");";
                 scom1.ExecuteNonQuery();
             }
+            */
             scom1 = null;
             GC.Collect();
         }

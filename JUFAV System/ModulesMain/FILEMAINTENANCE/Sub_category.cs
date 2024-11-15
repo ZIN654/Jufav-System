@@ -117,7 +117,7 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
                 i.Dispose();
             }
             ItemsBox.Controls.Clear();
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT SUBCATEGORYID,SUBCATEGORYDESC,MARKUPVALUE,CATEGORYID FROM SUBCATEGORY WHERE SUBCATEGORYDESC LIKE '%"+text+"%';", initd.scon);
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT SUBCATEGORYID,SUBCATEGORYDESC,MARKUPVALUE,CATEGORYID FROM SUBCATEGORY WHERE SUBCATEGORYDESC LIKE '%"+text+ "%';", initd.scon);
             SQLiteDataReader sq2 = scom1.ExecuteReader();
             while (sq2.Read())
             {

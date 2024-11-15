@@ -116,7 +116,7 @@
             this.ARCBTN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ARCBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ARCBTN.Image = global::JUFAV_System.Properties.Resources.Archive;
-            this.ARCBTN.Location = new System.Drawing.Point(26, 1);
+            this.ARCBTN.Location = new System.Drawing.Point(55, 1);
             this.ARCBTN.Name = "ARCBTN";
             this.ARCBTN.Size = new System.Drawing.Size(25, 25);
             this.ARCBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -142,12 +142,13 @@
             this.deletebtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.deletebtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.deletebtn.Image = global::JUFAV_System.Properties.Resources.dlt;
-            this.deletebtn.Location = new System.Drawing.Point(84, 1);
+            this.deletebtn.Location = new System.Drawing.Point(3, 1);
             this.deletebtn.Name = "deletebtn";
             this.deletebtn.Size = new System.Drawing.Size(25, 25);
             this.deletebtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.deletebtn.TabIndex = 8;
             this.deletebtn.TabStop = false;
+            this.deletebtn.Visible = false;
             this.deletebtn.Click += new System.EventHandler(this.deleteBTNClick);
             // 
             // editbut
@@ -155,7 +156,7 @@
             this.editbut.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.editbut.Cursor = System.Windows.Forms.Cursors.Hand;
             this.editbut.Image = global::JUFAV_System.Properties.Resources.Edit;
-            this.editbut.Location = new System.Drawing.Point(55, 1);
+            this.editbut.Location = new System.Drawing.Point(84, 1);
             this.editbut.Name = "editbut";
             this.editbut.Size = new System.Drawing.Size(25, 25);
             this.editbut.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

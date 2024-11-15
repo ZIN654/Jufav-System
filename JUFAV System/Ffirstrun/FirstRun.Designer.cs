@@ -44,7 +44,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.clearBTN = new System.Windows.Forms.Button();
             this.doneBTN = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -71,12 +70,13 @@
             // AddBTN
             // 
             this.AddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddBTN.Location = new System.Drawing.Point(194, 316);
+            this.AddBTN.Location = new System.Drawing.Point(194, 312);
             this.AddBTN.Name = "AddBTN";
             this.AddBTN.Size = new System.Drawing.Size(157, 33);
             this.AddBTN.TabIndex = 0;
             this.AddBTN.Text = "ADD ACCOUNT";
             this.AddBTN.UseVisualStyleBackColor = true;
+            this.AddBTN.Click += new System.EventHandler(this.AddBTN_Click);
             // 
             // NAME
             // 
@@ -87,6 +87,8 @@
             this.NAME.Size = new System.Drawing.Size(338, 20);
             this.NAME.TabIndex = 1;
             this.NAME.Text = "NAME:";
+            this.NAME.Click += new System.EventHandler(this.NAME_Click);
+            this.NAME.MouseLeave += new System.EventHandler(this.NAME_MouseLeave);
             // 
             // USERNAME
             // 
@@ -97,6 +99,8 @@
             this.USERNAME.Size = new System.Drawing.Size(338, 20);
             this.USERNAME.TabIndex = 2;
             this.USERNAME.Text = "USERNAME";
+            this.USERNAME.Click += new System.EventHandler(this.USERNAME_Click);
+            this.USERNAME.MouseLeave += new System.EventHandler(this.USERNAME_MouseLeave);
             // 
             // PASSWORD
             // 
@@ -108,6 +112,8 @@
             this.PASSWORD.Size = new System.Drawing.Size(338, 20);
             this.PASSWORD.TabIndex = 3;
             this.PASSWORD.Text = "PASSWORD";
+            this.PASSWORD.Click += new System.EventHandler(this.PASSWORD_Click);
+            this.PASSWORD.MouseLeave += new System.EventHandler(this.PASSWORD_MouseLeave);
             // 
             // CONFIRM_PASSWORD
             // 
@@ -119,12 +125,14 @@
             this.CONFIRM_PASSWORD.Size = new System.Drawing.Size(338, 20);
             this.CONFIRM_PASSWORD.TabIndex = 4;
             this.CONFIRM_PASSWORD.Text = "CONFIRM-PASSWORD";
+            this.CONFIRM_PASSWORD.Click += new System.EventHandler(this.CONFIRM_PASSWORD_Click);
+            this.CONFIRM_PASSWORD.MouseLeave += new System.EventHandler(this.CONFIRM_PASSWORD_MouseLeave);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Actor", 14.25F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(74, 15);
+            this.label2.Location = new System.Drawing.Point(74, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(237, 23);
             this.label2.TabIndex = 8;
@@ -237,20 +245,10 @@
             this.label6.Text = "Please Confirm your password";
             this.label6.Visible = false;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.label1.Location = new System.Drawing.Point(74, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 17);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "Available Slots Left : 5";
-            // 
             // clearBTN
             // 
             this.clearBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clearBTN.Location = new System.Drawing.Point(14, 316);
+            this.clearBTN.Location = new System.Drawing.Point(14, 312);
             this.clearBTN.Name = "clearBTN";
             this.clearBTN.Size = new System.Drawing.Size(157, 33);
             this.clearBTN.TabIndex = 26;
@@ -266,17 +264,17 @@
             this.doneBTN.TabIndex = 27;
             this.doneBTN.Text = "DONE";
             this.doneBTN.UseVisualStyleBackColor = true;
+            this.doneBTN.Click += new System.EventHandler(this.Done2);
             // 
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Actor", 8.25F);
             this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(12, 270);
+            this.label7.Location = new System.Drawing.Point(12, 273);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(339, 42);
+            this.label7.Size = new System.Drawing.Size(278, 29);
             this.label7.TabIndex = 28;
-            this.label7.Text = "NOTE : \r\nYou can add master accounts later in other master accounts.\r\nRemember th" +
-    "at this Master accounts are for Admins only.";
+            this.label7.Text = "NOTE:";
             // 
             // label8
             // 
@@ -353,7 +351,9 @@
             this.EMAIL.Name = "EMAIL";
             this.EMAIL.Size = new System.Drawing.Size(338, 20);
             this.EMAIL.TabIndex = 33;
-            this.EMAIL.Text = "EMAIL";
+            this.EMAIL.Text = "EMAIL@gmail.com";
+            this.EMAIL.Click += new System.EventHandler(this.EMAIL_Click);
+            this.EMAIL.MouseLeave += new System.EventHandler(this.EMAIL_MouseLeave);
             // 
             // emailnot
             // 
@@ -412,7 +412,6 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.doneBTN);
             this.Controls.Add(this.clearBTN);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -432,7 +431,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FirstRun";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ACCOUNT CREATION FOR ADMIN";
+            this.Text = "ACCOUNT CREATION FOR MASTER ACCOUNT";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FirstRun_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameNotification)).EndInit();
@@ -464,7 +463,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button clearBTN;
         private System.Windows.Forms.Button doneBTN;
         private System.Windows.Forms.Label label7;

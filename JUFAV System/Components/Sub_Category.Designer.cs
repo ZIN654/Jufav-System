@@ -112,7 +112,7 @@
             this.ArcBTN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ArcBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ArcBTN.Image = global::JUFAV_System.Properties.Resources.Archive;
-            this.ArcBTN.Location = new System.Drawing.Point(34, 2);
+            this.ArcBTN.Location = new System.Drawing.Point(70, 2);
             this.ArcBTN.Name = "ArcBTN";
             this.ArcBTN.Size = new System.Drawing.Size(27, 25);
             this.ArcBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -127,12 +127,13 @@
             this.trashbtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.trashbtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.trashbtn.Image = global::JUFAV_System.Properties.Resources.dlt;
-            this.trashbtn.Location = new System.Drawing.Point(96, 2);
+            this.trashbtn.Location = new System.Drawing.Point(0, 2);
             this.trashbtn.Name = "trashbtn";
             this.trashbtn.Size = new System.Drawing.Size(29, 25);
             this.trashbtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.trashbtn.TabIndex = 1;
             this.trashbtn.TabStop = false;
+            this.trashbtn.Visible = false;
             this.trashbtn.Click += new System.EventHandler(this.TrashBTN_Click);
             // 
             // editbtn
@@ -142,7 +143,7 @@
             this.editbtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.editbtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.editbtn.Image = global::JUFAV_System.Properties.Resources.Edit;
-            this.editbtn.Location = new System.Drawing.Point(65, 2);
+            this.editbtn.Location = new System.Drawing.Point(101, 2);
             this.editbtn.Name = "editbtn";
             this.editbtn.Size = new System.Drawing.Size(27, 25);
             this.editbtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

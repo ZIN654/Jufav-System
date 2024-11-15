@@ -21,13 +21,14 @@ namespace JUFAV_System.ModulesMain.LOGIN
     {
         private static Hashtable account = new Hashtable();
         private static int switch1 = 1;
-       
+       //ERROR SA FIRST RUN UNG SUBMODULE ID
         public LoginPanel()
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
           
             addevents();
+            
            // Fetchdata();
         }
         public void addevents()
@@ -106,6 +107,7 @@ namespace JUFAV_System.ModulesMain.LOGIN
         //===========================DATABASE FETCHING  DATA AND VEIFY LOGIN
         public void Fetchdata()
         {
+            initd.opendatabase();
             account.Clear();
             SQLiteCommand scom = new SQLiteCommand("SELECT USERNAME,PASSWORDS FROM USER_INFO;", initd.scon);
             SQLiteDataReader sread = scom.ExecuteReader();
@@ -121,7 +123,7 @@ namespace JUFAV_System.ModulesMain.LOGIN
             sread.Close();
             scom = null;
             sread = null;
-
+          
         }
         public void verlogin()
         {

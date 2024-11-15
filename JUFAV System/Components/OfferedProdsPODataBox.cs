@@ -16,7 +16,7 @@ namespace JUFAV_System.Components
         int Prodid;
      
         Panel List;
-      
+       
         public OfferedProdsPODataBox(String prodname,double ProdCost,String UOM,int ProdID,Panel ItemsboxList)
         {
             //no need na daw sa pricing sabi ni ser alivn
@@ -47,7 +47,30 @@ namespace JUFAV_System.Components
         }
         private void AddtoPOList_Click(object sender, EventArgs e)
         {
-            POListAdd();
+           
+                bool test1 = true;
+                //inserts into INITD.QUerysales
+                foreach (UserControl i in initd.itemsboxselectedPO.Controls)
+                {
+                    if (i.Controls.Find("ProducName1", true)[0].Text == label1.Text)
+                    {
+                        test1 = false;
+                    }
+                }
+                if (test1 == false)
+                {
+                    Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(null, 1, "ADD ITEM", "UNABLE TO ADD THE SAME SELECTED ITEM", "CLEAR", 2);
+                    msg2.Show();
+
+                }
+                else
+                {
+                     POListAdd();
+
+                 }
+
+            
+           
         }
     }
 }

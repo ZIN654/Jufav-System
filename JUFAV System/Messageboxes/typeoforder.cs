@@ -13,20 +13,27 @@ namespace JUFAV_System.Messageboxes
 {
     public partial class typeoforder : Form
     {
-        public typeoforder()
+        Action actoexe;
+        String addres1 = "";
+        String Custname = "";
+        public typeoforder( Action actiontoexe,String Customername,String Address)
         {
             InitializeComponent();
+            actoexe = actiontoexe;
+            Custname = Customername;
+            addres1 = Address;
         }
 
         private void CONFRIMBTN_Click(object sender, EventArgs e)
         {
+            actoexe();
             determinewhich();
             this.Dispose();
         }
         private void determinewhich()
         {
             int summontype = 0;
-            RadioButton[] todetermine = {radioButton1,radioButton2,radioButton3,radioButton4 };
+            RadioButton[] todetermine = {radioButton1,radioButton2,radioButton3 };
             foreach (RadioButton i in todetermine){
                 if (i.Checked == true){determine(summontype);break;}
                 summontype++;
@@ -35,7 +42,7 @@ namespace JUFAV_System.Messageboxes
         private void determine(int summon)
         {
             ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
-            ModulesSecond.Sales.SalesPaymentMethod cat1 = new ModulesSecond.Sales.SalesPaymentMethod();
+            ModulesSecond.Sales.SalesPaymentMethod cat1 = new ModulesSecond.Sales.SalesPaymentMethod(Custname,addres1);
             switch (summon)
             {
                 case 0:
@@ -56,6 +63,11 @@ namespace JUFAV_System.Messageboxes
             ResponsiveUI1.title = "SalesPaymentMethod";
             ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
             ResponsiveUI1.spl1.Controls.Add(cat1);
+        }
+
+        private void CAncelBTN_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

@@ -80,7 +80,7 @@
             this.poRBTN.Name = "poRBTN";
             this.poRBTN.Size = new System.Drawing.Size(234, 38);
             this.poRBTN.TabIndex = 15;
-            this.poRBTN.Text = "Purchase Order Received";
+            this.poRBTN.Text = "Received Purchase Order";
             this.poRBTN.UseVisualStyleBackColor = false;
             // 
             // PoBTN
@@ -131,7 +131,7 @@
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "Inventory";
-            this.Size = new System.Drawing.Size(234, 38);
+            this.Size = new System.Drawing.Size(234, 40);
             this.ResumeLayout(false);
 
         }

@@ -172,6 +172,7 @@
             this.trash.Size = new System.Drawing.Size(24, 23);
             this.trash.TabIndex = 1;
             this.trash.UseVisualStyleBackColor = true;
+            this.trash.Visible = false;
             this.trash.Click += new System.EventHandler(this.trash_Click);
             // 
             // label7

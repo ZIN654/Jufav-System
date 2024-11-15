@@ -19,16 +19,17 @@ namespace JUFAV_System.Components
         public ProdListtDataBoxComponent(String Prodname,String Categpry,String SubCat,Double Quantity,String UOM,Double UniCost,Double MarkUp,bool isPerishable,String ExpiringDate,bool Isbatch,int ProdID)
         {
             InitializeComponent();
+            ProdID1 = ProdID;
             this.Dock = DockStyle.Top;
             if (Isbatch == true)
             {
                 BATCPROD.Visible = true;
                 dataGridView1.Visible = true;
-              
+                loaddata(ProdID);
 
             }
-            
-            
+
+           
             label1.Text = Prodname;
             label2.Text = Categpry;
             label3.Text = SubCat;
@@ -38,7 +39,7 @@ namespace JUFAV_System.Components
             label7.Text = Convert.ToDouble(MarkUp).ToString();
             determinebatchpersh(isPerishable,isperishable);
             determinebatchpersh(Isbatch, batched);
-            ProdID1 = ProdID;
+          
             if (ExpiringDate == "01/12/1999")
             {
                 label9.Text = "";
@@ -46,11 +47,12 @@ namespace JUFAV_System.Components
             {
                 label9.Text = ExpiringDate;
             }
+
         }
         private void loaddata(int IDtoret)
         {
             //to du bukas//batch products/pdf ng PO/SAles/tas sa PO pag mag aad ng order dapat nag aad sa iisang panel hindi duplicate
-
+            
             //fix revise
             dataGridView1.Columns.Add("PRODUCT NAME", "PRODUCT NAME");
             dataGridView1.Columns.Add("BATCHNO", "BATCHNO");
@@ -65,13 +67,16 @@ namespace JUFAV_System.Components
             dataGridView1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
             //  mamay aito
+          
             //insert into data gridview
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM  WHERE  = ;", initd.scon);
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM PRODUCTBATCH WHERE PRODUCTID= " + IDtoret+";", initd.scon);
             SQLiteDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
             {
                 //ang order data dapat product name at kung ilang items ung laman nya
-                dataGridView1.Rows.Add(sread1["PRODUCTNAME"].ToString(), sread1["BATCHNO"].ToString(), sread1["QUANTITY"].ToString(), sread1["EXPIRATIONDATE"].ToString());
+                //bug here 
+             
+                dataGridView1.Rows.Add(sread1["PRODUCTDESC"].ToString(), sread1["BATCHNO"].ToString(), sread1["QUANTITY"].ToString(), sread1["EXPIRATIONDATE"].ToString());
             }
             sread1.Close();
             sread1 = null;
@@ -81,9 +86,9 @@ namespace JUFAV_System.Components
        
 
         private void BATCPROD_Click(object sender, EventArgs e)
-        {
+        {        
             if (this.Size.Height == 79)
-            {
+            { 
                 sz1.Height = 217;
                 this.Size = sz1;
             }

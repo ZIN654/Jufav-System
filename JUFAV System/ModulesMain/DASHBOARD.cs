@@ -26,10 +26,10 @@ namespace JUFAV_System.ModulesMain
         {
             initd.titleofprint = "LOW ON STOCKS PRODUCTS";
             String[] queries = { "SELECT COUNT(*) AS VALUE FROM PRODUCTS WHERE QUANTITY < 3;", "SELECT COUNT(*) AS VALUE FROM PRODUCTS WHERE QUANTITY < 5;", "SELECT COUNT(*) AS VALUE FROM PRODUCTS WHERE QUANTITY = 0;", "SELECT COUNT(*) AS VALUE FROM PRODUCTS WHERE QUANTITY < 3;" };
-            Label[] labels = {label5,label6,label7,label8};
+            Label[] labels = {label5,label6,label8};
             SQLiteCommand scom1 = new SQLiteCommand("", initd.scon);
             SQLiteDataReader sread1;
-            for (int i = 0;i != 4;i++)
+            for (int i = 0;i != 3;i++)
             {
                 scom1.CommandText = queries[i];
                 sread1 = scom1.ExecuteReader();
@@ -160,8 +160,8 @@ namespace JUFAV_System.ModulesMain
         }
         private void ProdWithinreorder_Click(object sender, EventArgs e)
         {
-            loadProdWithinReorder();
-            initd.titleofprint = "PRODUCTS_WITHIN_REORDER_POINT";
+            loadOutOfstocks();
+            initd.titleofprint = "OUT_OF_STOCKS_PRODUCTS";
         }
         private void ExpiredBTN_Click(object sender, EventArgs e)
         {

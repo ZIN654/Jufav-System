@@ -107,8 +107,8 @@
             // 
             // forgotBTN
             // 
-            this.forgotBTN.Dock = System.Windows.Forms.DockStyle.Right;
-            this.forgotBTN.Location = new System.Drawing.Point(282, 0);
+            this.forgotBTN.Dock = System.Windows.Forms.DockStyle.Left;
+            this.forgotBTN.Location = new System.Drawing.Point(160, 0);
             this.forgotBTN.Name = "forgotBTN";
             this.forgotBTN.Size = new System.Drawing.Size(95, 59);
             this.forgotBTN.TabIndex = 8;
@@ -122,7 +122,7 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Left;
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(180, 59);
+            this.label2.Size = new System.Drawing.Size(160, 59);
             this.label2.TabIndex = 5;
             this.label2.Text = "Forgot your password? click";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomRight;

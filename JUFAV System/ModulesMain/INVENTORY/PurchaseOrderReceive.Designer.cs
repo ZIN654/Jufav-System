@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.trcv = new System.Windows.Forms.RadioButton();
             this.txtboxSearchBox = new System.Windows.Forms.TextBox();
             this.srchBTN = new System.Windows.Forms.Button();
-            this.toRcvBTN = new System.Windows.Forms.Button();
-            this.CmpltBTN = new System.Windows.Forms.Button();
             this.STATUSHEADING = new System.Windows.Forms.Label();
+            this.cmplt = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,12 +56,12 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.07792F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.07792F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 269F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 118F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121F));
+            this.tableLayoutPanel1.Controls.Add(this.trcv, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtboxSearchBox, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.srchBTN, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.toRcvBTN, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.CmpltBTN, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.STATUSHEADING, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.cmplt, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Actor", 8.25F);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -73,11 +73,25 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(598, 69);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
+            // trcv
+            // 
+            this.trcv.AutoSize = true;
+            this.trcv.Checked = true;
+            this.trcv.Font = new System.Drawing.Font("Actor", 11.25F);
+            this.trcv.Location = new System.Drawing.Point(72, 3);
+            this.trcv.Name = "trcv";
+            this.trcv.Size = new System.Drawing.Size(63, 23);
+            this.trcv.TabIndex = 10;
+            this.trcv.TabStop = true;
+            this.trcv.Text = "TO RECEIVE PURCHASE ORDER";
+            this.trcv.UseVisualStyleBackColor = true;
+            this.trcv.CheckedChanged += new System.EventHandler(this.trcv_CheckedChanged);
+            // 
             // txtboxSearchBox
             // 
             this.txtboxSearchBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtboxSearchBox.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.txtboxSearchBox.Location = new System.Drawing.Point(213, 4);
+            this.txtboxSearchBox.Location = new System.Drawing.Point(210, 4);
             this.txtboxSearchBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
             this.txtboxSearchBox.Name = "txtboxSearchBox";
             this.txtboxSearchBox.Size = new System.Drawing.Size(263, 26);
@@ -92,39 +106,11 @@
             this.srchBTN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.srchBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.srchBTN.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.srchBTN.Location = new System.Drawing.Point(482, 3);
+            this.srchBTN.Location = new System.Drawing.Point(479, 3);
             this.srchBTN.Name = "srchBTN";
-            this.srchBTN.Size = new System.Drawing.Size(113, 26);
+            this.srchBTN.Size = new System.Drawing.Size(116, 26);
             this.srchBTN.TabIndex = 7;
             this.srchBTN.UseVisualStyleBackColor = false;
-            // 
-            // toRcvBTN
-            // 
-            this.toRcvBTN.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.toRcvBTN.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toRcvBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.toRcvBTN.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.toRcvBTN.Location = new System.Drawing.Point(73, 3);
-            this.toRcvBTN.Name = "toRcvBTN";
-            this.toRcvBTN.Size = new System.Drawing.Size(64, 26);
-            this.toRcvBTN.TabIndex = 6;
-            this.toRcvBTN.Text = "TO RECEIVE  PURCHASE ORDER";
-            this.toRcvBTN.UseVisualStyleBackColor = false;
-            this.toRcvBTN.Click += new System.EventHandler(this.toRcvBTN_Click);
-            // 
-            // CmpltBTN
-            // 
-            this.CmpltBTN.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.CmpltBTN.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CmpltBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CmpltBTN.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.CmpltBTN.Location = new System.Drawing.Point(3, 3);
-            this.CmpltBTN.Name = "CmpltBTN";
-            this.CmpltBTN.Size = new System.Drawing.Size(64, 26);
-            this.CmpltBTN.TabIndex = 5;
-            this.CmpltBTN.Text = "COMPLETED PURCHASE ORDER";
-            this.CmpltBTN.UseVisualStyleBackColor = false;
-            this.CmpltBTN.Click += new System.EventHandler(this.CmpltBTN_Click);
             // 
             // STATUSHEADING
             // 
@@ -133,10 +119,22 @@
             this.STATUSHEADING.Font = new System.Drawing.Font("Actor", 9F, System.Drawing.FontStyle.Bold);
             this.STATUSHEADING.Location = new System.Drawing.Point(3, 32);
             this.STATUSHEADING.Name = "STATUSHEADING";
-            this.STATUSHEADING.Size = new System.Drawing.Size(64, 34);
+            this.STATUSHEADING.Size = new System.Drawing.Size(63, 34);
             this.STATUSHEADING.TabIndex = 8;
             this.STATUSHEADING.Text = "TO RECEIVE ORDERS";
             this.STATUSHEADING.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cmplt
+            // 
+            this.cmplt.AutoSize = true;
+            this.cmplt.Font = new System.Drawing.Font("Actor", 11.25F);
+            this.cmplt.Location = new System.Drawing.Point(3, 3);
+            this.cmplt.Name = "cmplt";
+            this.cmplt.Size = new System.Drawing.Size(63, 23);
+            this.cmplt.TabIndex = 9;
+            this.cmplt.Text = "COMPLETED PURCHASE ORDER";
+            this.cmplt.UseVisualStyleBackColor = true;
+            this.cmplt.CheckedChanged += new System.EventHandler(this.cmplt_CheckedChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -294,8 +292,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox txtboxSearchBox;
         private System.Windows.Forms.Button srchBTN;
-        private System.Windows.Forms.Button CmpltBTN;
-        private System.Windows.Forms.Button toRcvBTN;
         private System.Windows.Forms.Label STATUSHEADING;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label1;
@@ -308,5 +304,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel ItemsBox;
         private System.Windows.Forms.Panel ItemSwitch;
+        private System.Windows.Forms.RadioButton trcv;
+        private System.Windows.Forms.RadioButton cmplt;
     }
 }

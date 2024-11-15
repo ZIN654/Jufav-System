@@ -62,7 +62,7 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
 
             ItemsBox.Controls.Clear();//may natitirang isang container why?
 
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM SUPPLIERS WHERE SUPPLIERNAME LIKE '%"+Filtertouse+"%';", initd.scon);
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM SUPPLIERS WHERE SUPPLIERNAME LIKE '%"+Filtertouse+ "%' OR COMPANYADDRESS LIKE '%"+Filtertouse+ "%' OR CONTACTPERSON LIKE '%"+Filtertouse+"%' ;", initd.scon);
             SQLiteDataReader sq1 = scom1.ExecuteReader();
             while (sq1.Read())
             {

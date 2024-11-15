@@ -42,7 +42,7 @@
             this.tableLayoutPanel6.ColumnCount = 4;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.12392F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.87608F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel6.Controls.Add(this.label3, 2, 0);
             this.tableLayoutPanel6.Controls.Add(this.label2, 1, 0);
@@ -59,9 +59,9 @@
             // label3
             // 
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(698, 1);
+            this.label3.Location = new System.Drawing.Point(658, 1);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 32);
+            this.label3.Size = new System.Drawing.Size(83, 32);
             this.label3.TabIndex = 3;
             this.label3.Text = "label14";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -69,12 +69,13 @@
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(567, 1);
+            this.label2.Location = new System.Drawing.Point(534, 1);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 32);
+            this.label2.Size = new System.Drawing.Size(117, 32);
             this.label2.TabIndex = 2;
             this.label2.Text = "label15";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.Visible = false;
             // 
             // AddtoPOList
             // 
@@ -94,7 +95,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(4, 1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(556, 32);
+            this.label1.Size = new System.Drawing.Size(523, 32);
             this.label1.TabIndex = 1;
             this.label1.Text = "label19";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

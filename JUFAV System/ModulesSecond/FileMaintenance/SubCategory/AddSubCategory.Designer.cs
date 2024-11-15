@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddSubCategory));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -47,6 +47,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.CANCELBTN = new System.Windows.Forms.Button();
             this.addBTN = new System.Windows.Forms.Button();
+            this.markupTxtBx = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -86,7 +87,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.comboBox2);
+            this.panel2.Controls.Add(this.markupTxtBx);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.comboBox1);
@@ -97,16 +98,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(525, 160);
             this.panel2.TabIndex = 1;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.Font = new System.Drawing.Font("Actor", 12F);
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(241, 106);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(464, 29);
-            this.comboBox2.TabIndex = 6;
             // 
             // label4
             // 
@@ -159,8 +150,8 @@
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 246F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 238F));
             this.tableLayoutPanel3.Controls.Add(this.subCatIm, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.subCatnot, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.catnotassignment, 1, 3);
@@ -172,10 +163,10 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 7;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(184, 160);
@@ -184,20 +175,21 @@
             // subCatIm
             // 
             this.subCatIm.BackColor = System.Drawing.Color.Transparent;
-            this.subCatIm.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
+            this.subCatIm.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("subCatIm.BackgroundImage")));
+            this.subCatIm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.subCatIm.Location = new System.Drawing.Point(3, 21);
             this.subCatIm.Name = "subCatIm";
-            this.subCatIm.Size = new System.Drawing.Size(15, 14);
-            this.subCatIm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.subCatIm.Size = new System.Drawing.Size(25, 22);
+            this.subCatIm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.subCatIm.TabIndex = 53;
             this.subCatIm.TabStop = false;
             this.subCatIm.Visible = false;
             // 
             // subCatnot
             // 
-            this.subCatnot.Font = new System.Drawing.Font("Actor", 8.25F);
+            this.subCatnot.Font = new System.Drawing.Font("Actor", 9.25F);
             this.subCatnot.ForeColor = System.Drawing.Color.Red;
-            this.subCatnot.Location = new System.Drawing.Point(28, 18);
+            this.subCatnot.Location = new System.Drawing.Point(36, 18);
             this.subCatnot.Name = "subCatnot";
             this.subCatnot.Size = new System.Drawing.Size(186, 17);
             this.subCatnot.TabIndex = 54;
@@ -207,9 +199,9 @@
             // 
             // catnotassignment
             // 
-            this.catnotassignment.Font = new System.Drawing.Font("Actor", 8.25F);
+            this.catnotassignment.Font = new System.Drawing.Font("Actor", 9.25F);
             this.catnotassignment.ForeColor = System.Drawing.Color.Red;
-            this.catnotassignment.Location = new System.Drawing.Point(28, 62);
+            this.catnotassignment.Location = new System.Drawing.Point(36, 62);
             this.catnotassignment.Name = "catnotassignment";
             this.catnotassignment.Size = new System.Drawing.Size(186, 17);
             this.catnotassignment.TabIndex = 55;
@@ -220,20 +212,21 @@
             // catimg
             // 
             this.catimg.BackColor = System.Drawing.Color.Transparent;
-            this.catimg.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
+            this.catimg.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("catimg.BackgroundImage")));
+            this.catimg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.catimg.Location = new System.Drawing.Point(3, 65);
             this.catimg.Name = "catimg";
-            this.catimg.Size = new System.Drawing.Size(15, 14);
-            this.catimg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.catimg.Size = new System.Drawing.Size(25, 25);
+            this.catimg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.catimg.TabIndex = 56;
             this.catimg.TabStop = false;
             this.catimg.Visible = false;
             // 
             // markupnot
             // 
-            this.markupnot.Font = new System.Drawing.Font("Actor", 8.25F);
+            this.markupnot.Font = new System.Drawing.Font("Actor", 9.25F);
             this.markupnot.ForeColor = System.Drawing.Color.Red;
-            this.markupnot.Location = new System.Drawing.Point(28, 109);
+            this.markupnot.Location = new System.Drawing.Point(36, 109);
             this.markupnot.Name = "markupnot";
             this.markupnot.Size = new System.Drawing.Size(186, 17);
             this.markupnot.TabIndex = 57;
@@ -244,11 +237,12 @@
             // Markupimg
             // 
             this.Markupimg.BackColor = System.Drawing.Color.Transparent;
-            this.Markupimg.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
+            this.Markupimg.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Markupimg.BackgroundImage")));
+            this.Markupimg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Markupimg.Location = new System.Drawing.Point(3, 112);
             this.Markupimg.Name = "Markupimg";
-            this.Markupimg.Size = new System.Drawing.Size(15, 14);
-            this.Markupimg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Markupimg.Size = new System.Drawing.Size(25, 25);
+            this.Markupimg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Markupimg.TabIndex = 58;
             this.Markupimg.TabStop = false;
             this.Markupimg.Visible = false;
@@ -256,18 +250,18 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 224F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 224F));
             this.tableLayoutPanel2.Controls.Add(this.CANCELBTN, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.addBTN, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 446);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 422);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(739, 81);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(739, 105);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // CANCELBTN
@@ -276,9 +270,9 @@
             this.CANCELBTN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CANCELBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CANCELBTN.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.CANCELBTN.Location = new System.Drawing.Point(260, 3);
+            this.CANCELBTN.Location = new System.Drawing.Point(294, 3);
             this.CANCELBTN.Name = "CANCELBTN";
-            this.CANCELBTN.Size = new System.Drawing.Size(251, 34);
+            this.CANCELBTN.Size = new System.Drawing.Size(218, 46);
             this.CANCELBTN.TabIndex = 0;
             this.CANCELBTN.Text = "CANCEL";
             this.CANCELBTN.UseVisualStyleBackColor = true;
@@ -290,13 +284,21 @@
             this.addBTN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addBTN.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.addBTN.Location = new System.Drawing.Point(517, 3);
+            this.addBTN.Location = new System.Drawing.Point(518, 3);
             this.addBTN.Name = "addBTN";
-            this.addBTN.Size = new System.Drawing.Size(219, 34);
+            this.addBTN.Size = new System.Drawing.Size(218, 46);
             this.addBTN.TabIndex = 1;
             this.addBTN.Text = "ADD";
             this.addBTN.UseVisualStyleBackColor = true;
             this.addBTN.Click += new System.EventHandler(this.addBTN_Click);
+            // 
+            // markupTxtBx
+            // 
+            this.markupTxtBx.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.markupTxtBx.Location = new System.Drawing.Point(241, 109);
+            this.markupTxtBx.Name = "markupTxtBx";
+            this.markupTxtBx.Size = new System.Drawing.Size(464, 26);
+            this.markupTxtBx.TabIndex = 6;
             // 
             // AddSubCategory
             // 
@@ -332,7 +334,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label catnotassignment;
         private System.Windows.Forms.PictureBox catimg;
         private System.Windows.Forms.Label markupnot;
@@ -340,5 +341,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button CANCELBTN;
         private System.Windows.Forms.Button addBTN;
+        private System.Windows.Forms.TextBox markupTxtBx;
     }
 }

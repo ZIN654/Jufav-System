@@ -21,12 +21,12 @@ namespace JUFAV_System.ModulesMain.INVENTORY
             this.Disposed += ondispose;
             STATUSHEADING.Text = "PENDING PURCHASE ORDER";
             loddataPending();
+          
         }
         public void ReleaseLeaks()
         {
            
-            CnclBTN.Click -= CnclBTN_Click;
-            PndBTN.Click -= PndBTN_Click;
+           
             CrtPOBTN.Click -= CrtPOBTN_Click;
             srchBTN.Click -= srchBTN_Click;
         }
@@ -51,16 +51,7 @@ namespace JUFAV_System.ModulesMain.INVENTORY
                 //dito load ng data
             }
         }
-        private void CnclBTN_Click(object sender, EventArgs e)
-        {
-            STATUSHEADING.Text = "CANCELED PURCHASE ORDER";
-            loddataPending(1);
-        }
-        private void PndBTN_Click(object sender, EventArgs e)
-        {
-            STATUSHEADING.Text = "PENDING PURCHASE ORDER";
-            loddataPending(0);
-        }
+      
         private void CrtPOBTN_Click(object sender, EventArgs e)
         {
     
@@ -79,5 +70,16 @@ namespace JUFAV_System.ModulesMain.INVENTORY
             ReleaseLeaks();
         }
 
+        private void CANCELED_PO_CheckedChanged(object sender, EventArgs e)
+        {
+            STATUSHEADING.Text = "CANCELED PURCHASE ORDER";
+            loddataPending(1);
+        }
+
+        private void PENDING_PO_CheckedChanged(object sender, EventArgs e)
+        {
+            STATUSHEADING.Text = "PENDING PURCHASE ORDER";
+            loddataPending(0);
+        }
     }
 }

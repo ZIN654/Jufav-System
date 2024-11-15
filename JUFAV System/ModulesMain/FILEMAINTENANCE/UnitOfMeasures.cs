@@ -46,7 +46,7 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
                 i.Dispose();
             }
             ItemsBox.Controls.Clear();
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM UNITOFMEASURE WHERE UNITDESC LIKE '%" + text + "%';", initd.scon);
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM UNITOFMEASURE WHERE UNITDESC LIKE '%" + text + "%' OR UNITABBREVIATION LIKE '%" + text +"%';", initd.scon);
             SQLiteDataReader sqread = scom1.ExecuteReader();
             while (sqread.Read())
             {

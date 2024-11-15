@@ -34,8 +34,11 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
 
         private void setvat()
         {
-            SQLiteCommand sq1 = new SQLiteCommand("UPDATE VAT SET VATVALUE =" + Convert.ToInt32(Vattxtbox.Text)+ " WHERE VATID = 01100001;", initd.scon);
+            SQLiteCommand sq1 = new SQLiteCommand("UPDATE VAT SET VATVALUE =" + Convert.ToDouble("0."+Vattxtbox.Text)+ " WHERE VATID = 01100001;", initd.scon);
             sq1.ExecuteNonQuery();
+
+            sq1 = null;
+            GC.Collect();
           
 
         }

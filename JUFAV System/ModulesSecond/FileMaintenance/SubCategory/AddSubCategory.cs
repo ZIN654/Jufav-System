@@ -20,6 +20,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
         private static Hashtable category = new Hashtable();
         private bool isverfied1;
         private bool isverfied2;
+        private bool isverified4;
         private bool isverfied3;
         int idtoedit1;
         int summontype1;
@@ -56,7 +57,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
             while (sread1.Read())
             {
                 SubCattxtbox.Text = sread1["SUBCATEGORYDESC"].ToString();
-                comboBox2.Text = sread1["MARKUPVALUE"].ToString();
+                markupTxtBx.Text = sread1["MARKUPVALUE"].ToString();
 
             }
 
@@ -68,7 +69,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
         {
             this.Cursor = Cursors.WaitCursor;
             //Update function here 
-            SQLiteCommand scom1 = new SQLiteCommand("UPDATE SUBCATEGORY SET SUBCATEGORYDESC = '" + SubCattxtbox.Text.ToLower() + "',CATEGORYID = (SELECT CATEGORYID FROM CATEGORY WHERE CATEGORYDESC = '"+comboBox1.Text+ "'),MARKUPVALUE = "+Convert.ToDouble(comboBox2.Text)+" WHERE SUBCATEGORYID = " + idtoedit1 + ";", initd.scon);
+            SQLiteCommand scom1 = new SQLiteCommand("UPDATE SUBCATEGORY SET SUBCATEGORYDESC = '" + SubCattxtbox.Text.ToLower() + "',CATEGORYID = (SELECT CATEGORYID FROM CATEGORY WHERE CATEGORYDESC = '"+comboBox1.Text+ "'),MARKUPVALUE = "+Convert.ToDouble(markupTxtBx.Text)+" WHERE SUBCATEGORYID = " + idtoedit1 + ";", initd.scon);
             scom1.ExecuteNonQuery();
             scom1 = null;
 
@@ -93,14 +94,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
                 comboBox1.Items.Add(sq1["CATEGORYDESC"].ToString());
             }
             sq1.Close();
-            scom1.CommandText = "SELECT * FROM MARKUP";
-            sq1 = scom1.ExecuteReader();
-            while (sq1.Read())
-            {
-                comboBox2.Items.Add(sq1["MARKUPVALUE"].ToString());
 
-
-            }
             //insert into combobox
 
 
@@ -111,11 +105,11 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
             isverfied1 = true;
             isverfied2 = true;
             isverfied3 = true;
-            Control[] textboxes = { SubCattxtbox,comboBox1,comboBox2 };
+            Control[] textboxes = { SubCattxtbox,comboBox1, markupTxtBx };
             PictureBox[] notificationimage = { subCatIm,catimg,Markupimg };
             Label[] textnoti = { subCatnot ,catnotassignment,markupnot};
             //check pass and conf is =
-            if (SubCattxtbox.Text == "" || comboBox1.Text == ""|| comboBox2.Text == "")
+            if (SubCattxtbox.Text == "" || comboBox1.Text == ""|| markupTxtBx.Text == "")
             {
                 for (int i = 0; i != 3; i++)
                 {
@@ -138,7 +132,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
                 for (int i = 0; i != 1; i++)
                 {
                     // \\W\\S
-                    if (Regex.IsMatch(textboxes[i].Text, "\\W"))
+                    if (Regex.IsMatch(textboxes[i].Text, @"[^a-zA-Z0-9\s]"))
                     {
                         Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "NON CHARACTER INPUT", "Please Remove a non - letter character in " + textboxes[i].Name + " field where text '" + textboxes[i].Text + "' contains the non letter character.", "RETRY", 1);
                         ms.Show();
@@ -163,7 +157,18 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
 
             }
             //
-            if (isverfied2 == true && isverfied1 == true && isverfied3 == true)
+            if (Regex.IsMatch(markupTxtBx.Text, @"[^0-9]"))
+            {
+                Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "NON CHARACTER INPUT", "Please Remove a non - letter character in " + markupTxtBx.Name + " field where text '" + markupTxtBx.Text + "' contains the non letter character.", "RETRY", 1);
+                ms.Show();
+                isverified4 = false;
+
+            }
+            else
+            {
+                isverified4 = true;
+            }
+            if (isverfied2 == true && isverfied1 == true && isverfied3 == true && isverified4 == true)
             {
                 //are you sure 
                 if (summontype1 == 1)
@@ -213,7 +218,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
                 unitid = string.Concat(unitid, rs1.Next(0, 9).ToString());
             }
            //make msg box if user entered a text in markup value
-            SQLiteCommand scom = new SQLiteCommand("INSERT INTO SUBCATEGORY VALUES (" + Convert.ToInt32(unitid) + "," + initd.UserID + "," + category[comboBox1.Text] + ",'" + SubCattxtbox.Text.ToLower() + "'," + Convert.ToInt32(comboBox2.Text) + ");", initd.scon);
+            SQLiteCommand scom = new SQLiteCommand("INSERT INTO SUBCATEGORY VALUES (" + Convert.ToInt32(unitid) + "," + initd.UserID + "," + category[comboBox1.Text] + ",'" + SubCattxtbox.Text.ToLower() + "'," + Convert.ToInt32(markupTxtBx.Text) + ");", initd.scon);
             scom.ExecuteNonQuery();
            
             this.Cursor = Cursors.Default;

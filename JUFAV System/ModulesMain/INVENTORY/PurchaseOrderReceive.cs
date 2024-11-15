@@ -21,12 +21,7 @@ namespace JUFAV_System.ModulesMain.INVENTORY
             this.Dock = DockStyle.Fill;
             loddataPending(0);
         }
-        public void releaseLeaks()
-        {
-            CmpltBTN.Click -= CmpltBTN_Click;
-            toRcvBTN.Click -= toRcvBTN_Click;
-
-        }
+     
         private void loddataPending(int l)
         {
             string toload = "PENDING";
@@ -49,16 +44,18 @@ namespace JUFAV_System.ModulesMain.INVENTORY
                 //dito load ng data
             }
         }
-        private void toRcvBTN_Click(object sender, EventArgs e)
-        {
-            loddataPending(0);
-            STATUSHEADING.Text = "TO RECEIVE ORDERS";
-        }
-        private void CmpltBTN_Click(object sender, EventArgs e)
+       
+
+        private void cmplt_CheckedChanged(object sender, EventArgs e)
         {
             loddataPending(1);
             STATUSHEADING.Text = "COMPLETED ORDERS";
         }
-       
+
+        private void trcv_CheckedChanged(object sender, EventArgs e)
+        {
+            loddataPending(0);
+            STATUSHEADING.Text = "TO RECEIVE ORDERS";
+        }
     }
 }

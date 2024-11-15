@@ -58,7 +58,8 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
 
             ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
             ResponsiveUI1.title = "BCKRS";
-            ResponsiveUI1.headingtitle.Text = "Backup and restore".ToUpper();
+            ResponsiveUI1.title2 = "BACKUP AND RESTORE";
+            ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
          
             ModulesMain.UTILITIES.BCKRS sp1 = new ModulesMain.UTILITIES.BCKRS();
             ResponsiveUI1.spl1.Controls.Add(sp1);

@@ -84,6 +84,7 @@
             this.RprodBTN.TabIndex = 4;
             this.RprodBTN.Text = "Reserved Products";
             this.RprodBTN.UseVisualStyleBackColor = false;
+            this.RprodBTN.Click += new System.EventHandler(this.RprodBTN_Click);
             // 
             // Sales
             // 

@@ -14,6 +14,7 @@ namespace JUFAV_System.dll
         //this spl1 is the panel fromm the core 
         public static Panel spl1;
         public static String title = "";
+        public static String title2 = "";
         //panel for login
         
 

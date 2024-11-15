@@ -44,6 +44,8 @@
   <PropertyGroup>
     <ApplicationIcon>Resources\JFF.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
@@ -159,6 +161,12 @@
     <Compile Include="Components\CategoryComponent.Designer.cs">
       <DependentUpon>CategoryComponent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\InverntoryReportsComponents.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\InverntoryReportsComponents.Designer.cs">
+      <DependentUpon>InverntoryReportsComponents.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\MarkUpDatabox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -255,6 +263,12 @@
     <Compile Include="Components\SUPDatabox.Designer.cs">
       <DependentUpon>SUPDatabox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\SupplierComponentAddprod.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\SupplierComponentAddprod.Designer.cs">
+      <DependentUpon>SupplierComponentAddprod.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\UOMDataBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -266,6 +280,12 @@
     </Compile>
     <Compile Include="Components\US.DataBox.Designer.cs">
       <DependentUpon>US.DataBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\SalesPaymentMethodOrderList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\SalesPaymentMethodOrderList.Designer.cs">
+      <DependentUpon>SalesPaymentMethodOrderList.cs</DependentUpon>
     </Compile>
     <Compile Include="dll\algos1.cs" />
     <Compile Include="dll\initd.cs" />
@@ -288,6 +308,12 @@
     <Compile Include="Messageboxes\MessageboxAreyousure.Designer.cs">
       <DependentUpon>MessageboxAreyousure.cs</DependentUpon>
     </Compile>
+    <Compile Include="Messageboxes\newsupplierAddProd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messageboxes\newsupplierAddProd.Designer.cs">
+      <DependentUpon>newsupplierAddProd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Messageboxes\PdfFileViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -299,6 +325,12 @@
     </Compile>
     <Compile Include="Messageboxes\SalesPrintreceipt.Designer.cs">
       <DependentUpon>SalesPrintreceipt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Messageboxes\ShowChanges.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messageboxes\ShowChanges.Designer.cs">
+      <DependentUpon>ShowChanges.cs</DependentUpon>
     </Compile>
     <Compile Include="Messageboxes\StockAdjustmentEditQuantity.cs">
       <SubType>Form</SubType>
@@ -341,6 +373,12 @@
     </Compile>
     <Compile Include="ModulesMain\COREUTILITIES\Inventory.Designer.cs">
       <DependentUpon>Inventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\COREUTILITIES\ISClerk\Filemaintenance2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\COREUTILITIES\ISClerk\Filemaintenance2.Designer.cs">
+      <DependentUpon>Filemaintenance2.cs</DependentUpon>
     </Compile>
     <Compile Include="ModulesMain\COREUTILITIES\Reports.cs">
       <SubType>UserControl</SubType>
@@ -462,12 +500,6 @@
     <Compile Include="ModulesMain\REPORTS\AuditTrailReports.Designer.cs">
       <DependentUpon>AuditTrailReports.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModulesMain\REPORTS\FinancialReports.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ModulesMain\REPORTS\FinancialReports.Designer.cs">
-      <DependentUpon>FinancialReports.cs</DependentUpon>
-    </Compile>
     <Compile Include="ModulesMain\REPORTS\InventoryReports.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -497,18 +529,6 @@
     </Compile>
     <Compile Include="ModulesMain\REPORTS\StockAdjustmentsReports.Designer.cs">
       <DependentUpon>StockAdjustmentsReports.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModulesMain\REPORTS\Top10LeastReports.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ModulesMain\REPORTS\Top10LeastReports.Designer.cs">
-      <DependentUpon>Top10LeastReports.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModulesMain\REPORTS\Top10MostReports.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ModulesMain\REPORTS\Top10MostReports.Designer.cs">
-      <DependentUpon>Top10MostReports.cs</DependentUpon>
     </Compile>
     <Compile Include="ModulesMain\SALES\ReservedProducts.cs">
       <SubType>UserControl</SubType>
@@ -640,6 +660,9 @@
     <EmbeddedResource Include="Components\CategoryComponent.resx">
       <DependentUpon>CategoryComponent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\InverntoryReportsComponents.resx">
+      <DependentUpon>InverntoryReportsComponents.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\MarkUpDatabox.resx">
       <DependentUpon>MarkUpDatabox.cs</DependentUpon>
     </EmbeddedResource>
@@ -667,6 +690,9 @@
     <EmbeddedResource Include="Components\RemarksBox.resx">
       <DependentUpon>RemarksBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\SalesOrdersList.resx">
+      <DependentUpon>SalesOrdersList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\SalesProductList.resx">
       <DependentUpon>SalesProductList.cs</DependentUpon>
     </EmbeddedResource>
@@ -685,11 +711,17 @@
     <EmbeddedResource Include="Components\SUPDatabox.resx">
       <DependentUpon>SUPDatabox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\SupplierComponentAddprod.resx">
+      <DependentUpon>SupplierComponentAddprod.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\UOMDataBox.resx">
       <DependentUpon>UOMDataBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\US.DataBox.resx">
       <DependentUpon>US.DataBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\SalesPaymentMethodOrderList.resx">
+      <DependentUpon>SalesPaymentMethodOrderList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ffirstrun\DbSetup.resx">
       <DependentUpon>DbSetup.cs</DependentUpon>
@@ -700,8 +732,14 @@
     <EmbeddedResource Include="Messageboxes\MessageboxAreyousure.resx">
       <DependentUpon>MessageboxAreyousure.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Messageboxes\newsupplierAddProd.resx">
+      <DependentUpon>newsupplierAddProd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Messageboxes\PdfFileViewer.resx">
       <DependentUpon>PdfFileViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messageboxes\ShowChanges.resx">
+      <DependentUpon>ShowChanges.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Messageboxes\StockAdjustmentEditQuantity.resx">
       <DependentUpon>StockAdjustmentEditQuantity.cs</DependentUpon>
@@ -723,6 +761,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModulesMain\COREUTILITIES\Inventory.resx">
       <DependentUpon>Inventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\COREUTILITIES\ISClerk\Filemaintenance2.resx">
+      <DependentUpon>Filemaintenance2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModulesMain\COREUTILITIES\REPORTS.resx">
       <DependentUpon>Reports.cs</DependentUpon>
@@ -847,6 +888,7 @@
       <DependentUpon>SANDBOX.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -909,6 +951,7 @@
     <None Include="Resources\Close.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Shutdown.png" />
     <None Include="Resources\UTILITIES.png" />
     <None Include="Resources\Minus.png" />
     <None Include="Resources\Plus.png" />

@@ -76,6 +76,7 @@
             this.InvRprtBTN.TabIndex = 3;
             this.InvRprtBTN.Text = "Inventory Reports";
             this.InvRprtBTN.UseVisualStyleBackColor = false;
+            this.InvRprtBTN.Click += new System.EventHandler(this.InvRprtBTN_Click);
             // 
             // SlsRprtBTN
             // 

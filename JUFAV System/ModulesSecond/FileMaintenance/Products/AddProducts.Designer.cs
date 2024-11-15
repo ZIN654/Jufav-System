@@ -34,8 +34,11 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.pan = new System.Windows.Forms.Panel();
-            this.splcmbox = new System.Windows.Forms.ComboBox();
+            this.ADDNEWSPLR = new System.Windows.Forms.Button();
+            this.addtolistbtn = new System.Windows.Forms.Button();
             this.Suplir = new System.Windows.Forms.Label();
+            this.splcmbox = new System.Windows.Forms.ComboBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.InitialStcktxtbox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.Unittypecombobox = new System.Windows.Forms.ComboBox();
@@ -44,7 +47,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.mkuptxtbox1 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.SubCatCombo = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.CategoryCOmbo = new System.Windows.Forms.ComboBox();
@@ -58,65 +60,47 @@
             this.MKupnot = new System.Windows.Forms.Label();
             this.ProdnameNot = new System.Windows.Forms.Label();
             this.Catnot = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label10 = new System.Windows.Forms.Label();
-            this.SingleProdBTN = new System.Windows.Forms.RadioButton();
-            this.BatchProdRadioBTN = new System.Windows.Forms.RadioButton();
-            this.prsishablechbox = new System.Windows.Forms.CheckBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.itemsBox = new System.Windows.Forms.Panel();
-            this.singlprod = new System.Windows.Forms.Panel();
-            this.batchprod = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.batchprodadd = new System.Windows.Forms.TableLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.Batchno1 = new System.Windows.Forms.ComboBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.dateexpiration = new System.Windows.Forms.DateTimePicker();
-            this.ProdName = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.StockQuantitytxtbox = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.AddBatchBTn = new System.Windows.Forms.Button();
-            this.INCREMENTBTN = new System.Windows.Forms.Button();
-            this.Decrement = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.totalSRP = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.splrnot = new System.Windows.Forms.PictureBox();
             this.InitStckImg = new System.Windows.Forms.PictureBox();
             this.OrigPUnitImg = new System.Windows.Forms.PictureBox();
             this.MarkUp = new System.Windows.Forms.PictureBox();
             this.ProdnameImg = new System.Windows.Forms.PictureBox();
             this.CatSubIm = new System.Windows.Forms.PictureBox();
+            this.ITEMSBOXSPLR = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.pan.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.singlprod.SuspendLayout();
-            this.batchprod.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.batchprodadd.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splrnot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InitStckImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrigPUnitImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MarkUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProdnameImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CatSubIm)).BeginInit();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 232F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 237F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 232F));
             this.tableLayoutPanel2.Controls.Add(this.CANCELBTN, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.addMainBTN, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 533);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 547);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -130,9 +114,9 @@
             this.CANCELBTN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CANCELBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CANCELBTN.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.CANCELBTN.Location = new System.Drawing.Point(530, 3);
+            this.CANCELBTN.Location = new System.Drawing.Point(525, 3);
             this.CANCELBTN.Name = "CANCELBTN";
-            this.CANCELBTN.Size = new System.Drawing.Size(226, 34);
+            this.CANCELBTN.Size = new System.Drawing.Size(231, 34);
             this.CANCELBTN.TabIndex = 0;
             this.CANCELBTN.Text = "CANCEL";
             this.CANCELBTN.UseVisualStyleBackColor = true;
@@ -182,17 +166,22 @@
             // 
             // pan
             // 
-            this.pan.Controls.Add(this.splcmbox);
+            this.pan.Controls.Add(this.label11);
+            this.pan.Controls.Add(this.label6);
+            this.pan.Controls.Add(this.totalSRP);
+            this.pan.Controls.Add(this.label10);
+            this.pan.Controls.Add(this.ADDNEWSPLR);
+            this.pan.Controls.Add(this.addtolistbtn);
             this.pan.Controls.Add(this.Suplir);
+            this.pan.Controls.Add(this.splcmbox);
+            this.pan.Controls.Add(this.checkBox1);
             this.pan.Controls.Add(this.InitialStcktxtbox);
             this.pan.Controls.Add(this.label9);
             this.pan.Controls.Add(this.Unittypecombobox);
             this.pan.Controls.Add(this.label8);
             this.pan.Controls.Add(this.OriginalPricetxtbox);
             this.pan.Controls.Add(this.label7);
-            this.pan.Controls.Add(this.label6);
             this.pan.Controls.Add(this.mkuptxtbox1);
-            this.pan.Controls.Add(this.label5);
             this.pan.Controls.Add(this.SubCatCombo);
             this.pan.Controls.Add(this.label4);
             this.pan.Controls.Add(this.CategoryCOmbo);
@@ -205,37 +194,75 @@
             this.pan.Size = new System.Drawing.Size(710, 235);
             this.pan.TabIndex = 1;
             // 
-            // splcmbox
+            // ADDNEWSPLR
             // 
-            this.splcmbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.splcmbox.Location = new System.Drawing.Point(171, 42);
-            this.splcmbox.Name = "splcmbox";
-            this.splcmbox.Size = new System.Drawing.Size(534, 21);
-            this.splcmbox.TabIndex = 17;
+            this.ADDNEWSPLR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ADDNEWSPLR.Location = new System.Drawing.Point(584, 193);
+            this.ADDNEWSPLR.Name = "ADDNEWSPLR";
+            this.ADDNEWSPLR.Size = new System.Drawing.Size(115, 28);
+            this.ADDNEWSPLR.TabIndex = 21;
+            this.ADDNEWSPLR.Text = "NEW SUPPLIER";
+            this.ADDNEWSPLR.UseVisualStyleBackColor = true;
+            this.ADDNEWSPLR.Click += new System.EventHandler(this.ADDNEWSPLR_Click);
+            // 
+            // addtolistbtn
+            // 
+            this.addtolistbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addtolistbtn.Location = new System.Drawing.Point(463, 193);
+            this.addtolistbtn.Name = "addtolistbtn";
+            this.addtolistbtn.Size = new System.Drawing.Size(115, 28);
+            this.addtolistbtn.TabIndex = 20;
+            this.addtolistbtn.Text = "ADD";
+            this.addtolistbtn.UseVisualStyleBackColor = true;
+            this.addtolistbtn.Click += new System.EventHandler(this.addtolistbtn_Click);
             // 
             // Suplir
             // 
             this.Suplir.AutoSize = true;
             this.Suplir.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.Suplir.Location = new System.Drawing.Point(3, 41);
+            this.Suplir.Location = new System.Drawing.Point(4, 195);
             this.Suplir.Name = "Suplir";
             this.Suplir.Size = new System.Drawing.Size(94, 23);
             this.Suplir.TabIndex = 16;
             this.Suplir.Text = "SUPPLIER";
             // 
+            // splcmbox
+            // 
+            this.splcmbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.splcmbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.splcmbox.Location = new System.Drawing.Point(170, 193);
+            this.splcmbox.Name = "splcmbox";
+            this.splcmbox.Size = new System.Drawing.Size(288, 28);
+            this.splcmbox.TabIndex = 17;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Actor", 14.25F);
+            this.checkBox1.ForeColor = System.Drawing.Color.Red;
+            this.checkBox1.Location = new System.Drawing.Point(8, 77);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(227, 27);
+            this.checkBox1.TabIndex = 19;
+            this.checkBox1.Text = "USE CUSTOM MARKUP";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // InitialStcktxtbox
             // 
             this.InitialStcktxtbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InitialStcktxtbox.Location = new System.Drawing.Point(170, 185);
+            this.InitialStcktxtbox.Location = new System.Drawing.Point(170, 152);
             this.InitialStcktxtbox.Name = "InitialStcktxtbox";
             this.InitialStcktxtbox.Size = new System.Drawing.Size(211, 26);
             this.InitialStcktxtbox.TabIndex = 15;
+            this.InitialStcktxtbox.Text = "0";
+            this.InitialStcktxtbox.TextChanged += new System.EventHandler(this.InitialStcktxtbox_TextChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.label9.Location = new System.Drawing.Point(3, 186);
+            this.label9.Location = new System.Drawing.Point(3, 154);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(133, 23);
             this.label9.TabIndex = 14;
@@ -244,17 +271,18 @@
             // Unittypecombobox
             // 
             this.Unittypecombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Unittypecombobox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Unittypecombobox.FormattingEnabled = true;
-            this.Unittypecombobox.Location = new System.Drawing.Point(540, 150);
+            this.Unittypecombobox.Location = new System.Drawing.Point(539, 151);
             this.Unittypecombobox.Name = "Unittypecombobox";
-            this.Unittypecombobox.Size = new System.Drawing.Size(165, 21);
+            this.Unittypecombobox.Size = new System.Drawing.Size(165, 28);
             this.Unittypecombobox.TabIndex = 13;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.label8.Location = new System.Drawing.Point(387, 151);
+            this.label8.Location = new System.Drawing.Point(412, 151);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(99, 23);
             this.label8.TabIndex = 12;
@@ -263,59 +291,55 @@
             // OriginalPricetxtbox
             // 
             this.OriginalPricetxtbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OriginalPricetxtbox.Location = new System.Drawing.Point(170, 148);
+            this.OriginalPricetxtbox.Location = new System.Drawing.Point(170, 114);
             this.OriginalPricetxtbox.Name = "OriginalPricetxtbox";
             this.OriginalPricetxtbox.Size = new System.Drawing.Size(211, 26);
             this.OriginalPricetxtbox.TabIndex = 11;
+            this.OriginalPricetxtbox.Text = "0";
+            this.OriginalPricetxtbox.TextChanged += new System.EventHandler(this.OriginalPricetxtbox_TextChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.label7.Location = new System.Drawing.Point(3, 149);
+            this.label7.Location = new System.Drawing.Point(3, 116);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(150, 23);
+            this.label7.Size = new System.Drawing.Size(109, 23);
             this.label7.TabIndex = 10;
-            this.label7.Text = "ORIGINAL PRICE";
+            this.label7.Text = "UNIT COST:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.label6.Location = new System.Drawing.Point(387, 112);
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(615, 78);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(247, 23);
+            this.label6.Size = new System.Drawing.Size(62, 23);
             this.label6.TabIndex = 9;
-            this.label6.Text = "CURRENT MARK-UP : 00.00";
+            this.label6.Text = "00.00";
             // 
             // mkuptxtbox1
             // 
+            this.mkuptxtbox1.Enabled = false;
             this.mkuptxtbox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mkuptxtbox1.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.mkuptxtbox1.Location = new System.Drawing.Point(170, 111);
+            this.mkuptxtbox1.Location = new System.Drawing.Point(241, 77);
             this.mkuptxtbox1.Name = "mkuptxtbox1";
-            this.mkuptxtbox1.Size = new System.Drawing.Size(211, 26);
+            this.mkuptxtbox1.Size = new System.Drawing.Size(165, 26);
             this.mkuptxtbox1.TabIndex = 8;
             this.mkuptxtbox1.Text = "leave blank if not use";
+            this.mkuptxtbox1.Click += new System.EventHandler(this.mkuptxtbox1_Click);
             this.mkuptxtbox1.TextChanged += new System.EventHandler(this.mkuptxtbox1_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.label5.Location = new System.Drawing.Point(3, 112);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(168, 23);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "CUSTOM MARKUP";
             // 
             // SubCatCombo
             // 
             this.SubCatCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SubCatCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.SubCatCombo.FormattingEnabled = true;
-            this.SubCatCombo.Location = new System.Drawing.Point(540, 10);
+            this.SubCatCombo.Location = new System.Drawing.Point(539, 4);
             this.SubCatCombo.Name = "SubCatCombo";
-            this.SubCatCombo.Size = new System.Drawing.Size(165, 21);
+            this.SubCatCombo.Size = new System.Drawing.Size(165, 28);
             this.SubCatCombo.TabIndex = 6;
             this.SubCatCombo.SelectedIndexChanged += new System.EventHandler(this.SubCatCombo_SelectedIndexChanged);
             // 
@@ -332,9 +356,10 @@
             // CategoryCOmbo
             // 
             this.CategoryCOmbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CategoryCOmbo.Location = new System.Drawing.Point(170, 10);
+            this.CategoryCOmbo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.CategoryCOmbo.Location = new System.Drawing.Point(170, 6);
             this.CategoryCOmbo.Name = "CategoryCOmbo";
-            this.CategoryCOmbo.Size = new System.Drawing.Size(211, 21);
+            this.CategoryCOmbo.Size = new System.Drawing.Size(211, 28);
             this.CategoryCOmbo.TabIndex = 4;
             this.CategoryCOmbo.SelectedIndexChanged += new System.EventHandler(this.CategoryCOmbo_SelectedIndexChanged);
             // 
@@ -351,7 +376,7 @@
             // Prodnametxtbox
             // 
             this.Prodnametxtbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Prodnametxtbox.Location = new System.Drawing.Point(170, 74);
+            this.Prodnametxtbox.Location = new System.Drawing.Point(170, 42);
             this.Prodnametxtbox.Name = "Prodnametxtbox";
             this.Prodnametxtbox.Size = new System.Drawing.Size(535, 26);
             this.Prodnametxtbox.TabIndex = 2;
@@ -360,7 +385,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.label2.Location = new System.Drawing.Point(3, 75);
+            this.label2.Location = new System.Drawing.Point(3, 43);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(155, 23);
             this.label2.TabIndex = 0;
@@ -388,21 +413,21 @@
             // 
             // splrlabel
             // 
-            this.splrlabel.Font = new System.Drawing.Font("Actor", 8.25F);
+            this.splrlabel.Font = new System.Drawing.Font("Actor", 9.25F);
             this.splrlabel.ForeColor = System.Drawing.Color.Red;
-            this.splrlabel.Location = new System.Drawing.Point(54, 46);
+            this.splrlabel.Location = new System.Drawing.Point(55, 190);
             this.splrlabel.Name = "splrlabel";
-            this.splrlabel.Size = new System.Drawing.Size(186, 18);
+            this.splrlabel.Size = new System.Drawing.Size(210, 43);
             this.splrlabel.TabIndex = 64;
-            this.splrlabel.Text = "Please define the supplier field";
+            this.splrlabel.Text = "Please add at least one supplier into the supplier list ";
             this.splrlabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.splrlabel.Visible = false;
             // 
             // initnot
             // 
-            this.initnot.Font = new System.Drawing.Font("Actor", 8.25F);
+            this.initnot.Font = new System.Drawing.Font("Actor", 9.25F);
             this.initnot.ForeColor = System.Drawing.Color.Red;
-            this.initnot.Location = new System.Drawing.Point(54, 185);
+            this.initnot.Location = new System.Drawing.Point(55, 160);
             this.initnot.Name = "initnot";
             this.initnot.Size = new System.Drawing.Size(186, 18);
             this.initnot.TabIndex = 62;
@@ -412,9 +437,9 @@
             // 
             // OrigPriceUnittypenot
             // 
-            this.OrigPriceUnittypenot.Font = new System.Drawing.Font("Actor", 8.25F);
+            this.OrigPriceUnittypenot.Font = new System.Drawing.Font("Actor", 9.25F);
             this.OrigPriceUnittypenot.ForeColor = System.Drawing.Color.Red;
-            this.OrigPriceUnittypenot.Location = new System.Drawing.Point(55, 145);
+            this.OrigPriceUnittypenot.Location = new System.Drawing.Point(54, 113);
             this.OrigPriceUnittypenot.Name = "OrigPriceUnittypenot";
             this.OrigPriceUnittypenot.Size = new System.Drawing.Size(186, 35);
             this.OrigPriceUnittypenot.TabIndex = 60;
@@ -424,11 +449,11 @@
             // 
             // MKupnot
             // 
-            this.MKupnot.Font = new System.Drawing.Font("Actor", 8.25F);
+            this.MKupnot.Font = new System.Drawing.Font("Actor", 9.25F);
             this.MKupnot.ForeColor = System.Drawing.Color.Red;
-            this.MKupnot.Location = new System.Drawing.Point(54, 113);
+            this.MKupnot.Location = new System.Drawing.Point(54, 84);
             this.MKupnot.Name = "MKupnot";
-            this.MKupnot.Size = new System.Drawing.Size(186, 18);
+            this.MKupnot.Size = new System.Drawing.Size(212, 21);
             this.MKupnot.TabIndex = 58;
             this.MKupnot.Text = "Please fill out the Custom Markup";
             this.MKupnot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -436,9 +461,9 @@
             // 
             // ProdnameNot
             // 
-            this.ProdnameNot.Font = new System.Drawing.Font("Actor", 8.25F);
+            this.ProdnameNot.Font = new System.Drawing.Font("Actor", 9.25F);
             this.ProdnameNot.ForeColor = System.Drawing.Color.Red;
-            this.ProdnameNot.Location = new System.Drawing.Point(54, 79);
+            this.ProdnameNot.Location = new System.Drawing.Point(54, 48);
             this.ProdnameNot.Name = "ProdnameNot";
             this.ProdnameNot.Size = new System.Drawing.Size(186, 18);
             this.ProdnameNot.TabIndex = 56;
@@ -448,7 +473,7 @@
             // 
             // Catnot
             // 
-            this.Catnot.Font = new System.Drawing.Font("Actor", 8.25F);
+            this.Catnot.Font = new System.Drawing.Font("Actor", 9.25F);
             this.Catnot.ForeColor = System.Drawing.Color.Red;
             this.Catnot.Location = new System.Drawing.Point(54, 3);
             this.Catnot.Name = "Catnot";
@@ -458,320 +483,73 @@
             this.Catnot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Catnot.Visible = false;
             // 
-            // dateTimePicker1
+            // tableLayoutPanel3
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(196, 33);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 17;
+            this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.label5, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.ITEMSBOXSPLR, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 1);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 263);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 3;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.09804F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.90196F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 234F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(991, 284);
+            this.tableLayoutPanel3.TabIndex = 7;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Actor", 14.25F);
+            this.label5.Location = new System.Drawing.Point(4, 1);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(302, 20);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "SUPPLIER LIST OF THIS PRODUCT:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.label10.Location = new System.Drawing.Point(26, 32);
+            this.label10.Location = new System.Drawing.Point(412, 117);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(164, 23);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "EXPIRATION DATE";
+            this.label10.Size = new System.Drawing.Size(146, 23);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "SELLING PRICE :";
             // 
-            // SingleProdBTN
+            // totalSRP
             // 
-            this.SingleProdBTN.AutoSize = true;
-            this.SingleProdBTN.Checked = true;
-            this.SingleProdBTN.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SingleProdBTN.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.SingleProdBTN.Location = new System.Drawing.Point(3, 3);
-            this.SingleProdBTN.Name = "SingleProdBTN";
-            this.SingleProdBTN.Size = new System.Drawing.Size(183, 27);
-            this.SingleProdBTN.TabIndex = 20;
-            this.SingleProdBTN.TabStop = true;
-            this.SingleProdBTN.Text = "SINGLE PRODUCT";
-            this.SingleProdBTN.UseVisualStyleBackColor = true;
-            this.SingleProdBTN.CheckedChanged += new System.EventHandler(this.SingleProdBTN_CheckedChanged);
-            // 
-            // BatchProdRadioBTN
-            // 
-            this.BatchProdRadioBTN.AutoSize = true;
-            this.BatchProdRadioBTN.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BatchProdRadioBTN.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.BatchProdRadioBTN.Location = new System.Drawing.Point(3, 3);
-            this.BatchProdRadioBTN.Name = "BatchProdRadioBTN";
-            this.BatchProdRadioBTN.Size = new System.Drawing.Size(189, 27);
-            this.BatchProdRadioBTN.TabIndex = 21;
-            this.BatchProdRadioBTN.Text = "BATCH PRODUCTS";
-            this.BatchProdRadioBTN.UseVisualStyleBackColor = true;
-            this.BatchProdRadioBTN.CheckedChanged += new System.EventHandler(this.BatchProdRadioBTN_CheckedChanged);
-            // 
-            // prsishablechbox
-            // 
-            this.prsishablechbox.AutoSize = true;
-            this.prsishablechbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.prsishablechbox.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.prsishablechbox.Location = new System.Drawing.Point(10, 3);
-            this.prsishablechbox.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
-            this.prsishablechbox.Name = "prsishablechbox";
-            this.prsishablechbox.Size = new System.Drawing.Size(482, 22);
-            this.prsishablechbox.TabIndex = 22;
-            this.prsishablechbox.Text = "PERISHABLE PRODUCT";
-            this.prsishablechbox.UseVisualStyleBackColor = true;
-            this.prsishablechbox.CheckedChanged += new System.EventHandler(this.prsishablechbox_CheckedChanged);
+            this.totalSRP.AutoSize = true;
+            this.totalSRP.Font = new System.Drawing.Font("Actor", 14.25F);
+            this.totalSRP.Location = new System.Drawing.Point(615, 116);
+            this.totalSRP.Name = "totalSRP";
+            this.totalSRP.Size = new System.Drawing.Size(62, 23);
+            this.totalSRP.TabIndex = 23;
+            this.totalSRP.Text = "00.00";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Actor", 8.25F);
+            this.label11.Font = new System.Drawing.Font("Actor", 14.25F);
             this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(8, 33);
+            this.label11.Location = new System.Drawing.Point(412, 78);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(295, 28);
-            this.label11.TabIndex = 23;
-            this.label11.Text = "NOTE : Use the \"batch Product\" option if you have a same\r\nproduct but have a diff" +
-    "erent expiration date.";
-            // 
-            // itemsBox
-            // 
-            this.itemsBox.AutoScroll = true;
-            this.itemsBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.itemsBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.itemsBox.Enabled = false;
-            this.itemsBox.Location = new System.Drawing.Point(0, 447);
-            this.itemsBox.Name = "itemsBox";
-            this.itemsBox.Size = new System.Drawing.Size(991, 86);
-            this.itemsBox.TabIndex = 7;
-            this.itemsBox.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.itemsBox_ControlRemoved);
-            // 
-            // singlprod
-            // 
-            this.singlprod.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.singlprod.Controls.Add(this.dateTimePicker1);
-            this.singlprod.Controls.Add(this.SingleProdBTN);
-            this.singlprod.Controls.Add(this.label10);
-            this.singlprod.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.singlprod.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.singlprod.Enabled = false;
-            this.singlprod.Location = new System.Drawing.Point(3, 31);
-            this.singlprod.Name = "singlprod";
-            this.singlprod.Size = new System.Drawing.Size(489, 82);
-            this.singlprod.TabIndex = 24;
-            // 
-            // batchprod
-            // 
-            this.batchprod.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.batchprod.Controls.Add(this.BatchProdRadioBTN);
-            this.batchprod.Controls.Add(this.label11);
-            this.batchprod.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.batchprod.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.batchprod.Enabled = false;
-            this.batchprod.Location = new System.Drawing.Point(498, 31);
-            this.batchprod.Name = "batchprod";
-            this.batchprod.Size = new System.Drawing.Size(490, 82);
-            this.batchprod.TabIndex = 25;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.prsishablechbox, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.batchprod, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.singlprod, 0, 1);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 263);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.65753F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75.34247F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(991, 116);
-            this.tableLayoutPanel3.TabIndex = 26;
-            // 
-            // batchprodadd
-            // 
-            this.batchprodadd.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.batchprodadd.ColumnCount = 4;
-            this.batchprodadd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.0982F));
-            this.batchprodadd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.9018F));
-            this.batchprodadd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 327F));
-            this.batchprodadd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 219F));
-            this.batchprodadd.Controls.Add(this.panel2, 1, 0);
-            this.batchprodadd.Controls.Add(this.panel3, 2, 0);
-            this.batchprodadd.Controls.Add(this.ProdName, 0, 0);
-            this.batchprodadd.Controls.Add(this.panel4, 3, 0);
-            this.batchprodadd.Dock = System.Windows.Forms.DockStyle.Top;
-            this.batchprodadd.Enabled = false;
-            this.batchprodadd.Location = new System.Drawing.Point(0, 379);
-            this.batchprodadd.Name = "batchprodadd";
-            this.batchprodadd.RowCount = 1;
-            this.batchprodadd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.batchprodadd.Size = new System.Drawing.Size(991, 68);
-            this.batchprodadd.TabIndex = 27;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.Batchno1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(218, 1);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(223, 66);
-            this.panel2.TabIndex = 0;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.label12.Location = new System.Drawing.Point(6, 6);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(71, 17);
-            this.label12.TabIndex = 3;
-            this.label12.Text = "BATCH NO.";
-            // 
-            // Batchno1
-            // 
-            this.Batchno1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Batchno1.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.Batchno1.FormattingEnabled = true;
-            this.Batchno1.Items.AddRange(new object[] {
-            "BATCH1",
-            "BATCH2",
-            "BATCH3",
-            "BATCH4",
-            "BATCH5",
-            "BATCH6",
-            "BATCH7",
-            "BATCH8",
-            "BATCH9",
-            "BATCH10",
-            "BATCH11",
-            "BATCH12",
-            "BATCH13",
-            "BATCH14",
-            "BATCH15",
-            "BATCH16",
-            "BATCH17",
-            "BATCH18",
-            "BATCH19",
-            "BATCH20"});
-            this.Batchno1.Location = new System.Drawing.Point(77, 2);
-            this.Batchno1.Name = "Batchno1";
-            this.Batchno1.Size = new System.Drawing.Size(87, 25);
-            this.Batchno1.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.label13);
-            this.panel3.Controls.Add(this.dateexpiration);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(442, 1);
-            this.panel3.Margin = new System.Windows.Forms.Padding(0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(327, 66);
-            this.panel3.TabIndex = 1;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.label13.Location = new System.Drawing.Point(5, 6);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(108, 17);
-            this.label13.TabIndex = 4;
-            this.label13.Text = "EXPIRATION DATE";
-            // 
-            // dateexpiration
-            // 
-            this.dateexpiration.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.dateexpiration.Location = new System.Drawing.Point(133, 4);
-            this.dateexpiration.Name = "dateexpiration";
-            this.dateexpiration.Size = new System.Drawing.Size(188, 21);
-            this.dateexpiration.TabIndex = 0;
-            // 
-            // ProdName
-            // 
-            this.ProdName.AutoSize = true;
-            this.ProdName.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.ProdName.Location = new System.Drawing.Point(6, 6);
-            this.ProdName.Margin = new System.Windows.Forms.Padding(5);
-            this.ProdName.Name = "ProdName";
-            this.ProdName.Size = new System.Drawing.Size(46, 17);
-            this.ProdName.TabIndex = 2;
-            this.ProdName.Text = "label14";
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.INCREMENTBTN);
-            this.panel4.Controls.Add(this.Decrement);
-            this.panel4.Controls.Add(this.StockQuantitytxtbox);
-            this.panel4.Controls.Add(this.label15);
-            this.panel4.Controls.Add(this.AddBatchBTn);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(770, 1);
-            this.panel4.Margin = new System.Windows.Forms.Padding(0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(220, 66);
-            this.panel4.TabIndex = 3;
-            // 
-            // StockQuantitytxtbox
-            // 
-            this.StockQuantitytxtbox.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.StockQuantitytxtbox.Location = new System.Drawing.Point(127, 4);
-            this.StockQuantitytxtbox.Name = "StockQuantitytxtbox";
-            this.StockQuantitytxtbox.Size = new System.Drawing.Size(42, 23);
-            this.StockQuantitytxtbox.TabIndex = 7;
-            this.StockQuantitytxtbox.Text = "1";
-            this.StockQuantitytxtbox.TextChanged += new System.EventHandler(this.StockQuantitytxtbox_TextChanged);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.label15.Location = new System.Drawing.Point(8, 6);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(68, 17);
-            this.label15.TabIndex = 6;
-            this.label15.Text = "QUANTITY";
-            // 
-            // AddBatchBTn
-            // 
-            this.AddBatchBTn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddBatchBTn.Location = new System.Drawing.Point(64, 32);
-            this.AddBatchBTn.Name = "AddBatchBTn";
-            this.AddBatchBTn.Size = new System.Drawing.Size(131, 30);
-            this.AddBatchBTn.TabIndex = 5;
-            this.AddBatchBTn.Text = "ADD";
-            this.AddBatchBTn.UseVisualStyleBackColor = true;
-            this.AddBatchBTn.Click += new System.EventHandler(this.AddBatchBTn_Click);
-            // 
-            // INCREMENTBTN
-            // 
-            this.INCREMENTBTN.BackgroundImage = global::JUFAV_System.Properties.Resources.Plus;
-            this.INCREMENTBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.INCREMENTBTN.Location = new System.Drawing.Point(168, 6);
-            this.INCREMENTBTN.Name = "INCREMENTBTN";
-            this.INCREMENTBTN.Size = new System.Drawing.Size(23, 21);
-            this.INCREMENTBTN.TabIndex = 9;
-            this.INCREMENTBTN.UseVisualStyleBackColor = true;
-            this.INCREMENTBTN.Click += new System.EventHandler(this.INCREMENTBTN_Click);
-            // 
-            // Decrement
-            // 
-            this.Decrement.BackgroundImage = global::JUFAV_System.Properties.Resources.Minus;
-            this.Decrement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Decrement.Location = new System.Drawing.Point(104, 6);
-            this.Decrement.Name = "Decrement";
-            this.Decrement.Size = new System.Drawing.Size(23, 21);
-            this.Decrement.TabIndex = 8;
-            this.Decrement.UseVisualStyleBackColor = true;
-            this.Decrement.Click += new System.EventHandler(this.Decrement_Click);
+            this.label11.Size = new System.Drawing.Size(184, 23);
+            this.label11.TabIndex = 24;
+            this.label11.Text = "CURRENT MARKUP :";
             // 
             // splrnot
             // 
             this.splrnot.BackColor = System.Drawing.Color.Transparent;
             this.splrnot.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
-            this.splrnot.Location = new System.Drawing.Point(12, 46);
+            this.splrnot.Location = new System.Drawing.Point(13, 199);
             this.splrnot.Name = "splrnot";
-            this.splrnot.Size = new System.Drawing.Size(15, 15);
+            this.splrnot.Size = new System.Drawing.Size(25, 25);
             this.splrnot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.splrnot.TabIndex = 63;
             this.splrnot.TabStop = false;
@@ -781,9 +559,9 @@
             // 
             this.InitStckImg.BackColor = System.Drawing.Color.Transparent;
             this.InitStckImg.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
-            this.InitStckImg.Location = new System.Drawing.Point(12, 185);
+            this.InitStckImg.Location = new System.Drawing.Point(13, 154);
             this.InitStckImg.Name = "InitStckImg";
-            this.InitStckImg.Size = new System.Drawing.Size(15, 15);
+            this.InitStckImg.Size = new System.Drawing.Size(25, 25);
             this.InitStckImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.InitStckImg.TabIndex = 61;
             this.InitStckImg.TabStop = false;
@@ -793,9 +571,9 @@
             // 
             this.OrigPUnitImg.BackColor = System.Drawing.Color.Transparent;
             this.OrigPUnitImg.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
-            this.OrigPUnitImg.Location = new System.Drawing.Point(13, 153);
+            this.OrigPUnitImg.Location = new System.Drawing.Point(12, 116);
             this.OrigPUnitImg.Name = "OrigPUnitImg";
-            this.OrigPUnitImg.Size = new System.Drawing.Size(15, 15);
+            this.OrigPUnitImg.Size = new System.Drawing.Size(25, 25);
             this.OrigPUnitImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.OrigPUnitImg.TabIndex = 59;
             this.OrigPUnitImg.TabStop = false;
@@ -805,9 +583,9 @@
             // 
             this.MarkUp.BackColor = System.Drawing.Color.Transparent;
             this.MarkUp.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
-            this.MarkUp.Location = new System.Drawing.Point(12, 113);
+            this.MarkUp.Location = new System.Drawing.Point(12, 80);
             this.MarkUp.Name = "MarkUp";
-            this.MarkUp.Size = new System.Drawing.Size(15, 15);
+            this.MarkUp.Size = new System.Drawing.Size(25, 25);
             this.MarkUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.MarkUp.TabIndex = 57;
             this.MarkUp.TabStop = false;
@@ -817,9 +595,9 @@
             // 
             this.ProdnameImg.BackColor = System.Drawing.Color.Transparent;
             this.ProdnameImg.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
-            this.ProdnameImg.Location = new System.Drawing.Point(12, 80);
+            this.ProdnameImg.Location = new System.Drawing.Point(12, 44);
             this.ProdnameImg.Name = "ProdnameImg";
-            this.ProdnameImg.Size = new System.Drawing.Size(15, 15);
+            this.ProdnameImg.Size = new System.Drawing.Size(25, 25);
             this.ProdnameImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ProdnameImg.TabIndex = 55;
             this.ProdnameImg.TabStop = false;
@@ -829,25 +607,98 @@
             // 
             this.CatSubIm.BackColor = System.Drawing.Color.Transparent;
             this.CatSubIm.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
-            this.CatSubIm.Location = new System.Drawing.Point(12, 13);
+            this.CatSubIm.Location = new System.Drawing.Point(12, 8);
             this.CatSubIm.Name = "CatSubIm";
-            this.CatSubIm.Size = new System.Drawing.Size(15, 15);
+            this.CatSubIm.Size = new System.Drawing.Size(25, 25);
             this.CatSubIm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.CatSubIm.TabIndex = 53;
             this.CatSubIm.TabStop = false;
             this.CatSubIm.Visible = false;
             // 
+            // ITEMSBOXSPLR
+            // 
+            this.ITEMSBOXSPLR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ITEMSBOXSPLR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ITEMSBOXSPLR.Location = new System.Drawing.Point(1, 48);
+            this.ITEMSBOXSPLR.Margin = new System.Windows.Forms.Padding(0);
+            this.ITEMSBOXSPLR.Name = "ITEMSBOXSPLR";
+            this.ITEMSBOXSPLR.Size = new System.Drawing.Size(989, 235);
+            this.ITEMSBOXSPLR.TabIndex = 1;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
+            this.tableLayoutPanel4.ColumnCount = 4;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 230F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 257F));
+            this.tableLayoutPanel4.Controls.Add(this.label15, 3, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label14, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label13, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label12, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(1, 22);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(989, 25);
+            this.tableLayoutPanel4.TabIndex = 2;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label12.Font = new System.Drawing.Font("Actor", 11.25F);
+            this.label12.Location = new System.Drawing.Point(6, 3);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(237, 19);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "COMPANY NAME";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Font = new System.Drawing.Font("Actor", 11.25F);
+            this.label13.Location = new System.Drawing.Point(252, 3);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(237, 19);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "CONTACT PERSON";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label14.Font = new System.Drawing.Font("Actor", 11.25F);
+            this.label14.Location = new System.Drawing.Point(498, 3);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(224, 19);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "CONTACT NUMBER";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label15.Font = new System.Drawing.Font("Actor", 11.25F);
+            this.label15.Location = new System.Drawing.Point(731, 3);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(252, 19);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "ADDRESS";
+            // 
             // AddProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.itemsBox);
-            this.Controls.Add(this.batchprodadd);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Name = "AddProducts";
-            this.Size = new System.Drawing.Size(991, 614);
+            this.Size = new System.Drawing.Size(991, 628);
             this.Leave += new System.EventHandler(this.AddProducts_Leave);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -855,26 +706,16 @@
             this.pan.ResumeLayout(false);
             this.pan.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.singlprod.ResumeLayout(false);
-            this.singlprod.PerformLayout();
-            this.batchprod.ResumeLayout(false);
-            this.batchprod.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.batchprodadd.ResumeLayout(false);
-            this.batchprodadd.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splrnot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InitStckImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrigPUnitImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MarkUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProdnameImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CatSubIm)).EndInit();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -895,7 +736,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox CategoryCOmbo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox OriginalPricetxtbox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
@@ -904,29 +744,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox InitialStcktxtbox;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.RadioButton BatchProdRadioBTN;
-        private System.Windows.Forms.RadioButton SingleProdBTN;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.CheckBox prsishablechbox;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Panel itemsBox;
-        private System.Windows.Forms.Panel batchprod;
-        private System.Windows.Forms.Panel singlprod;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.TableLayoutPanel batchprodadd;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox Batchno1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DateTimePicker dateexpiration;
-        private System.Windows.Forms.Label ProdName;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox StockQuantitytxtbox;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button AddBatchBTn;
         private System.Windows.Forms.PictureBox InitStckImg;
         private System.Windows.Forms.Label initnot;
         private System.Windows.Forms.PictureBox OrigPUnitImg;
@@ -939,7 +757,19 @@
         private System.Windows.Forms.Label Suplir;
         private System.Windows.Forms.PictureBox splrnot;
         private System.Windows.Forms.Label splrlabel;
-        private System.Windows.Forms.Button Decrement;
-        private System.Windows.Forms.Button INCREMENTBTN;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Button addtolistbtn;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button ADDNEWSPLR;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label totalSRP;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel ITEMSBOXSPLR;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
     }
 }

@@ -31,34 +31,34 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ContactNotxtbox = new System.Windows.Forms.TextBox();
-            this.Addresstxtbox = new System.Windows.Forms.TextBox();
-            this.ComapnynametxtBX = new System.Windows.Forms.TextBox();
-            this.ContactPersontxtbox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Addresstxtbox = new System.Windows.Forms.TextBox();
+            this.ContactNotxtbox = new System.Windows.Forms.TextBox();
+            this.ContactPersontxtbox = new System.Windows.Forms.TextBox();
+            this.ComapnynametxtBX = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.addressIMG = new System.Windows.Forms.PictureBox();
+            this.AddressNot = new System.Windows.Forms.Label();
+            this.ContactNoIMG = new System.Windows.Forms.PictureBox();
+            this.COntactNoNot = new System.Windows.Forms.Label();
+            this.ContactPersonIMG = new System.Windows.Forms.PictureBox();
+            this.Contactpernot = new System.Windows.Forms.Label();
+            this.CompanynameIMG = new System.Windows.Forms.PictureBox();
+            this.CmpanynameNot = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.CanceleSupplierBTN = new System.Windows.Forms.Button();
             this.AddSupplierBTn = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.CompanynameIMG = new System.Windows.Forms.PictureBox();
-            this.CmpanynameNot = new System.Windows.Forms.Label();
-            this.ContactPersonIMG = new System.Windows.Forms.PictureBox();
-            this.Contactpernot = new System.Windows.Forms.Label();
-            this.ContactNoIMG = new System.Windows.Forms.PictureBox();
-            this.COntactNoNot = new System.Windows.Forms.Label();
-            this.addressIMG = new System.Windows.Forms.PictureBox();
-            this.AddressNot = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanynameIMG)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ContactPersonIMG)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ContactNoIMG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addressIMG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ContactNoIMG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ContactPersonIMG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanynameIMG)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -75,7 +75,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.55932F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.44068F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(820, 196);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(820, 227);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -99,78 +99,194 @@
             this.panel1.Controls.Add(this.ContactPersontxtbox);
             this.panel1.Controls.Add(this.ComapnynametxtBX);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 29);
+            this.panel1.Location = new System.Drawing.Point(3, 33);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(590, 164);
+            this.panel1.Size = new System.Drawing.Size(590, 191);
             this.panel1.TabIndex = 1;
-            // 
-            // ContactNotxtbox
-            // 
-            this.ContactNotxtbox.Location = new System.Drawing.Point(145, 84);
-            this.ContactNotxtbox.Name = "ContactNotxtbox";
-            this.ContactNotxtbox.Size = new System.Drawing.Size(453, 20);
-            this.ContactNotxtbox.TabIndex = 2;
-            // 
-            // Addresstxtbox
-            // 
-            this.Addresstxtbox.Location = new System.Drawing.Point(145, 117);
-            this.Addresstxtbox.Name = "Addresstxtbox";
-            this.Addresstxtbox.Size = new System.Drawing.Size(453, 20);
-            this.Addresstxtbox.TabIndex = 3;
-            // 
-            // ComapnynametxtBX
-            // 
-            this.ComapnynametxtBX.Location = new System.Drawing.Point(145, 18);
-            this.ComapnynametxtBX.Name = "ComapnynametxtBX";
-            this.ComapnynametxtBX.Size = new System.Drawing.Size(453, 20);
-            this.ComapnynametxtBX.TabIndex = 0;
-            // 
-            // ContactPersontxtbox
-            // 
-            this.ContactPersontxtbox.Location = new System.Drawing.Point(145, 51);
-            this.ContactPersontxtbox.Name = "ContactPersontxtbox";
-            this.ContactPersontxtbox.Size = new System.Drawing.Size(453, 20);
-            this.ContactPersontxtbox.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.label2.Location = new System.Drawing.Point(11, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 19);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "COMPANY NAME";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.label3.Location = new System.Drawing.Point(11, 51);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(128, 19);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "CONTACT PERSON";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.label4.Location = new System.Drawing.Point(11, 84);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 19);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "CONTACT NO";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.label5.Location = new System.Drawing.Point(11, 117);
+            this.label5.Font = new System.Drawing.Font("Actor", 14.25F);
+            this.label5.Location = new System.Drawing.Point(11, 151);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 19);
+            this.label5.Size = new System.Drawing.Size(95, 23);
             this.label5.TabIndex = 7;
             this.label5.Text = "ADDRESS";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Actor", 14.25F);
+            this.label4.Location = new System.Drawing.Point(11, 113);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(127, 23);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "CONTACT NO";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Actor", 14.25F);
+            this.label3.Location = new System.Drawing.Point(11, 77);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(172, 23);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "CONTACT PERSON";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Actor", 14.25F);
+            this.label2.Location = new System.Drawing.Point(11, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(156, 23);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "COMPANY NAME";
+            // 
+            // Addresstxtbox
+            // 
+            this.Addresstxtbox.Font = new System.Drawing.Font("Actor", 14.25F);
+            this.Addresstxtbox.Location = new System.Drawing.Point(188, 145);
+            this.Addresstxtbox.Name = "Addresstxtbox";
+            this.Addresstxtbox.Size = new System.Drawing.Size(455, 30);
+            this.Addresstxtbox.TabIndex = 3;
+            // 
+            // ContactNotxtbox
+            // 
+            this.ContactNotxtbox.Font = new System.Drawing.Font("Actor", 14.25F);
+            this.ContactNotxtbox.Location = new System.Drawing.Point(188, 109);
+            this.ContactNotxtbox.Name = "ContactNotxtbox";
+            this.ContactNotxtbox.Size = new System.Drawing.Size(455, 30);
+            this.ContactNotxtbox.TabIndex = 2;
+            // 
+            // ContactPersontxtbox
+            // 
+            this.ContactPersontxtbox.Font = new System.Drawing.Font("Actor", 14.25F);
+            this.ContactPersontxtbox.Location = new System.Drawing.Point(188, 73);
+            this.ContactPersontxtbox.Name = "ContactPersontxtbox";
+            this.ContactPersontxtbox.Size = new System.Drawing.Size(455, 30);
+            this.ContactPersontxtbox.TabIndex = 1;
+            // 
+            // ComapnynametxtBX
+            // 
+            this.ComapnynametxtBX.Font = new System.Drawing.Font("Actor", 14.25F);
+            this.ComapnynametxtBX.Location = new System.Drawing.Point(188, 38);
+            this.ComapnynametxtBX.Name = "ComapnynametxtBX";
+            this.ComapnynametxtBX.Size = new System.Drawing.Size(455, 30);
+            this.ComapnynametxtBX.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.addressIMG);
+            this.panel2.Controls.Add(this.AddressNot);
+            this.panel2.Controls.Add(this.ContactNoIMG);
+            this.panel2.Controls.Add(this.COntactNoNot);
+            this.panel2.Controls.Add(this.ContactPersonIMG);
+            this.panel2.Controls.Add(this.Contactpernot);
+            this.panel2.Controls.Add(this.CompanynameIMG);
+            this.panel2.Controls.Add(this.CmpanynameNot);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(599, 33);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(218, 191);
+            this.panel2.TabIndex = 2;
+            // 
+            // addressIMG
+            // 
+            this.addressIMG.BackColor = System.Drawing.Color.Transparent;
+            this.addressIMG.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
+            this.addressIMG.Location = new System.Drawing.Point(6, 148);
+            this.addressIMG.Name = "addressIMG";
+            this.addressIMG.Size = new System.Drawing.Size(25, 25);
+            this.addressIMG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.addressIMG.TabIndex = 61;
+            this.addressIMG.TabStop = false;
+            this.addressIMG.Visible = false;
+            // 
+            // AddressNot
+            // 
+            this.AddressNot.Font = new System.Drawing.Font("Actor", 9.25F);
+            this.AddressNot.ForeColor = System.Drawing.Color.Red;
+            this.AddressNot.Location = new System.Drawing.Point(33, 149);
+            this.AddressNot.Name = "AddressNot";
+            this.AddressNot.Size = new System.Drawing.Size(186, 17);
+            this.AddressNot.TabIndex = 62;
+            this.AddressNot.Text = "Please fill out the Address Field";
+            this.AddressNot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AddressNot.Visible = false;
+            // 
+            // ContactNoIMG
+            // 
+            this.ContactNoIMG.BackColor = System.Drawing.Color.Transparent;
+            this.ContactNoIMG.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
+            this.ContactNoIMG.Location = new System.Drawing.Point(6, 111);
+            this.ContactNoIMG.Name = "ContactNoIMG";
+            this.ContactNoIMG.Size = new System.Drawing.Size(25, 25);
+            this.ContactNoIMG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ContactNoIMG.TabIndex = 59;
+            this.ContactNoIMG.TabStop = false;
+            this.ContactNoIMG.Visible = false;
+            // 
+            // COntactNoNot
+            // 
+            this.COntactNoNot.Font = new System.Drawing.Font("Actor", 9.25F);
+            this.COntactNoNot.ForeColor = System.Drawing.Color.Red;
+            this.COntactNoNot.Location = new System.Drawing.Point(33, 108);
+            this.COntactNoNot.Name = "COntactNoNot";
+            this.COntactNoNot.Size = new System.Drawing.Size(186, 35);
+            this.COntactNoNot.TabIndex = 60;
+            this.COntactNoNot.Text = "Please fill out the Contact no Field";
+            this.COntactNoNot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.COntactNoNot.Visible = false;
+            // 
+            // ContactPersonIMG
+            // 
+            this.ContactPersonIMG.BackColor = System.Drawing.Color.Transparent;
+            this.ContactPersonIMG.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
+            this.ContactPersonIMG.Location = new System.Drawing.Point(6, 75);
+            this.ContactPersonIMG.Name = "ContactPersonIMG";
+            this.ContactPersonIMG.Size = new System.Drawing.Size(25, 25);
+            this.ContactPersonIMG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ContactPersonIMG.TabIndex = 57;
+            this.ContactPersonIMG.TabStop = false;
+            this.ContactPersonIMG.Visible = false;
+            // 
+            // Contactpernot
+            // 
+            this.Contactpernot.Font = new System.Drawing.Font("Actor", 9.25F);
+            this.Contactpernot.ForeColor = System.Drawing.Color.Red;
+            this.Contactpernot.Location = new System.Drawing.Point(33, 71);
+            this.Contactpernot.Name = "Contactpernot";
+            this.Contactpernot.Size = new System.Drawing.Size(186, 37);
+            this.Contactpernot.TabIndex = 58;
+            this.Contactpernot.Text = "Please fill out the Contact Person Field";
+            this.Contactpernot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Contactpernot.Visible = false;
+            // 
+            // CompanynameIMG
+            // 
+            this.CompanynameIMG.BackColor = System.Drawing.Color.Transparent;
+            this.CompanynameIMG.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
+            this.CompanynameIMG.Location = new System.Drawing.Point(7, 38);
+            this.CompanynameIMG.Name = "CompanynameIMG";
+            this.CompanynameIMG.Size = new System.Drawing.Size(25, 25);
+            this.CompanynameIMG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CompanynameIMG.TabIndex = 55;
+            this.CompanynameIMG.TabStop = false;
+            this.CompanynameIMG.Visible = false;
+            // 
+            // CmpanynameNot
+            // 
+            this.CmpanynameNot.Font = new System.Drawing.Font("Actor", 9.25F);
+            this.CmpanynameNot.ForeColor = System.Drawing.Color.Red;
+            this.CmpanynameNot.Location = new System.Drawing.Point(33, 24);
+            this.CmpanynameNot.Name = "CmpanynameNot";
+            this.CmpanynameNot.Size = new System.Drawing.Size(186, 50);
+            this.CmpanynameNot.TabIndex = 56;
+            this.CmpanynameNot.Text = "Please fill out the Company Name Field";
+            this.CmpanynameNot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CmpanynameNot.Visible = false;
             // 
             // tableLayoutPanel2
             // 
@@ -215,118 +331,6 @@
             this.AddSupplierBTn.UseVisualStyleBackColor = true;
             this.AddSupplierBTn.Click += new System.EventHandler(this.AddSupplierBTn_Click);
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.addressIMG);
-            this.panel2.Controls.Add(this.AddressNot);
-            this.panel2.Controls.Add(this.ContactNoIMG);
-            this.panel2.Controls.Add(this.COntactNoNot);
-            this.panel2.Controls.Add(this.ContactPersonIMG);
-            this.panel2.Controls.Add(this.Contactpernot);
-            this.panel2.Controls.Add(this.CompanynameIMG);
-            this.panel2.Controls.Add(this.CmpanynameNot);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(599, 29);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(218, 164);
-            this.panel2.TabIndex = 2;
-            // 
-            // CompanynameIMG
-            // 
-            this.CompanynameIMG.BackColor = System.Drawing.Color.Transparent;
-            this.CompanynameIMG.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
-            this.CompanynameIMG.Location = new System.Drawing.Point(8, 22);
-            this.CompanynameIMG.Name = "CompanynameIMG";
-            this.CompanynameIMG.Size = new System.Drawing.Size(15, 15);
-            this.CompanynameIMG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.CompanynameIMG.TabIndex = 55;
-            this.CompanynameIMG.TabStop = false;
-            this.CompanynameIMG.Visible = false;
-            // 
-            // CmpanynameNot
-            // 
-            this.CmpanynameNot.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.CmpanynameNot.ForeColor = System.Drawing.Color.Red;
-            this.CmpanynameNot.Location = new System.Drawing.Point(33, 19);
-            this.CmpanynameNot.Name = "CmpanynameNot";
-            this.CmpanynameNot.Size = new System.Drawing.Size(186, 17);
-            this.CmpanynameNot.TabIndex = 56;
-            this.CmpanynameNot.Text = "Please fill out the Company Name Field";
-            this.CmpanynameNot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CmpanynameNot.Visible = false;
-            // 
-            // ContactPersonIMG
-            // 
-            this.ContactPersonIMG.BackColor = System.Drawing.Color.Transparent;
-            this.ContactPersonIMG.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
-            this.ContactPersonIMG.Location = new System.Drawing.Point(8, 54);
-            this.ContactPersonIMG.Name = "ContactPersonIMG";
-            this.ContactPersonIMG.Size = new System.Drawing.Size(15, 15);
-            this.ContactPersonIMG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ContactPersonIMG.TabIndex = 57;
-            this.ContactPersonIMG.TabStop = false;
-            this.ContactPersonIMG.Visible = false;
-            // 
-            // Contactpernot
-            // 
-            this.Contactpernot.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.Contactpernot.ForeColor = System.Drawing.Color.Red;
-            this.Contactpernot.Location = new System.Drawing.Point(33, 51);
-            this.Contactpernot.Name = "Contactpernot";
-            this.Contactpernot.Size = new System.Drawing.Size(186, 17);
-            this.Contactpernot.TabIndex = 58;
-            this.Contactpernot.Text = "Please fill out the Contact Person Field";
-            this.Contactpernot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Contactpernot.Visible = false;
-            // 
-            // ContactNoIMG
-            // 
-            this.ContactNoIMG.BackColor = System.Drawing.Color.Transparent;
-            this.ContactNoIMG.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
-            this.ContactNoIMG.Location = new System.Drawing.Point(8, 89);
-            this.ContactNoIMG.Name = "ContactNoIMG";
-            this.ContactNoIMG.Size = new System.Drawing.Size(15, 15);
-            this.ContactNoIMG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ContactNoIMG.TabIndex = 59;
-            this.ContactNoIMG.TabStop = false;
-            this.ContactNoIMG.Visible = false;
-            // 
-            // COntactNoNot
-            // 
-            this.COntactNoNot.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.COntactNoNot.ForeColor = System.Drawing.Color.Red;
-            this.COntactNoNot.Location = new System.Drawing.Point(33, 86);
-            this.COntactNoNot.Name = "COntactNoNot";
-            this.COntactNoNot.Size = new System.Drawing.Size(186, 17);
-            this.COntactNoNot.TabIndex = 60;
-            this.COntactNoNot.Text = "Please fill out the Contact no Field";
-            this.COntactNoNot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.COntactNoNot.Visible = false;
-            // 
-            // addressIMG
-            // 
-            this.addressIMG.BackColor = System.Drawing.Color.Transparent;
-            this.addressIMG.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
-            this.addressIMG.Location = new System.Drawing.Point(8, 120);
-            this.addressIMG.Name = "addressIMG";
-            this.addressIMG.Size = new System.Drawing.Size(15, 15);
-            this.addressIMG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.addressIMG.TabIndex = 61;
-            this.addressIMG.TabStop = false;
-            this.addressIMG.Visible = false;
-            // 
-            // AddressNot
-            // 
-            this.AddressNot.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.AddressNot.ForeColor = System.Drawing.Color.Red;
-            this.AddressNot.Location = new System.Drawing.Point(33, 117);
-            this.AddressNot.Name = "AddressNot";
-            this.AddressNot.Size = new System.Drawing.Size(186, 17);
-            this.AddressNot.TabIndex = 62;
-            this.AddressNot.Text = "Please fill out the Address Field";
-            this.AddressNot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.AddressNot.Visible = false;
-            // 
             // Addsupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -339,12 +343,12 @@
             this.tableLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.CompanynameIMG)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ContactPersonIMG)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ContactNoIMG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.addressIMG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ContactNoIMG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ContactPersonIMG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanynameIMG)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

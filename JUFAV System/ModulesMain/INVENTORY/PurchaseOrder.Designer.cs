@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.PndBTN = new System.Windows.Forms.Button();
             this.CrtPOBTN = new System.Windows.Forms.Button();
             this.txtboxSearchBox = new System.Windows.Forms.TextBox();
             this.srchBTN = new System.Windows.Forms.Button();
             this.STATUSHEADING = new System.Windows.Forms.Label();
-            this.CnclBTN = new System.Windows.Forms.Button();
+            this.CANCELED_PO = new System.Windows.Forms.RadioButton();
+            this.PENDING_PO = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -57,13 +57,13 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.07792F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.07792F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 269F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 147F));
-            this.tableLayoutPanel1.Controls.Add(this.PndBTN, 0, 1);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
             this.tableLayoutPanel1.Controls.Add(this.CrtPOBTN, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtboxSearchBox, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.srchBTN, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.STATUSHEADING, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.CnclBTN, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.CANCELED_PO, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.PENDING_PO, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Actor", 8.25F);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -76,20 +76,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(693, 95);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
-            // PndBTN
-            // 
-            this.PndBTN.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.PndBTN.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PndBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PndBTN.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.PndBTN.Location = new System.Drawing.Point(3, 35);
-            this.PndBTN.Name = "PndBTN";
-            this.PndBTN.Size = new System.Drawing.Size(87, 28);
-            this.PndBTN.TabIndex = 7;
-            this.PndBTN.Text = "PENDING PURCHASE ORDER";
-            this.PndBTN.UseVisualStyleBackColor = false;
-            this.PndBTN.Click += new System.EventHandler(this.PndBTN_Click);
-            // 
             // CrtPOBTN
             // 
             this.CrtPOBTN.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -98,7 +84,7 @@
             this.CrtPOBTN.Font = new System.Drawing.Font("Actor", 11.25F);
             this.CrtPOBTN.Location = new System.Drawing.Point(3, 3);
             this.CrtPOBTN.Name = "CrtPOBTN";
-            this.CrtPOBTN.Size = new System.Drawing.Size(87, 26);
+            this.CrtPOBTN.Size = new System.Drawing.Size(85, 26);
             this.CrtPOBTN.TabIndex = 4;
             this.CrtPOBTN.Text = "CREATE PURCHASE ORDER";
             this.CrtPOBTN.UseVisualStyleBackColor = false;
@@ -108,7 +94,7 @@
             // 
             this.txtboxSearchBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtboxSearchBox.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.txtboxSearchBox.Location = new System.Drawing.Point(278, 4);
+            this.txtboxSearchBox.Location = new System.Drawing.Point(274, 4);
             this.txtboxSearchBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
             this.txtboxSearchBox.Name = "txtboxSearchBox";
             this.txtboxSearchBox.Size = new System.Drawing.Size(263, 26);
@@ -123,9 +109,9 @@
             this.srchBTN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.srchBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.srchBTN.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.srchBTN.Location = new System.Drawing.Point(547, 3);
+            this.srchBTN.Location = new System.Drawing.Point(543, 3);
             this.srchBTN.Name = "srchBTN";
-            this.srchBTN.Size = new System.Drawing.Size(143, 26);
+            this.srchBTN.Size = new System.Drawing.Size(147, 26);
             this.srchBTN.TabIndex = 7;
             this.srchBTN.UseVisualStyleBackColor = false;
             this.srchBTN.Click += new System.EventHandler(this.srchBTN_Click);
@@ -137,24 +123,36 @@
             this.STATUSHEADING.Font = new System.Drawing.Font("Actor", 9F, System.Drawing.FontStyle.Bold);
             this.STATUSHEADING.Location = new System.Drawing.Point(3, 66);
             this.STATUSHEADING.Name = "STATUSHEADING";
-            this.STATUSHEADING.Size = new System.Drawing.Size(87, 26);
+            this.STATUSHEADING.Size = new System.Drawing.Size(85, 26);
             this.STATUSHEADING.TabIndex = 8;
             this.STATUSHEADING.Text = "TITLE";
             this.STATUSHEADING.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // CnclBTN
+            // CANCELED_PO
             // 
-            this.CnclBTN.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.CnclBTN.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CnclBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CnclBTN.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.CnclBTN.Location = new System.Drawing.Point(96, 35);
-            this.CnclBTN.Name = "CnclBTN";
-            this.CnclBTN.Size = new System.Drawing.Size(85, 28);
-            this.CnclBTN.TabIndex = 6;
-            this.CnclBTN.Text = "CANCELED PURCHASE ORDER";
-            this.CnclBTN.UseVisualStyleBackColor = false;
-            this.CnclBTN.Click += new System.EventHandler(this.CnclBTN_Click);
+            this.CANCELED_PO.AutoSize = true;
+            this.CANCELED_PO.Font = new System.Drawing.Font("Actor", 11.25F);
+            this.CANCELED_PO.Location = new System.Drawing.Point(3, 35);
+            this.CANCELED_PO.Name = "CANCELED_PO";
+            this.CANCELED_PO.Size = new System.Drawing.Size(85, 23);
+            this.CANCELED_PO.TabIndex = 9;
+            this.CANCELED_PO.Text = "CANCELED PURCHASE ORDER";
+            this.CANCELED_PO.UseVisualStyleBackColor = true;
+            this.CANCELED_PO.CheckedChanged += new System.EventHandler(this.CANCELED_PO_CheckedChanged);
+            // 
+            // PENDING_PO
+            // 
+            this.PENDING_PO.AutoSize = true;
+            this.PENDING_PO.Checked = true;
+            this.PENDING_PO.Font = new System.Drawing.Font("Actor", 11.25F);
+            this.PENDING_PO.Location = new System.Drawing.Point(94, 35);
+            this.PENDING_PO.Name = "PENDING_PO";
+            this.PENDING_PO.Size = new System.Drawing.Size(84, 23);
+            this.PENDING_PO.TabIndex = 10;
+            this.PENDING_PO.TabStop = true;
+            this.PENDING_PO.Text = "PENDING PURCHASEORDER";
+            this.PENDING_PO.UseVisualStyleBackColor = true;
+            this.PENDING_PO.CheckedChanged += new System.EventHandler(this.PENDING_PO_CheckedChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -313,8 +311,6 @@
         private System.Windows.Forms.Button CrtPOBTN;
         private System.Windows.Forms.TextBox txtboxSearchBox;
         private System.Windows.Forms.Button srchBTN;
-        private System.Windows.Forms.Button CnclBTN;
-        private System.Windows.Forms.Button PndBTN;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -327,5 +323,7 @@
         private System.Windows.Forms.Label STATUSHEADING;
         private System.Windows.Forms.Panel ItemsBox;
         private System.Windows.Forms.Panel ItemSwitch;
+        private System.Windows.Forms.RadioButton CANCELED_PO;
+        private System.Windows.Forms.RadioButton PENDING_PO;
     }
 }

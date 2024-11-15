@@ -37,14 +37,14 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ArcBTN = new System.Windows.Forms.PictureBox();
             this.TrashBTN = new System.Windows.Forms.PictureBox();
             this.EditBTN = new System.Windows.Forms.PictureBox();
-            this.ArcBTN = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ArcBTN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TrashBTN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EditBTN)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ArcBTN)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel3
@@ -163,17 +163,31 @@
             this.panel1.Size = new System.Drawing.Size(95, 50);
             this.panel1.TabIndex = 7;
             // 
+            // ArcBTN
+            // 
+            this.ArcBTN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ArcBTN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ArcBTN.Image = global::JUFAV_System.Properties.Resources.Archive;
+            this.ArcBTN.Location = new System.Drawing.Point(41, 0);
+            this.ArcBTN.Name = "ArcBTN";
+            this.ArcBTN.Size = new System.Drawing.Size(25, 25);
+            this.ArcBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ArcBTN.TabIndex = 2;
+            this.ArcBTN.TabStop = false;
+            this.ArcBTN.Click += new System.EventHandler(this.ArcBTN_Click);
+            // 
             // TrashBTN
             // 
             this.TrashBTN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TrashBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.TrashBTN.Image = global::JUFAV_System.Properties.Resources.dlt;
-            this.TrashBTN.Location = new System.Drawing.Point(65, 0);
+            this.TrashBTN.Location = new System.Drawing.Point(0, 0);
             this.TrashBTN.Name = "TrashBTN";
             this.TrashBTN.Size = new System.Drawing.Size(25, 25);
             this.TrashBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.TrashBTN.TabIndex = 1;
             this.TrashBTN.TabStop = false;
+            this.TrashBTN.Visible = false;
             this.TrashBTN.Click += new System.EventHandler(this.TrashBTN_Click);
             // 
             // EditBTN
@@ -181,26 +195,13 @@
             this.EditBTN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.EditBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.EditBTN.Image = global::JUFAV_System.Properties.Resources.Edit;
-            this.EditBTN.Location = new System.Drawing.Point(36, 0);
+            this.EditBTN.Location = new System.Drawing.Point(70, 0);
             this.EditBTN.Name = "EditBTN";
             this.EditBTN.Size = new System.Drawing.Size(25, 25);
             this.EditBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.EditBTN.TabIndex = 0;
             this.EditBTN.TabStop = false;
             this.EditBTN.Click += new System.EventHandler(this.EditBTN_Click);
-            // 
-            // ArcBTN
-            // 
-            this.ArcBTN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ArcBTN.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ArcBTN.Image = global::JUFAV_System.Properties.Resources.Archive;
-            this.ArcBTN.Location = new System.Drawing.Point(7, 0);
-            this.ArcBTN.Name = "ArcBTN";
-            this.ArcBTN.Size = new System.Drawing.Size(25, 25);
-            this.ArcBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ArcBTN.TabIndex = 2;
-            this.ArcBTN.TabStop = false;
-            this.ArcBTN.Click += new System.EventHandler(this.ArcBTN_Click);
             // 
             // ProductComponent
             // 
@@ -214,9 +215,9 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ArcBTN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TrashBTN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EditBTN)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ArcBTN)).EndInit();
             this.ResumeLayout(false);
 
         }

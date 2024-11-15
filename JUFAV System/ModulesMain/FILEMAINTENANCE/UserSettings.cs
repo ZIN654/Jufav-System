@@ -41,8 +41,18 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
         private void UserSettings_Load(object sender, EventArgs e)
         {
             initd.hs1.Clear();
-            SQLiteCommand scom = new SQLiteCommand("SELECT * FROM USER_INFO;",initd.scon);
-           SQLiteDataReader sq1 = scom.ExecuteReader();
+            SQLiteCommand scom = new SQLiteCommand("SELECT * FROM USER_INFO WHERE USERIDS = "+initd.UserID +";",initd.scon);
+            SQLiteDataReader sq1 = scom.ExecuteReader();
+            while (sq1.Read())
+            {
+                //if the current user was deleted his/her own account usin his/her account it might show a warning to prevent the inconsistency like : unable  to delete account since it is logged in unless use another Master account
+                Components.DataBox item1 = new Components.DataBox(ItemsBox, sq1["NAME"].ToString(), sq1["USERNAME"].ToString(), determinerole(Convert.ToInt32(sq1["ROLES"])));
+                initd.hs1.Add(sq1["USERNAME"], sq1["USERIDS"]);
+                ItemsBox.Controls.Add(item1);
+            }
+            sq1.Close();
+            scom.CommandText = "SELECT * FROM USER_INFO WHERE ROLES != 1;";
+            sq1 = scom.ExecuteReader();
             while (sq1.Read())
             {
                //if the current user was deleted his/her own account usin his/her account it might show a warning to prevent the inconsistency like : unable  to delete account since it is logged in unless use another Master account
@@ -77,15 +87,19 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
         private String determinerole(int role)
         {
             string Main = "";
-            if (role == 1)
+            switch (role)
             {
-                Main = "ADMINISTRATOR";
-
+                case 1:
+                    Main = "ADMINISTRATOR";
+                    break;
+                case 2:
+                    Main = "SALES CLERK";
+                    break;
+                case 3:
+                    Main = "INVENTORY CLERK";
+                    break;
             }
-            else {
 
-                Main = "EMPLOYEE";
-            }
             return Main;
 
         }

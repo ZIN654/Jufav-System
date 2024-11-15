@@ -22,7 +22,7 @@ namespace JUFAV_System.Ffirstrun
         bool isverfied1;
         bool isverfied2;
         public bool reason;
-        public int AdminAccountLimit = 5;
+        
        
         //if account has same name email .mag kaka error sa hashtable once na mag insert ulet
         //prevent user from inserting the same information.
@@ -61,7 +61,7 @@ namespace JUFAV_System.Ffirstrun
            
             hide();
             verify();
-            hasaccount();
+          
         }
         public bool checkDuplicateVerifyEmail()
         {
@@ -121,7 +121,7 @@ namespace JUFAV_System.Ffirstrun
                 for (int i = 0; i != 4; i++)
                 {
                     // \\W\\S
-                    if (Regex.IsMatch(textboxes[i].Text, "\\W"))
+                    if (Regex.IsMatch(textboxes[i].Text, @"[^a-zA-Z0-9,\s]"))
                     {
                         MessageBox.Show("Please Remove a non-letter character in " + textboxes[i].Name + " field where text '" + textboxes[i].Text + "' contains the non letter character.","NON CHARACTER INPUT",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                         isverfied2 = false;
@@ -142,9 +142,10 @@ namespace JUFAV_System.Ffirstrun
             if (PASSWORD.Text == CONFIRM_PASSWORD.Text)//make sure na yung dalawang text scanner wala ng nasagap ng non character
                 {
                 //Insert into database
-                insertintodb();
-
-            }
+              
+                    insertintodb();
+              
+                  }
                 else
                 {
                     MessageBox.Show("PASSWORD DOES NOT MATCH","CONFIRM PASSWORD",MessageBoxButtons.OK,MessageBoxIcon.Error);
@@ -154,8 +155,7 @@ namespace JUFAV_System.Ffirstrun
         }
         private void checkaccount(int count)
         {
-            if (5 == count)
-            {
+           
                 AddBTN.Enabled = false;
                 clearBTN.Enabled = false;
                 NAME.Enabled = false;
@@ -163,7 +163,7 @@ namespace JUFAV_System.Ffirstrun
                 PASSWORD.Enabled = false;
                 CONFIRM_PASSWORD.Enabled = false;
                 EMAIL.Enabled = false;
-            }
+           
         }
         public void hide()
         {
@@ -181,12 +181,77 @@ namespace JUFAV_System.Ffirstrun
             }
 
         }
+        public int hasaccount()
+        {
+            int accountcount = 0;
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT COUNT(*) AS TOTAL FROM USER_INFO;",initd.scon);
+            accountcount = Convert.ToInt32(scom1.ExecuteScalar());
+            return accountcount;
+        }
+        public void insertintodb()
+        {
+            this.Cursor = Cursors.WaitCursor;
+            Random rs1 = new Random();
+            String id = "";
+            String iduserinfo = "";
+
+            //retreive make sure it doesnt match any in the db
+            //user digit is only 5
+            for (int i = 0; i != 5; i++)
+            {
+
+                id = string.Concat(id, rs1.Next(0, 9).ToString());
+
+            }
+            SQLiteCommand scom = new SQLiteCommand("INSERT INTO USERS VALUES (" + Convert.ToInt32(id) + ");", initd.scon);
+            scom.ExecuteNonQuery();
+            scom.CommandText = "INSERT INTO ARCUSERS VALUES (" + Convert.ToInt32(id) + ");";
+            scom.ExecuteNonQuery();
+            for (int i = 0; i != 7; i++)
+            {
+                iduserinfo = string.Concat(iduserinfo, rs1.Next(0, 9).ToString());
+            }
+            scom.CommandText = "INSERT INTO USER_INFO VALUES(" + iduserinfo + "," + id + ",'" + NAME.Text + "','" + USERNAME.Text + "','" + EMAIL.Text + "','" + PASSWORD.Text + "'," + 1 + ");";
+            scom.ExecuteNonQuery();
+
+            //scom.CommandText = "INSERT INTO ARCUSER_INFO VALUES(" + iduserinfo + "," + id + ",'" + NAME.Text + "','" + USERNAME.Text + "','" + EMAIL.Text + "','" + PASSWORD.Text + "'," + 1 + ");";
+            // scom.ExecuteNonQuery();
+            Thread.Sleep(100);
+            new ModulesSecond.Userssetaddditems.FileMaintenenance(1, 1, "").InsertData(Convert.ToInt32(id));//inserts allong in the arc
+            Thread.Sleep(100);
+            new ModulesSecond.Userssetaddditems.Inventory(1, 1, "").InsertData(Convert.ToInt32(id));
+            Thread.Sleep(100);
+            new ModulesSecond.Userssetaddditems.Sales(1, 1, "").InsertData(Convert.ToInt32(id));
+            Thread.Sleep(100);
+            new ModulesSecond.Userssetaddditems.Reports(1, 1, "").InsertData(Convert.ToInt32(id));
+            Thread.Sleep(100);
+            new ModulesSecond.Userssetaddditems.Utilities(1, 1, "").InsertData(Convert.ToInt32(id));
+            Thread.Sleep(100);
+            MessageBox.Show("ACCOUNT SUCCESSFULLY CREATED!");
+            this.Cursor = Cursors.Default;
+
+        }
+        private void Done2(object sender, EventArgs e)
+        {
+            //revise initd 
+            if (hasaccount() != 0)
+            {
+                this.Hide();
+                reason = false;
+            }
+            else
+            {
+                reason = true;
+
+                MessageBox.Show("YOU DONT HAVE ACCOUNTS. PLEASE CREATE ACCOUNTS FIRST", "ACCOUNT CREATION", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
+
+        }
         private void Done(object sender ,EventArgs e)
         {
             //revise initd 
             if (hasaccount() != 0) {
-                this.Hide();
-                reason = false;
                 ModulesMain.LOGIN.JUFAV_LOGIN log = new ModulesMain.LOGIN.JUFAV_LOGIN();
                 log.Show();
          
@@ -201,69 +266,7 @@ namespace JUFAV_System.Ffirstrun
             }
 
 
-        }
-        public int hasaccount()
-        {
-            int accountcount = 0;
-            
-            SQLiteCommand scom = new SQLiteCommand("SELECT * FROM USERS;", initd.scon);
-            SQLiteDataReader reader1 = scom.ExecuteReader();
-            while (reader1.Read())
-            {
-                accountcount++;
-            }
-            reader1.Close();
-            label1.Text = "Available Slots Left : " + (AdminAccountLimit - accountcount);
-            reader1 = null;
-            scom = null;
-            checkaccount(accountcount);
-            return accountcount;
-        }
-        public void insertintodb()
-        {
-            this.Cursor = Cursors.WaitCursor;
-            Random rs1 = new Random();
-            String id = "";
-            String iduserinfo = "";
-           
-            //retreive make sure it doesnt match any in the db
-            //user digit is only 5
-            for (int i = 0;i != 5;i++)
-            {
-
-                id = string.Concat(id,rs1.Next(0,9).ToString());
-
-            }
-            SQLiteCommand scom = new SQLiteCommand("INSERT INTO USERS VALUES (" + Convert.ToInt32(id) + ");", initd.scon);
-            scom.ExecuteNonQuery();
-            scom.CommandText = "INSERT INTO ARCUSERS VALUES (" + Convert.ToInt32(id) + ");";
-            scom.ExecuteNonQuery();
-            for (int i = 0; i != 7; i++)
-            {
-
-                iduserinfo = string.Concat(iduserinfo, rs1.Next(0, 9).ToString());
-
-            }
-            
-           scom.CommandText = "INSERT INTO USER_INFO VALUES(" + iduserinfo + "," + id + ",'" + NAME.Text + "','" + USERNAME.Text+ "','" + EMAIL.Text + "','" + PASSWORD.Text + "'," + 1 + ");";
-            scom.ExecuteNonQuery();
-            scom.CommandText = "INSERT INTO ARCUSER_INFO VALUES(" + iduserinfo + "," + id + ",'" + NAME.Text + "','" + USERNAME.Text + "','" + EMAIL.Text + "','" + PASSWORD.Text + "'," + 1 + ");";
-            scom.ExecuteNonQuery();
-            Thread.Sleep(500);
-            new ModulesSecond.Userssetaddditems.FileMaintenenance(1,1,"").InsertData(Convert.ToInt32(id));//inserts allong in the arc
-            Thread.Sleep(500);
-            new ModulesSecond.Userssetaddditems.Inventory(1,1, "").InsertData(Convert.ToInt32(id));
-            Thread.Sleep(500);
-            new ModulesSecond.Userssetaddditems.Sales(1,1,"").InsertData(Convert.ToInt32(id));
-            Thread.Sleep(500);
-            new ModulesSecond.Userssetaddditems.Reports(1,1,"").InsertData(Convert.ToInt32(id));
-            Thread.Sleep(500);
-            new ModulesSecond.Userssetaddditems.Utilities(1,1,"").InsertData(Convert.ToInt32(id));
-            Thread.Sleep(500);
-            MessageBox.Show("ACCOUNT SUCCESSFULLY CREATED!");
-            this.Cursor = Cursors.Default;
-
-        }
+        }  
         private void Viewpass_Click(object sender, EventArgs e)
         {
             if (PASSWORD.PasswordChar == '*')
@@ -294,18 +297,105 @@ namespace JUFAV_System.Ffirstrun
 
             }
         }
-        public void EncryptPassword()
-        {
-
-
-
-
-        }
         private void FirstRun_FormClosing(object sender, FormClosingEventArgs e)
         {
             Done(sender, e);
             e.Cancel = reason;
-            
+            initd.closedatabase(); 
+        }
+        private void NAME_Click(object sender, EventArgs e)
+        {
+            if (NAME.Text == "NAME:")
+            {
+                NAME.Text = "";
+
+            }
+        }
+        private void USERNAME_Click(object sender, EventArgs e)
+        {
+            if (USERNAME.Text == "USERNAME")
+            {
+                USERNAME.Text = "";
+
+
+            }
+        }
+        private void PASSWORD_Click(object sender, EventArgs e)
+        {
+            if (PASSWORD.Text == "PASSWORD")
+            {
+                PASSWORD.Text = "";
+
+
+            }
+        }
+        private void CONFIRM_PASSWORD_Click(object sender, EventArgs e)
+        {
+            if (CONFIRM_PASSWORD.Text == "CONFIRM-PASSWORD")
+            {
+
+                CONFIRM_PASSWORD.Text = "";
+
+            }
+        
+        }
+        private void EMAIL_Click(object sender, EventArgs e)
+        {
+            if (EMAIL.Text == "EMAIL")
+            {
+                EMAIL.Text = "";
+
+
+            }
+        }
+        private void NAME_MouseLeave(object sender, EventArgs e)
+        {
+            if (NAME.Text == "")
+            {
+                NAME.Text = "NAME:";
+
+
+            }
+        }
+        private void USERNAME_MouseLeave(object sender, EventArgs e)
+        {
+            if (USERNAME.Text == "")
+            {
+                USERNAME.Text = "USERNAME";
+
+
+            }
+        }
+        private void PASSWORD_MouseLeave(object sender, EventArgs e)
+        {
+            if (PASSWORD.Text == "")
+            {
+                PASSWORD.Text = "PASSWORD";
+
+
+            }
+        }
+        private void CONFIRM_PASSWORD_MouseLeave(object sender, EventArgs e)
+        {
+            if (CONFIRM_PASSWORD.Text == "")
+            {
+
+                CONFIRM_PASSWORD.Text = "CONFIRM-PASSWORD";
+
+            }
+        }
+        private void EMAIL_MouseLeave(object sender, EventArgs e)
+        {
+            if (EMAIL.Text == "")
+            {
+                EMAIL.Text = "EMAIL";
+
+
+            }
+        }
+        private void AddBTN_Click(object sender, EventArgs e)
+        {
+            addaccounts();
         }
     }
 }

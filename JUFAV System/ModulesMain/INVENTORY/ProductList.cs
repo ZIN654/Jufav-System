@@ -51,7 +51,7 @@ namespace JUFAV_System.ModulesMain.INVENTORY
 
 
             loadUnits();
-          
+            DetermineProductCount();
             this.Cursor = Cursors.Default; ;
         }
         private void loadUnits()
@@ -110,6 +110,14 @@ namespace JUFAV_System.ModulesMain.INVENTORY
             comboBox1.SelectedIndex = 0;
             sq1 = null;
             scom1 = null;
+        }
+        private void DetermineProductCount()
+        {
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT COUNT(*) AS ROWS FROM PRODUCTS;", initd.scon);
+            totalProd.Text = "TOTAL PRODUCTS: "+Convert.ToInt32(scom1.ExecuteScalar()).ToString();
+            scom1 = null;
+            GC.Collect();
+
         }
         private void tofilter(int Category, int Subcat, int perishable, int batched, String search, Row row1,Table table)
         {

@@ -19,8 +19,10 @@ namespace JUFAV_System.ModulesSecond.Inventory
     public partial class AddPurchaseOrder : UserControl
     {
         Dictionary<String, int> splr1;
+        Dictionary<int, String> UOM1;
         private static int total = 0;
         int swtichtriger = 0;
+        bool test3 = true;
         //POID ay global
         //find way na kapag nag insert sya nanamn ng same item mag aad nalng sa same container
         //use find(); gaya nung sa pag tally ng total value
@@ -32,11 +34,14 @@ namespace JUFAV_System.ModulesSecond.Inventory
             this.Dock = DockStyle.Fill;
             initd.toexe = this;
             splr1 = new Dictionary<String, int>();
+            UOM1 = new Dictionary<int, string>();
             loaddatabase();
             dateissued.Text = "DATE ISSUED: " + DateTime.Now.ToShortDateString(); ;
             generatePOID();
+            initd.itemsboxselectedPO = ItemsBoxPoList;
             label1.Text = "P.O NUMBER : PO-" +initd.POID.ToString() ;
-            autoselect();    
+            autoselect();
+            filterer();
         }
         private void findsimilar()
         {
@@ -47,6 +52,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
             }
 
         }
+       
         public void loaddatabase()
         {
             splr1.Clear();
@@ -55,22 +61,32 @@ namespace JUFAV_System.ModulesSecond.Inventory
             while (sread1.Read())
             {
                 splr1.Add(sread1["SUPPLIERNAME"].ToString(),Convert.ToInt32(sread1["SUPPLIERID"]));
-                splr.Items.Add(sread1["SUPPLIERNAME"].ToString());
+                //splr.Items.Add(sread1["SUPPLIERNAME"].ToString());
                 SUPPLIERNAME.Items.Add(sread1["SUPPLIERNAME"].ToString());  
             }
             sread1.Close();
+            scom1.CommandText = "SELECT * FROM UNITOFMEASURE;";
+            sread1 = scom1.ExecuteReader();
+            while (sread1.Read())
+            {
+                UOM1.Add(Convert.ToInt32(sread1["UNITID"]),sread1["UNITDESC"].ToString());
+            }
+            sread1.Close();
+
             if (splr1.Count != 0)
             {
-               splr.SelectedIndex = 0;
-                scom1.CommandText = "SELECT * FROM PRODUCTS WHERE SUPPLIERID = " + splr1[splr.Text] + ";";
-                sread1 = scom1.ExecuteReader();
+             //  splr.SelectedIndex = 0;
+               scom1.CommandText = "SELECT * FROM PRODUCTS ;";
+               sread1 = scom1.ExecuteReader();
                 while (sread1.Read())
                 {
                     //insert into items box
                     ///ItemsBoxOfferd.Controls.Add();
-                    Components.OfferedProdsPODataBox prod1 = new Components.OfferedProdsPODataBox(sread1["PRODUCTNAME"].ToString(), Convert.ToDouble(sread1["ORIGINALPICE"]), sread1["UOMID"].ToString(), Convert.ToInt32(sread1["PRODUCTID"]),ItemsBoxPoList);
+                    ///
+                    //to fix mamaya
+                   Components.OfferedProdsPODataBox prod1 = new Components.OfferedProdsPODataBox(sread1["PRODUCTNAME"].ToString(), Convert.ToDouble(sread1["ORIGINALPICE"]), UOM1[Convert.ToInt32(sread1["UOMID"])].ToString(), Convert.ToInt32(sread1["PRODUCTID"]),ItemsBoxPoList);
                     ItemsBoxOfferd.Controls.Add(prod1);
-                }
+             }
             }
             sread1.Close();
             scom1 = null;
@@ -83,7 +99,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
             //delete all items
             foreach (UserControl items in ItemsBoxOfferd.Controls){items.Dispose();}
             ItemsBoxOfferd.Controls.Clear();
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM PRODUCTS WHERE SUPPLIERID = " + splr1[splr.Text] + ";", initd.scon);
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM PRODUCTS ;", initd.scon);
             SQLiteDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
             {
@@ -139,12 +155,41 @@ namespace JUFAV_System.ModulesSecond.Inventory
             }
         }
         //ung order status dapat pag pinindot 
+        private int determinesuppID() {
+            int id = 0;
+            if (Existing.Checked == true)
+            {
+                id = Convert.ToInt32(splr1[SUPPLIERNAME.Text]);
+
+            }else
+            {
+                id = Convert.ToInt32(splr1[CCompname.Text]);
+
+            }
+            return id;
+        }
+        private String determinesuppNAME() {
+            String name = "";
+            if (Existing.Checked == true)
+            {
+                name = SUPPLIERNAME.Text;
+
+            }
+            else
+            {
+                name = CCompname.Text;
+
+            }
+            return name;
+
+
+        }
         private void insertinto()
         {
             this.Cursor = Cursors.WaitCursor;
             if (ItemsBoxPoList.Controls.Count != 0)
             {
-                SQLiteCommand scom1 = new SQLiteCommand("INSERT INTO PURCHASEORDER (POID,USERID,ORDERDATE,EXPECTEDORDERDATE,SUPPLIER,TIMES,TOTALPRODUCTS,TOTALCOST,ORDERSTATUS) VALUES (" + initd.POID + "," + initd.UserID + ",'" + DateTime.Now.ToShortDateString() + "','" + dateTimePicker1.Text + "','" + splr.Text + "','" + DateTime.Now.ToShortTimeString() + "','" + ItemsBoxPoList.Controls.Count + "'," + Convert.ToDouble(totalamount.Text) + ",'PENDING');", initd.scon);
+                SQLiteCommand scom1 = new SQLiteCommand("INSERT INTO PURCHASEORDER (POID,USERID,ORDERDATE,EXPECTEDORDERDATE,SUPPLIERID,SUPPLIER,TIMES,TOTALPRODUCTS,TOTALCOST,ORDERSTATUS) VALUES (" + initd.POID + "," + initd.UserID + ",'" + DateTime.Now.ToShortDateString() + "','" + dateTimePicker1.Text + "',"+determinesuppID()+",'" + determinesuppNAME() + "','" + DateTime.Now.ToShortTimeString() + "','" + ItemsBoxPoList.Controls.Count + "'," + Convert.ToDouble(totalamount.Text) + ",'PENDING');", initd.scon);
                 scom1.ExecuteNonQuery();
                 foreach (KeyValuePair<int, String> i in initd.QueryID)
                 {
@@ -245,20 +290,55 @@ namespace JUFAV_System.ModulesSecond.Inventory
                 }
 
             }
-            if (test1 == true && test2 == true)
+         
+          
+            if (test1 == true && test2 == true &&  determineifSupplierhasPO() == false)
+            {
+                test3 = false;
+                Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "PURCHASE ORDER", "THE DEFINED SUPPLIER HAS AN EXISTING PURCHASE ORDER.", "OK", 2);
+                ms.Show();
+              
+            }
+            else
+            {
+                test3 = true;
+            }
+      
+            if (test1 == true && test2 == true && test3 == true)//
             {
                 Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(insertinto, 0, "CREATE P.O", "ARE YOU SURE YOU INPUTTED THE RIGHT DATA?", "OK", 2);
                 ms.Show();
               
             }
         }
+        private bool determineifSupplierhasPO()
+        {
+            bool pak = true;
+            //sqlite querry
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM PURCHASEORDER WHERE ORDERSTATUS = 'PENDING';", initd.scon);
+            SQLiteDataReader sread1 = scom1.ExecuteReader();
+            while (sread1.Read())
+            {
+                if (sread1["SUPPLIER"].ToString() == determinesuppNAME())
+                {
+                    pak = false;
+                    break;
+                }
+            }
+            sread1.Close();
+            scom1 = null;
+            sread1 = null;
+            return pak;
+        }
         private void splr_SelectedIndexChanged(object sender, EventArgs e)
         {
             //once na maging 1 ito pwede nang tawagin ung function na splr_SelectedIndexChanged to filter inputs pag naka 0 kasior walang trigger na if else,madoudouble yung  call ng function na splr_SelectedIndexChanged
+            /*
             if (swtichtriger == 1)
             {
                 filterer();
             }
+            */
         }
         private void AddPurchaseOrder_Leave(object sender, EventArgs e)
         {
@@ -397,6 +477,36 @@ namespace JUFAV_System.ModulesSecond.Inventory
         private void Tax_TextChanged(object sender, EventArgs e)
         {
             verifier(Tax);
+        }
+
+        private void CCompname_Click(object sender, EventArgs e)
+        {
+            if (CCompname.Text == " ")
+            {
+                CCompname.Text = "";
+            }
+           
+        }
+        private void CcontactP_Click(object sender, EventArgs e)
+        {
+            if (CcontactP.Text == " ")
+            {
+                CcontactP.Text = "";
+            }
+        }
+        private void Ccontactno_Click(object sender, EventArgs e)
+        {
+            if (Ccontactno.Text == " ")
+            {
+                Ccontactno.Text = "";
+            }
+        }
+        private void Caddress_Click(object sender, EventArgs e)
+        {
+            if (Caddress.Text == " ")
+            {
+                Caddress.Text = "";
+            }
         }
     }
 }

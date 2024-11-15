@@ -83,7 +83,7 @@
             this.ArchiveCatBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ArchiveCatBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ArchiveCatBtn.Image = global::JUFAV_System.Properties.Resources.Archive;
-            this.ArchiveCatBtn.Location = new System.Drawing.Point(89, 0);
+            this.ArchiveCatBtn.Location = new System.Drawing.Point(122, 0);
             this.ArchiveCatBtn.Name = "ArchiveCatBtn";
             this.ArchiveCatBtn.Size = new System.Drawing.Size(25, 25);
             this.ArchiveCatBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -96,7 +96,7 @@
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::JUFAV_System.Properties.Resources.Edit;
-            this.pictureBox2.Location = new System.Drawing.Point(120, 0);
+            this.pictureBox2.Location = new System.Drawing.Point(153, 0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(25, 25);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -109,12 +109,13 @@
             this.DeleteBTN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DeleteBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DeleteBTN.Image = global::JUFAV_System.Properties.Resources.dlt;
-            this.DeleteBTN.Location = new System.Drawing.Point(151, 1);
+            this.DeleteBTN.Location = new System.Drawing.Point(58, 0);
             this.DeleteBTN.Name = "DeleteBTN";
             this.DeleteBTN.Size = new System.Drawing.Size(25, 25);
             this.DeleteBTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.DeleteBTN.TabIndex = 0;
             this.DeleteBTN.TabStop = false;
+            this.DeleteBTN.Visible = false;
             this.DeleteBTN.Click += new System.EventHandler(this.DeleteBTN_Click);
             // 
             // CategoryComponent

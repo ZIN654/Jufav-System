@@ -29,16 +29,17 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnadd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel3
             // 
+            this.tableLayoutPanel3.BackColor = System.Drawing.SystemColors.ControlLight;
             this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel3.ColumnCount = 5;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -59,37 +60,15 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(428, 31);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
-            // btnadd
+            // label4
             // 
-            this.btnadd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnadd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnadd.Location = new System.Drawing.Point(354, 1);
-            this.btnadd.Margin = new System.Windows.Forms.Padding(0);
-            this.btnadd.Name = "btnadd";
-            this.btnadd.Size = new System.Drawing.Size(73, 29);
-            this.btnadd.TabIndex = 0;
-            this.btnadd.Text = "ADD +";
-            this.btnadd.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(4, 1);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 29);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(105, 1);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 29);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "label2";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Location = new System.Drawing.Point(282, 1);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 29);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "label4";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label3
             // 
@@ -101,20 +80,44 @@
             this.label3.Text = "label3";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label4
+            // label2
             // 
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(282, 1);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 29);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "label4";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Location = new System.Drawing.Point(105, 1);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(94, 29);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "label2";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnadd
+            // 
+            this.btnadd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnadd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnadd.Location = new System.Drawing.Point(354, 1);
+            this.btnadd.Margin = new System.Windows.Forms.Padding(0);
+            this.btnadd.Name = "btnadd";
+            this.btnadd.Size = new System.Drawing.Size(73, 29);
+            this.btnadd.TabIndex = 0;
+            this.btnadd.Text = "ADD +";
+            this.btnadd.UseVisualStyleBackColor = true;
+            this.btnadd.Click += new System.EventHandler(this.btnadd_Click);
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(4, 1);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 29);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "label1";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // SalesProductList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Controls.Add(this.tableLayoutPanel3);
             this.Name = "SalesProductList";
             this.Size = new System.Drawing.Size(428, 31);

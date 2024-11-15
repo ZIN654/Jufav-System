@@ -34,7 +34,6 @@
             this.UOM = new System.Windows.Forms.CheckBox();
             this.Category = new System.Windows.Forms.CheckBox();
             this.subcat = new System.Windows.Forms.CheckBox();
-            this.MarkUp = new System.Windows.Forms.CheckBox();
             this.Products = new System.Windows.Forms.CheckBox();
             this.vat = new System.Windows.Forms.CheckBox();
             this.FILEMAINTENANCE = new System.Windows.Forms.CheckBox();
@@ -52,10 +51,9 @@
             this.tableLayoutPanel1.Controls.Add(this.UOM, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.Category, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.subcat, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.MarkUp, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.Products, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.vat, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.FILEMAINTENANCE, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Products, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.vat, 2, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Actor", 9.75F);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -163,25 +161,6 @@
             this.subcat.MouseEnter += new System.EventHandler(this.subcat_MouseEnter);
             this.subcat.MouseLeave += new System.EventHandler(this.subcat_MouseLeave);
             // 
-            // MarkUp
-            // 
-            this.MarkUp.AutoSize = true;
-            this.MarkUp.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.MarkUp.Checked = true;
-            this.MarkUp.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.MarkUp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.MarkUp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MarkUp.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.MarkUp.Location = new System.Drawing.Point(426, 31);
-            this.MarkUp.Name = "MarkUp";
-            this.MarkUp.Size = new System.Drawing.Size(207, 22);
-            this.MarkUp.TabIndex = 5;
-            this.MarkUp.Text = "Mark Up";
-            this.MarkUp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.MarkUp.UseVisualStyleBackColor = false;
-            this.MarkUp.MouseEnter += new System.EventHandler(this.MarkUp_MouseEnter);
-            this.MarkUp.MouseLeave += new System.EventHandler(this.MarkUp_MouseLeave);
-            // 
             // Products
             // 
             this.Products.AutoSize = true;
@@ -191,7 +170,7 @@
             this.Products.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Products.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Products.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.Products.Location = new System.Drawing.Point(426, 59);
+            this.Products.Location = new System.Drawing.Point(426, 31);
             this.Products.Name = "Products";
             this.Products.Size = new System.Drawing.Size(207, 22);
             this.Products.TabIndex = 6;
@@ -210,9 +189,9 @@
             this.vat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.vat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vat.Font = new System.Drawing.Font("Actor", 9.75F);
-            this.vat.Location = new System.Drawing.Point(426, 87);
+            this.vat.Location = new System.Drawing.Point(426, 59);
             this.vat.Name = "vat";
-            this.vat.Size = new System.Drawing.Size(207, 24);
+            this.vat.Size = new System.Drawing.Size(207, 22);
             this.vat.TabIndex = 7;
             this.vat.Text = "VAT";
             this.vat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -262,7 +241,6 @@
         private System.Windows.Forms.CheckBox UOM;
         private System.Windows.Forms.CheckBox Category;
         private System.Windows.Forms.CheckBox subcat;
-        private System.Windows.Forms.CheckBox MarkUp;
         private System.Windows.Forms.CheckBox Products;
         private System.Windows.Forms.CheckBox vat;
         private System.Windows.Forms.CheckBox FILEMAINTENANCE;

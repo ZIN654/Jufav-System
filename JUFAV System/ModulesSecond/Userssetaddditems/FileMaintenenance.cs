@@ -26,23 +26,56 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
             if (summontype == 1)
             {
                 ///load it in usual way 
-                    if (RoleType == 0)
-                    {
-                        uncheckall();
-
-
-                    }
-                    else
-                    {
-
+                ///
+                switch (RoleType)
+                {
+                    case 1:
                         check();
+                        break;
+                    case 2:
+                        //sales
+                        sales();
+                        uncheckall();
+                        
+                        this.Visible = true;
+                        break;
+                    case 3:
+                        uncheckall();
+                        //inventory
+                        break;
 
-                    }
+
+
+                }
+                   
             }
             else
             {
                 //load it with the current data infp of the user
-                LoadAccesslevel(username);
+                switch (RoleType)
+                {
+                    case 1:
+                        LoadAccesslevel(username);
+                        break;
+                    case 2:
+                        //sales
+                        sales();
+                        uncheckall();
+                        LoadAccesslevel(username);
+                    
+                        break;
+                    case 3:
+                        LoadAccesslevel(username);
+                      
+                      
+                       
+                        //inventory
+                        break;
+
+
+
+                }
+               
 
             }
             //chech if employee or admin  if admin kapag inedit ny info nya maalter nya but kung  employee
@@ -51,26 +84,33 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
             //wag ka na  mag oopen dito dahil mag kakaroon ng exception
         }
         //
+       
+        private void sales()
+        {
+            this.Enabled = true;
+        }
         public void update1()
         {
 
             //forlopp each check box
-            CheckBox[] items = { UserSettings, Supplier, UOM, Category, subcat, MarkUp, Products, vat };
-            for (int i = 0; i != 8; i++)
+            CheckBox[] items = { UserSettings, Supplier, UOM, Category, subcat, Products, vat };
+            for (int i = 0; i != 7; i++)
             {
-                //UPDATE ANOMALY
-                SQLiteCommand SCOM1 = new SQLiteCommand("UPDATE SUBMODULES SET HASACCESS =" + items[i].Checked + " WHERE SUBMODULENAME LIKE '" + items[i].Name.ToString() + "%' AND USERID = (SELECT USERID FROM USER_INFO WHERE USERNAME = '" + this.usertoedit + "');", initd.scon);
+                //UPDATE ANOMALY mga naedit
+                SQLiteCommand SCOM1 = new SQLiteCommand("UPDATE SUBMODULES SET HASACCESS =" + items[i].Checked + " WHERE USERID = (SELECT USERIDS FROM USER_INFO WHERE USERNAME = '" + this.usertoedit + "') AND SUBMODULENAME LIKE '%" + items[i].Name.ToString() + "%';", initd.scon);
                 SCOM1.ExecuteNonQuery();
-                Thread.Sleep(500);
+                Thread.Sleep(100);
 
 
             }
+            Console.WriteLine("IPDATE 1" + usertoedit);
         }
         private void LoadAccesslevel(String ussername)
         {
-            CheckBox[] items = { UserSettings, Supplier, UOM, Category, subcat, MarkUp, Products, vat };
+            CheckBox[] items = { UserSettings, Supplier, UOM, Category, subcat, Products, vat };
             items1.Clear();
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM SUBMODULES WHERE USERID = (SELECT USERIDS FROM USER_INFO WHERE USERNAME = '" + ussername + "');", initd.scon);
+            Console.WriteLine("LOAD ACCES LEBEL " + usertoedit);
+            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM SUBMODULES WHERE USERID = (SELECT USERIDS FROM USER_INFO WHERE USERNAME = '" + usertoedit + "');", initd.scon);
             SQLiteDataReader sq1 = scom1.ExecuteReader();
             while (sq1.Read())
             {
@@ -100,6 +140,19 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
             }
             return returnval;
         }
+        public int determineBool(bool val)
+        {
+            int returnval = 0;
+            if (val == true)
+            {
+                returnval = 1;
+            }
+            else
+            {
+                returnval = 0;
+            }
+            return returnval;
+        }
         private void OnloadType0()
         {
             //if employee fetch all data of acccess level of the emplyee
@@ -113,6 +166,8 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
         ///
 
         public void InsertData(int id) {
+
+            
             Random rand = new Random();
             String ModuleID = "";//Modules table each ID is 4
           
@@ -124,21 +179,36 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
             //generate id of module 
             SQLiteCommand scom1 = new SQLiteCommand("INSERT INTO MAINMODULES VALUES (" + Convert.ToInt32(ModuleID) + "," + id +",'FileMaintenance');",initd.scon);
             scom1.ExecuteNonQuery();
-            scom1.CommandText = "INSERT INTO ARCMAINMODULES VALUES (" + Convert.ToInt32(ModuleID) + "," + id + ",'FileMaintenance');";
-            scom1.ExecuteNonQuery();
-
-            CheckBox [] chboxes = {UserSettings,Supplier,UOM,Category,subcat,MarkUp,Products,vat};
-            for(int i = 0;i != 8;i++)
+          //  scom1.CommandText = "INSERT INTO ARCMAINMODULES VALUES (" + Convert.ToInt32(ModuleID) + "," + id + ",'FileMaintenance');";
+            //scom1.ExecuteNonQuery(); // error hwew 
+            
+            CheckBox [] chboxes = {UserSettings,Supplier,UOM,Category,subcat,Products,vat};
+            int IDtoUse = 0;
+            for(int i = 0;i != 7;i++)
             {
-                scom1.CommandText = "INSERT INTO SUBMODULES VALUES (" + generate_submoduleID() + "," + id + ",'" + chboxes[i].Name + "',"+determineval(chboxes[i])+");";
+                IDtoUse = generate_submoduleID();
+                scom1.CommandText = "INSERT INTO SUBMODULES VALUES (" + IDtoUse + "," + id + ",'" + chboxes[i].Name + "',"+determineval(chboxes[i])+");";
                 scom1.ExecuteNonQuery();
+                Thread.Sleep(100);
             }
-            Thread.Sleep(1500);
+            
+            /*//foreign key constraint
             for (int i = 0; i != 8; i++)
             {
                 scom1.CommandText = "INSERT INTO ARCSUBMODULES VALUES (" + generate_submoduleID() + "," + id + ",'" + chboxes[i].Name + "'," + determineval(chboxes[i]) + ");";
                 scom1.ExecuteNonQuery();
             }
+            */
+        }
+        private void determineifNull()
+        {
+            CheckBox[] chboxes = { UserSettings, Supplier, UOM, Category, subcat, Products, vat };
+            foreach(CheckBox i in chboxes)
+            {
+              //  initd.todetermine
+
+            }
+        
         }
         public int determineval(CheckBox ch1)
         {
@@ -160,14 +230,12 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
         {
             Random rt = new Random();
             String SubModuleID = "";// each sub modules table 11
-            for (int g = 0; g != 9; g++)
+            for (int g = 0; g != 6; g++)
             {
                 
-                SubModuleID = string.Concat(SubModuleID, rt.Next(0, 9).ToString());
+                SubModuleID = SubModuleID + rt.Next(0, 9).ToString();
             }
             return Convert.ToInt32(SubModuleID);
-
-
         }
        
 
@@ -239,7 +307,7 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
         }
         private void MarkUp_MouseEnter(object sender, EventArgs e)
         {
-            onenter1(MarkUp, onenter);
+           // onenter1(MarkUp, onenter);
         }
         private void Products_MouseEnter(object sender, EventArgs e)
         {
@@ -276,7 +344,7 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
         }
         private void MarkUp_MouseLeave(object sender, EventArgs e)
         {
-            onleave(MarkUp, onLeave);
+            
         }
         private void Products_MouseLeave(object sender, EventArgs e)
         {
@@ -315,7 +383,7 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
             subcat.Checked = false;
             vat.Checked = false;
             UOM.Checked = false;
-            MarkUp.Checked = false;
+           
             Products.Checked = false;
         }
         private void check()
@@ -326,7 +394,7 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
             Category.Checked = true;
             subcat.Checked = true;
             vat.Checked = true;
-            MarkUp.Checked = true;
+           
             Products.Checked = true;
 
 

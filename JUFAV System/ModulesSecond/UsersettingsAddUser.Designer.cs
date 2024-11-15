@@ -327,15 +327,16 @@
             // 
             // RoleBox
             // 
+            this.RoleBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.RoleBox.FormattingEnabled = true;
             this.RoleBox.Items.AddRange(new object[] {
             "ADMIN",
-            "EMPLOYEE"});
+            "SALES CLERK",
+            "INVENTORY CLERK"});
             this.RoleBox.Location = new System.Drawing.Point(14, 121);
             this.RoleBox.Name = "RoleBox";
             this.RoleBox.Size = new System.Drawing.Size(342, 21);
             this.RoleBox.TabIndex = 4;
-            this.RoleBox.Text = "ADMIN";
             this.RoleBox.SelectedIndexChanged += new System.EventHandler(this.RoleBox_SelectedIndexChanged);
             // 
             // CONFIRM_PASSWORD_FIELD

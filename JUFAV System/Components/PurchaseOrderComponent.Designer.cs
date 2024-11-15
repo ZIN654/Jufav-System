@@ -46,6 +46,7 @@
             this.ReceivingDate = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.Items.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Delete)).BeginInit();
@@ -254,6 +255,7 @@
             this.Print.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Print.TabIndex = 1;
             this.Print.TabStop = false;
+            this.Print.Click += new System.EventHandler(this.Print_Click);
             // 
             // pdf
             // 
@@ -268,11 +270,13 @@
             this.pdf.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pdf.TabIndex = 0;
             this.pdf.TabStop = false;
+            this.pdf.Click += new System.EventHandler(this.pdf_Click);
             // 
             // ReceivingDate
             // 
             this.ReceivingDate.AutoSize = true;
             this.ReceivingDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ReceivingDate.Font = new System.Drawing.Font("Actor", 9.75F, System.Drawing.FontStyle.Bold);
             this.ReceivingDate.Location = new System.Drawing.Point(124, 46);
             this.ReceivingDate.Name = "ReceivingDate";
             this.ReceivingDate.Size = new System.Drawing.Size(115, 35);
@@ -302,6 +306,11 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(972, 208);
             this.dataGridView1.TabIndex = 9;
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.FileName = "Purchase_Order_";
+            this.saveFileDialog1.Filter = "pdf file (*.pdf)|*.pdf";
             // 
             // PurchaseOrderComponent
             // 
@@ -347,5 +356,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox Delete;
         private System.Windows.Forms.PictureBox Archive;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

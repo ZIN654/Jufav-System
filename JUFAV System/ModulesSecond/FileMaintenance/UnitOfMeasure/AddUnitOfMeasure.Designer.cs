@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddUnitOfMeasure));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -92,25 +93,25 @@
             // 
             // Abbreviatiotxtbox
             // 
-            this.Abbreviatiotxtbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Abbreviatiotxtbox.Location = new System.Drawing.Point(194, 97);
+            this.Abbreviatiotxtbox.Font = new System.Drawing.Font("Actor", 14.25F);
+            this.Abbreviatiotxtbox.Location = new System.Drawing.Point(194, 95);
             this.Abbreviatiotxtbox.Name = "Abbreviatiotxtbox";
-            this.Abbreviatiotxtbox.Size = new System.Drawing.Size(476, 26);
+            this.Abbreviatiotxtbox.Size = new System.Drawing.Size(476, 30);
             this.Abbreviatiotxtbox.TabIndex = 3;
             // 
             // UofMtxtbox
             // 
-            this.UofMtxtbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UofMtxtbox.Location = new System.Drawing.Point(194, 46);
+            this.UofMtxtbox.Font = new System.Drawing.Font("Actor", 14.25F);
+            this.UofMtxtbox.Location = new System.Drawing.Point(194, 44);
             this.UofMtxtbox.Name = "UofMtxtbox";
-            this.UofMtxtbox.Size = new System.Drawing.Size(476, 26);
+            this.UofMtxtbox.Size = new System.Drawing.Size(476, 30);
             this.UofMtxtbox.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.label3.Location = new System.Drawing.Point(4, 98);
+            this.label3.Location = new System.Drawing.Point(4, 48);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(138, 23);
             this.label3.TabIndex = 1;
@@ -120,7 +121,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.label2.Location = new System.Drawing.Point(4, 47);
+            this.label2.Location = new System.Drawing.Point(4, 99);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(184, 23);
             this.label2.TabIndex = 0;
@@ -129,8 +130,8 @@
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 246F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 240F));
             this.tableLayoutPanel3.Controls.Add(this.UofM, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.UnitOfmeaurenot, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.Abreviation, 0, 3);
@@ -140,20 +141,21 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 5;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(184, 160);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // UofM
             // 
             this.UofM.BackColor = System.Drawing.Color.Transparent;
-            this.UofM.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
-            this.UofM.Location = new System.Drawing.Point(3, 49);
+            this.UofM.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UofM.BackgroundImage")));
+            this.UofM.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.UofM.Location = new System.Drawing.Point(3, 46);
             this.UofM.Name = "UofM";
-            this.UofM.Size = new System.Drawing.Size(15, 15);
+            this.UofM.Size = new System.Drawing.Size(25, 25);
             this.UofM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.UofM.TabIndex = 53;
             this.UofM.TabStop = false;
@@ -161,9 +163,9 @@
             // 
             // UnitOfmeaurenot
             // 
-            this.UnitOfmeaurenot.Font = new System.Drawing.Font("Actor", 8.25F);
+            this.UnitOfmeaurenot.Font = new System.Drawing.Font("Actor", 9.25F);
             this.UnitOfmeaurenot.ForeColor = System.Drawing.Color.Red;
-            this.UnitOfmeaurenot.Location = new System.Drawing.Point(28, 46);
+            this.UnitOfmeaurenot.Location = new System.Drawing.Point(34, 43);
             this.UnitOfmeaurenot.Name = "UnitOfmeaurenot";
             this.UnitOfmeaurenot.Size = new System.Drawing.Size(186, 17);
             this.UnitOfmeaurenot.TabIndex = 54;
@@ -174,10 +176,11 @@
             // Abreviation
             // 
             this.Abreviation.BackColor = System.Drawing.Color.Transparent;
-            this.Abreviation.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
+            this.Abreviation.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Abreviation.BackgroundImage")));
+            this.Abreviation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Abreviation.Location = new System.Drawing.Point(3, 97);
             this.Abreviation.Name = "Abreviation";
-            this.Abreviation.Size = new System.Drawing.Size(15, 15);
+            this.Abreviation.Size = new System.Drawing.Size(25, 25);
             this.Abreviation.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Abreviation.TabIndex = 56;
             this.Abreviation.TabStop = false;
@@ -185,9 +188,9 @@
             // 
             // Abreviationnot
             // 
-            this.Abreviationnot.Font = new System.Drawing.Font("Actor", 8.25F);
+            this.Abreviationnot.Font = new System.Drawing.Font("Actor", 9.25F);
             this.Abreviationnot.ForeColor = System.Drawing.Color.Red;
-            this.Abreviationnot.Location = new System.Drawing.Point(28, 94);
+            this.Abreviationnot.Location = new System.Drawing.Point(34, 94);
             this.Abreviationnot.Name = "Abreviationnot";
             this.Abreviationnot.Size = new System.Drawing.Size(186, 24);
             this.Abreviationnot.TabIndex = 55;
@@ -201,9 +204,9 @@
             this.CANCELBTN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CANCELBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CANCELBTN.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.CANCELBTN.Location = new System.Drawing.Point(229, 3);
+            this.CANCELBTN.Location = new System.Drawing.Point(231, 3);
             this.CANCELBTN.Name = "CANCELBTN";
-            this.CANCELBTN.Size = new System.Drawing.Size(220, 34);
+            this.CANCELBTN.Size = new System.Drawing.Size(218, 48);
             this.CANCELBTN.TabIndex = 0;
             this.CANCELBTN.Text = "CANCEL";
             this.CANCELBTN.UseVisualStyleBackColor = true;
@@ -217,27 +220,27 @@
             this.addBTN.Font = new System.Drawing.Font("Actor", 8.25F);
             this.addBTN.Location = new System.Drawing.Point(455, 3);
             this.addBTN.Name = "addBTN";
-            this.addBTN.Size = new System.Drawing.Size(218, 34);
+            this.addBTN.Size = new System.Drawing.Size(218, 48);
             this.addBTN.TabIndex = 1;
-            this.addBTN.Text = "ADD UOM";
+            this.addBTN.Text = "ADD";
             this.addBTN.UseVisualStyleBackColor = true;
             this.addBTN.Click += new System.EventHandler(this.addBTN_Click);
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 224F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 224F));
             this.tableLayoutPanel2.Controls.Add(this.CANCELBTN, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.addBTN, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 383);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 369);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(676, 81);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 56.84211F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.15789F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(676, 95);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // AddUnitOfMeasure

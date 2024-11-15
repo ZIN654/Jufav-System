@@ -34,7 +34,7 @@ namespace JUFAV_System.Components
         private void successfully()
         {
            
-            Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(successfully, 1, "ACCOUNT DELETION", "ACCOUNT SUCCESSFULLY ARCHIVED", "OK", 2);
+            Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(successfully, 1, "ACCOUNT DELETION", "ACCOUNT SUCCESSFULLY DELETED", "OK", 2);
             msg1.Show();
             this.Dispose();
         }
@@ -97,6 +97,7 @@ namespace JUFAV_System.Components
            
             ModulesSecond.UsersettingsAddUser unit1 = new ModulesSecond.UsersettingsAddUser(0,this.username1);
             initd.UsernameToedit = this.username1;
+            Console.WriteLine("USER TO EDIT IN DATABOX US" + username1);
             unit1.Name = "EDITUSERACCOUNT";
             ResponsiveUI1.title = unit1.Name;
             ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();

@@ -32,8 +32,8 @@
             this.Vattxtbox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -90,6 +90,16 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.Vattxtbox);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 34);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(300, 28);
+            this.panel1.TabIndex = 4;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -102,16 +112,6 @@
             this.label2.Size = new System.Drawing.Size(31, 29);
             this.label2.TabIndex = 3;
             this.label2.Text = "%";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.Vattxtbox);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 34);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(300, 28);
-            this.panel1.TabIndex = 4;
             // 
             // VAT
             // 

@@ -57,7 +57,7 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
             SubCatBTN.Click += Sub_category;
             VatBTN.Click += Vat;
             ProdBTN.Click += Product;
-            AMkupBTN.Click += Markup;
+           
             
            
 
@@ -72,7 +72,8 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                 ModulesMain.FILEMAINTENANCE.UserSettings US1 = new ModulesMain.FILEMAINTENANCE.UserSettings();
                 ResponsiveUI1.title = "UserSettings";
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                ResponsiveUI1.title2 = "USER SETTINGS";
+                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
                 ResponsiveUI1.spl1.Controls.Add(US1);
 
 
@@ -81,8 +82,9 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
             {
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                 Components.AccessDenied as1 = new Components.AccessDenied();
-                ResponsiveUI1.title = "AccessDenied";
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                ResponsiveUI1.title = "AcccessDenied";
+                ResponsiveUI1.title2 = "ACCESS DENIED";
+                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
                 ResponsiveUI1.spl1.Controls.Add(as1);
             }
             //adds the first setting :USERSETTINGS
@@ -94,7 +96,7 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 //Size.Height = new Size();
 
 
-                this.Size = new Size(sizewidth, 342);
+                this.Size = new Size(sizewidth, 304);
                // AnimationFunctions01.Lerp1(38, 342, 1, this);
                 switch1 = 0;
                 }
@@ -123,7 +125,8 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                     ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                     ModulesMain.FILEMAINTENANCE.UserSettings US1 = new ModulesMain.FILEMAINTENANCE.UserSettings();
                     ResponsiveUI1.title = "UserSettings";
-                    ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                    ResponsiveUI1.title2 = "USER SETTINGS";
+                    ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
                     ResponsiveUI1.spl1.Controls.Add(US1);
 
 
@@ -132,8 +135,9 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 {
                     ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                     Components.AccessDenied as1 = new Components.AccessDenied();
-                    ResponsiveUI1.title = "AccessDenied";
-                    ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                    ResponsiveUI1.title2 = "AccessDenied";
+                    ResponsiveUI1.title2 = "ACCESS DENIED";
+                    ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
                     ResponsiveUI1.spl1.Controls.Add(as1);
                 }
 
@@ -147,7 +151,8 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                 ModulesMain.FILEMAINTENANCE.Supplier Sup = new ModulesMain.FILEMAINTENANCE.Supplier();
                 ResponsiveUI1.title = "Supplier";
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                ResponsiveUI1.title2 = "SUPPLIER";
+                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
                 ResponsiveUI1.spl1.Controls.Add(Sup);
 
             }else
@@ -155,45 +160,25 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                 Components.AccessDenied as1 = new Components.AccessDenied();
                 ResponsiveUI1.title = "AccessDenied";
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                ResponsiveUI1.title2 = "ACCESS DENIED";
+                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
                 ResponsiveUI1.spl1.Controls.Add(as1);
 
 
             }
           
         }
-        private void Markup(object sender, EventArgs e)
-        {
-            //debug
-            if (Convert.ToInt32(accountaccesslevel["MarkUp"]) == 1)
-            {
-                ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
-                ModulesMain.FILEMAINTENANCE.MarkUp mkup = new ModulesMain.FILEMAINTENANCE.MarkUp();
-                ResponsiveUI1.title = "MarkUp";
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
-                ResponsiveUI1.spl1.Controls.Add(mkup);
-
-            }
-            else
-            {
-                ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
-                Components.AccessDenied as1 = new Components.AccessDenied();
-                ResponsiveUI1.title = "AccessDenied";
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
-                ResponsiveUI1.spl1.Controls.Add(as1);
-
-
-            }
-            
-        }
+        
         private void Unit_of_Measure(object sender, EventArgs e)
         {
             if (Convert.ToInt32(accountaccesslevel["UOM"]) == 1)
             {
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                 ModulesMain.FILEMAINTENANCE.UnitOfMeasures UoM = new ModulesMain.FILEMAINTENANCE.UnitOfMeasures();
+
                 ResponsiveUI1.title = "UnitOfMeasures";
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                ResponsiveUI1.title2 = "Unit Of Measures";
+                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
                 ResponsiveUI1.spl1.Controls.Add(UoM);
 
             }
@@ -202,7 +187,8 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                 Components.AccessDenied as1 = new Components.AccessDenied();
                 ResponsiveUI1.title = "AccessDenied";
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                ResponsiveUI1.title2 = "Access Denied";
+                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
                 ResponsiveUI1.spl1.Controls.Add(as1);
 
 
@@ -216,7 +202,8 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                 ModulesMain.FILEMAINTENANCE.Category cat = new ModulesMain.FILEMAINTENANCE.Category();
                 ResponsiveUI1.title = "Category";
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                ResponsiveUI1.title2 = "Category";
+                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
                 ResponsiveUI1.spl1.Controls.Add(cat);
 
             }
@@ -225,7 +212,8 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                 Components.AccessDenied as1 = new Components.AccessDenied();
                 ResponsiveUI1.title = "AccessDenied";
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                ResponsiveUI1.title2 = "Access Denied";
+                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
                 ResponsiveUI1.spl1.Controls.Add(as1);
 
 
@@ -240,7 +228,8 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                 ModulesMain.FILEMAINTENANCE.Sub_category Sub_category = new ModulesMain.FILEMAINTENANCE.Sub_category();
                 ResponsiveUI1.title = "Sub_category";
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                ResponsiveUI1.title2 = "Sub category";
+                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
                 ResponsiveUI1.spl1.Controls.Add(Sub_category);
 
             }
@@ -249,7 +238,8 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                 Components.AccessDenied as1 = new Components.AccessDenied();
                 ResponsiveUI1.title = "AccessDenied";
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                ResponsiveUI1.title2 = "Access Denied";
+                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
                 ResponsiveUI1.spl1.Controls.Add(as1);
 
 
@@ -272,7 +262,8 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                 Components.AccessDenied as1 = new Components.AccessDenied();
                 ResponsiveUI1.title = "AccessDenied";
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                ResponsiveUI1.title2 = "Access Denied";
+                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
                 ResponsiveUI1.spl1.Controls.Add(as1);
 
 
@@ -295,7 +286,8 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                 Components.AccessDenied as1 = new Components.AccessDenied();
                 ResponsiveUI1.title = "AccessDenied";
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                ResponsiveUI1.title2 = "Access Denied";
+                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
                 ResponsiveUI1.spl1.Controls.Add(as1);
 
 

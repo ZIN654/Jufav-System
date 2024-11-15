@@ -55,7 +55,11 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
 
         public void Inventory_reports()
         {
-
+            ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
+            ModulesMain.REPORTS.InventoryReports cat1 = new ModulesMain.REPORTS.InventoryReports();
+            ResponsiveUI1.title = "InventoryReports";
+            ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+            ResponsiveUI1.spl1.Controls.Add(cat1);
         }
         public void Sales_reports()
         {
@@ -88,6 +92,11 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
         public void AudTrail()
         {
 
+        }
+
+        private void InvRprtBTN_Click(object sender, EventArgs e)
+        {
+            Inventory_reports();
         }
     }
 }

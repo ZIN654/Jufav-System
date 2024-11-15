@@ -117,7 +117,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(218, 19);
             this.label1.TabIndex = 0;
-            this.label1.Text = "UNIT";
+            this.label1.Text = "ABBREVIATION";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // label3
@@ -129,7 +129,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(290, 19);
             this.label3.TabIndex = 2;
-            this.label3.Text = "ABREVIATION";
+            this.label3.Text = "UNIT";
             this.label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // label4

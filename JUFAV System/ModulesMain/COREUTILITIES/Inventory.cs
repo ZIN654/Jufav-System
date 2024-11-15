@@ -59,7 +59,8 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                 ModulesMain.INVENTORY.PurchaseOrder US1 = new ModulesMain.INVENTORY.PurchaseOrder();
                 ResponsiveUI1.title = "PurchaseOrder";
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                ResponsiveUI1.title2 = "Purchase Order";
+                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
                 ResponsiveUI1.spl1.Controls.Add(US1);
 
 
@@ -69,7 +70,8 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                 Components.AccessDenied as1 = new Components.AccessDenied();
                 ResponsiveUI1.title = "AccessDenied";
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                ResponsiveUI1.title2 = "Access Denied";
+                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
                 ResponsiveUI1.spl1.Controls.Add(as1);
             }
           
@@ -104,9 +106,10 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 {
                     ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                     ResponsiveUI1.title = "PurchaseOrder";
+                    ResponsiveUI1.title2 = "Purchase Order";
                     ModulesMain.INVENTORY.PurchaseOrder prchOrder = new ModulesMain.INVENTORY.PurchaseOrder();
                     ResponsiveUI1.spl1.Controls.Add(prchOrder);
-                    ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                    ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
 
                 }
                 else
@@ -114,7 +117,8 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                     ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                     Components.AccessDenied as1 = new Components.AccessDenied();
                     ResponsiveUI1.title = "AccessDenied";
-                    ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                    ResponsiveUI1.title2 = "Access Denied";
+                    ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
                     ResponsiveUI1.spl1.Controls.Add(as1);
                 }
 
@@ -129,10 +133,13 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
             if (Convert.ToInt32(accountaccesslevel["PurchOrdRec"]) == 1)
             {
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
-                ResponsiveUI1.title = "PurchaseOrderReceive";
+               
                 ModulesMain.INVENTORY.PurchaseOrderReceive prchOrderrec = new ModulesMain.INVENTORY.PurchaseOrderReceive();
+                prchOrderrec.Name = "RECEIVEPURCHASEORDER";
+                ResponsiveUI1.title = prchOrderrec.Name.ToUpper();
+                ResponsiveUI1.title2 = "RECEIVE PURCHASE ORDER";
                 ResponsiveUI1.spl1.Controls.Add(prchOrderrec);
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
 
             }
             else
@@ -140,7 +147,8 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                 Components.AccessDenied as1 = new Components.AccessDenied();
                 ResponsiveUI1.title = "AccessDenied";
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                ResponsiveUI1.title2 = "Access Denied";
+                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
                 ResponsiveUI1.spl1.Controls.Add(as1);
             }
            
@@ -151,9 +159,10 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
             {
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                 ResponsiveUI1.title = "StockAdjustment";
+                ResponsiveUI1.title2 = "Stock Adjustment";
                 ModulesMain.INVENTORY.StockAdjustment stockadjustments = new ModulesMain.INVENTORY.StockAdjustment();
                 ResponsiveUI1.spl1.Controls.Add(stockadjustments);
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
 
             }
             else
@@ -161,7 +170,8 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                 Components.AccessDenied as1 = new Components.AccessDenied();
                 ResponsiveUI1.title = "AccessDenied";
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                ResponsiveUI1.title2 = "Access Denied";
+                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
                 ResponsiveUI1.spl1.Controls.Add(as1);
             }
           
@@ -172,9 +182,10 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
             {
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                 ResponsiveUI1.title = "ProductList";
+                ResponsiveUI1.title2 = "Product List";
                 ModulesMain.INVENTORY.ProductList prdlist = new ModulesMain.INVENTORY.ProductList();
                 ResponsiveUI1.spl1.Controls.Add(prdlist);
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
 
             }
             else
@@ -182,7 +193,8 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                 Components.AccessDenied as1 = new Components.AccessDenied();
                 ResponsiveUI1.title = "AccessDenied";
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+                ResponsiveUI1.title2 = "Access Denied";
+                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
                 ResponsiveUI1.spl1.Controls.Add(as1);
             }
            

@@ -127,7 +127,7 @@
             this.CatIm.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
             this.CatIm.Location = new System.Drawing.Point(3, 49);
             this.CatIm.Name = "CatIm";
-            this.CatIm.Size = new System.Drawing.Size(15, 15);
+            this.CatIm.Size = new System.Drawing.Size(19, 17);
             this.CatIm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.CatIm.TabIndex = 53;
             this.CatIm.TabStop = false;
@@ -135,7 +135,7 @@
             // 
             // Catnot
             // 
-            this.Catnot.Font = new System.Drawing.Font("Actor", 8.25F);
+            this.Catnot.Font = new System.Drawing.Font("Actor", 9.25F);
             this.Catnot.ForeColor = System.Drawing.Color.Red;
             this.Catnot.Location = new System.Drawing.Point(28, 46);
             this.Catnot.Name = "Catnot";
@@ -148,18 +148,18 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 224F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 224F));
             this.tableLayoutPanel2.Controls.Add(this.CANCELBTN, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.addBTN, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 414);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 384);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(706, 81);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(706, 111);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // CANCELBTN
@@ -168,9 +168,9 @@
             this.CANCELBTN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CANCELBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CANCELBTN.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.CANCELBTN.Location = new System.Drawing.Point(244, 3);
+            this.CANCELBTN.Location = new System.Drawing.Point(261, 3);
             this.CANCELBTN.Name = "CANCELBTN";
-            this.CANCELBTN.Size = new System.Drawing.Size(235, 34);
+            this.CANCELBTN.Size = new System.Drawing.Size(218, 49);
             this.CANCELBTN.TabIndex = 0;
             this.CANCELBTN.Text = "CANCEL";
             this.CANCELBTN.UseVisualStyleBackColor = true;
@@ -184,7 +184,7 @@
             this.addBTN.Font = new System.Drawing.Font("Actor", 8.25F);
             this.addBTN.Location = new System.Drawing.Point(485, 3);
             this.addBTN.Name = "addBTN";
-            this.addBTN.Size = new System.Drawing.Size(218, 34);
+            this.addBTN.Size = new System.Drawing.Size(218, 49);
             this.addBTN.TabIndex = 1;
             this.addBTN.Text = "ADD";
             this.addBTN.UseVisualStyleBackColor = true;

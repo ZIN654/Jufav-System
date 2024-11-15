@@ -45,8 +45,8 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.39572F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.60428F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.78418F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.65404F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.1598F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.46293F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 1);
@@ -73,7 +73,7 @@
             this.label1.Font = new System.Drawing.Font("Actor", 11.25F);
             this.label1.Location = new System.Drawing.Point(3, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 19);
+            this.label1.Size = new System.Drawing.Size(136, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "NAME:";
             // 
@@ -82,9 +82,9 @@
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label2.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.label2.Location = new System.Drawing.Point(144, 49);
+            this.label2.Location = new System.Drawing.Point(145, 49);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(155, 19);
+            this.label2.Size = new System.Drawing.Size(174, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "USERNAME";
             // 
@@ -93,9 +93,9 @@
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label3.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.label3.Location = new System.Drawing.Point(305, 49);
+            this.label3.Location = new System.Drawing.Point(325, 49);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(192, 19);
+            this.label3.Size = new System.Drawing.Size(171, 19);
             this.label3.TabIndex = 2;
             this.label3.Text = "ROLE";
             this.label3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -105,10 +105,10 @@
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label4.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.label4.Location = new System.Drawing.Point(503, 49);
+            this.label4.Location = new System.Drawing.Point(502, 49);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.label4.Size = new System.Drawing.Size(101, 19);
+            this.label4.Size = new System.Drawing.Size(102, 19);
             this.label4.TabIndex = 3;
             this.label4.Text = "ACTIONS";
             this.label4.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -121,7 +121,7 @@
             this.addaccountBTN.Font = new System.Drawing.Font("Actor", 11.25F);
             this.addaccountBTN.Location = new System.Drawing.Point(3, 3);
             this.addaccountBTN.Name = "addaccountBTN";
-            this.addaccountBTN.Size = new System.Drawing.Size(135, 27);
+            this.addaccountBTN.Size = new System.Drawing.Size(136, 27);
             this.addaccountBTN.TabIndex = 4;
             this.addaccountBTN.Text = "ADD ACOUNT";
             this.addaccountBTN.UseVisualStyleBackColor = false;
@@ -132,9 +132,9 @@
             this.rcverpassBTN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rcverpassBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rcverpassBTN.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.rcverpassBTN.Location = new System.Drawing.Point(144, 3);
+            this.rcverpassBTN.Location = new System.Drawing.Point(145, 3);
             this.rcverpassBTN.Name = "rcverpassBTN";
-            this.rcverpassBTN.Size = new System.Drawing.Size(155, 27);
+            this.rcverpassBTN.Size = new System.Drawing.Size(174, 27);
             this.rcverpassBTN.TabIndex = 5;
             this.rcverpassBTN.Text = "RECOVER PASSWORD";
             this.rcverpassBTN.UseVisualStyleBackColor = false;
@@ -144,10 +144,10 @@
             // 
             this.txtboxSearchBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtboxSearchBox.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.txtboxSearchBox.Location = new System.Drawing.Point(305, 4);
+            this.txtboxSearchBox.Location = new System.Drawing.Point(325, 4);
             this.txtboxSearchBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
             this.txtboxSearchBox.Name = "txtboxSearchBox";
-            this.txtboxSearchBox.Size = new System.Drawing.Size(192, 26);
+            this.txtboxSearchBox.Size = new System.Drawing.Size(171, 26);
             this.txtboxSearchBox.TabIndex = 6;
             // 
             // srchBTN
@@ -158,9 +158,9 @@
             this.srchBTN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.srchBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.srchBTN.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.srchBTN.Location = new System.Drawing.Point(503, 3);
+            this.srchBTN.Location = new System.Drawing.Point(502, 3);
             this.srchBTN.Name = "srchBTN";
-            this.srchBTN.Size = new System.Drawing.Size(101, 27);
+            this.srchBTN.Size = new System.Drawing.Size(102, 27);
             this.srchBTN.TabIndex = 7;
             this.srchBTN.UseVisualStyleBackColor = false;
             // 

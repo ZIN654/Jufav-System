@@ -25,8 +25,8 @@ namespace JUFAV_System
             Application.SetCompatibleTextRenderingDefault(false);
 
             if (Directory.Exists(path) == true) {//if database||folderpath||file is not  existing  
-           Application.Run(new ModulesMain.LOGIN.JUFAV_LOGIN());
-           //     Application.Run(new SANDBOX());
+                Application.Run(new ModulesMain.LOGIN.JUFAV_LOGIN());
+                //Application.Run(new SANDBOX());
                // Application.Run(new Messageboxes.StockAdjustmentEditQuantity());
 
             }

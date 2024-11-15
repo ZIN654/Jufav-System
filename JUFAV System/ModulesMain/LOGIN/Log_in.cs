@@ -27,15 +27,14 @@ namespace JUFAV_System.ModulesMain.LOGIN
         {
             InitializeComponent();
             axWindowsMediaPlayer1.uiMode = "None";
-            axWindowsMediaPlayer1.URL = @"C://Users//asus//Desktop//CAPSTONE 2//JUFAV SYSTEM NEW - Copy//Jufav-System//JUFAV System//Resources//JufavLogoback.mp4";
+           axWindowsMediaPlayer1.URL = @"C://Users//asus//Desktop//CAPSTONE 2//JUFAV SYSTEM NEW - Copy//Jufav-System//JUFAV System//Resources//JufavLogoback.mp4";
            //set this one if publishing
-            //axWindowsMediaPlayer1.URL = @Environment.CurrentDirectory + "//Resources//JufavLogoback.mp4";
+           //axWindowsMediaPlayer1.URL = @Environment.CurrentDirectory + "//Resources//JufavLogoback.mp4";
             axWindowsMediaPlayer1.settings.autoStart = true;
             axWindowsMediaPlayer1.Ctlenabled = false;
             axWindowsMediaPlayer1.stretchToFit = true;
             axWindowsMediaPlayer1.settings.setMode("loop", true);
             ResponsiveUI1.spl1 = itemsbox;
-            initd.closedatabase();
             initd.opendatabase();
             loadpanel();
         }
@@ -51,6 +50,15 @@ namespace JUFAV_System.ModulesMain.LOGIN
             initd.closedatabase();
         }
 
-    
+        private void JUFAV_LOGIN_Activated(object sender, EventArgs e)
+        {
+            Console.WriteLine("TEST WRERITE");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //exception 
+            Application.Exit();
+        }
     }
 }

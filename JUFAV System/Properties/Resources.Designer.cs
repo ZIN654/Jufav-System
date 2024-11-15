@@ -343,6 +343,16 @@ namespace JUFAV_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Shutdown {
+            get {
+                object obj = ResourceManager.GetObject("Shutdown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Slantbg {
             get {
                 object obj = ResourceManager.GetObject("Slantbg", resourceCulture);
