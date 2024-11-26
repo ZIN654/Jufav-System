@@ -23,6 +23,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
         private static int total = 0;
         int swtichtriger = 0;
         bool test3 = true;
+
         //POID ay global
         //find way na kapag nag insert sya nanamn ng same item mag aad nalng sa same container
         //use find(); gaya nung sa pag tally ng total value
@@ -39,9 +40,12 @@ namespace JUFAV_System.ModulesSecond.Inventory
             dateissued.Text = "DATE ISSUED: " + DateTime.Now.ToShortDateString(); ;
             generatePOID();
             initd.itemsboxselectedPO = ItemsBoxPoList;
-            label1.Text = "P.O NUMBER : PO-" +initd.POID.ToString() ;
+            label1.Text = "P.O NUMBER : PO-" + initd.POID.ToString();
+
             autoselect();
             filterer();
+            swtichtriger = 1;
+            DefaultAddress.Checked = true;
         }
         private void findsimilar()
         {
@@ -52,63 +56,73 @@ namespace JUFAV_System.ModulesSecond.Inventory
             }
 
         }
-       
+
         public void loaddatabase()
         {
+            if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }
             splr1.Clear();
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM SUPPLIERS",initd.scon);
-            SQLiteDataReader sread1 = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM SUPPLIERS", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
             {
-                splr1.Add(sread1["SUPPLIERNAME"].ToString(),Convert.ToInt32(sread1["SUPPLIERID"]));
-                //splr.Items.Add(sread1["SUPPLIERNAME"].ToString());
-                SUPPLIERNAME.Items.Add(sread1["SUPPLIERNAME"].ToString());  
+                splr1.Add(sread1["SUPPLIERNAME"].ToString(), Convert.ToInt32(sread1["SUPPLIERID"]));
+                splrCMBox.Items.Add(sread1["SUPPLIERNAME"].ToString());
+                SUPPLIERNAME.Items.Add(sread1["SUPPLIERNAME"].ToString());
             }
             sread1.Close();
             scom1.CommandText = "SELECT * FROM UNITOFMEASURE;";
             sread1 = scom1.ExecuteReader();
             while (sread1.Read())
             {
-                UOM1.Add(Convert.ToInt32(sread1["UNITID"]),sread1["UNITDESC"].ToString());
+                UOM1.Add(Convert.ToInt32(sread1["UNITID"]), sread1["UNITDESC"].ToString());
             }
             sread1.Close();
 
             if (splr1.Count != 0)
             {
-             //  splr.SelectedIndex = 0;
-               scom1.CommandText = "SELECT * FROM PRODUCTS ;";
-               sread1 = scom1.ExecuteReader();
+                splrCMBox.SelectedIndex = 0;
+                //
+                scom1.CommandText = "SELECT p.* FROM PRODUCTS p JOIN PRODUCTSUPPLIER sp ON p.PRODUCTID = sp.PRODUCTID WHERE sp.SUPPLIERID = " + splr1[splrCMBox.Text] + ";";
+                sread1 = scom1.ExecuteReader();
                 while (sread1.Read())
                 {
                     //insert into items box
                     ///ItemsBoxOfferd.Controls.Add();
-                    ///
-                    //to fix mamaya
-                   Components.OfferedProdsPODataBox prod1 = new Components.OfferedProdsPODataBox(sread1["PRODUCTNAME"].ToString(), Convert.ToDouble(sread1["ORIGINALPICE"]), UOM1[Convert.ToInt32(sread1["UOMID"])].ToString(), Convert.ToInt32(sread1["PRODUCTID"]),ItemsBoxPoList);
+
+                    Components.OfferedProdsPODataBox prod1 = new Components.OfferedProdsPODataBox(sread1["PRODUCTNAME"].ToString(), Convert.ToDouble(sread1["ORIGINALPICE"]), "", Convert.ToInt32(sread1["PRODUCTID"]), ItemsBoxPoList);
                     ItemsBoxOfferd.Controls.Add(prod1);
-             }
+                }
             }
             sread1.Close();
             scom1 = null;
             sread1 = null;
             swtichtriger = 1;//once na maging 1 ito pwede nang tawagin ung function na splr_SelectedIndexChanged to filter inputs pag naka 0 kasi walang trigger and madoudouble yung  call ng function na splr_SelectedIndexChanged
             GC.Collect();
+         initd.con1.Close();
         }
         private void filterer()
         {
+            if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }
             //delete all items
-            foreach (UserControl items in ItemsBoxOfferd.Controls){items.Dispose();}
-            ItemsBoxOfferd.Controls.Clear();
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM PRODUCTS ;", initd.scon);
-            SQLiteDataReader sread1 = scom1.ExecuteReader();
-            while (sread1.Read())
+            //bug dito 
+            if (SUPPLIERNAME.Items.Count != 0)
             {
-                Components.OfferedProdsPODataBox prod1 = new Components.OfferedProdsPODataBox(sread1["PRODUCTNAME"].ToString(), Convert.ToDouble(sread1["ORIGINALPICE"]), sread1["UOMID"].ToString(), Convert.ToInt32(sread1["PRODUCTID"]), ItemsBoxPoList);
-                ItemsBoxOfferd.Controls.Add(prod1);
+
+                foreach (UserControl items in ItemsBoxOfferd.Controls) { items.Dispose(); }
+                ItemsBoxOfferd.Controls.Clear();
+                MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT p.* FROM PRODUCTS p JOIN PRODUCTSUPPLIER sp ON p.PRODUCTID = sp.PRODUCTID WHERE sp.SUPPLIERID = " + splr1[splrCMBox.Text] + ";", initd.con1);
+                MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
+                while (sread1.Read())
+                {
+                    Components.OfferedProdsPODataBox prod1 = new Components.OfferedProdsPODataBox(sread1["PRODUCTNAME"].ToString(), Convert.ToDouble(sread1["ORIGINALPICE"]), "", Convert.ToInt32(sread1["PRODUCTID"]), ItemsBoxPoList);
+                    ItemsBoxOfferd.Controls.Add(prod1);
+                }
+                sread1.Close();
+                scom1 = null;
+                sread1 = null;
+
             }
-            sread1.Close();
-            scom1 = null;
-            sread1 = null;
+         initd.con1.Close();
         }
         public void totalall()
         {
@@ -118,21 +132,17 @@ namespace JUFAV_System.ModulesSecond.Inventory
             {
                 initd.number.Add(Convert.ToDouble(i.Controls.Find("TotalValue", true)[0].Text));
             }
-            subtotalvallbl.Text = initd.number.Sum().ToString() + ".00";
+
             //verifier for non character input
-            totalamount.Text = (initd.number.Sum() + (Convert.ToDouble(Tax.Text) + Convert.ToDouble(Shipping.Text) + Convert.ToDouble(others.Text))).ToString() + ".00";
+            totalamount.Text = initd.number.Sum().ToString() + ".00";
         }
         private void generatePOID()
         {
-            String id = "";
-            Random ran1 = new Random();
-            for (int i = 0; i != 5; i++)
-            {
-                id = id + ran1.Next(1, 10);
-            }
-            ran1 = null;
-            initd.POID = Convert.ToInt32(id);
-            id = "";
+            if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT POID FROM PURCHASEORDER ORDER BY POID DESC LIMIT 1;", initd.con1);
+            int idtouse = Convert.ToInt32(scom1.ExecuteScalar()) + 1;
+            initd.POID = Convert.ToInt32(idtouse);
+            initd.con1.Close();
         }
         private int generateOrder()
         {
@@ -155,41 +165,35 @@ namespace JUFAV_System.ModulesSecond.Inventory
             }
         }
         //ung order status dapat pag pinindot 
-        private int determinesuppID() {
+        private int determinesuppID()
+        {
             int id = 0;
-            if (Existing.Checked == true)
-            {
-                id = Convert.ToInt32(splr1[SUPPLIERNAME.Text]);
 
-            }else
-            {
-                id = Convert.ToInt32(splr1[CCompname.Text]);
+            id = Convert.ToInt32(splr1[SUPPLIERNAME.Text]);
 
+
+            //Create its own ID
+            foreach (char i in "1111111")
+            {
+                id = id + new Random().Next(1, 9);
             }
+            GC.Collect();
+
             return id;
         }
-        private String determinesuppNAME() {
+        private String determinesuppNAME()
+        {
             String name = "";
-            if (Existing.Checked == true)
-            {
-                name = SUPPLIERNAME.Text;
-
-            }
-            else
-            {
-                name = CCompname.Text;
-
-            }
+            name = SUPPLIERNAME.Text;
             return name;
-
-
         }
         private void insertinto()
         {
+            if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }
             this.Cursor = Cursors.WaitCursor;
             if (ItemsBoxPoList.Controls.Count != 0)
             {
-                SQLiteCommand scom1 = new SQLiteCommand("INSERT INTO PURCHASEORDER (POID,USERID,ORDERDATE,EXPECTEDORDERDATE,SUPPLIERID,SUPPLIER,TIMES,TOTALPRODUCTS,TOTALCOST,ORDERSTATUS) VALUES (" + initd.POID + "," + initd.UserID + ",'" + DateTime.Now.ToShortDateString() + "','" + dateTimePicker1.Text + "',"+determinesuppID()+",'" + determinesuppNAME() + "','" + DateTime.Now.ToShortTimeString() + "','" + ItemsBoxPoList.Controls.Count + "'," + Convert.ToDouble(totalamount.Text) + ",'PENDING');", initd.scon);
+                MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("INSERT INTO PURCHASEORDER (POID,USERID,ORDERDATE,EXPECTEDORDERDATE,SUPPLIERID,SUPPLIER,TIMES,TOTALPRODUCTS,TOTALCOST,ORDERSTATUS) VALUES (" + initd.POID + "," + initd.UserID + ",'" + DateTime.Now.ToShortDateString() + "','" + dateTimePicker1.Text + "'," + determinesuppID() + ",'" + determinesuppNAME() + "','" + DateTime.Now.ToShortTimeString() + "','" + ItemsBoxPoList.Controls.Count + "'," + Convert.ToDouble(totalamount.Text) + ",'PENDING');", initd.con1);
                 scom1.ExecuteNonQuery();
                 foreach (KeyValuePair<int, String> i in initd.QueryID)
                 {
@@ -198,29 +202,13 @@ namespace JUFAV_System.ModulesSecond.Inventory
                     Thread.Sleep(100);
                 }
                 //Vendor info
-                if (Existing.Checked == true)
-                {
-                    //if no selected please insert data first
-                   scom1.CommandText = "INSERT INTO POVENDORINFO (ID,POID,COMPANYNAME,CONTACTPERSON,CONTACTNO,COMPANYADDRESS) VALUES (" + generateOrder() + "," + initd.POID + ",'"+SUPPLIERNAME.Text+ "','" + ContactPer.Text + "','" + ContactNo.Text + "','" + ADdresss.Text + "');";
-                   scom1.ExecuteNonQuery();
-                }
-                else
-                {
-                    scom1.CommandText = "INSERT INTO POVENDORINFO (ID,POID,COMPANYNAME,CONTACTPERSON,CONTACTNO,COMPANYADDRESS) VALUES (" + generateOrder() + "," + initd.POID + ",'" + CCompname.Text + "','" +CcontactP.Text + "','" + Ccontactno.Text + "','" +Caddress.Text + "');";
-                    scom1.ExecuteNonQuery();
-                }
-                //SHIP TO ADDRESS
-                if (DefaultAddress.Checked == true)
-                {
-                    //if no selected please insert data first
-                    scom1.CommandText = "INSERT INTO POSHIPTOINFO(ID,POID,COMPANYNAME,CONTACTPERSON,CONTACTNO,COMPANYADDRESS,REMARKS) VALUES (" + generateOrder() + "," + initd.POID + ",'JUFAV CONSTRUCTION AND SUPPLY','Lanie Vinluan','+63 956-679-7330 , +63 942-010-8528','ZONE 6,SITIO MALIGAYA, MALIWALO, TARLAC CITY','"+ Remarks.Text+ "');";
-                    scom1.ExecuteNonQuery();
-                }
-                else
-                {
-                    scom1.CommandText = "INSERT INTO POSHIPTOINFO(ID,POID,COMPANYNAME,CONTACTPERSON,CONTACTNO,COMPANYADDRESS,REMARKS) VALUES (" + generateOrder() + "," + initd.POID + ",'"+CompanynameShipto.Text+"','"+ContactPersonShipTo.Text+"','"+ContactNoShipto.Text+"','"+AddressShipto.Text+"','"+Remarks.Text+"');";
-                    scom1.ExecuteNonQuery();
-                }
+
+                //if no selected please insert data first
+                scom1.CommandText = "INSERT INTO POVENDORINFO (ID,POID,COMPANYNAME,CONTACTPERSON,CONTACTNO,COMPANYADDRESS) VALUES (" + generateOrder() + "," + initd.POID + ",'" + SUPPLIERNAME.Text + "','" + ContactPer.Text + "','" + ContactNo.Text + "','" + ADdresss.Text + "');";
+                scom1.ExecuteNonQuery();
+
+                scom1.CommandText = "INSERT INTO POSHIPTOINFO (ID,POID,COMPANYNAME,CONTACTPERSON,CONTACTNO,COMPANYADDRESS,REMARKS) VALUES (" + generateOrder() + "," + initd.POID + ",'" + CompanynameShipto.Text + "','" + ContactPersonShipTo.Text + "','" + ContactPersonShipTo.Text + "','" + AddressShipto.Text + "','" + Remarks.Text + "');";
+                scom1.ExecuteNonQuery();
                 scom1 = null;
                 GC.Collect();
                 // scom1.CommandText = "";
@@ -237,6 +225,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
                 ms.Show();
             }
             this.Cursor = Cursors.Default;
+           initd.con1.Close();
         }
         private void Goback()
         {
@@ -253,7 +242,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
             bool test1 = false;
             bool test2 = false;
             Control containertometion = null;
-            Panel[] panels = {SHIPTO,TOTAL_VALUE,CUSTOM_SUPPLIER,REMARKS_PANEL};
+            Panel[] panels = { SHIPTO, TOTAL_VALUE, REMARKS_PANEL };
             foreach (Panel b in panels)
             {
                 foreach (Control i in b.Controls)
@@ -278,11 +267,13 @@ namespace JUFAV_System.ModulesSecond.Inventory
                         test2 = true;
                     }
                 }
-                if (breaker == 1){
-                    Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "NON CHARACTER INPUT", "Please Remove a non - letter character in panel : '" + b.Name + "' where text in this field : "+ containertometion.Name + " : '" + containertometion.Text + "' contains the non letter character.", "RETRY", 1);
+                if (breaker == 1)
+                {
+                    Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "NON CHARACTER INPUT", "Please Remove a non - letter character in panel : '" + b.Name + "' where text in this field : " + containertometion.Name + " : '" + containertometion.Text + "' contains the non letter character.", "RETRY", 1);
                     ms.Show();
                     break;
-                }else if (breaker == 2)
+                }
+                else if (breaker == 2)
                 {
                     Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "NO DATA INPUTTED", "Please please provide informaion in panel : '" + b.Name + "' where text in this : " + containertometion.Name + " : '" + containertometion.Text + "' contains no value.", "RETRY", 1);
                     ms.Show();
@@ -290,33 +281,23 @@ namespace JUFAV_System.ModulesSecond.Inventory
                 }
 
             }
-         
-          
-            if (test1 == true && test2 == true &&  determineifSupplierhasPO() == false)
-            {
-                test3 = false;
-                Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "PURCHASE ORDER", "THE DEFINED SUPPLIER HAS AN EXISTING PURCHASE ORDER.", "OK", 2);
-                ms.Show();
-              
-            }
-            else
-            {
-                test3 = true;
-            }
-      
-            if (test1 == true && test2 == true && test3 == true)//
+
+
+
+            if (test1 == true && test2 == true)//
             {
                 Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(insertinto, 0, "CREATE P.O", "ARE YOU SURE YOU INPUTTED THE RIGHT DATA?", "OK", 2);
                 ms.Show();
-              
+
             }
         }
         private bool determineifSupplierhasPO()
         {
+            if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }
             bool pak = true;
             //sqlite querry
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM PURCHASEORDER WHERE ORDERSTATUS = 'PENDING';", initd.scon);
-            SQLiteDataReader sread1 = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM PURCHASEORDER WHERE ORDERSTATUS = 'PENDING';", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
             {
                 if (sread1["SUPPLIER"].ToString() == determinesuppNAME())
@@ -328,6 +309,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
             sread1.Close();
             scom1 = null;
             sread1 = null;
+           initd.con1.Close();
             return pak;
         }
         private void splr_SelectedIndexChanged(object sender, EventArgs e)
@@ -346,11 +328,11 @@ namespace JUFAV_System.ModulesSecond.Inventory
             splr1 = null;
             initd.toexe = null;
             GC.Collect();   //garbage collector responsible for collecting null variables to clean from  memory   
-        }   
+        }
         private void ItemsBoxPoList_ControlAdded(object sender, ControlEventArgs e)
         {
             totalall();
-        }     
+        }
         private void DefaultAddress_CheckStateChanged(object sender, EventArgs e)
         {
             if (DefaultAddress.Checked == false)
@@ -362,7 +344,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
                 foreach (Control i in SHIPTO.Controls)
                 {
                     i.Enabled = true;
-                }              
+                }
             }
             else
             {
@@ -380,59 +362,12 @@ namespace JUFAV_System.ModulesSecond.Inventory
                 label4.Enabled = true;
             }
         }
-        private void Existing_CheckedChanged(object sender, EventArgs e)
-        {
-            if (Existing.Checked == true)
-            {
-                CustomSupplier.Checked = false;
-                foreach (Control i in CUSTOM_SUPPLIER.Controls)
-                {
-                    i.Enabled = false;
-                }
-                label30.Enabled = true;
-                CustomSupplier.Enabled = true;
-            }
-            else
-            {
-                CustomSupplier.Checked = true;
-                foreach (Control i in CUSTOM_SUPPLIER.Controls)
-                {
-                    i.Enabled = true;
-                }
-            }
-        }
-        private void CustomSupplier_CheckedChanged(object sender, EventArgs e)
-        {
-            if (CustomSupplier.Checked == true)
-            {
-                Existing.Checked = false;
-                foreach (Control i in VENDOR_INFORMATION.Controls)
-                {
-                    i.Enabled = false;
-                }
-                Vendor.Enabled = true;
-                Existing.Enabled = true;
-                //clears the text
-            }
-            else
-            {
-                //inserts text like space to prevent the verifyer
-                CCompname.Text = " ";
-                Ccontactno.Text = " ";
-                CcontactP.Text = " ";
-                Caddress.Text = " ";
-                Existing.Checked = true;
-                foreach (Control i in VENDOR_INFORMATION.Controls)
-                {
-                    i.Enabled = true;
-                }
-            }
-        }
         private void SUPPLIERNAME_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }
             //kapag ung combobox na SUPPLIERNAME sa VendorInfo ay napalitan kukunin nya ung information  ng supplier na yun  tas ididisplay nya ung information tungkol dun sa supplier
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM SUPPLIERS WHERE SUPPLIERID = " +Convert.ToInt32(splr1[SUPPLIERNAME.Text])+ ";", initd.scon);
-            SQLiteDataReader sread1 = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM SUPPLIERS WHERE SUPPLIERID = " + Convert.ToInt32(splr1[SUPPLIERNAME.Text]) + ";", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
             {
                 ContactPer.Text = sread1["CONTACTPERSON"].ToString();
@@ -443,9 +378,10 @@ namespace JUFAV_System.ModulesSecond.Inventory
             sread1 = null;
             scom1 = null;
             GC.Collect();
+            initd.con1.Close();
         }
         private void CreatePO_Click(object sender, EventArgs e)
-        {     
+        {
             verifydatainputs();  //verify muna yung input sa textbox kung may laman ba o wala then sa loob nito  
         }
         private void CancelBTn_Click(object sender, EventArgs e)
@@ -455,7 +391,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
         private void verifier(TextBox toscan)
         {
             //verify inputs first
-            if (Regex.IsMatch(toscan.Text,@"^\d+$") == true)
+            if (Regex.IsMatch(toscan.Text, @"^\d+$") == true)
             {
                 totalall();
             }
@@ -466,47 +402,14 @@ namespace JUFAV_System.ModulesSecond.Inventory
                 ms.Show();
             }
         }
-        private void Shipping_TextChanged(object sender, EventArgs e)
-        {
-            verifier(Shipping);
-        }
-        private void others_TextChanged(object sender, EventArgs e)
-        {
-            verifier(others);
-        }
-        private void Tax_TextChanged(object sender, EventArgs e)
-        {
-            verifier(Tax);
-        }
 
-        private void CCompname_Click(object sender, EventArgs e)
+        private void splrCMBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CCompname.Text == " ")
+            if (swtichtriger == 1)
             {
-                CCompname.Text = "";
+                filterer();
             }
-           
-        }
-        private void CcontactP_Click(object sender, EventArgs e)
-        {
-            if (CcontactP.Text == " ")
-            {
-                CcontactP.Text = "";
-            }
-        }
-        private void Ccontactno_Click(object sender, EventArgs e)
-        {
-            if (Ccontactno.Text == " ")
-            {
-                Ccontactno.Text = "";
-            }
-        }
-        private void Caddress_Click(object sender, EventArgs e)
-        {
-            if (Caddress.Text == " ")
-            {
-                Caddress.Text = "";
-            }
+
         }
     }
 }

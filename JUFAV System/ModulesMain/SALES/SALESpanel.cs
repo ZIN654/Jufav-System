@@ -17,13 +17,13 @@ namespace JUFAV_System.ModulesMain.SALES
 {
     public partial class SALES : UserControl
     {
-        Dictionary<int, string> category;
-        Dictionary<int, string> Subcategory;
+        //tempo remove error
+        TextBox CustomerName2 = new TextBox();
+        TextBox CustomerAdress2 = new TextBox();
         Dictionary<int, string> UoM;
-    
 
-        Dictionary<string, int> category2;
-        Dictionary<string, int> Subcategory2;
+
+
         Dictionary<string, int> UoM2;
         ArrayList pageoffset = new ArrayList();//offsetbank
         int pages = 0;
@@ -31,28 +31,64 @@ namespace JUFAV_System.ModulesMain.SALES
         int currentpage = 0;
         public SALES()
         {
-           
+
             InitializeComponent();
-            category = new Dictionary<int, string>();
-            Subcategory = new Dictionary<int, string>();
+
             UoM = new Dictionary<int, string>();
             // limitsearch();
             initd.salestoexe = this;
             initd.itemsboxselected = ItemsBoxSelected;
-            category2 = new Dictionary<string, int>();
-            Subcategory2 = new Dictionary<string, int>();
+
             UoM2 = new Dictionary<string, int>();
             this.Dock = DockStyle.Fill;
             initd.QueryIDsSALES.Clear();
-            limitsearch();
+
             loadUnits();
+            limitsearch();
+            srchbox.Focus();
 
-
-
-            tofilter2(Convert.ToInt32(category2[comboBox1.Text]), Convert.ToInt32(Subcategory2[comboBox2.Text]), srchbox.Text);
+          
             //filterall(Convert.ToInt32(pageoffset[currentpage]), Convert.ToInt32(textBox4.Text));
             label10.Text = "PAGE: " + currentpage + " of " + pages.ToString();
-           // textBox4.Text = (rowcount - 1).ToString();
+            // textBox4.Text = (rowcount - 1).ToString();
+        }
+
+        private void limitsearch()
+        {
+            if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }
+            pageoffset = null;
+            pageoffset = new ArrayList();
+            GC.Collect();
+            //pageoffset.Add(0); para 1 agad
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT COUNT(*) FROM PRODUCTS;", initd.con1);
+            rowcount = Convert.ToInt32(scom1.ExecuteScalar());//all rows in tables products for instance 43
+            int displaylimit = Convert.ToInt32(textBox4.Text); // limit display
+            int test = 0;
+            pages = 0; //total pages //for display
+            int count = 0;// offset taker/for sqlite query
+            int remainder = rowcount % displaylimit;
+            pageoffset.Add(0);
+            for (int i = 0; i <= displaylimit; i++, count++)
+            {
+                if (i == displaylimit)
+                {
+                    i = 0;
+                    pageoffset.Add(count);
+                    pages++;
+                }
+                if (count == rowcount)
+                {
+                    break;
+                }
+            }
+            test = pages;
+            if (remainder < displaylimit && rowcount > 10)//kapag may natira for instance 143 "3" remainder ng 143 is 3 
+            {
+                pageoffset.Add(Convert.ToInt32(pageoffset[test - 1]) + displaylimit);
+
+            }
+
+            initd.con1.Close();
         }
         public void totalallSales()
         {
@@ -62,264 +98,82 @@ namespace JUFAV_System.ModulesMain.SALES
             {
                 initd.salestotal.Add(Convert.ToDouble(i.Controls.Find("total", true)[0].Text));
             }
-            subtotalvallbl.Text = "SUB TOTAL: " + initd.salestotal.Sum().ToString() + ".00";
+            subtotalvallbl.Text = "SUB TOTAL: " + initd.salestotal.Sum().ToString() + ".00" + "₱";
             //verifier for non character input
-           // totalamount.Text = (initd.number.Sum() + (Convert.ToDouble(Tax.Text) + Convert.ToDouble(Shipping.Text) + Convert.ToDouble(others.Text))).ToString() + ".00";
+            // totalamount.Text = (initd.number.Sum() + (Convert.ToDouble(Tax.Text) + Convert.ToDouble(Shipping.Text) + Convert.ToDouble(others.Text))).ToString() + ".00";
         }
         private void loadUnits()
         {
-
-            category.Clear();
-            Subcategory.Clear();
+            if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }
             UoM.Clear();
-           
-            comboBox1.Items.Add("ALL ITEMS");
-            comboBox2.Items.Add("ALL ITEMS");
-            category2.Add("ALL ITEMS", 1001);
-            Subcategory2.Add("ALL ITEMS", 1002);
-
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT CATEGORYID,CATEGORYDESC FROM CATEGORY;", initd.scon);
-            SQLiteDataReader sq1 = scom1.ExecuteReader();
-            while (sq1.Read())
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT UNITDESC,UNITID FROM UNITOFMEASURE", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
+            while (sread1.Read())
             {
-
-                category.Add(Convert.ToInt32(sq1["CATEGORYID"]), sq1["CATEGORYDESC"].ToString());
-                category2.Add(sq1["CATEGORYDESC"].ToString(), Convert.ToInt32(sq1["CATEGORYID"]));
-                comboBox1.Items.Add(sq1["CATEGORYDESC"].ToString());
-
-
+                UoM.Add(Convert.ToInt32(sread1["UNITID"]), sread1["UNITDESC"].ToString());
+                UoM2.Add(sread1["UNITDESC"].ToString(), Convert.ToInt32(sread1["UNITID"]));
 
             }
-            sq1.Close();
-            scom1.CommandText = "SELECT SUBCATEGORYID,SUBCATEGORYDESC FROM SUBCATEGORY";
-            sq1 = scom1.ExecuteReader();
-            while (sq1.Read())
+            sread1.Close();
+            scom1.CommandText = "SELECT * FROM PRODUCTS;";
+            sread1 = scom1.ExecuteReader();
+            while (sread1.Read())
             {
-
-                Subcategory.Add(Convert.ToInt32(sq1["SUBCATEGORYID"]), sq1["SUBCATEGORYDESC"].ToString());
-                Subcategory2.Add(sq1["SUBCATEGORYDESC"].ToString(), Convert.ToInt32(sq1["SUBCATEGORYID"]));
-                comboBox2.Items.Add(sq1["SUBCATEGORYDESC"].ToString());
-
+                Components.SalesProductList as1 = new Components.SalesProductList(sread1["PRODUCTNAME"].ToString(), Convert.ToInt32(sread1["QUANTITY"]), (Convert.ToInt32(sread1["ORIGINALPICE"]) + Convert.ToInt32(sread1["MARKUPVALUE"])).ToString(), Convert.ToInt32(sread1["PRODUCTID"]));
+                ITEMSBOX.Controls.Add(as1);
             }
-            sq1.Close();
-            scom1.CommandText = "SELECT UNITDESC,UNITID FROM UNITOFMEASURE";
-            sq1 = scom1.ExecuteReader();
-            while (sq1.Read())
-            {
-                UoM.Add(Convert.ToInt32(sq1["UNITID"]), sq1["UNITDESC"].ToString());
-                UoM2.Add(sq1["UNITDESC"].ToString(), Convert.ToInt32(sq1["UNITID"]));
-
-            }
-            sq1.Close();
-            comboBox1.SelectedIndex = 0;//
-            sq1 = null;
+            sread1.Close();
+            initd.con1.Close();
+            sread1 = null;
             scom1 = null;
         }
-        private void limitsearch()
+        private void filterall(int offset, int limit)
         {
-            pageoffset = null;
-            pageoffset = new ArrayList();
-            GC.Collect();
-            //pageoffset.Add(0); para 1 agad
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT COUNT(*) AS ROWS FROM PRODUCTS WHERE PRODUCTNAME LIKE '%" + srchbox.Text + "%';", initd.scon);
-            rowcount = Convert.ToInt32(scom1.ExecuteScalar());//all rows in tables products for instance 43
-            int displaylimit = Convert.ToInt32(textBox4.Text); // limit display
-            int test =0;
-            pages = 0; //total pages //for display
-            int count = 0;// offset taker/for sqlite query
-            int remainder = rowcount % displaylimit;
-            pageoffset.Add(0);
-            for (int i = 0; i <= displaylimit; i++,count++)
-            {
-                if (i == displaylimit)
-                {
-                    i = 0;
-                    pageoffset.Add(count);
-                    pages++; 
-                }
-                if (count == rowcount)
-                {
-                    break;
-                }
-            }
-            test = pages;
-                if (remainder < displaylimit && rowcount > 10)//kapag may natira for instance 143 "3" remainder ng 143 is 3 
-                {
-                    pageoffset.Add(Convert.ToInt32(pageoffset[test - 1]) + displaylimit);
-              
-                }
-           
-           
-        }
-        private void limitsearch2()
-        {
-            pageoffset.Clear();
-            //pageoffset.Add(0); para 1 agad
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT COUNT(*) AS ROWS FROM PRODUCTS WHERE CATEGORYID = " + Convert.ToInt32(category2[comboBox1.Text]) +  " ;", initd.scon);
-            rowcount = Convert.ToInt32(scom1.ExecuteScalar());//all rows in tables products for instance 43
-            int displaylimit = Convert.ToInt32(textBox4.Text); // limit display
-            int test = 0;
-            pages = 0; //total pages //for display
-            int count = 0;// offset taker/for sqlite query
-            int remainder = rowcount % displaylimit;
-            pageoffset.Add(0);
-            for (int i = 0; i <= displaylimit; i++, count++)
-            {
-                if (i == displaylimit)
-                {
-                    i = 0;
-                    pageoffset.Add(count);
-                    pages++;
-                }
-                if (count == rowcount)
-                {
-                    break;
-                }
-            }
-            test = pages;
-            if (remainder < displaylimit && rowcount > 10)//kapag may natira for instance 143 "3" remainder ng 143 is 3 
-            {
-                pageoffset.Add(Convert.ToInt32(pageoffset[test - 1]) + displaylimit);
-
-            }
-
-
-        }
-        private void limitsearch3()
-        {
-            pageoffset.Clear();
-            //pageoffset.Add(0); para 1 agad
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT COUNT(*) AS ROWS FROM PRODUCTS WHERE CATEGORYID = " + Convert.ToInt32(category2[comboBox1.Text]) + " AND SUBCATEGORYID = "+ Convert.ToInt32(Subcategory2[comboBox2.Text]) + " ;", initd.scon);
-            rowcount = Convert.ToInt32(scom1.ExecuteScalar());//all rows in tables products for instance 43
-            int displaylimit = Convert.ToInt32(textBox4.Text); // limit display
-            int test = 0;
-            pages = 0; //total pages //for display
-            int count = 0;// offset taker/for sqlite query
-            int remainder = rowcount % displaylimit;
-            pageoffset.Add(0);
-            for (int i = 0; i <= displaylimit; i++, count++)
-            {
-                if (i == displaylimit)
-                {
-                    i = 0;
-                    pageoffset.Add(count);
-                    pages++;
-                }
-                if (count == rowcount)
-                {
-                    break;
-                }
-            }
-            test = pages;
-            if (remainder < displaylimit && rowcount > 10)//kapag may natira for instance 143 "3" remainder ng 143 is 3 
-            {
-                pageoffset.Add(Convert.ToInt32(pageoffset[test - 1]) + displaylimit);
-
-            }
-
-
-        }
-        private void filterall(int offset,int limit)
-        {
+            if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }
             foreach (UserControl items in ITEMSBOX.Controls)
             {
                 items.Dispose();
             }
             ITEMSBOX.Controls.Clear();
             //test
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM PRODUCTS LIMIT " + limit+" OFFSET "+offset+";", initd.scon);
-            SQLiteDataReader sread1 = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM PRODUCTS LIMIT " + limit + " OFFSET " + offset + ";", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
             {
-                Components.SalesProductList as1 = new Components.SalesProductList(sread1["PRODUCTNAME"].ToString(), Convert.ToInt32(sread1["QUANTITY"]), UoM[Convert.ToInt32(sread1["UOMID"])], (Convert.ToInt32(sread1["ORIGINALPICE"]) + Convert.ToInt32(sread1["MARKUPVALUE"])).ToString(), Convert.ToInt32(sread1["PRODUCTID"]));
+                Components.SalesProductList as1 = new Components.SalesProductList(sread1["PRODUCTNAME"].ToString(), Convert.ToInt32(sread1["QUANTITY"]), (Convert.ToInt32(sread1["ORIGINALPICE"]) + Convert.ToInt32(sread1["MARKUPVALUE"])).ToString(), Convert.ToInt32(sread1["PRODUCTID"]));
                 ITEMSBOX.Controls.Add(as1);
             }
             sread1.Close();
             scom1 = null;
             sread1 = null;
+            initd.con1.Close();
 
         }
         private void filtersearchbox(String text)
         {
-           
+            if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }
             //search anything 
             foreach (UserControl items in ITEMSBOX.Controls)
             {
                 items.Dispose();
             }
             ITEMSBOX.Controls.Clear();
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM PRODUCTS WHERE PRODUCTNAME LIKE '%" + text + "%' LIMIT "+ Convert.ToInt32(textBox4.Text) + " OFFSET "+ Convert.ToInt32(pageoffset[currentpage]) + ";", initd.scon);
-            SQLiteDataReader sread1 = scom1.ExecuteReader();
+            //bug filtering sales
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM PRODUCTS WHERE PRODUCTNAME LIKE '%" + text + "%' LIMIT " + Convert.ToInt32(textBox4.Text) + " OFFSET " + Convert.ToInt32(pageoffset[currentpage]) + ";", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
             {
-                Components.SalesProductList as1 = new Components.SalesProductList(sread1["PRODUCTNAME"].ToString(), Convert.ToInt32(sread1["QUANTITY"]), UoM[Convert.ToInt32(sread1["UOMID"])], (Convert.ToInt32(sread1["ORIGINALPICE"]) + Convert.ToInt32(sread1["MARKUPVALUE"])).ToString(), Convert.ToInt32(sread1["PRODUCTID"]));
+                Components.SalesProductList as1 = new Components.SalesProductList(sread1["PRODUCTNAME"].ToString(), Convert.ToInt32(sread1["QUANTITY"]), (Convert.ToInt32(sread1["ORIGINALPICE"]) + Convert.ToInt32(sread1["MARKUPVALUE"])).ToString(), Convert.ToInt32(sread1["PRODUCTID"]));
                 ITEMSBOX.Controls.Add(as1);
             }
             sread1.Close();
             scom1 = null;
             sread1 = null;
 
-
+            initd.con1.Close();
 
         }
-        private void tofilter2(int Category, int Subcat, String search)
-        {
-            foreach (UserControl items in ITEMSBOX.Controls)
-            {
-                items.Dispose();
-            }
-            ITEMSBOX.Controls.Clear();
-            SQLiteCommand scom1 = new SQLiteCommand("", initd.scon);
-            SQLiteDataReader sread1;
 
-            //allitems
-            if (Category == 1001)
-            {
-                limitsearch();
-                scom1.CommandText = "SELECT * FROM PRODUCTS WHERE PRODUCTNAME LIKE '%" + search + "%' ORDER BY PRODUCTNAME DESC LIMIT " + Convert.ToInt32(textBox4.Text) + " OFFSET " + Convert.ToInt32(pageoffset[currentpage]) + ";";
-                sread1 = scom1.ExecuteReader(); ;
-                while (sread1.Read())
-                {//USERID,CATEGORYID,SUBCATEGORYID,UOMID,PRODUCTNAME,ORIGINALPICE,MARKUPVALUE,QUANTITY,SUPPLIERID,PERISHABLEPRODUCT,ISBATCH,EXPIRINGDATE
-                 //supplier boss kullang
-                    Components.SalesProductList as1 = new Components.SalesProductList(sread1["PRODUCTNAME"].ToString(),Convert.ToInt32(sread1["QUANTITY"]), UoM[Convert.ToInt32(sread1["UOMID"])], (Convert.ToInt32(sread1["ORIGINALPICE"])+ Convert.ToInt32(sread1["MARKUPVALUE"])).ToString(), Convert.ToInt32(sread1["PRODUCTID"]));
-                    ITEMSBOX.Controls.Add(as1);
-
-                }
-                sread1.Close();
-            }
-            else if(Category != 1001 && Subcat == 1002)
-            {
-                limitsearch2();
-                scom1.CommandText = "SELECT * FROM PRODUCTS WHERE CATEGORYID = " + Category + " ORDER BY PRODUCTNAME DESC LIMIT " + Convert.ToInt32(textBox4.Text) + " OFFSET " + Convert.ToInt32(pageoffset[currentpage]) + ";";
-                sread1 = scom1.ExecuteReader(); ;
-                while (sread1.Read())
-                {//USERID,CATEGORYID,SUBCATEGORYID,UOMID,PRODUCTNAME,ORIGINALPICE,MARKUPVALUE,QUANTITY,SUPPLIERID,PERISHABLEPRODUCT,ISBATCH,EXPIRINGDATE
-                 //supplier boss kullang
-                    Components.SalesProductList as1 = new Components.SalesProductList(sread1["PRODUCTNAME"].ToString(), Convert.ToInt32(sread1["QUANTITY"]), UoM[Convert.ToInt32(sread1["UOMID"])], (Convert.ToInt32(sread1["ORIGINALPICE"]) + Convert.ToInt32(sread1["MARKUPVALUE"])).ToString(), Convert.ToInt32(sread1["PRODUCTID"]));
-                    ITEMSBOX.Controls.Add(as1);
-
-                }
-                sread1.Close();
-            }else
-            {
-                limitsearch3();
-                scom1.CommandText = "SELECT * FROM PRODUCTS WHERE CATEGORYID = " + Category + " AND SUBCATEGORYID = "+Subcat+ " ORDER BY PRODUCTNAME DESC LIMIT " + Convert.ToInt32(textBox4.Text) + " OFFSET " + Convert.ToInt32(pageoffset[currentpage]) + ";";
-                sread1 = scom1.ExecuteReader(); ;
-                while (sread1.Read())
-                {//USERID,CATEGORYID,SUBCATEGORYID,UOMID,PRODUCTNAME,ORIGINALPICE,MARKUPVALUE,QUANTITY,SUPPLIERID,PERISHABLEPRODUCT,ISBATCH,EXPIRINGDATE
-                 //supplier boss kullang
-                    Components.SalesProductList as1 = new Components.SalesProductList(sread1["PRODUCTNAME"].ToString(), Convert.ToInt32(sread1["QUANTITY"]), UoM[Convert.ToInt32(sread1["UOMID"])], (Convert.ToInt32(sread1["ORIGINALPICE"]) + Convert.ToInt32(sread1["MARKUPVALUE"])).ToString(), Convert.ToInt32(sread1["PRODUCTID"]));
-                    ITEMSBOX.Controls.Add(as1);
-
-                }
-                sread1.Close();
-
-
-
-
-            }
-          
-        }
         private bool determineVal(int todet)
         {
             if (todet == 1)
@@ -331,35 +185,7 @@ namespace JUFAV_System.ModulesMain.SALES
                 return false;
             }
         }
-        private void setitem()
-        {
 
-            comboBox2.Items.Clear();
-            comboBox2.Items.Add("ALL ITEMS");
-            //if statement
-            if (comboBox1.Text == "ALL ITEMS")
-            {
-                comboBox2.SelectedIndex = 0;
-            }
-            else
-            {
-
-                SQLiteCommand scom1 = new SQLiteCommand("SELECT SUBCATEGORYID,SUBCATEGORYDESC FROM SUBCATEGORY WHERE CATEGORYID = " + Convert.ToInt32(category2[comboBox1.Text]) + ";", initd.scon);
-                SQLiteDataReader sq1 = scom1.ExecuteReader();
-                while (sq1.Read())
-                {
-                    comboBox2.Items.Add(sq1["SUBCATEGORYDESC"].ToString());
-                }
-                comboBox2.SelectedIndex = 0;
-                sq1.Close();
-                scom1 = null;
-                sq1 = null;
-
-            }
-
-
-
-        }
         private int determineVal2(bool todet)
         {
             if (todet == true)
@@ -370,19 +196,20 @@ namespace JUFAV_System.ModulesMain.SALES
             {
                 return 0;
             }
+
         }
         private void Inserintodatabase()
         {
             //Console.WriteLine("SAMPLE TEXT");
-           
-            Cursor = Cursors.WaitCursor;
-            SQLiteCommand scom1 = new SQLiteCommand("",initd.scon);
 
-            foreach (KeyValuePair<int,String> i in initd.QueryIDsSALES)
+            Cursor = Cursors.WaitCursor;
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("", initd.con1);
+
+            foreach (KeyValuePair<int, String> i in initd.QueryIDsSALES)
             {
                 Console.WriteLine("QUERYIES :" + i.Value.ToString());
-               scom1.CommandText = i.Value.ToString();
-               scom1.ExecuteNonQuery();
+                scom1.CommandText = i.Value.ToString();
+                scom1.ExecuteNonQuery();
             }
             scom1 = null;
             GC.Collect();
@@ -416,22 +243,23 @@ namespace JUFAV_System.ModulesMain.SALES
         private void determineinputs()
         {
 
-            if (CustomerName.Text == "" || CustomerAddress.Text == "")
+            if (CustomerName2.Text == "")
             {
                 Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(clearitems, 1, "CUSTOMER INFO", "UNABLE TO PROCESS SALES \n ADDRESS AND USERNAME MAY NOT HAVE VALUES", "OK", 2);
                 msg2.Show();
 
             }
             else
+
             {
-                if (Regex.IsMatch(CustomerName.Text, @"[^a-zA-Z0-9,\s]") == true || Regex.IsMatch(CustomerAddress.Text, @"[^a-zA-Z0-9,\s]") == true)
+                if (Regex.IsMatch(CustomerName2.Text, @"[^a-zA-Z0-9,\s]") == true || Regex.IsMatch(CustomerAdress2.Text, @"[^a-zA-Z0-9,\s]") == true)
                 {
                     Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(clearitems, 1, "DATA INPUTS", "UNABLE TO PROCESS SALES \n ADDRESS AND USERNAME MAY HAVE NON CHARACTER VALUES", "OK", 2);
                     msg2.Show();
                 }
                 else
                 {
-                    Messageboxes.typeoforder ps1 = new Messageboxes.typeoforder(Inserintodatabase,CustomerName.Text,CustomerAddress.Text);
+                    Messageboxes.typeoforder ps1 = new Messageboxes.typeoforder(Inserintodatabase, CustomerName2.Text, CustomerAdress2.Text);
                     ps1.Show();
                 }
 
@@ -444,7 +272,7 @@ namespace JUFAV_System.ModulesMain.SALES
             DeterminehasValue();
 
 
-           
+
             /*
             ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
             ModulesSecond.Sales.SalesPaymentMethod cat1 = new ModulesSecond.Sales.SalesPaymentMethod();
@@ -453,23 +281,9 @@ namespace JUFAV_System.ModulesMain.SALES
             ResponsiveUI1.spl1.Controls.Add(cat1);
             */
         }
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //bugs here
-           
-            setitem();
-            tofilter2(Convert.ToInt32(category2[comboBox1.Text]), Convert.ToInt32(Subcategory2[comboBox2.Text]), srchbox.Text);
-            
-        }
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-            tofilter2(Convert.ToInt32(category2[comboBox1.Text]), Convert.ToInt32(Subcategory2[comboBox2.Text]), srchbox.Text);
-            
-        }
         private void srachbox_Click(object sender, EventArgs e)
         {
-            filtersearchbox(srchbox.Text);
+
         }
         private void CLEARITEMSbtn_Click(object sender, EventArgs e)
         {
@@ -485,20 +299,23 @@ namespace JUFAV_System.ModulesMain.SALES
                 Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(clearitems, 0, "CLEAR ITEMS", "ARE YOU SURE YOU WANT TO CLEAR ALL ITEMS IN ORDER LIST?", "CLEAR", 2);
                 msg2.Show();
             }
-            }
+        }
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
             //sets agan to page zero 
+
             currentpage = 0;
-                if (textBox4.Text == "" || Regex.IsMatch(textBox4.Text, @"[^0-9]") || Convert.ToInt32(textBox4.Text) >= rowcount)
-                {
-                textBox4.Text = rowcount.ToString() ;
-                }
-                else
-                {
-                 limitsearch();
-                 tofilter2(Convert.ToInt32(category2[comboBox1.Text]), Convert.ToInt32(Subcategory2[comboBox2.Text]), srchbox.Text);
-                //filterall(Convert.ToInt32(pageoffset[currentpage]), Convert.ToInt32(textBox4.Text));
+            if (textBox4.Text == "" || Regex.IsMatch(textBox4.Text, @"[^0-9]") || Convert.ToInt32(textBox4.Text) >= rowcount)
+            {
+                textBox4.Text = rowcount.ToString();
+
+            }
+            else
+            {
+
+
+                filterall(Convert.ToInt32(pageoffset[currentpage]), Convert.ToInt32(textBox4.Text));
+                limitsearch();
                 label10.Text = "PAGE: " + currentpage + " of " + pageoffset.Count.ToString();
             }
         }
@@ -513,11 +330,11 @@ namespace JUFAV_System.ModulesMain.SALES
                 else
                 {
                     currentpage++;
-                    tofilter2(Convert.ToInt32(category2[comboBox1.Text]), Convert.ToInt32(Subcategory2[comboBox2.Text]), srchbox.Text);
-                   // filterall(Convert.ToInt32(pageoffset[currentpage]), Convert.ToInt32(textBox4.Text));
+
+                    filterall(Convert.ToInt32(pageoffset[currentpage]), Convert.ToInt32(textBox4.Text));
                     GC.Collect();
-                    label10.Text = "PAGE: " + currentpage + " of " + pageoffset.Count.ToString() ;
-                 }
+                    label10.Text = "PAGE: " + currentpage + " of " + pageoffset.Count.ToString();
+                }
             }
 
         }
@@ -532,8 +349,8 @@ namespace JUFAV_System.ModulesMain.SALES
                 else
                 {
                     currentpage--;
-                    tofilter2(Convert.ToInt32(category2[comboBox1.Text]), Convert.ToInt32(Subcategory2[comboBox2.Text]), srchbox.Text);
-                  // filterall(Convert.ToInt32(pageoffset[currentpage]), Convert.ToInt32(textBox4.Text));
+
+                    filterall(Convert.ToInt32(pageoffset[currentpage]), Convert.ToInt32(textBox4.Text));
                     GC.Collect();
                     label10.Text = "PAGE: " + currentpage + " of " + pageoffset.Count.ToString();
                 }
@@ -551,6 +368,32 @@ namespace JUFAV_System.ModulesMain.SALES
         private void SALES_Leave(object sender, EventArgs e)
         {
             initd.QueryIDsSALES.Clear();
+        }
+
+        private void srchbox_TextChanged(object sender, EventArgs e)
+        {
+            filtersearchbox(srchbox.Text);
+            //filter products 
+        }
+
+        private void srchbox_Click(object sender, EventArgs e)
+        {
+            if (srchbox.Text == "SEARCH BOX")
+            {
+                srchbox.Text = "";
+
+
+            }
+        }
+
+        private void textBox4_Click(object sender, EventArgs e)
+        {
+            textBox4.SelectAll();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

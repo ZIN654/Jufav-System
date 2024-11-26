@@ -33,20 +33,20 @@ namespace JUFAV_System.ModulesSecond.Inventory
             Subcategory2 = new Dictionary<string, int>();
             UoM2 = new Dictionary<string, int>();
             this.Dock = DockStyle.Fill;
-           //loadinfo();
-           // LoadData();
+            //loadinfo();
+            // LoadData();
             loadUnits();
             this.Cursor = Cursors.Default;
 
         }
-   
+
         private void loadinfo()
         {
             Category11.Clear();
             SubCat.Clear();
             Uom.Clear();
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT CATEGORYID,CATEGORYDESC FROM CATEGORY;", initd.scon);
-            SQLiteDataReader sq1 = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT CATEGORYID,CATEGORYDESC FROM CATEGORY;", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sq1 = scom1.ExecuteReader();
             while (sq1.Read())
             {
 
@@ -59,7 +59,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
             sq1 = scom1.ExecuteReader();
             while (sq1.Read())
             {
-               
+
                 SubCat.Add(Convert.ToInt32(sq1["SUBCATEGORYID"]), sq1["SUBCATEGORYDESC"].ToString());
                 comboBox2.Items.Add(sq1["SUBCATEGORYDESC"].ToString());
             }
@@ -76,11 +76,11 @@ namespace JUFAV_System.ModulesSecond.Inventory
         }
         private void LoadData()
         {
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM PRODUCTS",initd.scon);
-            SQLiteDataReader sread = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM PRODUCTS", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread = scom1.ExecuteReader();
             while (sread.Read())
             {
-                Components.SelectProductToAdjustDataBox db1 = new Components.SelectProductToAdjustDataBox(sread["PRODUCTNAME"].ToString(),Convert.ToDouble(sread["QUANTITY"]),Category11[Convert.ToInt32(sread["CATEGORYID"])].ToString(),SubCat[Convert.ToInt32(sread["SUBCATEGORYID"])].ToString(),determineperishable(Convert.ToInt32(sread["PERISHABLEPRODUCT"])), Uom[Convert.ToInt32(sread["UOMID"])].ToString(),Convert.ToInt32(sread["PRODUCTID"]));
+                Components.SelectProductToAdjustDataBox db1 = new Components.SelectProductToAdjustDataBox(sread["PRODUCTNAME"].ToString(), Convert.ToDouble(sread["QUANTITY"]), Category11[Convert.ToInt32(sread["CATEGORYID"])].ToString(), SubCat[Convert.ToInt32(sread["SUBCATEGORYID"])].ToString(), determineperishable(Convert.ToInt32(sread["PERISHABLEPRODUCT"])), Uom[Convert.ToInt32(sread["UOMID"])].ToString(), Convert.ToInt32(sread["PRODUCTID"]));
                 itemsBoxs.Controls.Add(db1);
             }
 
@@ -97,18 +97,18 @@ namespace JUFAV_System.ModulesSecond.Inventory
         }
         private void loadUnits()
         {
+            if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }
+            //  category.Clear();
+            // Subcategory.Clear();
+            // UoM.Clear();
 
-          //  category.Clear();
-           // Subcategory.Clear();
-           // UoM.Clear();
-            
             comboBox1.Items.Add("ALL ITEMS");
             comboBox2.Items.Add("ALL ITEMS");
             category2.Add("ALL ITEMS", 1001);
             Subcategory2.Add("ALL ITEMS", 1002);
 
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT CATEGORYID,CATEGORYDESC FROM CATEGORY;", initd.scon);
-            SQLiteDataReader sq1 = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT CATEGORYID,CATEGORYDESC FROM CATEGORY;", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sq1 = scom1.ExecuteReader();
             while (sq1.Read())
             {
 
@@ -125,7 +125,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
             while (sq1.Read())
             {
 
-              SubCat.Add(Convert.ToInt32(sq1["SUBCATEGORYID"]), sq1["SUBCATEGORYDESC"].ToString());
+                SubCat.Add(Convert.ToInt32(sq1["SUBCATEGORYID"]), sq1["SUBCATEGORYDESC"].ToString());
                 Subcategory2.Add(sq1["SUBCATEGORYDESC"].ToString(), Convert.ToInt32(sq1["SUBCATEGORYID"]));
                 comboBox2.Items.Add(sq1["SUBCATEGORYDESC"].ToString());
 
@@ -140,20 +140,22 @@ namespace JUFAV_System.ModulesSecond.Inventory
 
             }
             sq1.Close();
-         
-           comboBox1.SelectedIndex = 0;
+
+            comboBox1.SelectedIndex = 0;
             sq1 = null;
             scom1 = null;
+           initd.con1.Close();
         }
-        private void tofilter2(int Category, int Subcat, int perishable, int batched, String search)
+        private void tofilter2(int Category, int Subcat, String search)
         {
+            if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }
             foreach (UserControl items in itemsBoxs.Controls)//itemsbixS
             {
                 items.Dispose();
             }
             itemsBoxs.Controls.Clear();
-            SQLiteCommand scom1 = new SQLiteCommand("", initd.scon);
-            SQLiteDataReader sread;
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread;
 
             //allitems
             if (Category == 1001)
@@ -164,8 +166,8 @@ namespace JUFAV_System.ModulesSecond.Inventory
                 while (sread.Read())
                 {//USERID,CATEGORYID,SUBCATEGORYID,UOMID,PRODUCTNAME,ORIGINALPICE,MARKUPVALUE,QUANTITY,SUPPLIERID,PERISHABLEPRODUCT,ISBATCH,EXPIRINGDATE
                  //supplier boss kullang
-                   
-                    Components.SelectProductToAdjustDataBox db1 = new Components.SelectProductToAdjustDataBox(sread["PRODUCTNAME"].ToString(), Convert.ToDouble(sread["QUANTITY"]), Category11[Convert.ToInt32(sread["CATEGORYID"])].ToString(), SubCat[Convert.ToInt32(sread["SUBCATEGORYID"])].ToString(), determineperishable(Convert.ToInt32(sread["PERISHABLEPRODUCT"])), Uom[Convert.ToInt32(sread["UOMID"])].ToString(), Convert.ToInt32(sread["PRODUCTID"]));
+
+                    Components.SelectProductToAdjustDataBox db1 = new Components.SelectProductToAdjustDataBox(sread["PRODUCTNAME"].ToString(), Convert.ToDouble(sread["QUANTITY"]), Category11[Convert.ToInt32(sread["CATEGORYID"])].ToString(), SubCat[Convert.ToInt32(sread["SUBCATEGORYID"])].ToString(), false, "", Convert.ToInt32(sread["PRODUCTID"]));
                     itemsBoxs.Controls.Add(db1);
 
                 }
@@ -179,7 +181,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
                 while (sread.Read())
                 {//USERID,CATEGORYID,SUBCATEGORYID,UOMID,PRODUCTNAME,ORIGINALPICE,MARKUPVALUE,QUANTITY,SUPPLIERID,PERISHABLEPRODUCT,ISBATCH,EXPIRINGDATE
                  //supplier boss kullang
-                    Components.SelectProductToAdjustDataBox db1 = new Components.SelectProductToAdjustDataBox(sread["PRODUCTNAME"].ToString(), Convert.ToDouble(sread["QUANTITY"]), Category11[Convert.ToInt32(sread["CATEGORYID"])].ToString(), SubCat[Convert.ToInt32(sread["SUBCATEGORYID"])].ToString(), determineperishable(Convert.ToInt32(sread["PERISHABLEPRODUCT"])), Uom[Convert.ToInt32(sread["UOMID"])].ToString(), Convert.ToInt32(sread["PRODUCTID"]));
+                    Components.SelectProductToAdjustDataBox db1 = new Components.SelectProductToAdjustDataBox(sread["PRODUCTNAME"].ToString(), Convert.ToDouble(sread["QUANTITY"]), Category11[Convert.ToInt32(sread["CATEGORYID"])].ToString(), SubCat[Convert.ToInt32(sread["SUBCATEGORYID"])].ToString(), false, "", Convert.ToInt32(sread["PRODUCTID"]));
                     itemsBoxs.Controls.Add(db1);
 
                 }
@@ -188,12 +190,12 @@ namespace JUFAV_System.ModulesSecond.Inventory
             else
             {
 
-                scom1.CommandText = "SELECT * FROM PRODUCTS WHERE CATEGORYID = " + Category + " AND SUBCATEGORYID = " + Subcat + " AND ISBATCH = " + batched + " AND PERISHABLEPRODUCT = " + perishable + " ORDER BY PRODUCTNAME DESC;";
+                scom1.CommandText = "SELECT * FROM PRODUCTS WHERE CATEGORYID = " + Category + " AND SUBCATEGORYID = " + Subcat + " ORDER BY PRODUCTNAME DESC;";
                 sread = scom1.ExecuteReader(); ;
                 while (sread.Read())
                 {//USERID,CATEGORYID,SUBCATEGORYID,UOMID,PRODUCTNAME,ORIGINALPICE,MARKUPVALUE,QUANTITY,SUPPLIERID,PERISHABLEPRODUCT,ISBATCH,EXPIRINGDATE
                  //supplier boss kullang
-                    Components.SelectProductToAdjustDataBox db1 = new Components.SelectProductToAdjustDataBox(sread["PRODUCTNAME"].ToString(), Convert.ToDouble(sread["QUANTITY"]), Category11[Convert.ToInt32(sread["CATEGORYID"])].ToString(), SubCat[Convert.ToInt32(sread["SUBCATEGORYID"])].ToString(), determineperishable(Convert.ToInt32(sread["PERISHABLEPRODUCT"])), Uom[Convert.ToInt32(sread["UOMID"])].ToString(), Convert.ToInt32(sread["PRODUCTID"]));
+                    Components.SelectProductToAdjustDataBox db1 = new Components.SelectProductToAdjustDataBox(sread["PRODUCTNAME"].ToString(), Convert.ToDouble(sread["QUANTITY"]), Category11[Convert.ToInt32(sread["CATEGORYID"])].ToString(), SubCat[Convert.ToInt32(sread["SUBCATEGORYID"])].ToString(), false, "", Convert.ToInt32(sread["PRODUCTID"]));
                     itemsBoxs.Controls.Add(db1);
 
                 }
@@ -202,7 +204,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
 
             }
 
-
+          initd.con1.Close();
 
         }
         private bool determineVal(int todet)
@@ -229,7 +231,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
         }
         private void setitem()
         {
-
+            if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }
             comboBox2.Items.Clear();
             comboBox2.Items.Add("ALL ITEMS");
             //if statement
@@ -240,8 +242,8 @@ namespace JUFAV_System.ModulesSecond.Inventory
             else
             {
 
-                SQLiteCommand scom1 = new SQLiteCommand("SELECT SUBCATEGORYID,SUBCATEGORYDESC FROM SUBCATEGORY WHERE CATEGORYID = " + Convert.ToInt32(category2[comboBox1.Text]) + ";", initd.scon);
-                SQLiteDataReader sq1 = scom1.ExecuteReader();
+                MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT SUBCATEGORYID,SUBCATEGORYDESC FROM SUBCATEGORY WHERE CATEGORYID = " + Convert.ToInt32(category2[comboBox1.Text]) + ";", initd.con1);
+                MySql.Data.MySqlClient.MySqlDataReader sq1 = scom1.ExecuteReader();
                 while (sq1.Read())
                 {
                     comboBox2.Items.Add(sq1["SUBCATEGORYDESC"].ToString());
@@ -252,20 +254,21 @@ namespace JUFAV_System.ModulesSecond.Inventory
                 sq1 = null;
 
             }
-
+            initd.con1.Close();
 
 
         }
         private void filtersearchbox(String text)
         {
+            if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }
             //search anything 
             foreach (UserControl items in itemsBoxs.Controls)
             {
                 items.Dispose();
             }
             itemsBoxs.Controls.Clear();
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM PRODUCTS WHERE PRODUCTNAME LIKE '%" + text + "%';", initd.scon);
-            SQLiteDataReader sread = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM PRODUCTS WHERE PRODUCTNAME LIKE '%" + text + "%';", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread = scom1.ExecuteReader();
             while (sread.Read())
             {
                 Components.SelectProductToAdjustDataBox db1 = new Components.SelectProductToAdjustDataBox(sread["PRODUCTNAME"].ToString(), Convert.ToDouble(sread["QUANTITY"]), Category11[Convert.ToInt32(sread["CATEGORYID"])].ToString(), SubCat[Convert.ToInt32(sread["SUBCATEGORYID"])].ToString(), determineperishable(Convert.ToInt32(sread["PERISHABLEPRODUCT"])), Uom[Convert.ToInt32(sread["UOMID"])].ToString(), Convert.ToInt32(sread["PRODUCTID"]));
@@ -274,7 +277,7 @@ namespace JUFAV_System.ModulesSecond.Inventory
             sread.Close();
             scom1 = null;
             sread = null;
-
+           initd.con1.Close();
 
 
         }
@@ -289,22 +292,12 @@ namespace JUFAV_System.ModulesSecond.Inventory
         private void CatComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             setitem();
-            tofilter2(Convert.ToInt32(category2[comboBox1.Text]), Convert.ToInt32(Subcategory2[comboBox2.Text]), determineVal2(prshblchbx.Checked), determineVal2(batchdchbx.Checked), srchbox.Text);          
+            tofilter2(Convert.ToInt32(category2[comboBox1.Text]), Convert.ToInt32(Subcategory2[comboBox2.Text]), srchbox.Text);
         }
         private void SubCatComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            tofilter2(Convert.ToInt32(category2[comboBox1.Text]), Convert.ToInt32(Subcategory2[comboBox2.Text]), determineVal2(prshblchbx.Checked), determineVal2(batchdchbx.Checked), srchbox.Text);
-            if (comboBox2.Text == "ALL ITEMS")
-            {
-                prshblchbx.Enabled = false;
-                batchdchbx.Enabled = false;
-            }
-            else
-            {
-                prshblchbx.Enabled = true;
-                batchdchbx.Enabled = true;
+            tofilter2(Convert.ToInt32(category2[comboBox1.Text]), Convert.ToInt32(Subcategory2[comboBox2.Text]), srchbox.Text);
 
-            }
         }
         private void search_Click(object sender, EventArgs e)
         {

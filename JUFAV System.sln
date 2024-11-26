@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JUFAV System", "JUFAV System\JUFAV System.csproj", "{AFF9546B-7413-4B55-9F35-3FA1622C54C7}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "Setup1\Setup1.vdproj", "{E3483AD9-00A3-4E6E-84FA-3F72E06EC43C}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "Setup1\Setup1.vdproj", "{206F3E06-FA4C-450C-AE48-C7CBCA5D1CBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,8 @@ Global
 		{AFF9546B-7413-4B55-9F35-3FA1622C54C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFF9546B-7413-4B55-9F35-3FA1622C54C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFF9546B-7413-4B55-9F35-3FA1622C54C7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E3483AD9-00A3-4E6E-84FA-3F72E06EC43C}.Debug|Any CPU.ActiveCfg = Debug
-		{E3483AD9-00A3-4E6E-84FA-3F72E06EC43C}.Release|Any CPU.ActiveCfg = Debug
+		{206F3E06-FA4C-450C-AE48-C7CBCA5D1CBD}.Debug|Any CPU.ActiveCfg = Debug
+		{206F3E06-FA4C-450C-AE48-C7CBCA5D1CBD}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

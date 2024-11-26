@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+//include mo dito
+
+
 namespace JUFAV_System.dll
 {
     class ResponsiveUI1
@@ -15,13 +18,11 @@ namespace JUFAV_System.dll
         public static Panel spl1;
         public static String title = "";
         public static String title2 = "";
+
         //panel for login
-        
+        public static String title3 = "";
+        public static Panel spl2;
 
-
-
-
-      
         //0-FM,1-INV,2-SLS,3-RPRT,4-UTL
         public static void onenter1(CheckBox h1, Color cl1)
         {

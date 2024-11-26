@@ -83,6 +83,16 @@ namespace JUFAV_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Backupicon {
+            get {
+                object obj = ResourceManager.GetObject("Backupicon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BoxImpo {
             get {
                 object obj = ResourceManager.GetObject("BoxImpo", resourceCulture);
@@ -306,6 +316,16 @@ namespace JUFAV_System.Properties {
         internal static System.Drawing.Bitmap Print {
             get {
                 object obj = ResourceManager.GetObject("Print", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RestoreIcon {
+            get {
+                object obj = ResourceManager.GetObject("RestoreIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

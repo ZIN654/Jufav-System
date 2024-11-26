@@ -25,8 +25,8 @@ namespace JUFAV_System.Components
             this.Dock = DockStyle.Top;
             List = ItemsboxList;
             Prodid = ProdID;
+            label2.Text = ProdCost.ToString() + ".00";
             label1.Text = prodname;
-            label2.Text = ProdCost.ToString();
             label3.Text = UOM;
 
            

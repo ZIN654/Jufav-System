@@ -16,11 +16,12 @@ namespace JUFAV_System.dll
         //duplication
         //admin editing his ownw access rights
         //lowercase 
-        static SQLiteCommand scom1 = new SQLiteCommand("",initd.scon);
-        static SQLiteDataReader sread1;//care full make sure its only used by one fucntion
+        static MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("",initd.con1);
+        static MySql.Data.MySqlClient.MySqlDataReader sread1;//care full make sure its only used by one fucntion
        
         public static bool DetectInputifDupplicate(String [] data,int summontype)
         {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
             bool test1 = true;
             String[] querytype = { "SELECT SUPPLIERNAME,CONTACTPERSON,CONTACTNUMBER,COMPANYADDRESS FROM SUPPLIERS;", "SELECT NAME,USERNAME FROM USER_INFO;", "SELECT CATEGORYDESC FROM CATEGORY;","SELECT SUBCATEGORYDESC FROM SUBCATEGORY", "SELECT UNITDESC,UNITABBREVIATION FROM UNITOFMEASURE", "SELECT PRODUCTNAME FROM PRODUCTS"};
             //make lower case each insert
@@ -106,8 +107,9 @@ namespace JUFAV_System.dll
 
 
             }
-
+            initd.con1.Close();
             return test1;
+           
         }
         public static bool determinewhichpart(String [] data,String [] loaded,int datacount)
         {

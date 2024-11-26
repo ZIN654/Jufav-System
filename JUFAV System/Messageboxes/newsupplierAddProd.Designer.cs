@@ -87,7 +87,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.48495F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.51505F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 2);
@@ -114,7 +114,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 22);
+            this.label1.Size = new System.Drawing.Size(125, 22);
             this.label1.TabIndex = 0;
             this.label1.Text = "ADD NEW SUPPLIER";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -126,7 +126,7 @@
             this.label2.Location = new System.Drawing.Point(3, 25);
             this.label2.Margin = new System.Windows.Forms.Padding(3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(130, 24);
+            this.label2.Size = new System.Drawing.Size(125, 24);
             this.label2.TabIndex = 1;
             this.label2.Text = "COMPANY NAME";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -138,7 +138,7 @@
             this.label3.Location = new System.Drawing.Point(3, 55);
             this.label3.Margin = new System.Windows.Forms.Padding(3);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 23);
+            this.label3.Size = new System.Drawing.Size(125, 23);
             this.label3.TabIndex = 2;
             this.label3.Text = "CONTACT PERSON";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -150,7 +150,7 @@
             this.label4.Location = new System.Drawing.Point(3, 84);
             this.label4.Margin = new System.Windows.Forms.Padding(3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(130, 22);
+            this.label4.Size = new System.Drawing.Size(125, 22);
             this.label4.TabIndex = 3;
             this.label4.Text = "CONTACT NUMBER";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -162,7 +162,7 @@
             this.label5.Location = new System.Drawing.Point(3, 112);
             this.label5.Margin = new System.Windows.Forms.Padding(3);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(130, 28);
+            this.label5.Size = new System.Drawing.Size(125, 28);
             this.label5.TabIndex = 4;
             this.label5.Text = "ADDRESS";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -170,33 +170,34 @@
             // compname
             // 
             this.compname.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.compname.Location = new System.Drawing.Point(139, 25);
+            this.compname.Location = new System.Drawing.Point(134, 25);
             this.compname.Name = "compname";
-            this.compname.Size = new System.Drawing.Size(156, 23);
+            this.compname.Size = new System.Drawing.Size(151, 23);
             this.compname.TabIndex = 5;
             // 
             // conper
             // 
             this.conper.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.conper.Location = new System.Drawing.Point(139, 55);
+            this.conper.Location = new System.Drawing.Point(134, 55);
             this.conper.Name = "conper";
-            this.conper.Size = new System.Drawing.Size(156, 23);
+            this.conper.Size = new System.Drawing.Size(151, 23);
             this.conper.TabIndex = 6;
             // 
             // conum
             // 
             this.conum.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.conum.Location = new System.Drawing.Point(139, 84);
+            this.conum.Location = new System.Drawing.Point(134, 84);
+            this.conum.MaxLength = 11;
             this.conum.Name = "conum";
-            this.conum.Size = new System.Drawing.Size(156, 23);
+            this.conum.Size = new System.Drawing.Size(151, 23);
             this.conum.TabIndex = 7;
             // 
             // conadd
             // 
             this.conadd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.conadd.Location = new System.Drawing.Point(139, 112);
+            this.conadd.Location = new System.Drawing.Point(134, 112);
             this.conadd.Name = "conadd";
-            this.conadd.Size = new System.Drawing.Size(156, 23);
+            this.conadd.Size = new System.Drawing.Size(151, 23);
             this.conadd.TabIndex = 8;
             // 
             // tableLayoutPanel4

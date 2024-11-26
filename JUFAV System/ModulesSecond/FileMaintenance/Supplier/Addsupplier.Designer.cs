@@ -147,33 +147,34 @@
             // Addresstxtbox
             // 
             this.Addresstxtbox.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.Addresstxtbox.Location = new System.Drawing.Point(188, 145);
+            this.Addresstxtbox.Location = new System.Drawing.Point(209, 145);
             this.Addresstxtbox.Name = "Addresstxtbox";
-            this.Addresstxtbox.Size = new System.Drawing.Size(455, 30);
+            this.Addresstxtbox.Size = new System.Drawing.Size(434, 30);
             this.Addresstxtbox.TabIndex = 3;
             // 
             // ContactNotxtbox
             // 
             this.ContactNotxtbox.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.ContactNotxtbox.Location = new System.Drawing.Point(188, 109);
+            this.ContactNotxtbox.Location = new System.Drawing.Point(209, 109);
+            this.ContactNotxtbox.MaxLength = 11;
             this.ContactNotxtbox.Name = "ContactNotxtbox";
-            this.ContactNotxtbox.Size = new System.Drawing.Size(455, 30);
+            this.ContactNotxtbox.Size = new System.Drawing.Size(434, 30);
             this.ContactNotxtbox.TabIndex = 2;
             // 
             // ContactPersontxtbox
             // 
             this.ContactPersontxtbox.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.ContactPersontxtbox.Location = new System.Drawing.Point(188, 73);
+            this.ContactPersontxtbox.Location = new System.Drawing.Point(209, 73);
             this.ContactPersontxtbox.Name = "ContactPersontxtbox";
-            this.ContactPersontxtbox.Size = new System.Drawing.Size(455, 30);
+            this.ContactPersontxtbox.Size = new System.Drawing.Size(434, 30);
             this.ContactPersontxtbox.TabIndex = 1;
             // 
             // ComapnynametxtBX
             // 
             this.ComapnynametxtBX.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.ComapnynametxtBX.Location = new System.Drawing.Point(188, 38);
+            this.ComapnynametxtBX.Location = new System.Drawing.Point(209, 38);
             this.ComapnynametxtBX.Name = "ComapnynametxtBX";
-            this.ComapnynametxtBX.Size = new System.Drawing.Size(455, 30);
+            this.ComapnynametxtBX.Size = new System.Drawing.Size(434, 30);
             this.ComapnynametxtBX.TabIndex = 0;
             // 
             // panel2

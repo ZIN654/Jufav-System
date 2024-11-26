@@ -29,8 +29,9 @@ namespace JUFAV_System.ModulesMain.INVENTORY
         }
         private void loadData()
         {
-            SQLiteCommand sq1 = new SQLiteCommand("SELECT * FROM STOCKADJUSTMENTS;", initd.scon);
-            SQLiteDataReader sread1 = sq1.ExecuteReader();
+            if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }
+            MySql.Data.MySqlClient.MySqlCommand sq1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM STOCKADJUSTMENTS;", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread1 = sq1.ExecuteReader();
             while (sread1.Read())
             {
                 Components.StockAdjustmentsDatabox stck1 = new Components.StockAdjustmentsDatabox(sread1["DATEOFADJUSTMENT"].ToString(), sread1["PRODUCTNAME"].ToString(), sread1["ADJUSTMENTTYPE"].ToString(), Convert.ToInt32(sread1["PREVIOUSQUANTITY"]), Convert.ToInt32(sread1["ADJUSTEDQUANTITY"]), sread1["REASON"].ToString(), sread1["OTHERS"].ToString(),Convert.ToInt32(sread1["STOCKADJUSTMENTID"]));
@@ -39,6 +40,7 @@ namespace JUFAV_System.ModulesMain.INVENTORY
             sread1.Close();
             sq1 = null;
             sread1 = null;
+             initd.con1.Close();
         }
         private void CrtPOBTN_Click(object sender, EventArgs e)
         {

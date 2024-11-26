@@ -12,6 +12,7 @@ using System.IO;
 using System.Collections;
 using JUFAV_System.dll;
 using System.Threading;
+using System.Net;
 
 
 
@@ -37,53 +38,52 @@ namespace JUFAV_System
         }
         public void Startboot()
         {
+            String TouseIP = "";
+            var hostname = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var IP in hostname.AddressList)
+            {
+                if (IP.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    TouseIP = IP.ToString();
+                    break;
+                }
+            }
             initd sql1 = new initd();
             this.Cursor = Cursors.WaitCursor;
            //delay(12, progressBar1);
 
-            sql1.CreatePath();
+           sql1.CreateDB();
 
-
-           delay(9, progressBar1);
-            sql1.checkpath();
-            
-
-           // delay(12, progressBar1);
-
-            sql1.CreateDatabase();
-            delay(9, progressBar1);
-            //  delay(12, progressBar1);
-
-
-            sql1.TestConnection(sql1.Constring);
-            delay(9, progressBar1);
-            // delay(12, progressBar1);
+            delay(12, progressBar1);
+      
 
             sql1.InitializeTable();
-            delay(9, progressBar1);
+            delay(12, progressBar1);
             sql1.InitializeArcTable();
-            delay(9, progressBar1);
-            // delay(12, progressBar1);
 
-            sql1.InitTableFilemaintenance();
-            delay(9, progressBar1);
+            delay(12, progressBar1);
+            sql1.InitTableFilemaintenance();//fm
+            delay(12, progressBar1);
             sql1.InitTableArcFilemaintenance();
-            delay(9, progressBar1);
-            //  delay(12, progressBar1);
-
-            sql1.InitTableInventory();
-            delay(9, progressBar1);
+          
+            delay(12, progressBar1);
+            sql1.InitTableInventory();//inventory
+            delay(12, progressBar1);
             sql1.ArcInitTableInventory();
-            delay(9, progressBar1);
-            sql1.InitTableSales();
-            delay(9, progressBar1);
-            // delay(12, progressBar1);
+
+            delay(12, progressBar1);
+            sql1.InitTableSales();//sales
+            delay(12, progressBar1);
+
+            initd.con1.ConnectionString = @"server=" + TouseIP.Trim() + ";user=root;password=zxcvbnm12;port=3306;database=jufav2;";//
+            initd.constringtouserefresh = @"server=" + TouseIP.Trim() + ";user=root;password=zxcvbnm12;port=3306;database=jufav2;";
+            //ARCHIVES
             this.Cursor = Cursors.Default;
             this.Hide();
             Ffirstrun.FirstRun f1 = new Ffirstrun.FirstRun();
             f1.Show();
             f1.BringToFront();
-            //after ma set up 
+     
         }
         public void delay(int value, ProgressBar sb1)
         {

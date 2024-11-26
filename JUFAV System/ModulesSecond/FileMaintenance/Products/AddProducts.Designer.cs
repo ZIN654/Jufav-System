@@ -34,6 +34,10 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.pan = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.totalSRP = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.ADDNEWSPLR = new System.Windows.Forms.Button();
             this.addtolistbtn = new System.Windows.Forms.Button();
             this.Suplir = new System.Windows.Forms.Label();
@@ -41,11 +45,8 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.InitialStcktxtbox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.Unittypecombobox = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.OriginalPricetxtbox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.mkuptxtbox1 = new System.Windows.Forms.TextBox();
             this.SubCatCombo = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -54,40 +55,37 @@
             this.Prodnametxtbox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.splrnot = new System.Windows.Forms.PictureBox();
             this.splrlabel = new System.Windows.Forms.Label();
+            this.InitStckImg = new System.Windows.Forms.PictureBox();
             this.initnot = new System.Windows.Forms.Label();
+            this.OrigPUnitImg = new System.Windows.Forms.PictureBox();
             this.OrigPriceUnittypenot = new System.Windows.Forms.Label();
+            this.MarkUp = new System.Windows.Forms.PictureBox();
             this.MKupnot = new System.Windows.Forms.Label();
+            this.ProdnameImg = new System.Windows.Forms.PictureBox();
             this.ProdnameNot = new System.Windows.Forms.Label();
+            this.CatSubIm = new System.Windows.Forms.PictureBox();
             this.Catnot = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.totalSRP = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.splrnot = new System.Windows.Forms.PictureBox();
-            this.InitStckImg = new System.Windows.Forms.PictureBox();
-            this.OrigPUnitImg = new System.Windows.Forms.PictureBox();
-            this.MarkUp = new System.Windows.Forms.PictureBox();
-            this.ProdnameImg = new System.Windows.Forms.PictureBox();
-            this.CatSubIm = new System.Windows.Forms.PictureBox();
             this.ITEMSBOXSPLR = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.pan.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splrnot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InitStckImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrigPUnitImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MarkUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProdnameImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CatSubIm)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -166,6 +164,7 @@
             // 
             // pan
             // 
+            this.pan.AutoScroll = true;
             this.pan.Controls.Add(this.label11);
             this.pan.Controls.Add(this.label6);
             this.pan.Controls.Add(this.totalSRP);
@@ -177,8 +176,6 @@
             this.pan.Controls.Add(this.checkBox1);
             this.pan.Controls.Add(this.InitialStcktxtbox);
             this.pan.Controls.Add(this.label9);
-            this.pan.Controls.Add(this.Unittypecombobox);
-            this.pan.Controls.Add(this.label8);
             this.pan.Controls.Add(this.OriginalPricetxtbox);
             this.pan.Controls.Add(this.label7);
             this.pan.Controls.Add(this.mkuptxtbox1);
@@ -193,6 +190,49 @@
             this.pan.Name = "pan";
             this.pan.Size = new System.Drawing.Size(710, 235);
             this.pan.TabIndex = 1;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Actor", 14.25F);
+            this.label11.ForeColor = System.Drawing.Color.Red;
+            this.label11.Location = new System.Drawing.Point(412, 78);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(184, 23);
+            this.label11.TabIndex = 24;
+            this.label11.Text = "CURRENT MARKUP :";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Actor", 14.25F);
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(615, 78);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(62, 23);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "00.00";
+            this.label6.TextChanged += new System.EventHandler(this.label6_TextChanged);
+            // 
+            // totalSRP
+            // 
+            this.totalSRP.AutoSize = true;
+            this.totalSRP.Font = new System.Drawing.Font("Actor", 14.25F);
+            this.totalSRP.Location = new System.Drawing.Point(615, 116);
+            this.totalSRP.Name = "totalSRP";
+            this.totalSRP.Size = new System.Drawing.Size(62, 23);
+            this.totalSRP.TabIndex = 23;
+            this.totalSRP.Text = "00.00";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Actor", 14.25F);
+            this.label10.Location = new System.Drawing.Point(412, 117);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(146, 23);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "SELLING PRICE :";
             // 
             // ADDNEWSPLR
             // 
@@ -212,7 +252,7 @@
             this.addtolistbtn.Name = "addtolistbtn";
             this.addtolistbtn.Size = new System.Drawing.Size(115, 28);
             this.addtolistbtn.TabIndex = 20;
-            this.addtolistbtn.Text = "ADD";
+            this.addtolistbtn.Text = "ADD TO LIST";
             this.addtolistbtn.UseVisualStyleBackColor = true;
             this.addtolistbtn.Click += new System.EventHandler(this.addtolistbtn_Click);
             // 
@@ -256,6 +296,7 @@
             this.InitialStcktxtbox.Size = new System.Drawing.Size(211, 26);
             this.InitialStcktxtbox.TabIndex = 15;
             this.InitialStcktxtbox.Text = "0";
+            this.InitialStcktxtbox.Click += new System.EventHandler(this.InitialStcktxtbox_Click);
             this.InitialStcktxtbox.TextChanged += new System.EventHandler(this.InitialStcktxtbox_TextChanged);
             // 
             // label9
@@ -268,26 +309,6 @@
             this.label9.TabIndex = 14;
             this.label9.Text = "INITIAL STOCK";
             // 
-            // Unittypecombobox
-            // 
-            this.Unittypecombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Unittypecombobox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Unittypecombobox.FormattingEnabled = true;
-            this.Unittypecombobox.Location = new System.Drawing.Point(539, 151);
-            this.Unittypecombobox.Name = "Unittypecombobox";
-            this.Unittypecombobox.Size = new System.Drawing.Size(165, 28);
-            this.Unittypecombobox.TabIndex = 13;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.label8.Location = new System.Drawing.Point(412, 151);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(99, 23);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "UNIT TYPE";
-            // 
             // OriginalPricetxtbox
             // 
             this.OriginalPricetxtbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -296,6 +317,7 @@
             this.OriginalPricetxtbox.Size = new System.Drawing.Size(211, 26);
             this.OriginalPricetxtbox.TabIndex = 11;
             this.OriginalPricetxtbox.Text = "0";
+            this.OriginalPricetxtbox.Click += new System.EventHandler(this.OriginalPricetxtbox_Click);
             this.OriginalPricetxtbox.TextChanged += new System.EventHandler(this.OriginalPricetxtbox_TextChanged);
             // 
             // label7
@@ -304,20 +326,9 @@
             this.label7.Font = new System.Drawing.Font("Actor", 14.25F);
             this.label7.Location = new System.Drawing.Point(3, 116);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(109, 23);
+            this.label7.Size = new System.Drawing.Size(115, 23);
             this.label7.TabIndex = 10;
-            this.label7.Text = "UNIT COST:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(615, 78);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 23);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "00.00";
+            this.label7.Text = "BASE PRICE:";
             // 
             // mkuptxtbox1
             // 
@@ -334,7 +345,7 @@
             // 
             // SubCatCombo
             // 
-            this.SubCatCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SubCatCombo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.SubCatCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.SubCatCombo.FormattingEnabled = true;
             this.SubCatCombo.Location = new System.Drawing.Point(539, 4);
@@ -342,6 +353,7 @@
             this.SubCatCombo.Size = new System.Drawing.Size(165, 28);
             this.SubCatCombo.TabIndex = 6;
             this.SubCatCombo.SelectedIndexChanged += new System.EventHandler(this.SubCatCombo_SelectedIndexChanged);
+            this.SubCatCombo.TextChanged += new System.EventHandler(this.SubCatCombo_TextChanged);
             // 
             // label4
             // 
@@ -355,13 +367,14 @@
             // 
             // CategoryCOmbo
             // 
-            this.CategoryCOmbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CategoryCOmbo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CategoryCOmbo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.CategoryCOmbo.Location = new System.Drawing.Point(170, 6);
             this.CategoryCOmbo.Name = "CategoryCOmbo";
             this.CategoryCOmbo.Size = new System.Drawing.Size(211, 28);
             this.CategoryCOmbo.TabIndex = 4;
             this.CategoryCOmbo.SelectedIndexChanged += new System.EventHandler(this.CategoryCOmbo_SelectedIndexChanged);
+            this.CategoryCOmbo.TextChanged += new System.EventHandler(this.CategoryCOmbo_TextChanged);
             // 
             // label3
             // 
@@ -411,6 +424,18 @@
             this.panel1.Size = new System.Drawing.Size(269, 235);
             this.panel1.TabIndex = 2;
             // 
+            // splrnot
+            // 
+            this.splrnot.BackColor = System.Drawing.Color.Transparent;
+            this.splrnot.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
+            this.splrnot.Location = new System.Drawing.Point(13, 199);
+            this.splrnot.Name = "splrnot";
+            this.splrnot.Size = new System.Drawing.Size(25, 25);
+            this.splrnot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.splrnot.TabIndex = 63;
+            this.splrnot.TabStop = false;
+            this.splrnot.Visible = false;
+            // 
             // splrlabel
             // 
             this.splrlabel.Font = new System.Drawing.Font("Actor", 9.25F);
@@ -422,6 +447,18 @@
             this.splrlabel.Text = "Please add at least one supplier into the supplier list ";
             this.splrlabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.splrlabel.Visible = false;
+            // 
+            // InitStckImg
+            // 
+            this.InitStckImg.BackColor = System.Drawing.Color.Transparent;
+            this.InitStckImg.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
+            this.InitStckImg.Location = new System.Drawing.Point(13, 154);
+            this.InitStckImg.Name = "InitStckImg";
+            this.InitStckImg.Size = new System.Drawing.Size(25, 25);
+            this.InitStckImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.InitStckImg.TabIndex = 61;
+            this.InitStckImg.TabStop = false;
+            this.InitStckImg.Visible = false;
             // 
             // initnot
             // 
@@ -435,6 +472,18 @@
             this.initnot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.initnot.Visible = false;
             // 
+            // OrigPUnitImg
+            // 
+            this.OrigPUnitImg.BackColor = System.Drawing.Color.Transparent;
+            this.OrigPUnitImg.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
+            this.OrigPUnitImg.Location = new System.Drawing.Point(12, 116);
+            this.OrigPUnitImg.Name = "OrigPUnitImg";
+            this.OrigPUnitImg.Size = new System.Drawing.Size(25, 25);
+            this.OrigPUnitImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.OrigPUnitImg.TabIndex = 59;
+            this.OrigPUnitImg.TabStop = false;
+            this.OrigPUnitImg.Visible = false;
+            // 
             // OrigPriceUnittypenot
             // 
             this.OrigPriceUnittypenot.Font = new System.Drawing.Font("Actor", 9.25F);
@@ -443,9 +492,21 @@
             this.OrigPriceUnittypenot.Name = "OrigPriceUnittypenot";
             this.OrigPriceUnittypenot.Size = new System.Drawing.Size(186, 35);
             this.OrigPriceUnittypenot.TabIndex = 60;
-            this.OrigPriceUnittypenot.Text = "Please fill out the Original Price and Unittype  Field";
+            this.OrigPriceUnittypenot.Text = "Please fill out the Original Price";
             this.OrigPriceUnittypenot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.OrigPriceUnittypenot.Visible = false;
+            // 
+            // MarkUp
+            // 
+            this.MarkUp.BackColor = System.Drawing.Color.Transparent;
+            this.MarkUp.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
+            this.MarkUp.Location = new System.Drawing.Point(12, 80);
+            this.MarkUp.Name = "MarkUp";
+            this.MarkUp.Size = new System.Drawing.Size(25, 25);
+            this.MarkUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.MarkUp.TabIndex = 57;
+            this.MarkUp.TabStop = false;
+            this.MarkUp.Visible = false;
             // 
             // MKupnot
             // 
@@ -459,6 +520,18 @@
             this.MKupnot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MKupnot.Visible = false;
             // 
+            // ProdnameImg
+            // 
+            this.ProdnameImg.BackColor = System.Drawing.Color.Transparent;
+            this.ProdnameImg.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
+            this.ProdnameImg.Location = new System.Drawing.Point(12, 44);
+            this.ProdnameImg.Name = "ProdnameImg";
+            this.ProdnameImg.Size = new System.Drawing.Size(25, 25);
+            this.ProdnameImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ProdnameImg.TabIndex = 55;
+            this.ProdnameImg.TabStop = false;
+            this.ProdnameImg.Visible = false;
+            // 
             // ProdnameNot
             // 
             this.ProdnameNot.Font = new System.Drawing.Font("Actor", 9.25F);
@@ -470,6 +543,18 @@
             this.ProdnameNot.Text = "Please Fill up the Product name Field";
             this.ProdnameNot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ProdnameNot.Visible = false;
+            // 
+            // CatSubIm
+            // 
+            this.CatSubIm.BackColor = System.Drawing.Color.Transparent;
+            this.CatSubIm.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
+            this.CatSubIm.Location = new System.Drawing.Point(12, 8);
+            this.CatSubIm.Name = "CatSubIm";
+            this.CatSubIm.Size = new System.Drawing.Size(25, 25);
+            this.CatSubIm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CatSubIm.TabIndex = 53;
+            this.CatSubIm.TabStop = false;
+            this.CatSubIm.Visible = false;
             // 
             // Catnot
             // 
@@ -488,18 +573,28 @@
             this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.ITEMSBOXSPLR, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 263);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.09804F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.90196F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 234F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(991, 284);
             this.tableLayoutPanel3.TabIndex = 7;
+            // 
+            // ITEMSBOXSPLR
+            // 
+            this.ITEMSBOXSPLR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ITEMSBOXSPLR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ITEMSBOXSPLR.Location = new System.Drawing.Point(1, 54);
+            this.ITEMSBOXSPLR.Margin = new System.Windows.Forms.Padding(0);
+            this.ITEMSBOXSPLR.Name = "ITEMSBOXSPLR";
+            this.ITEMSBOXSPLR.Size = new System.Drawing.Size(989, 229);
+            this.ITEMSBOXSPLR.TabIndex = 1;
             // 
             // label5
             // 
@@ -507,144 +602,65 @@
             this.label5.Font = new System.Drawing.Font("Actor", 14.25F);
             this.label5.Location = new System.Drawing.Point(4, 1);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(302, 20);
+            this.label5.Size = new System.Drawing.Size(302, 23);
             this.label5.TabIndex = 0;
             this.label5.Text = "SUPPLIER LIST OF THIS PRODUCT:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.label10.Location = new System.Drawing.Point(412, 117);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(146, 23);
-            this.label10.TabIndex = 22;
-            this.label10.Text = "SELLING PRICE :";
-            // 
-            // totalSRP
-            // 
-            this.totalSRP.AutoSize = true;
-            this.totalSRP.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.totalSRP.Location = new System.Drawing.Point(615, 116);
-            this.totalSRP.Name = "totalSRP";
-            this.totalSRP.Size = new System.Drawing.Size(62, 23);
-            this.totalSRP.TabIndex = 23;
-            this.totalSRP.Text = "00.00";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Actor", 14.25F);
-            this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(412, 78);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(184, 23);
-            this.label11.TabIndex = 24;
-            this.label11.Text = "CURRENT MARKUP :";
-            // 
-            // splrnot
-            // 
-            this.splrnot.BackColor = System.Drawing.Color.Transparent;
-            this.splrnot.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
-            this.splrnot.Location = new System.Drawing.Point(13, 199);
-            this.splrnot.Name = "splrnot";
-            this.splrnot.Size = new System.Drawing.Size(25, 25);
-            this.splrnot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.splrnot.TabIndex = 63;
-            this.splrnot.TabStop = false;
-            this.splrnot.Visible = false;
-            // 
-            // InitStckImg
-            // 
-            this.InitStckImg.BackColor = System.Drawing.Color.Transparent;
-            this.InitStckImg.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
-            this.InitStckImg.Location = new System.Drawing.Point(13, 154);
-            this.InitStckImg.Name = "InitStckImg";
-            this.InitStckImg.Size = new System.Drawing.Size(25, 25);
-            this.InitStckImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.InitStckImg.TabIndex = 61;
-            this.InitStckImg.TabStop = false;
-            this.InitStckImg.Visible = false;
-            // 
-            // OrigPUnitImg
-            // 
-            this.OrigPUnitImg.BackColor = System.Drawing.Color.Transparent;
-            this.OrigPUnitImg.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
-            this.OrigPUnitImg.Location = new System.Drawing.Point(12, 116);
-            this.OrigPUnitImg.Name = "OrigPUnitImg";
-            this.OrigPUnitImg.Size = new System.Drawing.Size(25, 25);
-            this.OrigPUnitImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.OrigPUnitImg.TabIndex = 59;
-            this.OrigPUnitImg.TabStop = false;
-            this.OrigPUnitImg.Visible = false;
-            // 
-            // MarkUp
-            // 
-            this.MarkUp.BackColor = System.Drawing.Color.Transparent;
-            this.MarkUp.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
-            this.MarkUp.Location = new System.Drawing.Point(12, 80);
-            this.MarkUp.Name = "MarkUp";
-            this.MarkUp.Size = new System.Drawing.Size(25, 25);
-            this.MarkUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.MarkUp.TabIndex = 57;
-            this.MarkUp.TabStop = false;
-            this.MarkUp.Visible = false;
-            // 
-            // ProdnameImg
-            // 
-            this.ProdnameImg.BackColor = System.Drawing.Color.Transparent;
-            this.ProdnameImg.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
-            this.ProdnameImg.Location = new System.Drawing.Point(12, 44);
-            this.ProdnameImg.Name = "ProdnameImg";
-            this.ProdnameImg.Size = new System.Drawing.Size(25, 25);
-            this.ProdnameImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ProdnameImg.TabIndex = 55;
-            this.ProdnameImg.TabStop = false;
-            this.ProdnameImg.Visible = false;
-            // 
-            // CatSubIm
-            // 
-            this.CatSubIm.BackColor = System.Drawing.Color.Transparent;
-            this.CatSubIm.Image = global::JUFAV_System.Properties.Resources.BoxImpo;
-            this.CatSubIm.Location = new System.Drawing.Point(12, 8);
-            this.CatSubIm.Name = "CatSubIm";
-            this.CatSubIm.Size = new System.Drawing.Size(25, 25);
-            this.CatSubIm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.CatSubIm.TabIndex = 53;
-            this.CatSubIm.TabStop = false;
-            this.CatSubIm.Visible = false;
-            // 
-            // ITEMSBOXSPLR
-            // 
-            this.ITEMSBOXSPLR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ITEMSBOXSPLR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ITEMSBOXSPLR.Location = new System.Drawing.Point(1, 48);
-            this.ITEMSBOXSPLR.Margin = new System.Windows.Forms.Padding(0);
-            this.ITEMSBOXSPLR.Name = "ITEMSBOXSPLR";
-            this.ITEMSBOXSPLR.Size = new System.Drawing.Size(989, 235);
-            this.ITEMSBOXSPLR.TabIndex = 1;
-            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
-            this.tableLayoutPanel4.ColumnCount = 4;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 230F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 257F));
+            this.tableLayoutPanel4.ColumnCount = 5;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel4.Controls.Add(this.label15, 3, 0);
             this.tableLayoutPanel4.Controls.Add(this.label14, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.label13, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.label12, 0, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(1, 22);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(1, 25);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(989, 25);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(989, 28);
             this.tableLayoutPanel4.TabIndex = 2;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label15.Font = new System.Drawing.Font("Actor", 11.25F);
+            this.label15.Location = new System.Drawing.Point(597, 3);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(188, 22);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "ADDRESS";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label14.Font = new System.Drawing.Font("Actor", 11.25F);
+            this.label14.Location = new System.Drawing.Point(400, 3);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(188, 22);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "CONTACT NUMBER";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Font = new System.Drawing.Font("Actor", 11.25F);
+            this.label13.Location = new System.Drawing.Point(203, 3);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(188, 22);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "CONTACT PERSON";
             // 
             // label12
             // 
@@ -653,42 +669,9 @@
             this.label12.Font = new System.Drawing.Font("Actor", 11.25F);
             this.label12.Location = new System.Drawing.Point(6, 3);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(237, 19);
+            this.label12.Size = new System.Drawing.Size(188, 22);
             this.label12.TabIndex = 0;
             this.label12.Text = "COMPANY NAME";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.label13.Location = new System.Drawing.Point(252, 3);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(237, 19);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "CONTACT PERSON";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label14.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.label14.Location = new System.Drawing.Point(498, 3);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(224, 19);
-            this.label14.TabIndex = 2;
-            this.label14.Text = "CONTACT NUMBER";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label15.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.label15.Location = new System.Drawing.Point(731, 3);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(252, 19);
-            this.label15.TabIndex = 3;
-            this.label15.Text = "ADDRESS";
             // 
             // AddProducts
             // 
@@ -706,14 +689,14 @@
             this.pan.ResumeLayout(false);
             this.pan.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splrnot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InitStckImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrigPUnitImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MarkUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProdnameImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CatSubIm)).EndInit();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
@@ -740,8 +723,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox mkuptxtbox1;
-        private System.Windows.Forms.ComboBox Unittypecombobox;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox InitialStcktxtbox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel1;

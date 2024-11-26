@@ -13,17 +13,22 @@ namespace JUFAV_System.Messageboxes
     public partial class ShowChanges : Form
     {
         Action toexe1;
-        public ShowChanges(double changes,Action toexe)
+        int saleID1;
+        public ShowChanges(double changes,Action toexe,int saleID)
         {
             InitializeComponent();
-            label2.Text = changes.ToString();
+            saleID1 = saleID;
+            double removedecimals = Convert.ToDouble(changes);
+            label2.Text = removedecimals.ToString() + "₱";
             toexe1 = toexe;
         }
 
         private void CONFRIMBTN_Click(object sender, EventArgs e)
         {
-            toexe1();
-            this.Dispose();
+           
+            Messageboxes.ORdersum.OrderSummary ordersum1 = new ORdersum.OrderSummary(saleID1,toexe1,this.Close);
+            ordersum1.ShowDialog();
+            
         }
     }
 }

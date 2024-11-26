@@ -50,7 +50,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.51436F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel7.Controls.Add(this.total, 3, 0);
             this.tableLayoutPanel7.Controls.Add(this.panel10, 2, 0);
             this.tableLayoutPanel7.Controls.Add(this.Prodname, 0, 0);
@@ -68,7 +68,7 @@
             // 
             this.total.AutoSize = true;
             this.total.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.total.Location = new System.Drawing.Point(477, 1);
+            this.total.Location = new System.Drawing.Point(475, 1);
             this.total.Name = "total";
             this.total.Size = new System.Drawing.Size(68, 32);
             this.total.TabIndex = 3;
@@ -81,7 +81,7 @@
             this.panel10.Controls.Add(this.IncrmentBTN);
             this.panel10.Controls.Add(this.quantitytxtbox);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(382, 1);
+            this.panel10.Location = new System.Drawing.Point(380, 1);
             this.panel10.Margin = new System.Windows.Forms.Padding(0);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(91, 32);
@@ -123,6 +123,7 @@
             this.quantitytxtbox.Size = new System.Drawing.Size(39, 27);
             this.quantitytxtbox.TabIndex = 2;
             this.quantitytxtbox.Text = "1";
+            this.quantitytxtbox.Click += new System.EventHandler(this.quantitytxtbox_Click);
             this.quantitytxtbox.TextChanged += new System.EventHandler(this.quantitytxtbox_TextChanged);
             // 
             // Prodname
@@ -131,7 +132,7 @@
             this.Prodname.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Prodname.Location = new System.Drawing.Point(4, 1);
             this.Prodname.Name = "Prodname";
-            this.Prodname.Size = new System.Drawing.Size(216, 32);
+            this.Prodname.Size = new System.Drawing.Size(215, 32);
             this.Prodname.TabIndex = 4;
             this.Prodname.Text = "label6";
             this.Prodname.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -140,9 +141,9 @@
             // 
             this.Price.AutoSize = true;
             this.Price.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Price.Location = new System.Drawing.Point(227, 1);
+            this.Price.Location = new System.Drawing.Point(226, 1);
             this.Price.Name = "Price";
-            this.Price.Size = new System.Drawing.Size(151, 32);
+            this.Price.Size = new System.Drawing.Size(150, 32);
             this.Price.TabIndex = 0;
             this.Price.Text = "label28";
             this.Price.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

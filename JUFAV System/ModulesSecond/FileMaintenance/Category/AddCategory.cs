@@ -18,8 +18,10 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
         public bool isverfied1 = true;
         public bool isverfied2 = true;
         public bool isverfied3 = true;
+        public bool isverfied4 = true;
         int summontype1;
         int idtoedit1;
+        String textouse = "";
 
         public AddCategory(int summontype,int idtoedit)
         {
@@ -38,31 +40,36 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
         }
         private void loaddata(int id)
         {
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM CATEGORY WHERE CATEGORYID = "+id+";",initd.scon);
-            SQLiteDataReader sread1 = scom1.ExecuteReader();
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM CATEGORY WHERE CATEGORYID = "+id+";",initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
             {
                 Cattxtbox.Text = sread1["CATEGORYDESC"].ToString();
-
+                textouse = sread1["CATEGORYDESC"].ToString();
             }
             sread1.Close();
             sread1 = null;
             scom1 = null;
+            initd.con1.Close();
 
         }
-        public void checkDuplicate()
+        public bool checkDuplicate()
         {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
+            bool test1 = true;
             //important things when checking for duplicate is : name/
             //search must be selected in all  fields
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM CATEGORY WHERE CATEGORYDESC LIKE '%" + Cattxtbox.Text + "%'", initd.scon);
-            SQLiteDataReader sread1 = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM CATEGORY WHERE CATEGORYDESC LIKE '%" + Cattxtbox.Text.Normalize().ToLower().Trim() + "%'", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
             {
                 if (Cattxtbox.Text == sread1["CATEGORYDESC"].ToString())
                 {
                     Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(goback, 1, "CATEGORY NAME", "THE CATEGORY NAME IS ALREADY IN USE \n PLEASE USE OTHER NAME.", "OK", 0);
                     msg2.Show();
-                    Cattxtbox.Text = "";
+                    test1 = false;
+                    break;
                 }
             }
             /*
@@ -72,12 +79,45 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
                 Cattxtbox.Text = "";
             }
             */
+            sread1.Close();
+            initd.con1.Close();
+            return test1;
+        }
+        public bool checkDuplicate2()
+        {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
+            bool test1 = true;
+            //important things when checking for duplicate is : name/
+            //search must be selected in all  fields
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM CATEGORY WHERE CATEGORYDESC != '" + textouse.Normalize().ToLower().Trim() + "'", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
+            while (sread1.Read())
+            {
+                if (Cattxtbox.Text == sread1["CATEGORYDESC"].ToString())
+                {
+                    Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(goback, 1, "CATEGORY NAME", "THE CATEGORY NAME IS ALREADY IN USE \n PLEASE USE OTHER NAME.", "OK", 0);
+                    msg2.Show();
+                    test1 = false;
+                    break;
+                }
+            }
+            /*
+            if (Regex.IsMatch(Cattxtbox.Text, "@gmail.com") == false)
+            {
+                MessageBox.Show(this, "Invalid email,Please try again", "Email not Valid", MessageBoxButtons.OK);
+                Cattxtbox.Text = "";
+            }
+            */
+            sread1.Close();
+            initd.con1.Close();
+            return test1;
 
         }
         private void update()
         {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
             this.Cursor = Cursors.WaitCursor;
-            SQLiteCommand scom1 = new SQLiteCommand("UPDATE CATEGORY SET CATEGORYDESC = '" +Cattxtbox.Text.ToLower() +"' WHERE CATEGORYID = " + idtoedit1 + ";", initd.scon);
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("UPDATE CATEGORY SET CATEGORYDESC = '" +Cattxtbox.Text.Normalize().ToLower().Trim() +"' WHERE CATEGORYID = " + idtoedit1 + ";", initd.con1);
             scom1.ExecuteNonQuery();
             scom1 = null;
 
@@ -85,6 +125,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
 
             Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(goback, 0, "UPDATE CATEGORY", "ITEM SUCCESSFULLY UPDATED! \n WOULD YOU LIKE TO GO BACK AT THE FRONT PAGE?", "OK", 0);
             msg2.Show();
+            initd.con1.Close();
         }
 
 
@@ -121,7 +162,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
                 for (int i = 0; i != 1; i++)
                 {
                     // \\W\\S
-                    if (Regex.IsMatch(textboxes[i].Text,@"\\W"))//regex patter  to accept a whitespace 
+                    if (Regex.IsMatch(textboxes[i].Text,@"[^\w\s\d]"))//regex patter  to accept a whitespace 
                     {
                         Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "NON CHARACTER INPUT", "Please Remove a non - letter character in " + textboxes[i].Name + " field where text '" + textboxes[i].Text + "' contains the non letter character.", "RETRY", 1);
                         ms.Show();
@@ -134,7 +175,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
             }
             //
             if (summontype1 != 0) { 
-                if (isverfied2 == true && isverfied1 == true && algos1.DetectInputifDupplicate(new String[] { Cattxtbox.Text.ToLower()}, 2) == false)
+                if (isverfied2 == true && isverfied1 == true && algos1.DetectInputifDupplicate(new String[] { Cattxtbox.Text.Normalize().ToLower().Trim()}, 2) == false)
                 {
                     isverfied3 = false;
                 }
@@ -145,8 +186,41 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
                 isverfied3 = true;
 
             }
-            //
-            if (isverfied2 == true && isverfied1 == true && isverfied3 == true)
+            //if yupdate changes here 
+            if (summontype1 != 0) {
+                if (isverfied2 == true && isverfied1 == true && isverfied3 == true && checkDuplicate() == false)
+                {
+                    isverfied4 = false;
+
+
+                } else
+                {
+                    isverfied4 = true;
+
+                }
+            }
+            else
+            {
+                if (isverfied2 == true && isverfied1 == true && isverfied3 == true && checkDuplicate2() == false)
+                {
+                    isverfied4 = false;
+
+
+                }
+                else
+                {
+                    isverfied4 = true;
+
+                }
+            }
+
+
+
+
+
+
+        
+            if (isverfied2 == true && isverfied1 == true && isverfied3 == true && isverfied4== true)
             {
                 //are you sure 
                 if (summontype1 == 1)
@@ -188,6 +262,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
         }
         private void Insertdata()
         {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
             this.Cursor = Cursors.WaitCursor;
             Random rs1 = new Random();
             String unitid = "";//Users table
@@ -199,7 +274,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
                 unitid = string.Concat(unitid, rs1.Next(0, 9).ToString());
             }
 
-            SQLiteCommand scom = new SQLiteCommand("INSERT INTO CATEGORY VALUES (" + Convert.ToInt32(unitid) + "," + initd.UserID + ",'" + Cattxtbox.Text.ToLower() + "');", initd.scon);
+            MySql.Data.MySqlClient.MySqlCommand scom = new MySql.Data.MySqlClient.MySqlCommand("INSERT INTO CATEGORY VALUES (" + Convert.ToInt32(unitid) + "," + initd.UserID + ",'" + Cattxtbox.Text.Normalize().ToLower().Trim() + "');", initd.con1);
             scom.ExecuteNonQuery();
            
             this.Cursor = Cursors.Default;
@@ -207,6 +282,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
 
             Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(goback, 0, "ADD UNIT OF MEASUREMENT", "ITEM SUCCESSFULLY ADDED! \n WOULD YOU LIKE TO GO BACK AT THE FRONT PAGE?", "OK", 0);
             msg2.Show();
+            initd.con1.Close();
         }
         private void goback()
         {
@@ -227,6 +303,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Category
          
             hide();
             verify();
+            
         }
 
         private void CANCELBTN_Click(object sender, EventArgs e)

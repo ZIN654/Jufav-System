@@ -15,6 +15,12 @@ namespace JUFAV_System.ModulesMain.REPORTS
         public ProductListReports()
         {
             InitializeComponent();
+            this.Dock = DockStyle.Top;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

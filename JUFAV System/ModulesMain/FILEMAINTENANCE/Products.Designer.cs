@@ -37,7 +37,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.CategoryCombo = new System.Windows.Forms.ComboBox();
             this.addprdBTN = new System.Windows.Forms.Button();
-            this.srchBTN = new System.Windows.Forms.Button();
             this.ItemSwitch = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -62,12 +61,11 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.25665F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.00469F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.38312F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 132F));
             this.tableLayoutPanel1.Controls.Add(this.panel2, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtboxSearchBox, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.addprdBTN, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.srchBTN, 4, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -82,9 +80,9 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.SubCatCombo);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(290, 3);
+            this.panel2.Location = new System.Drawing.Point(284, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(132, 33);
+            this.panel2.Size = new System.Drawing.Size(129, 33);
             this.panel2.TabIndex = 9;
             // 
             // label3
@@ -105,28 +103,30 @@
             this.SubCatCombo.FormattingEnabled = true;
             this.SubCatCombo.Location = new System.Drawing.Point(0, 12);
             this.SubCatCombo.Name = "SubCatCombo";
-            this.SubCatCombo.Size = new System.Drawing.Size(132, 21);
+            this.SubCatCombo.Size = new System.Drawing.Size(129, 21);
             this.SubCatCombo.TabIndex = 0;
             // 
             // txtboxSearchBox
             // 
             this.txtboxSearchBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtboxSearchBox.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.txtboxSearchBox.Location = new System.Drawing.Point(428, 4);
+            this.txtboxSearchBox.Location = new System.Drawing.Point(419, 4);
             this.txtboxSearchBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
             this.txtboxSearchBox.Name = "txtboxSearchBox";
-            this.txtboxSearchBox.Size = new System.Drawing.Size(171, 26);
+            this.txtboxSearchBox.Size = new System.Drawing.Size(167, 26);
             this.txtboxSearchBox.TabIndex = 7;
             this.txtboxSearchBox.Text = "SEARCH";
+            this.txtboxSearchBox.Click += new System.EventHandler(this.txtboxSearchBox_Click);
+            this.txtboxSearchBox.TextChanged += new System.EventHandler(this.txtboxSearchBox_TextChanged);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.CategoryCombo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(144, 3);
+            this.panel1.Location = new System.Drawing.Point(141, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(140, 33);
+            this.panel1.Size = new System.Drawing.Size(137, 33);
             this.panel1.TabIndex = 8;
             // 
             // label2
@@ -147,7 +147,7 @@
             this.CategoryCombo.FormattingEnabled = true;
             this.CategoryCombo.Location = new System.Drawing.Point(0, 12);
             this.CategoryCombo.Name = "CategoryCombo";
-            this.CategoryCombo.Size = new System.Drawing.Size(140, 21);
+            this.CategoryCombo.Size = new System.Drawing.Size(137, 21);
             this.CategoryCombo.TabIndex = 0;
             this.CategoryCombo.SelectedValueChanged += new System.EventHandler(this.CategoryCombo_SelectedValueChanged);
             // 
@@ -159,24 +159,11 @@
             this.addprdBTN.Font = new System.Drawing.Font("Actor", 11.25F);
             this.addprdBTN.Location = new System.Drawing.Point(3, 3);
             this.addprdBTN.Name = "addprdBTN";
-            this.addprdBTN.Size = new System.Drawing.Size(135, 27);
+            this.addprdBTN.Size = new System.Drawing.Size(132, 27);
             this.addprdBTN.TabIndex = 4;
             this.addprdBTN.Text = "ADD PRODUCT";
             this.addprdBTN.UseVisualStyleBackColor = false;
-            // 
-            // srchBTN
-            // 
-            this.srchBTN.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.srchBTN.BackgroundImage = global::JUFAV_System.Properties.Resources.Search;
-            this.srchBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.srchBTN.Dock = System.Windows.Forms.DockStyle.Top;
-            this.srchBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.srchBTN.Font = new System.Drawing.Font("Actor", 11.25F);
-            this.srchBTN.Location = new System.Drawing.Point(605, 3);
-            this.srchBTN.Name = "srchBTN";
-            this.srchBTN.Size = new System.Drawing.Size(115, 27);
-            this.srchBTN.TabIndex = 7;
-            this.srchBTN.UseVisualStyleBackColor = false;
+            this.addprdBTN.Click += new System.EventHandler(this.addprod);
             // 
             // ItemSwitch
             // 
@@ -271,6 +258,7 @@
             this.label7.TabIndex = 4;
             this.label7.Text = "UNIT OF MEASUREMENT";
             this.label7.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.label7.Visible = false;
             // 
             // label8
             // 
@@ -344,7 +332,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button addprdBTN;
         private System.Windows.Forms.TextBox txtboxSearchBox;
-        private System.Windows.Forms.Button srchBTN;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox CategoryCombo;

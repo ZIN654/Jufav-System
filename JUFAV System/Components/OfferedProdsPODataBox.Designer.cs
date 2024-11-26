@@ -38,7 +38,6 @@
             // 
             // tableLayoutPanel6
             // 
-            this.tableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel6.ColumnCount = 4;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.12392F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.87608F));
@@ -53,13 +52,13 @@
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(792, 34);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(790, 32);
             this.tableLayoutPanel6.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(658, 1);
+            this.label3.Location = new System.Drawing.Point(658, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 32);
             this.label3.TabIndex = 3;
@@ -69,19 +68,18 @@
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(534, 1);
+            this.label2.Location = new System.Drawing.Point(535, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(117, 32);
             this.label2.TabIndex = 2;
             this.label2.Text = "label15";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Visible = false;
             // 
             // AddtoPOList
             // 
             this.AddtoPOList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AddtoPOList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddtoPOList.Location = new System.Drawing.Point(745, 1);
+            this.AddtoPOList.Location = new System.Drawing.Point(744, 0);
             this.AddtoPOList.Margin = new System.Windows.Forms.Padding(0);
             this.AddtoPOList.Name = "AddtoPOList";
             this.AddtoPOList.Size = new System.Drawing.Size(46, 32);
@@ -93,9 +91,9 @@
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(4, 1);
+            this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(523, 32);
+            this.label1.Size = new System.Drawing.Size(526, 32);
             this.label1.TabIndex = 1;
             this.label1.Text = "label19";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -104,9 +102,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.tableLayoutPanel6);
             this.Name = "OfferedProdsPODataBox";
-            this.Size = new System.Drawing.Size(792, 34);
+            this.Size = new System.Drawing.Size(790, 32);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.ResumeLayout(false);
 

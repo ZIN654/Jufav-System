@@ -53,6 +53,7 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
         }
         private void onload()
         {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
             //use joins table AS
 
             //tables that are used :
@@ -63,17 +64,19 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
              * SELECT t.sas,r.qwe FROM Tabl1 join table2 on t1.sad = t2.sad JOIN table3 s ON t1.sad = s.sad;
              * 
              */
-            SQLiteCommand sq1 = new SQLiteCommand("SELECT * FROM PRODUCTS", initd.scon);
-            SQLiteDataReader read1 = sq1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand sq1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM PRODUCTS", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader read1 = sq1.ExecuteReader();
             while (read1.Read())
             {
                 //generic key not found
-                Components.ProductComponent prod1 = new Components.ProductComponent(read1["PRODUCTNAME"].ToString(), catinfo1[Convert.ToInt32(read1["CATEGORYID"])],subcatinfo1[Convert.ToInt32(read1["SUBCATEGORYID"].ToString())], Convert.ToInt32(read1["QUANTITY"]),Uominfo1[Convert.ToInt32(read1["UOMID"])], Convert.ToDouble(read1["ORIGINALPICE"]),Convert.ToDouble(read1["ORIGINALPICE"]) + Convert.ToDouble(read1["MARKUPVALUE"]), Convert.ToInt32(read1["PRODUCTID"]));
+                Components.ProductComponent prod1 = new Components.ProductComponent(read1["PRODUCTNAME"].ToString(), catinfo1[Convert.ToInt32(read1["CATEGORYID"])],subcatinfo1[Convert.ToInt32(read1["SUBCATEGORYID"].ToString())], Convert.ToInt32(read1["QUANTITY"]), Convert.ToDouble(read1["ORIGINALPICE"]),Convert.ToDouble(read1["ORIGINALPICE"]) + Convert.ToDouble(read1["MARKUPVALUE"]), Convert.ToInt32(read1["PRODUCTID"]));
                 ItemsBox.Controls.Add(prod1);
                 
             }
-
-
+            read1.Close();
+      
+            GC.Collect();
+            initd.con1.Close();
         }
         private void onloadArrays()
         {
@@ -84,13 +87,14 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
         }
         private void onload2()
         {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
             Uominfo1.Clear();
             catinfo1.Clear();
             subcatinfo1.Clear();
             categoryinfo.Clear();
             SubCatCombo.Items.Clear();
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM CATEGORY;", initd.scon);
-            SQLiteDataReader sq1 = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM CATEGORY;", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sq1 = scom1.ExecuteReader();
             while (sq1.Read())
             {
                
@@ -99,6 +103,7 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
 
             }
             sq1.Close();
+
             scom1.CommandText = "SELECT * FROM SUBCATEGORY;";
             sq1 = scom1.ExecuteReader();
             while (sq1.Read())
@@ -119,23 +124,24 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
             sq1.Close();
             sq1 = null;
             scom1 = null;
+            initd.con1.Close();
           //  GC.Collect();
 
         }
         private void onload2filter()
         {
-            
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
             SubCatCombo.Items.Clear();
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM SUBCATEGORY WHERE CATEGORYID = (SELECT CATEGORYID FROM CATEGORY WHERE CATEGORYDESC = '"+CategoryCombo.Text+"');", initd.scon);
-            SQLiteDataReader sq1 = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM SUBCATEGORY WHERE CATEGORYID = (SELECT CATEGORYID FROM CATEGORY WHERE CATEGORYDESC = '"+CategoryCombo.Text+"');", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sq1 = scom1.ExecuteReader();
           
             while (sq1.Read())
             {
                 SubCatCombo.Items.Add(sq1["SUBCATEGORYDESC"]);
             }
+            sq1.Close();
 
-
-
+            initd.con1.Close();
         }
         private void CategoryCombo_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -143,6 +149,38 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
             onload2filter();
             
           
+        }
+
+        private void txtboxSearchBox_TextChanged(object sender, EventArgs e)
+        {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
+            foreach (UserControl i in ItemsBox.Controls)
+            {
+                i.Dispose();
+
+            
+            }
+            ItemsBox.Controls.Clear();
+            MySql.Data.MySqlClient.MySqlCommand sq1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM PRODUCTS WHERE PRODUCTNAME LIKE '%"+txtboxSearchBox.Text+ "%';", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader read1 = sq1.ExecuteReader();
+            while (read1.Read())
+            {
+                //generic key not found
+                Components.ProductComponent prod1 = new Components.ProductComponent(read1["PRODUCTNAME"].ToString(), catinfo1[Convert.ToInt32(read1["CATEGORYID"])], subcatinfo1[Convert.ToInt32(read1["SUBCATEGORYID"].ToString())], Convert.ToInt32(read1["QUANTITY"]), Convert.ToDouble(read1["ORIGINALPICE"]), Convert.ToDouble(read1["ORIGINALPICE"]) + Convert.ToDouble(read1["MARKUPVALUE"]), Convert.ToInt32(read1["PRODUCTID"]));
+                ItemsBox.Controls.Add(prod1);
+
+            }
+            read1.Close();
+            sq1 = null;
+            read1 = null;
+            GC.Collect();
+            initd.con1.Close();
+
+        }
+
+        private void txtboxSearchBox_Click(object sender, EventArgs e)
+        {
+            txtboxSearchBox.SelectAll();
         }
     }
 }

@@ -27,27 +27,27 @@ namespace JUFAV_System.ModulesMain.LOGIN
         {
             InitializeComponent();
             axWindowsMediaPlayer1.uiMode = "None";
-           axWindowsMediaPlayer1.URL = @"C://Users//asus//Desktop//CAPSTONE 2//JUFAV SYSTEM NEW - Copy//Jufav-System//JUFAV System//Resources//JufavLogoback.mp4";
+           //axWindowsMediaPlayer1.URL = @"C://Users//asus//Desktop//CAPSTONE 2//JUFAVSYSTEM//Jufav-System//JUFAV System//Resources//JufavLogoback.mp4";
            //set this one if publishing
-           //axWindowsMediaPlayer1.URL = @Environment.CurrentDirectory + "//Resources//JufavLogoback.mp4";
+           axWindowsMediaPlayer1.URL = @Environment.CurrentDirectory + "//Resources//JufavLogoback.mp4";
             axWindowsMediaPlayer1.settings.autoStart = true;
             axWindowsMediaPlayer1.Ctlenabled = false;
             axWindowsMediaPlayer1.stretchToFit = true;
             axWindowsMediaPlayer1.settings.setMode("loop", true);
-            ResponsiveUI1.spl1 = itemsbox;
-            initd.opendatabase();
+            ResponsiveUI1.spl2 = itemsbox;
+           
             loadpanel();
         }
         private void loadpanel()
         {
           
             ModulesMain.LOGIN.LoginPanel login = new ModulesMain.LOGIN.LoginPanel();//perhaps us the name of the username txtbx
-            ResponsiveUI1.title = "LoginPanel";
+            ResponsiveUI1.title3 = "LoginPanel";
             itemsbox.Controls.Add(login);
         }
         private void JUFAV_LOGIN_FormClosed(object sender, FormClosedEventArgs e)
         {
-            initd.closedatabase();
+         
         }
 
         private void JUFAV_LOGIN_Activated(object sender, EventArgs e)
@@ -57,8 +57,7 @@ namespace JUFAV_System.ModulesMain.LOGIN
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //exception 
-            Application.Exit();
+            Environment.Exit(0);
         }
     }
 }

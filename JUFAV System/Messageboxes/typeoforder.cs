@@ -41,23 +41,39 @@ namespace JUFAV_System.Messageboxes
         }
         private void determine(int summon)
         {
+            int ordertype = 0;
             ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
-            ModulesSecond.Sales.SalesPaymentMethod cat1 = new ModulesSecond.Sales.SalesPaymentMethod(Custname,addres1);
+            switch (summon)
+            {
+                case 0:
+                    //optimize edit function assignage                 
+                    ordertype = 0;
+                    break;
+                case 1:               
+                    ordertype = 1;
+                    break;
+                case 2:
+                    ordertype = 2;
+                    break;
+            }
+            ModulesSecond.Sales.SalesPaymentMethod cat1 = new ModulesSecond.Sales.SalesPaymentMethod(Custname,addres1,ordertype);
             switch (summon)
             {
                 case 0:
                     //optimize edit function assignage
-                    cat1.Controls.Find("otherpaymentttype",true)[0].Text = "GCASH";
-                    cat1.Click += cat1.gcash;
+                    cat1.Controls.Find("Deliveryfee", true)[0].Enabled = false;
+                    cat1.Controls.Find("label23", true)[0].Enabled = false;//SALES RECEIPT
                    
                     break;
                 case 1:
-                    cat1.Controls.Find("otherpaymentttype", true)[0].Text = "CASH ON DELIVERY";
-                    cat1.Click += cat1.COD;
+                    cat1.Controls.Find("Deliveryfee", true)[0].Enabled = true;
+                    cat1.Controls.Find("label23", true)[0].Enabled = true;//DELIVERY 
+                  
                     break;
                 case 2:
-                    cat1.Controls.Find("otherpaymentttype", true)[0].Text = "GCASH";
-                    cat1.Click += cat1.COP;
+                    cat1.Controls.Find("Deliveryfee", true)[0].Enabled = false;
+                    cat1.Controls.Find("label23", true)[0].Enabled = false;//RESERVATION
+                  
                     break;
             }
             ResponsiveUI1.title = "SalesPaymentMethod";

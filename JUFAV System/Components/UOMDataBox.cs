@@ -40,16 +40,16 @@ namespace JUFAV_System.Components
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-            SQLiteCommand scom1 = new SQLiteCommand("INSERT INTO ARCUNITOFMEASURE (UNITID,USERID,UNITDESC,UNITABBREVIATION) SELECT * FROM UNITOFMEASURE WHERE UNITID = " + ID1 + ";", initd.scon);
-            scom1.ExecuteNonQuery();     
-            Thread.Sleep(2000);
-            scom1.CommandText = "DELETE FROM UNITOFMEASURE WHERE UNITID = " + ID1 + ";";//references bug
-            scom1.ExecuteNonQuery();
-            scom1 = null;
-            GC.Collect();
-            this.Cursor = Cursors.Default;
-            Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(this.Dispose, 0, "ARCHIVE RECORD", "RECORD SUCCESSFULLY ARCHIVED!", "OK", 0);
-            ms.Show();
+                MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("INSERT INTO ARCUNITOFMEASURE (UNITID,USERID,UNITDESC,UNITABBREVIATION) SELECT * FROM UNITOFMEASURE WHERE UNITID = " + ID1 + ";", initd.con1);
+                scom1.ExecuteNonQuery();
+                Thread.Sleep(2000);
+                scom1.CommandText = "DELETE FROM UNITOFMEASURE WHERE UNITID = " + ID1 + ";";//references bug
+                scom1.ExecuteNonQuery();
+                scom1 = null;
+                GC.Collect();
+                this.Cursor = Cursors.Default;
+                Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(this.Dispose, 0, "ARCHIVE RECORD", "RECORD SUCCESSFULLY ARCHIVED!", "OK", 0);
+                ms.Show();
             }
             catch (Exception e)
             {
@@ -62,7 +62,7 @@ namespace JUFAV_System.Components
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                SQLiteCommand scom1 = new SQLiteCommand("DELETE FROM UNITOFMEASURE WHERE UNITID = " + ID1 + ";", initd.scon);
+                MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("DELETE FROM UNITOFMEASURE WHERE UNITID = " + ID1 + ";", initd.con1);
                 scom1.ExecuteNonQuery();
                 scom1 = null;
                 GC.Collect();
@@ -75,7 +75,7 @@ namespace JUFAV_System.Components
                 Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "DELETE RECORD", "UNABLE TO DELETE RECORD BECAUSE IT WAS STILL USED BY OTHER MODULES", "OK", 1);
                 ms.Show();
             }
-           
+
 
         }
         private void editbut_Click(object sender, EventArgs e)
@@ -99,6 +99,6 @@ namespace JUFAV_System.Components
 
         }
 
-      
+
     }
 }

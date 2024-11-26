@@ -19,6 +19,7 @@ namespace JUFAV_System.ModulesSecond
     {
         public bool isverfied1;
         public bool isverfied2;
+        public bool isverfied3;
         public bool trig = false;
         public int summontype;
         public String username1;
@@ -27,9 +28,9 @@ namespace JUFAV_System.ModulesSecond
         public ModulesSecond.Userssetaddditems.Reports Gitem3;
         public ModulesSecond.Userssetaddditems.Sales Gitem4;
         public ModulesSecond.Userssetaddditems.Utilities Gitem5;
-        public UsersettingsAddUser(int typeofsummon,String username)
+        public UsersettingsAddUser(int typeofsummon, String username)
         {
-           
+
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             CheckifAdmin();
@@ -43,51 +44,53 @@ namespace JUFAV_System.ModulesSecond
             }
             else
             {
-                RoleBox.SelectedIndex = 0;
-             
+                //RoleBox.SelectedIndex = 0;
                 onloadtype0(username1);
+
                 //update here load current data of the user account 
                 button1.Text = "UPDATE ACCOUNT";
-                trig = true;
+                trig = false;
 
 
             }
-            
-            
+
+
         }
 
 
         private void updatedata(String username)
         {
-           //make sure na yung verification sa txt box ay gumagana paden
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
+            //make sure na yung verification sa txt box ay gumagana paden
             //"UPDATE FROM SUBMODULES SET WHERE USERID = (SELECT USERID FROM USER_INFO WHERE USERNAME = '" +username+"');"
             //array if chbox then for loop? to execute the query or just hereby declare each chbox name in set()
             this.Cursor = Cursors.WaitCursor;
-             Gitem5.update1();//execute the method directly into the utlitities databox checkbox same with other databox
-             Gitem4.update1();
-             Gitem3.update1();
-             Gitem2.update1();
-             Gitem1.update1();
-             UpdateUserInfo();
+            Gitem5.update1();//execute the method directly into the utlitities databox checkbox same with other databox
+            Gitem4.update1();
+            Gitem3.update1();
+            Gitem2.update1();
+            Gitem1.update1();
+            UpdateUserInfo();
 
 
 
             this.Cursor = Cursors.Default;
-
+            initd.con1.Close();
 
         }
         private void onloadtype0(String username)
         {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
             //fetch role
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT ROLES FROM USER_INFO WHERE USERIDS = (SELECT USERIDS FROM USER_INFO WHERE USERNAME = '" + username + "' );", initd.scon);
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT ROLES FROM USER_INFO WHERE USERIDS = (SELECT USERIDS FROM USER_INFO WHERE USERNAME = '" + username + "' );", initd.con1);
             int role = Convert.ToInt32(scom1.ExecuteScalar());
-            SQLiteDataReader sq1 ;
-            Console.WriteLine(username1 + role);
-            ModulesSecond.Userssetaddditems.FileMaintenenance item1 = new Userssetaddditems.FileMaintenenance(role, 0,username);
-            ModulesSecond.Userssetaddditems.Inventory item2 = new Userssetaddditems.Inventory(role, 0,username);
-            ModulesSecond.Userssetaddditems.Reports item4 = new Userssetaddditems.Reports(role, 0,username);
-            ModulesSecond.Userssetaddditems.Sales item3 = new Userssetaddditems.Sales(role, 0,username);
-            ModulesSecond.Userssetaddditems.Utilities item5 = new Userssetaddditems.Utilities(role, 0,username);
+            MySql.Data.MySqlClient.MySqlDataReader sq1;
+
+            ModulesSecond.Userssetaddditems.FileMaintenenance item1 = new Userssetaddditems.FileMaintenenance(role, 0, username);
+            ModulesSecond.Userssetaddditems.Inventory item2 = new Userssetaddditems.Inventory(role, 0, username);
+            ModulesSecond.Userssetaddditems.Reports item4 = new Userssetaddditems.Reports(role, 0, username);
+            ModulesSecond.Userssetaddditems.Sales item3 = new Userssetaddditems.Sales(role, 0, username);
+            ModulesSecond.Userssetaddditems.Utilities item5 = new Userssetaddditems.Utilities(role, 0, username);
 
             this.Gitem1 = item1;
             this.Gitem2 = item2;
@@ -95,37 +98,39 @@ namespace JUFAV_System.ModulesSecond
             this.Gitem4 = item3;
             this.Gitem5 = item5;
             UserControl[] sp1 = { item5, item4, item1, item2, item3 };
-            
+
             foreach (UserControl i in sp1)
             {
                 ItemsBox.Controls.Add(i);
                 //
-               // Thread.Sleep(500);
+                // Thread.Sleep(500);
             }
             //also load some data based on the username
-          
-             scom1.CommandText = "SELECT * FROM USER_INFO WHERE USERIDS = (SELECT USERIDS FROM USER_INFO WHERE USERNAME = '" + username1+ "' );";
-             sq1 = scom1.ExecuteReader();
+
+            scom1.CommandText = "SELECT * FROM USER_INFO WHERE USERIDS = (SELECT USERIDS FROM USER_INFO WHERE USERNAME = '" + username1 + "' );";
+            sq1 = scom1.ExecuteReader();
             while (sq1.Read())
             {
-               NAME_FIELD.Text =  sq1["NAME"].ToString();
-                USERNAME_FIELD.Text =  sq1["USERNAME"].ToString();
-               PASSWORD_FIELD.Text =  sq1["PASSWORDS"].ToString();
-                CONFIRM_PASSWORD_FIELD.Text  = sq1["PASSWORDS"].ToString();
+                NAME_FIELD.Text = sq1["NAME"].ToString();
+                USERNAME_FIELD.Text = sq1["USERNAME"].ToString();
+                PASSWORD_FIELD.Text = sq1["PASSWORDS"].ToString();
+                CONFIRM_PASSWORD_FIELD.Text = sq1["PASSWORDS"].ToString();
                 EMAIL_FIELD.Text = sq1["EMAIL"].ToString();
                 fetchRole2(Convert.ToInt32(sq1["ROLES"]));
             }
+           
             sq1.Close();
             sq1 = null;
             scom1 = null;
 
-
+            initd.con1.Close();
         }
         private void UpdateUserInfo()
         {
-            SQLiteCommand scom1 = new SQLiteCommand("UPDATE USER_INFO SET NAME = '"+NAME_FIELD.Text+"',USERNAME = '"+USERNAME_FIELD.Text+"',PASSWORDS = '"+PASSWORD_FIELD.Text+"',EMAIL = '"+EMAIL_FIELD.Text+"',ROLES = "+fetchRole()+" WHERE USERIDS = (SELECT USERIDS FROM USER_INFO WHERE USERNAME = '" + username1 + "' );", initd.scon);
-            Console.WriteLine("USER BEING UPDATED00 CALLING FROM " +this.Name + username1);
-            SQLiteDataReader sq1 = scom1.ExecuteReader();
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("UPDATE USER_INFO SET NAME = '" + NAME_FIELD.Text + "',USERNAME = '" + USERNAME_FIELD.Text.Trim() + "',PASSWORDS = '" + PASSWORD_FIELD.Text + "',EMAIL = '" + EMAIL_FIELD.Text + "',ROLES = " + fetchRole() + " WHERE USERIDS = (SELECT USERIDS FROM USER_INFO WHERE USERNAME = '" + username1 + "' );", initd.con1);
+            Console.WriteLine("USER BEING UPDATED00 CALLING FROM " + this.Name + username1);
+            MySql.Data.MySqlClient.MySqlDataReader sq1 = scom1.ExecuteReader();
             while (sq1.Read())
             {
                 NAME_FIELD.Text = sq1["NAME"].ToString();
@@ -139,28 +144,29 @@ namespace JUFAV_System.ModulesSecond
             sq1 = null;
             scom1 = null;
 
-
+            initd.con1.Close();
 
         }
         public void onload()
         {
-          
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
+
             ItemsBox.HorizontalScroll.Enabled = false;
             ItemsBox.HorizontalScroll.Visible = false;
             ItemsBox.VerticalScroll.Visible = true;
             ItemsBox.VerticalScroll.Enabled = true;
 
-            ModulesSecond.Userssetaddditems.FileMaintenenance item1 = new Userssetaddditems.FileMaintenenance(fetchRole(),1,"");
-            ModulesSecond.Userssetaddditems.Inventory item2 = new Userssetaddditems.Inventory(fetchRole(),1, "");
-            ModulesSecond.Userssetaddditems.Reports item4 = new Userssetaddditems.Reports(fetchRole(),1, "");
-            ModulesSecond.Userssetaddditems.Sales item3 = new Userssetaddditems.Sales(fetchRole(),1, "");
-            ModulesSecond.Userssetaddditems.Utilities item5 = new Userssetaddditems.Utilities(fetchRole(),1,"");
+            ModulesSecond.Userssetaddditems.FileMaintenenance item1 = new Userssetaddditems.FileMaintenenance(fetchRole(), 1, "");
+            ModulesSecond.Userssetaddditems.Inventory item2 = new Userssetaddditems.Inventory(fetchRole(), 1, "");
+            ModulesSecond.Userssetaddditems.Reports item4 = new Userssetaddditems.Reports(fetchRole(), 1, "");
+            ModulesSecond.Userssetaddditems.Sales item3 = new Userssetaddditems.Sales(fetchRole(), 1, "");
+            ModulesSecond.Userssetaddditems.Utilities item5 = new Userssetaddditems.Utilities(fetchRole(), 1, "");
             this.Gitem1 = item1;
             this.Gitem2 = item2;
             this.Gitem3 = item4;
             this.Gitem4 = item3;
             this.Gitem5 = item5;
-            UserControl [] sp1 = {item5,item4,item3,item2,item1 };
+            UserControl[] sp1 = { item5, item4, item3, item2, item1 };
             foreach (UserControl i in sp1)
             {
                 ItemsBox.Controls.Add(i);
@@ -169,9 +175,9 @@ namespace JUFAV_System.ModulesSecond
 
             //from item1 but inconsistent
 
-           
 
-           
+
+            initd.con1.Close();
         }
         private void backtousersettings()
         {
@@ -186,6 +192,7 @@ namespace JUFAV_System.ModulesSecond
         }
         private void inserintoDB()
         {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
             this.Cursor = Cursors.WaitCursor;
             Random rs1 = new Random();
             String id = "";//Users table
@@ -196,14 +203,14 @@ namespace JUFAV_System.ModulesSecond
             {
                 id = string.Concat(id, rs1.Next(0, 9).ToString());
             }
-            SQLiteCommand scom = new SQLiteCommand("INSERT INTO USERS VALUES (" + Convert.ToInt32(id) + ");", initd.scon);
+            MySql.Data.MySqlClient.MySqlCommand scom = new MySql.Data.MySqlClient.MySqlCommand("INSERT INTO USERS VALUES (" + Convert.ToInt32(id) + ");", initd.con1);
             scom.ExecuteNonQuery();
             //user_info id digit is 7
             for (int i = 0; i != 7; i++)
             {
                 iduserinfo = string.Concat(iduserinfo, rs1.Next(0, 9).ToString());
             }
-            scom.CommandText = "INSERT INTO USER_INFO VALUES(" + Convert.ToInt32(iduserinfo) + "," + Convert.ToInt32(id) + ",'" + NAME_FIELD.Text.ToLower() + "','" + USERNAME_FIELD.Text + "','" + EMAIL_FIELD.Text + "','" + PASSWORD_FIELD.Text + "'," + fetchRole() + ");";
+            scom.CommandText = "INSERT INTO USER_INFO VALUES(" + Convert.ToInt32(iduserinfo) + "," + Convert.ToInt32(id) + ",'" + NAME_FIELD.Text.ToLower() + "','" + USERNAME_FIELD.Text.Trim() + "','" + EMAIL_FIELD.Text + "','" + PASSWORD_FIELD.Text + "'," + fetchRole() + ");";
             scom.ExecuteNonQuery();
             Thread.Sleep(1500);
             //need nila IDInserdata(,usersID);
@@ -216,17 +223,17 @@ namespace JUFAV_System.ModulesSecond
             Gitem4.InsertData(Convert.ToInt32(id));
             Thread.Sleep(1500);
             Gitem5.InsertData(Convert.ToInt32(id));
-     
+
 
             this.Cursor = Cursors.Default;
-
+            initd.con1.Close();
         }
         private void successfullyinsertedOK()
         {
             //execute query first and database
             //error
             String[] messages = { "ACCOUNT SUCCESSFULY UPDATED,   WOULD YOU LIKE TO GO BACK IN THE USER SETTINGS FRONT PAGE?", "ACCOUNT SUCCESSFULY CREATED,   WOULD YOU LIKE TO GO BACK IN THE USER SETTINGS FRONT PAGE?" };
-            String[] titles = {"UPDATE ACCOUNT" , "ACCOUNT CREATION" };
+            String[] titles = { "UPDATE ACCOUNT", "ACCOUNT CREATION" };
             int messagetypes = 0;
             if (summontype == 0)
             {
@@ -239,8 +246,8 @@ namespace JUFAV_System.ModulesSecond
                 inserintoDB();
             }
 
-            
-            Messageboxes.MessageboxConfirmation sp2 = new MessageboxConfirmation(backtousersettings, 0,titles[messagetypes], messages[messagetypes], "OK", 0);
+
+            Messageboxes.MessageboxConfirmation sp2 = new MessageboxConfirmation(backtousersettings, 0, titles[messagetypes], messages[messagetypes], "OK", 0);
             sp2.Show();
             sp2.BringToFront();
 
@@ -311,11 +318,42 @@ namespace JUFAV_System.ModulesSecond
 
                 }
             }
-            if (isverfied2 == true && isverfied1 == true)
+            if (isverfied2 == true && isverfied1 == true && checkduplicate() == false)
+            {
+
+                isverfied3 = false;
+
+            }
+            else
+            {
+                isverfied3 = true;
+
+            }
+            if (isverfied2 == true && isverfied1 == true && isverfied3 == true)
             {
                 passwordconfirm();
             }
 
+        }
+        public bool checkduplicate()
+        {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
+            bool test1 = true;
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM USER_INFO;", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
+            while (sread1.Read())
+            {
+                if (USERNAME_FIELD.Text.Trim() == sread1["USERNAME"].ToString())
+                {
+                    Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(null, 1, "USERNAME DUPLICATION", "THE USERNAME : " + USERNAME_FIELD.Text + " IS ALREADY IN USE \n PLEASE USE OTHER USERNAME.", "OK", 0);
+                    msg2.Show();
+                    test1 = false;
+                    break;
+                }
+            }
+            sread1.Close();
+            initd.con1.Close();
+            return test1;
         }
         public void passwordconfirm()
         {
@@ -335,18 +373,19 @@ namespace JUFAV_System.ModulesSecond
         }
         public void CheckifAdmin()
         {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
             int isadmin = 0;
-            SQLiteCommand sql1 = new SQLiteCommand("SELECT ROLES FROM USER_INFO WHERE USERIDS =" + initd.UserID + ";", initd.scon);
-            SQLiteDataReader sq1 = sql1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand sql1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT ROLES FROM USER_INFO WHERE USERIDS =" + initd.UserID + ";", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sq1 = sql1.ExecuteReader();
             while (sq1.Read())
             {
                 isadmin = Convert.ToInt32(sq1["ROLES"]);
             }
             Console.WriteLine(isadmin);
-           
+
             if (isadmin == 1)
             {
-              
+
                 Console.WriteLine(isadmin);
                 //check all checkboexes
 
@@ -355,12 +394,12 @@ namespace JUFAV_System.ModulesSecond
             else
             {
                 Console.WriteLine(isadmin);
-              
+
 
             }
             //check all no need to fetch in database
-            
 
+            initd.con1.Close();
         }
         public void hide()
         {
@@ -422,8 +461,8 @@ namespace JUFAV_System.ModulesSecond
             Console.WriteLine("TEST ");
             hide();
             verify();
-           
-          
+
+
 
         }
         private void button2_Click(object sender, EventArgs e)
@@ -435,47 +474,24 @@ namespace JUFAV_System.ModulesSecond
             ResponsiveUI1.title = "UserSettings";
             ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
             ResponsiveUI1.spl1.Controls.Add(Sup);
-           
-        }    
+
+        }
         private void RoleBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             //when role box selected changed
 
-           if (trig == true && summontype == 0) { 
-            String[] names = { "FileMaintenenance", "Inventory", "Sales", "Reports", "Utilities" };
-            for (int i = 0;i!= 5;i++)
-            {
-                ItemsBox.Controls.Find(names[i], true)[0].Dispose();
-
-
-            }
-            ModulesSecond.Userssetaddditems.FileMaintenenance item1 = new Userssetaddditems.FileMaintenenance(fetchRole(),1, username1);
-            ModulesSecond.Userssetaddditems.Inventory item2 = new Userssetaddditems.Inventory(fetchRole(),1, username1);
-            ModulesSecond.Userssetaddditems.Reports item4 = new Userssetaddditems.Reports(fetchRole(),1, username1);
-            ModulesSecond.Userssetaddditems.Sales item3 = new Userssetaddditems.Sales(fetchRole(),1, username1);
-            ModulesSecond.Userssetaddditems.Utilities item5 = new Userssetaddditems.Utilities(fetchRole(),1, username1);
-            this.Gitem1 = item1;
-            this.Gitem2 = item2;
-            this.Gitem3 = item4;
-            this.Gitem4 = item3;
-            this.Gitem5 = item5;
-            UserControl[] sp1 = { item5, item4, item3, item2, item1 };
-
-            foreach (UserControl i in sp1)
-            {
-                ItemsBox.Controls.Add(i);
-
-            }
-            }else
+            if (trig == true && summontype == 1)
             {
                 String[] names = { "FileMaintenenance", "Inventory", "Sales", "Reports", "Utilities" };
-                if (ItemsBox.Controls.Count != 0) {
-                    for (int i = 0; i != 5; i++)
+                if (ItemsBox.Controls.Count != 0)
+                {
+                    foreach (String i in names)
                     {
-                        ItemsBox.Controls.Find(names[i], true)[0].Dispose();
+                        ItemsBox.Controls.Find(i, true)[0].Dispose();
 
 
                     }
+                    ItemsBox.Controls.Clear();
                 }
                 ModulesSecond.Userssetaddditems.FileMaintenenance item1 = new Userssetaddditems.FileMaintenenance(fetchRole(), 1, "");
                 ModulesSecond.Userssetaddditems.Inventory item2 = new Userssetaddditems.Inventory(fetchRole(), 1, "");
@@ -498,6 +514,11 @@ namespace JUFAV_System.ModulesSecond
 
 
             }
+
+        }
+
+        private void USERNAME_FIELD_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

@@ -15,15 +15,15 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
 {
     public partial class AddUnitOfMeasure : UserControl
     {
-        public bool isverfied1 ;
-        public bool isverfied2 ;
+        public bool isverfied1;
+        public bool isverfied2;
         public bool isverfied3;
         int idtoedit;
         int summontype1 = 0;
-        public AddUnitOfMeasure(int summontype,int IdtoEdit)
+        public AddUnitOfMeasure(int summontype, int IdtoEdit)
         {
             InitializeComponent();
-            
+
             this.Dock = DockStyle.Fill;
             summontype1 = summontype;
             if (summontype == 0)
@@ -35,11 +35,11 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
 
             }
         }
-   
+
         private void loaddata(int idtoedit)
         {
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM UNITOFMEASURE WHERE UNITID = " + idtoedit + ";", initd.scon);
-            SQLiteDataReader srea1 = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM UNITOFMEASURE WHERE UNITID = " + idtoedit + ";", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader srea1 = scom1.ExecuteReader();
             while (srea1.Read())
             {
                 UofMtxtbox.Text = srea1["UNITDESC"].ToString();
@@ -56,7 +56,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
         {
             this.Cursor = Cursors.WaitCursor;
             Console.WriteLine("EDIT");
-            SQLiteCommand scom1 = new SQLiteCommand("UPDATE UNITOFMEASURE SET UNITDESC = '"+ UofMtxtbox.Text.ToLower() + "',UNITABBREVIATION = '"+ Abbreviatiotxtbox.Text.ToLower() + "' WHERE UNITID = "+idtoedit+";", initd.scon);
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("UPDATE UNITOFMEASURE SET UNITDESC = '" + UofMtxtbox.Text.ToLower() + "',UNITABBREVIATION = '" + Abbreviatiotxtbox.Text.ToLower() + "' WHERE UNITID = " + idtoedit + ";", initd.con1);
             scom1.ExecuteNonQuery();
             scom1 = null;
             //TO DO LATER
@@ -73,11 +73,11 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
             isverfied1 = true;
             isverfied2 = true;
             isverfied3 = true;
-            TextBox[] textboxes = {UofMtxtbox,Abbreviatiotxtbox };
-            PictureBox[] notificationimage = { UofM,Abreviation };
-            Label[] textnoti = { UnitOfmeaurenot,Abreviationnot };
+            TextBox[] textboxes = { UofMtxtbox, Abbreviatiotxtbox };
+            PictureBox[] notificationimage = { UofM, Abreviation };
+            Label[] textnoti = { UnitOfmeaurenot, Abreviationnot };
             //check pass and conf is =
-            if ( UofMtxtbox.Text == "" || Abbreviatiotxtbox.Text == "")
+            if (UofMtxtbox.Text == "" || Abbreviatiotxtbox.Text == "")
             {
                 for (int i = 0; i != 2; i++)
                 {
@@ -112,7 +112,8 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
                 }
             }
             //
-            if(summontype1 != 0) { 
+            if (summontype1 != 0)
+            {
                 if (isverfied2 == true && isverfied1 == true && algos1.DetectInputifDupplicate(new String[] { UofMtxtbox.Text.ToLower(), Abbreviatiotxtbox.Text.ToLower() }, 4) == false)
                 {
                     isverfied3 = false;
@@ -129,21 +130,23 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
             {
                 //are you sure 
 
-                if (summontype1 == 1) {
+                if (summontype1 == 1)
+                {
 
 
                     Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(Insertdata, 0, "ADD UNIT OF MEASURE", "ARE YOU SURE YOU WANT TO ADD THIS NEW UNIT OF MEASURE?", "ADD", 2);
                     msg1.Show();
 
 
-                } else
+                }
+                else
                 {
 
                     Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(UpdateDB, 0, "UPDATE UNIT OF MEASURE", "ARE YOU SURE YOU WANT TO UPDATE THIS UNIT OF MEASURE?", "UPDATE", 2);
                     msg1.Show();
 
                 }
-                
+
             }
 
         }
@@ -168,7 +171,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
             this.Cursor = Cursors.WaitCursor;
             Random rs1 = new Random();
             String unitid = "";//Users table
-            
+
             //retreive make sure it doesnt match any in the db
             //users id digit is only 5
             for (int i = 0; i != 6; i++)
@@ -176,19 +179,19 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
                 unitid = string.Concat(unitid, rs1.Next(0, 9).ToString());
             }
 
-            SQLiteCommand scom = new SQLiteCommand("INSERT INTO UNITOFMEASURE VALUES ("+Convert.ToInt32(unitid)+"," + initd.UserID + ",'" + UofMtxtbox.Text.ToLower() + "','" + Abbreviatiotxtbox.Text.ToLower()+"');", initd.scon);
+            MySql.Data.MySqlClient.MySqlCommand scom = new MySql.Data.MySqlClient.MySqlCommand("INSERT INTO UNITOFMEASURE VALUES (" + Convert.ToInt32(unitid) + "," + initd.UserID + ",'" + UofMtxtbox.Text.ToLower() + "','" + Abbreviatiotxtbox.Text.ToLower() + "');", initd.con1);
             scom.ExecuteNonQuery();
-            
+
             this.Cursor = Cursors.Default;
 
 
-            Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(goback,0,"ADD UNIT OF MEASUREMENT","ITEM SUCCESSFULLY ADDED! \n WOULD YOU LIKE TO GO BACK AT THE FRONT PAGE?","OK",0);
+            Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(goback, 0, "ADD UNIT OF MEASUREMENT", "ITEM SUCCESSFULLY ADDED! \n WOULD YOU LIKE TO GO BACK AT THE FRONT PAGE?", "OK", 0);
             msg2.Show();
         }
 
         private void addBTN_Click(object sender, EventArgs e)
         {
-            
+
             hide();
             verify(summontype1);
         }
@@ -203,7 +206,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.UnitOfMeasure
 
 
         }
-       
+
         private void goback()
         {
             ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();

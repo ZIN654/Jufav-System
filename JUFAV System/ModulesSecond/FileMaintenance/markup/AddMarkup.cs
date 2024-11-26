@@ -34,8 +34,8 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.markup
         }
         private void OnLoad1(int id)
         {
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM MARKUP WHERE MARKUPID = " + id + ";", initd.scon);
-            SQLiteDataReader sread1 = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM MARKUP WHERE MARKUPID = " + id + ";", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
             {
                 Markuptxtbx.Text = sread1["MARKUPVALUE"].ToString();
@@ -51,7 +51,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.markup
         private void update1()
         {
             this.Cursor = Cursors.WaitCursor;
-            SQLiteCommand scom1 = new SQLiteCommand("UPDATE MARKUP SET MARKUPVALUE =" + Convert.ToDouble(Markuptxtbx.Text)+ " WHERE MARKUPID = " + idtoedit + ";", initd.scon);
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("UPDATE MARKUP SET MARKUPVALUE =" + Convert.ToDouble(Markuptxtbx.Text) + " WHERE MARKUPID = " + idtoedit + ";", initd.con1);
             scom1.ExecuteNonQuery();
             scom1 = null;
 
@@ -67,32 +67,32 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.markup
             isverfied1 = true;
             isverfied2 = true;
 
-            
+
             //check pass and conf is =
-       
-             
+
+
             if (Markuptxtbx.Text == "")
-                    {
-                        // MessageBox.Show("error please Enter input from textbox text : " + textboxes[i].Name);
-                       MKimg.Visible = true;
-                       MKnot.Visible = true;
-                        isverfied1 = false;
-                      
-             }
+            {
+                // MessageBox.Show("error please Enter input from textbox text : " + textboxes[i].Name);
+                MKimg.Visible = true;
+                MKnot.Visible = true;
+                isverfied1 = false;
+
+            }
             else
             {
-               
-                    // \\W\\S
-                    if (Regex.IsMatch(Markuptxtbx.Text,@"[^0-9]"))
-                    {
-                        Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "NON CHARACTER INPUT", "Please Remove a non - letter character in " + Markuptxtbx.Name+ " field where text '" + Markuptxtbx.Text + "' contains the non letter character.", "RETRY", 1);
-                        ms.Show();
-                        isverfied2 = false;
-                        
-                    }
+
+                // \\W\\S
+                if (Regex.IsMatch(Markuptxtbx.Text, @"[^0-9]"))
+                {
+                    Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "NON CHARACTER INPUT", "Please Remove a non - letter character in " + Markuptxtbx.Name + " field where text '" + Markuptxtbx.Text + "' contains the non letter character.", "RETRY", 1);
+                    ms.Show();
+                    isverfied2 = false;
+
+                }
 
 
-                
+
             }
             if (isverfied2 == true && isverfied1 == true)
             {
@@ -126,11 +126,11 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.markup
             //CATEGORY 8
             for (int i = 0; i != 6; i++)
             {
-                MarkupID  = string.Concat(MarkupID, rs1.Next(0, 9).ToString());
+                MarkupID = string.Concat(MarkupID, rs1.Next(0, 9).ToString());
             }
             //define kung sinong user ang nag insert 
             //create table 
-            SQLiteCommand scom = new SQLiteCommand("INSERT INTO MARKUP VALUES (" + Convert.ToInt32(MarkupID) + ","+ initd.UserID+ "," + Convert.ToInt32(Markuptxtbx.Text)+");", initd.scon);
+            MySql.Data.MySqlClient.MySqlCommand scom = new MySql.Data.MySqlClient.MySqlCommand("INSERT INTO MARKUP VALUES (" + Convert.ToInt32(MarkupID) + "," + initd.UserID + "," + Convert.ToInt32(Markuptxtbx.Text) + ");", initd.con1);
             scom.ExecuteNonQuery();
             this.Cursor = Cursors.Default;
 

@@ -16,7 +16,7 @@ namespace JUFAV_System.Components
     public partial class CategoryComponent : UserControl
     {
         int id1;
-        public CategoryComponent(String text,int id)
+        public CategoryComponent(String text, int id)
         {
             InitializeComponent();
             this.id1 = id;
@@ -34,11 +34,13 @@ namespace JUFAV_System.Components
         }
         private void archive()
         {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
             this.Cursor = Cursors.WaitCursor;
-            SQLiteCommand scom1 = new SQLiteCommand("", initd.scon);
-            String[] query = { "INSERT INTO ARCCATEGORY (CATEGORYID,USERID,CATEGORYDESC) SELECT * FROM CATEGORY WHERE CATEGORYID = " + id1 + ";", "INSERT INTO ARCSUBCATEGORY (SUBCATEGORYID,USERID,CATEGORYID,SUBCATEGORYDESC,MARKUPVALUE) SELECT * FROM SUBCATEGORY WHERE CATEGORYID = " + id1 + ";", "INSERT INTO ARCPRODUCTS (PRODUCTID,USERID,CATEGORYID,SUBCATEGORYID,UOMID,PRODUCTNAME,ORIGINALPICE,MARKUPVALUE,QUANTITY,SUPPLIERID,PERISHABLEPRODUCT,ISBATCH,EXPIRINGDATE) SELECT * FROM PRODUCTS WHERE CATEGORYID = " + id1 + ";" };
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("", initd.con1);
+            String[] query = { "INSERT INTO ARCCATEGORY (CATEGORYID,USERID,CATEGORYDESC) SELECT * FROM CATEGORY WHERE CATEGORYID = " + id1 + ";", "INSERT INTO ARCSUBCATEGORY (SUBCATEGORYID,USERID,CATEGORYID,SUBCATEGORYDESC,MARKUPVALUE) SELECT * FROM SUBCATEGORY WHERE CATEGORYID = " + id1 + ";", "INSERT INTO ARCPRODUCTS (PRODUCTID,USERID,CATEGORYID,SUBCATEGORYID,PRODUCTNAME,ORIGINALPICE,MARKUPVALUE,QUANTITY) SELECT PRODUCTID,USERID,CATEGORYID,SUBCATEGORYID,PRODUCTNAME,ORIGINALPICE,MARKUPVALUE,QUANTITY FROM PRODUCTS WHERE CATEGORYID = " + id1 + ";" };
             foreach (String i in query)
             {
+                ////error dito e dito 
                 scom1.CommandText = i;
                 scom1.ExecuteNonQuery();
 
@@ -51,18 +53,19 @@ namespace JUFAV_System.Components
             this.Cursor = Cursors.Default;
             Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(this.Dispose, 0, "ARCHIVE RECORD", "RECORD SUCCESSFULLY ARCHIVED!", "OK", 0);
             ms.Show();
+            initd.con1.Close();
         }
         private void delete()
         {
             this.Cursor = Cursors.WaitCursor;
-            SQLiteCommand scom1 = new SQLiteCommand("DELETE FROM CATEGORY WHERE CATEGORYID = "+id1+";",initd.scon);
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("DELETE FROM CATEGORY WHERE CATEGORYID = " + id1 + ";", initd.con1);
             scom1.ExecuteNonQuery();
             scom1 = null;
             GC.Collect();
             this.Cursor = Cursors.Default;
             Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(this.Dispose, 0, "DELETE RECORD", "RECORD SUCCESSFULLY DELETED!", "OK", 0);
             ms.Show();
-           
+
         }
         private void pictureBox2_Click(object sender, EventArgs e)
         {
@@ -82,6 +85,6 @@ namespace JUFAV_System.Components
         {
             pictureBox2.Click += null;
             DeleteBTN.Click += null;
-        }    
+        }
     }
 }

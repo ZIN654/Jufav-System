@@ -30,14 +30,15 @@ namespace JUFAV_System.ModulesMain
             this.loginpanel = loginform;
             // this.container1.Controls.Add(Bcres);
             InitializeComponent();
-             axWindowsMediaPlayer1.URL = @"C://Users//asus//Desktop//CAPSTONE 2//JUFAV SYSTEM NEW - Copy//Jufav-System//JUFAV System//Resources//JufavLogoback.mp4";
+            initd.thisform1 = this;
+            //axWindowsMediaPlayer1.URL = @"C://Users//asus//Desktop//CAPSTONE 2//JUFAVSYSTEM//Jufav-System//JUFAV System//Resources//JufavLogoback.mp4";
             //set this one if publishing
-            //axWindowsMediaPlayer1.URL = @Environment.CurrentDirectory + "//Resources//JufavLogoback.mp4";
+            axWindowsMediaPlayer1.URL = @Environment.CurrentDirectory + "//Resources//JufavLogoback.mp4";
             axWindowsMediaPlayer1.settings.autoStart = true;
             axWindowsMediaPlayer1.Ctlenabled = false;
             axWindowsMediaPlayer1.stretchToFit = true;
             axWindowsMediaPlayer1.settings.setMode("loop", true);
-
+          
             addevents();
             itemsbox1 = itemsbox;
             //BUG DITO FIRST RUN TAS ERROR PAH IOPEN MO PRAGMA KEY PAG CLOSE UNG DELETION NG SALES
@@ -50,10 +51,23 @@ namespace JUFAV_System.ModulesMain
         }
         private void setrole()
         {
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT ROLES FROM USER_INFO WHERE USERNAME = '"+initd.username+"';",initd.scon);
-            int ROle = Convert.ToInt32(scom1.ExecuteScalar());
-            Console.WriteLine("ROLES:" + ROle);
-            determinerole(ROle);
+            try
+            {
+                //kapag nag login coconnect /make sure na [aki set ang con1.constring at constrngtouserrefresh
+                initd.con1 = new MySql.Data.MySqlClient.MySqlConnection(initd.constringtouserefresh);
+                initd.constringtouserefresh = initd.con1.ConnectionString;
+                if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }//error kapag nag logut ako as client tas login ulit mag kakaerror
+                                                                                      //Exception Firsts run: An unhandled exception of type 'MySql.Data.MySqlClient.MySqlException' occurred in mscorlib.dll
+
+                MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT ROLES FROM USER_INFO WHERE USERNAME = '" + initd.username + "';", initd.con1);
+                int ROle = Convert.ToInt32(scom1.ExecuteScalar());
+                Console.WriteLine("ROLES:" + ROle);
+                determinerole(ROle);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("MESSAGE : " + e);
+            }
 
         }
         private void determinerole(int role)
@@ -120,6 +134,17 @@ namespace JUFAV_System.ModulesMain
         }
         private void closethis()
         {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new  MySql.Data.MySqlClient.MySqlCommand("UPDATE AUDITTRAIL SET TIMEOUT1 = '" + DateTime.Now.ToShortTimeString() + "' WHERE AUDITID = " + initd.UserIDACtionAudit + ";", initd.con1);
+            scom1.ExecuteNonQuery();
+            Thread.Sleep(100);
+            scom1.CommandText = "UPDATE AUDITTRAIL SET TOTALACTIONS = (SELECT COUNT(*) FROM AUDITTRAILACTIONSLIST  WHERE AUDITID =" + initd.UserIDACtionAudit + " );";
+            scom1.ExecuteNonQuery();
+            scom1 = null;
+            GC.Collect();
+            initd.con1.Close();
+         
+            GC.Collect();
             this.Dispose();
             loginpanel.Show();
         }
@@ -216,7 +241,7 @@ namespace JUFAV_System.ModulesMain
                     Console.WriteLine("TEST IT WAS CLEARED");
                     initd.closedatabase();
                     initd.opendatabase();
-                    SQLiteCommand scom1 = new SQLiteCommand("DELETE FROM ORDERSTEMPO", initd.scon);
+                     MySql.Data.MySqlClient.MySqlCommand scom1 = new  MySql.Data.MySqlClient.MySqlCommand("DELETE FROM ORDERSTEMPO", initd.con1);
                     scom1.ExecuteNonQuery();
                     scom1 = null;
                     GC.Collect();
@@ -235,7 +260,7 @@ namespace JUFAV_System.ModulesMain
         private void CORE_FormClosed(object sender, FormClosedEventArgs e)
         {
             ResponsiveUI1.title = "LoginPanel";
-            ResponsiveUI1.spl1 = itemsbox1;
+            ResponsiveUI1.spl2 = itemsbox1;
             deletesales();    
         }
         private void CORE_Leave(object sender, EventArgs e)
@@ -256,6 +281,10 @@ namespace JUFAV_System.ModulesMain
         {
             Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(closethis, 0, "LOGOUT", "ARE YOU SURE YOU WANT TO LOGOUT", "LOGOUT", 0);
             msg2.Show();
+            //update time out 
+            //count total actions 
+          
+
         }
     }
 }

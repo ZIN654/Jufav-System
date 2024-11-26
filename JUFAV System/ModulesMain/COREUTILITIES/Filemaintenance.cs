@@ -37,8 +37,8 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
         }
       private void loadandinsertAccesslevel()
         {
-            SQLiteCommand scom = new SQLiteCommand("SELECT SUBMODULENAME,HASACCESS FROM SUBMODULES WHERE USERID = " + initd.UserID+";",initd.scon);
-            SQLiteDataReader sq1 = scom.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom = new MySql.Data.MySqlClient.MySqlCommand("SELECT SUBMODULENAME,HASACCESS FROM SUBMODULES WHERE USERID = " + initd.UserID+";",initd.con1);
+             MySql.Data.MySqlClient.MySqlDataReader sq1 = scom.ExecuteReader();
             while (sq1.Read())
             {
                 accountaccesslevel.Add(sq1["SUBMODULENAME"],sq1["HASACCESS"]);
@@ -52,7 +52,7 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
             FmBTN.Click += FileMaintenance;
             
             SplrBTN.Click += Supplier;
-            UoMBTN.Click += Unit_of_Measure;
+          
             CategoryBTN.Click += Category;
             SubCatBTN.Click += Sub_category;
             VatBTN.Click += Vat;
@@ -96,7 +96,7 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
                 //Size.Height = new Size();
 
 
-                this.Size = new Size(sizewidth, 304);
+                this.Size = new Size(sizewidth, 266);
                // AnimationFunctions01.Lerp1(38, 342, 1, this);
                 switch1 = 0;
                 }
@@ -169,32 +169,7 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
           
         }
         
-        private void Unit_of_Measure(object sender, EventArgs e)
-        {
-            if (Convert.ToInt32(accountaccesslevel["UOM"]) == 1)
-            {
-                ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
-                ModulesMain.FILEMAINTENANCE.UnitOfMeasures UoM = new ModulesMain.FILEMAINTENANCE.UnitOfMeasures();
-
-                ResponsiveUI1.title = "UnitOfMeasures";
-                ResponsiveUI1.title2 = "Unit Of Measures";
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
-                ResponsiveUI1.spl1.Controls.Add(UoM);
-
-            }
-            else
-            {
-                ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
-                Components.AccessDenied as1 = new Components.AccessDenied();
-                ResponsiveUI1.title = "AccessDenied";
-                ResponsiveUI1.title2 = "Access Denied";
-                ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
-                ResponsiveUI1.spl1.Controls.Add(as1);
-
-
-            }
-          
-        }
+       
         private void Category(object sender, EventArgs e)
         {
             if (Convert.ToInt32(accountaccesslevel["Category"]) == 1)

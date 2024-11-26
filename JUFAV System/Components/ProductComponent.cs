@@ -16,7 +16,7 @@ namespace JUFAV_System.Components
     public partial class ProductComponent : UserControl
     {
         int id;
-        public ProductComponent(String prodname,String Category,String Subcategory,int quantity,String Uom,Double UnitCost,Double Srp,int prodID)
+        public ProductComponent(String prodname, String Category, String Subcategory, int quantity, Double UnitCost, Double Srp, int prodID)
         {
             InitializeComponent();
             this.Dock = DockStyle.Top;
@@ -24,9 +24,9 @@ namespace JUFAV_System.Components
             label12.Text = Category;
             label13.Text = Subcategory;
             label14.Text = quantity.ToString();
-            label15.Text = Uom;
-            label16.Text = UnitCost.ToString();
-            label17.Text = Srp.ToString();
+
+            label16.Text = UnitCost.ToString() + ".00";
+            label17.Text = Srp.ToString() + ".00";
             id = prodID;
 
         }
@@ -34,9 +34,10 @@ namespace JUFAV_System.Components
         {
             ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
             ModulesSecond.FileMaintenance.Products.AddProducts sup1 = new ModulesSecond.FileMaintenance.Products.AddProducts(0, id);
-            sup1.Name = "editMarkup";
-            ResponsiveUI1.title = "editMarkup";
-            ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
+            sup1.Name = "EDITPRODUCT";
+            ResponsiveUI1.title = "EDITPRODUCT";
+            ResponsiveUI1.title2 = "EDIT PRODUCT";
+            ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();
             ResponsiveUI1.spl1.Controls.Add(sup1);
 
 
@@ -44,7 +45,7 @@ namespace JUFAV_System.Components
         private void archive()
         {
             this.Cursor = Cursors.WaitCursor;
-            SQLiteCommand scom1 = new SQLiteCommand("INSERT INTO ARCPRODUCTS (PRODUCTID,USERID,CATEGORYID,SUBCATEGORYID,UOMID,PRODUCTNAME,ORIGINALPICE,MARKUPVALUE,QUANTITY,SUPPLIERID,PERISHABLEPRODUCT,ISBATCH,EXPIRINGDATE) SELECT * FROM PRODUCTS WHERE PRODUCTID = " + id + ";", initd.scon);
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("INSERT INTO ARCPRODUCTS (PRODUCTID,USERID,CATEGORYID,SUBCATEGORYID,PRODUCTNAME,ORIGINALPICE,MARKUPVALUE,QUANTITY) SELECT PRODUCTID,USERID,CATEGORYID,SUBCATEGORYID,PRODUCTNAME,ORIGINALPICE,MARKUPVALUE,QUANTITY FROM PRODUCTS WHERE PRODUCTID = " + id + ";", initd.con1);
             scom1.ExecuteNonQuery();
             Thread.Sleep(2000);
             scom1.CommandText = "DELETE FROM PRODUCTS WHERE PRODUCTID = " + id + ";";//references bug
@@ -58,7 +59,7 @@ namespace JUFAV_System.Components
         private void delete()
         {
             this.Cursor = Cursors.WaitCursor;
-            SQLiteCommand scom1 = new SQLiteCommand("DELETE FROM PRODUCTS WHERE PRODUCTID = " + id + ";", initd.scon);
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("DELETE FROM PRODUCTS WHERE PRODUCTID = " + id + ";", initd.con1);
             scom1.ExecuteNonQuery();
             scom1 = null;
             GC.Collect();

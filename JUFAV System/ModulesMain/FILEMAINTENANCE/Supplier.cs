@@ -42,8 +42,9 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
         }
         private void LoadData()
         {
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM SUPPLIERS;",initd.scon);
-            SQLiteDataReader sq1 = scom1.ExecuteReader();
+            if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new  MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM SUPPLIERS;",initd.con1);
+             MySql.Data.MySqlClient.MySqlDataReader sq1 = scom1.ExecuteReader();
             while (sq1.Read())
             {
                 Components.SUPDatabox item1 = new Components.SUPDatabox(sq1["SUPPLIERNAME"].ToString(),sq1["CONTACTPERSON"].ToString(),sq1["CONTACTNUMBER"].ToString(),sq1["COMPANYADDRESS"].ToString(),Convert.ToInt32(sq1["SUPPLIERID"]));
@@ -51,10 +52,12 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
                 ItemsBox.Controls.Add(item1);
 
             }
+            sq1.Close();
+            initd.con1.Close();
         }
         private void LoadDataFilter(String Filtertouse)
         {
-
+            if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }
             foreach (UserControl ctrl in ItemsBox.Controls)
             {
                 ctrl.Dispose();
@@ -62,8 +65,8 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
 
             ItemsBox.Controls.Clear();//may natitirang isang container why?
 
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM SUPPLIERS WHERE SUPPLIERNAME LIKE '%"+Filtertouse+ "%' OR COMPANYADDRESS LIKE '%"+Filtertouse+ "%' OR CONTACTPERSON LIKE '%"+Filtertouse+"%' ;", initd.scon);
-            SQLiteDataReader sq1 = scom1.ExecuteReader();
+             MySql.Data.MySqlClient.MySqlCommand scom1 = new  MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM SUPPLIERS WHERE SUPPLIERNAME LIKE '%"+Filtertouse+ "%' OR COMPANYADDRESS LIKE '%"+Filtertouse+ "%' OR CONTACTPERSON LIKE '%"+Filtertouse+"%' ;", initd.con1);
+             MySql.Data.MySqlClient.MySqlDataReader sq1 = scom1.ExecuteReader();
             while (sq1.Read())
             {
                 Components.SUPDatabox item1 = new Components.SUPDatabox(sq1["SUPPLIERNAME"].ToString(), sq1["CONTACTPERSON"].ToString(), sq1["CONTACTNUMBER"].ToString(), sq1["COMPANYADDRESS"].ToString(), Convert.ToInt32(sq1["SUPPLIERID"]));
@@ -71,6 +74,7 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
                 ItemsBox.Controls.Add(item1);
 
             }
+            initd.con1.Close();
         }
 
         public void realeaseLeak()

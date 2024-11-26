@@ -125,6 +125,7 @@
             this.addaccountBTN.TabIndex = 4;
             this.addaccountBTN.Text = "ADD ACOUNT";
             this.addaccountBTN.UseVisualStyleBackColor = false;
+            this.addaccountBTN.Click += new System.EventHandler(this.AddacountClick);
             // 
             // rcverpassBTN
             // 

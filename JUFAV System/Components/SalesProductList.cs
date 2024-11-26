@@ -16,7 +16,7 @@ namespace JUFAV_System.Components
     {
         int prodid1;
         int quantity1;
-        public SalesProductList(String Productname,int quantity,String  UnitOfMeasure,String Price,int ProdID)
+        public SalesProductList(String Productname,int quantity,String Price,int ProdID)
         {
             InitializeComponent();
             this.Dock = DockStyle.Top;
@@ -24,7 +24,7 @@ namespace JUFAV_System.Components
             quantity1 = quantity;
             label1.Text = Productname;
             label2.Text = quantity.ToString();
-            label3.Text = UnitOfMeasure;
+          
             label4.Text = Price.ToString();
         }
         private int generateID()//for hashtable/dictionary
@@ -67,7 +67,7 @@ namespace JUFAV_System.Components
                 }
                 else
                 {
-                    Components.SalesOrdersList item1 = new SalesOrdersList(label1.Text, Convert.ToInt32(label4.Text), prodid1, generateID());
+                    Components.SalesOrdersList item1 = new SalesOrdersList(label1.Text, Convert.ToInt32(label4.Text), prodid1, generateID(),quantity1);
                     initd.itemsboxselected.Controls.Add(item1);
 
                 }

@@ -46,8 +46,8 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
 
         private void loadandinsertAccesslevel()
         {
-            SQLiteCommand scom = new SQLiteCommand("SELECT SUBMODULENAME,HASACCESS FROM SUBMODULES WHERE USERID = " + initd.UserID + ";", initd.scon);
-            SQLiteDataReader sq1 = scom.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom = new MySql.Data.MySqlClient.MySqlCommand("SELECT SUBMODULENAME,HASACCESS FROM SUBMODULES WHERE USERID = " + initd.UserID + ";", initd.con1);
+             MySql.Data.MySqlClient.MySqlDataReader sq1 = scom.ExecuteReader();
             while (sq1.Read())
             {
                 accountaccesslevel.Add(sq1["SUBMODULENAME"], sq1["HASACCESS"]);

@@ -65,7 +65,7 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
             for (int i = 0; i != 4; i++)
             {
                 //UPDATE ANOMALY
-                SQLiteCommand SCOM1 = new SQLiteCommand("UPDATE SUBMODULES SET HASACCESS =" + items[i].Checked + " WHERE USERID = (SELECT USERIDS FROM USER_INFO WHERE USERNAME = '" + this.usertoedit + "') AND SUBMODULENAME LIKE '%" + items[i].Name.ToString() + "%';", initd.scon);
+                MySql.Data.MySqlClient.MySqlCommand SCOM1 = new MySql.Data.MySqlClient.MySqlCommand("UPDATE SUBMODULES SET HASACCESS =" + items[i].Checked + " WHERE USERID = (SELECT USERIDS FROM USER_INFO WHERE USERNAME = '" + this.usertoedit + "') AND SUBMODULENAME LIKE '%" + items[i].Name.ToString() + "%';", initd.con1);
                 SCOM1.ExecuteNonQuery();
                 Thread.Sleep(100);
 
@@ -76,8 +76,8 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
         {
             CheckBox[] items = { StckAdj, PurchOrde, ProdList, PurchOrdRec };
             items1.Clear();
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM SUBMODULES WHERE USERID = (SELECT USERIDS FROM USER_INFO WHERE USERNAME = '" + ussername + "');", initd.scon);
-            SQLiteDataReader sq1 = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM SUBMODULES WHERE USERID = (SELECT USERIDS FROM USER_INFO WHERE USERNAME = '" + ussername + "');", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sq1 = scom1.ExecuteReader();
             while (sq1.Read())
             {
                 items1.Add(sq1["SUBMODULENAME"], determinenum(Convert.ToInt32(sq1["HASACCESS"])));
@@ -195,7 +195,7 @@ namespace JUFAV_System.ModulesSecond.Userssetaddditems
                 ModuleID = string.Concat(ModuleID, rand.Next(0, 9).ToString());
             }
             //generate id of module 
-            SQLiteCommand scom1 = new SQLiteCommand("INSERT INTO MAINMODULES VALUES (" + Convert.ToInt32(ModuleID) + "," + id + ",'Inventory');", initd.scon);
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("INSERT INTO MAINMODULES VALUES (" + Convert.ToInt32(ModuleID) + "," + id + ",'Inventory');", initd.con1);
             scom1.ExecuteNonQuery();
             
             Thread.Sleep(200);

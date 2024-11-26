@@ -78,10 +78,10 @@ namespace JUFAV_System.ModulesMain.LOGIN
             //message box that would take the user into the main login panel
             if (MessageBox.Show(this, "Email Has Sent!,Please check your email to see your password.", "Password Recovery", MessageBoxButtons.OK) == DialogResult.OK)
             {
-                ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
+                ResponsiveUI1.spl2.Controls.Find(ResponsiveUI1.title3, false)[0].Dispose();
                 ModulesMain.LOGIN.LoginPanel login = new ModulesMain.LOGIN.LoginPanel();//perhaps us the name of the username txtbx
                 ResponsiveUI1.title = "LoginPanel";
-                ResponsiveUI1.spl1.Controls.Add(login);
+                ResponsiveUI1.spl2.Controls.Add(login);
 
             }
 
@@ -109,10 +109,10 @@ namespace JUFAV_System.ModulesMain.LOGIN
         {
             if (MessageBox.Show(this,"Are you sure you want to Cancel the password recovery?","Password Recovery",MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
+                ResponsiveUI1.spl2.Controls.Find(ResponsiveUI1.title3,true)[0].Dispose();
                 ModulesMain.LOGIN.LoginPanel login = new ModulesMain.LOGIN.LoginPanel();//perhaps us the name of the username txtbx
-                ResponsiveUI1.title = "LoginPanel";
-                ResponsiveUI1.spl1.Controls.Add(login);
+                ResponsiveUI1.title3 = "LoginPanel";
+                ResponsiveUI1.spl2.Controls.Add(login);
 
 
             }

@@ -24,6 +24,7 @@ namespace JUFAV_System.ModulesMain.INVENTORY
      
         private void loddataPending(int l)
         {
+            if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }
             string toload = "PENDING";
             if (l == 1){toload = "COMPLETED";}
             foreach (UserControl i in ItemsBox.Controls)
@@ -32,8 +33,8 @@ namespace JUFAV_System.ModulesMain.INVENTORY
             }
             ItemsBox.Controls.Clear();
             GC.Collect();
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM PURCHASEORDER WHERE ORDERSTATUS = '"+toload+"';", initd.scon);
-            SQLiteDataReader sread1 = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM PURCHASEORDER WHERE ORDERSTATUS = '"+toload+"';", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
             {
                 //POID,USERID,ORDERDATE,EXPECTEDORDERDATE,SUPPLIER,TIMES,TOTALPRODUCTS,TOTALCOST,ORDERSTATUS
@@ -43,6 +44,7 @@ namespace JUFAV_System.ModulesMain.INVENTORY
                 //pass PO ID sa component then pag initialize ng component sa ID dun mag eexecute ilolod ung data
                 //dito load ng data
             }
+           initd.con1.Close();
         }
        
 

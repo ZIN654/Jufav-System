@@ -51,6 +51,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.REFERENCENUM = new System.Windows.Forms.LinkLabel();
+            this.label24 = new System.Windows.Forms.Label();
             this.Deliveryfee = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -65,6 +67,8 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.GCASHRAD = new System.Windows.Forms.RadioButton();
+            this.CASHRAD = new System.Windows.Forms.RadioButton();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -88,8 +92,6 @@
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.clear = new System.Windows.Forms.Button();
             this.Backsoace = new System.Windows.Forms.Button();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -114,6 +116,7 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -122,6 +125,7 @@
             // 
             // label4
             // 
+            this.label4.Cursor = System.Windows.Forms.Cursors.Default;
             this.label4.Dock = System.Windows.Forms.DockStyle.Left;
             this.label4.Font = new System.Drawing.Font("Actor", 9.75F);
             this.label4.ForeColor = System.Drawing.Color.Red;
@@ -134,6 +138,7 @@
             // 
             // label3
             // 
+            this.label3.Cursor = System.Windows.Forms.Cursors.Default;
             this.label3.Dock = System.Windows.Forms.DockStyle.Left;
             this.label3.Font = new System.Drawing.Font("Actor", 9.75F);
             this.label3.Location = new System.Drawing.Point(374, 0);
@@ -145,6 +150,7 @@
             // 
             // label2
             // 
+            this.label2.Cursor = System.Windows.Forms.Cursors.Default;
             this.label2.Dock = System.Windows.Forms.DockStyle.Left;
             this.label2.Font = new System.Drawing.Font("Actor", 9.75F);
             this.label2.ForeColor = System.Drawing.Color.Red;
@@ -157,6 +163,7 @@
             // 
             // label1
             // 
+            this.label1.Cursor = System.Windows.Forms.Cursors.Default;
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
             this.label1.Font = new System.Drawing.Font("Actor", 9.75F);
             this.label1.Location = new System.Drawing.Point(0, 0);
@@ -214,6 +221,7 @@
             this.panel5.Controls.Add(this.label10);
             this.panel5.Controls.Add(this.label9);
             this.panel5.Controls.Add(this.label14);
+            this.panel5.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(0, 475);
             this.panel5.Name = "panel5";
@@ -223,6 +231,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
+            this.label12.Cursor = System.Windows.Forms.Cursors.Default;
             this.label12.Font = new System.Drawing.Font("Actor", 11.25F, System.Drawing.FontStyle.Bold);
             this.label12.Location = new System.Drawing.Point(125, 9);
             this.label12.Name = "label12";
@@ -233,6 +242,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.Cursor = System.Windows.Forms.Cursors.Default;
             this.label11.Font = new System.Drawing.Font("Actor", 11.25F, System.Drawing.FontStyle.Bold);
             this.label11.Location = new System.Drawing.Point(127, 41);
             this.label11.Name = "label11";
@@ -242,6 +252,7 @@
             // 
             // label16
             // 
+            this.label16.Cursor = System.Windows.Forms.Cursors.Default;
             this.label16.Font = new System.Drawing.Font("Actor", 15.75F, System.Drawing.FontStyle.Bold);
             this.label16.Location = new System.Drawing.Point(213, 88);
             this.label16.Name = "label16";
@@ -252,6 +263,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.Cursor = System.Windows.Forms.Cursors.Default;
             this.label10.Font = new System.Drawing.Font("Actor", 11.25F, System.Drawing.FontStyle.Bold);
             this.label10.Location = new System.Drawing.Point(6, 9);
             this.label10.Name = "label10";
@@ -262,6 +274,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.Cursor = System.Windows.Forms.Cursors.Default;
             this.label9.Font = new System.Drawing.Font("Actor", 11.25F, System.Drawing.FontStyle.Bold);
             this.label9.Location = new System.Drawing.Point(9, 41);
             this.label9.Name = "label9";
@@ -272,6 +285,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
+            this.label14.Cursor = System.Windows.Forms.Cursors.Default;
             this.label14.Font = new System.Drawing.Font("Actor", 15.75F, System.Drawing.FontStyle.Bold);
             this.label14.Location = new System.Drawing.Point(3, 89);
             this.label14.Name = "label14";
@@ -295,7 +309,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.90909F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.09091F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 107F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121F));
             this.tableLayoutPanel2.Controls.Add(this.label8, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.label7, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label6, 0, 0);
@@ -310,11 +324,12 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.Cursor = System.Windows.Forms.Cursors.Default;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label8.Location = new System.Drawing.Point(309, 1);
+            this.label8.Location = new System.Drawing.Point(295, 1);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(102, 24);
+            this.label8.Size = new System.Drawing.Size(116, 24);
             this.label8.TabIndex = 2;
             this.label8.Text = "TOTAL PRICE";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -322,11 +337,12 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Cursor = System.Windows.Forms.Cursors.Default;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label7.Location = new System.Drawing.Point(129, 1);
+            this.label7.Location = new System.Drawing.Point(123, 1);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(173, 24);
+            this.label7.Size = new System.Drawing.Size(165, 24);
             this.label7.TabIndex = 1;
             this.label7.Text = "Qty.";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -334,11 +350,12 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Cursor = System.Windows.Forms.Cursors.Default;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Font = new System.Drawing.Font("Actor", 8.25F);
             this.label6.Location = new System.Drawing.Point(4, 1);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(118, 24);
+            this.label6.Size = new System.Drawing.Size(112, 24);
             this.label6.TabIndex = 0;
             this.label6.Text = "PRODUCT NAME";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -370,6 +387,8 @@
             // 
             this.panel6.AutoScroll = true;
             this.panel6.BackColor = System.Drawing.SystemColors.Control;
+            this.panel6.Controls.Add(this.REFERENCENUM);
+            this.panel6.Controls.Add(this.label24);
             this.panel6.Controls.Add(this.Deliveryfee);
             this.panel6.Controls.Add(this.label23);
             this.panel6.Controls.Add(this.label22);
@@ -377,28 +396,57 @@
             this.panel6.Controls.Add(this.Discount);
             this.panel6.Controls.Add(this.label15);
             this.panel6.Controls.Add(this.label13);
+            this.panel6.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(0, 185);
+            this.panel6.Location = new System.Drawing.Point(0, 145);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(398, 159);
+            this.panel6.Size = new System.Drawing.Size(398, 199);
             this.panel6.TabIndex = 1;
+            // 
+            // REFERENCENUM
+            // 
+            this.REFERENCENUM.AutoSize = true;
+            this.REFERENCENUM.Font = new System.Drawing.Font("Actor", 11.25F);
+            this.REFERENCENUM.Location = new System.Drawing.Point(14, 44);
+            this.REFERENCENUM.Name = "REFERENCENUM";
+            this.REFERENCENUM.Size = new System.Drawing.Size(69, 19);
+            this.REFERENCENUM.TabIndex = 10;
+            this.REFERENCENUM.TabStop = true;
+            this.REFERENCENUM.Text = "linkLabel1";
+            this.REFERENCENUM.Visible = false;
+            this.REFERENCENUM.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.REFERENCENUM_LinkClicked);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label24.Font = new System.Drawing.Font("Actor", 8.25F);
+            this.label24.Location = new System.Drawing.Point(3, 22);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(158, 14);
+            this.label24.TabIndex = 8;
+            this.label24.Text = "GCASH REFERENCE NUMBER: ";
+            this.label24.Visible = false;
             // 
             // Deliveryfee
             // 
             this.Deliveryfee.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Deliveryfee.Cursor = System.Windows.Forms.Cursors.Default;
             this.Deliveryfee.Font = new System.Drawing.Font("Actor", 15.75F);
-            this.Deliveryfee.Location = new System.Drawing.Point(102, 35);
+            this.Deliveryfee.Location = new System.Drawing.Point(102, 77);
             this.Deliveryfee.Name = "Deliveryfee";
             this.Deliveryfee.Size = new System.Drawing.Size(269, 33);
             this.Deliveryfee.TabIndex = 7;
             this.Deliveryfee.Text = "0";
+            this.Deliveryfee.TextChanged += new System.EventHandler(this.Deliveryfee_TextChanged);
             this.Deliveryfee.MouseCaptureChanged += new System.EventHandler(this.textBox3_MouseCaptureChanged);
             // 
             // label23
             // 
             this.label23.AutoSize = true;
+            this.label23.Cursor = System.Windows.Forms.Cursors.Default;
             this.label23.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label23.Location = new System.Drawing.Point(6, 51);
+            this.label23.Location = new System.Drawing.Point(6, 93);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(76, 14);
             this.label23.TabIndex = 6;
@@ -407,6 +455,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
+            this.label22.Cursor = System.Windows.Forms.Cursors.Default;
             this.label22.Font = new System.Drawing.Font("Actor", 11.25F, System.Drawing.FontStyle.Bold);
             this.label22.Location = new System.Drawing.Point(6, 3);
             this.label22.Name = "label22";
@@ -417,30 +466,37 @@
             // Payment
             // 
             this.Payment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Payment.Cursor = System.Windows.Forms.Cursors.Default;
             this.Payment.Font = new System.Drawing.Font("Actor", 15.75F);
-            this.Payment.Location = new System.Drawing.Point(103, 117);
+            this.Payment.Location = new System.Drawing.Point(103, 159);
             this.Payment.Name = "Payment";
             this.Payment.Size = new System.Drawing.Size(269, 33);
             this.Payment.TabIndex = 5;
             this.Payment.Text = "0";
+            this.Payment.Click += new System.EventHandler(this.Payment_Click);
+            this.Payment.TextChanged += new System.EventHandler(this.Payment_TextChanged);
             this.Payment.MouseCaptureChanged += new System.EventHandler(this.textBox2_MouseCaptureChanged);
             // 
             // Discount
             // 
             this.Discount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Discount.Cursor = System.Windows.Forms.Cursors.Default;
             this.Discount.Font = new System.Drawing.Font("Actor", 15.75F);
-            this.Discount.Location = new System.Drawing.Point(103, 76);
+            this.Discount.Location = new System.Drawing.Point(103, 118);
             this.Discount.Name = "Discount";
             this.Discount.Size = new System.Drawing.Size(269, 33);
             this.Discount.TabIndex = 4;
             this.Discount.Text = "0";
+            this.Discount.Click += new System.EventHandler(this.Discount_Click);
+            this.Discount.TextChanged += new System.EventHandler(this.Discount_TextChanged);
             this.Discount.MouseCaptureChanged += new System.EventHandler(this.textBox1_MouseCaptureChanged);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
+            this.label15.Cursor = System.Windows.Forms.Cursors.Default;
             this.label15.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label15.Location = new System.Drawing.Point(5, 133);
+            this.label15.Location = new System.Drawing.Point(5, 175);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(85, 14);
             this.label15.TabIndex = 2;
@@ -449,8 +505,9 @@
             // label13
             // 
             this.label13.AutoSize = true;
+            this.label13.Cursor = System.Windows.Forms.Cursors.Default;
             this.label13.Font = new System.Drawing.Font("Actor", 8.25F);
-            this.label13.Location = new System.Drawing.Point(7, 92);
+            this.label13.Location = new System.Drawing.Point(7, 134);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(62, 14);
             this.label13.TabIndex = 0;
@@ -461,7 +518,7 @@
             this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 256F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 263F));
             this.tableLayoutPanel4.Controls.Add(this.panel10, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.panel9, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -469,7 +526,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(398, 185);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(398, 145);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
             // panel10
@@ -479,16 +536,18 @@
             this.panel10.Controls.Add(this.ordertype);
             this.panel10.Controls.Add(this.label20);
             this.panel10.Controls.Add(this.label19);
+            this.panel10.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(141, 1);
+            this.panel10.Location = new System.Drawing.Point(134, 1);
             this.panel10.Margin = new System.Windows.Forms.Padding(0);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(256, 183);
+            this.panel10.Size = new System.Drawing.Size(263, 143);
             this.panel10.TabIndex = 1;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
+            this.label21.Cursor = System.Windows.Forms.Cursors.Default;
             this.label21.Font = new System.Drawing.Font("Actor", 11.25F);
             this.label21.ForeColor = System.Drawing.Color.Red;
             this.label21.Location = new System.Drawing.Point(8, 77);
@@ -500,6 +559,7 @@
             // ordertype
             // 
             this.ordertype.AutoSize = true;
+            this.ordertype.Cursor = System.Windows.Forms.Cursors.Default;
             this.ordertype.Font = new System.Drawing.Font("Actor", 11.25F);
             this.ordertype.ForeColor = System.Drawing.Color.Red;
             this.ordertype.Location = new System.Drawing.Point(8, 28);
@@ -511,6 +571,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
+            this.label20.Cursor = System.Windows.Forms.Cursors.Default;
             this.label20.Font = new System.Drawing.Font("Actor", 11.25F, System.Drawing.FontStyle.Bold);
             this.label20.Location = new System.Drawing.Point(3, 52);
             this.label20.Name = "label20";
@@ -521,6 +582,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
+            this.label19.Cursor = System.Windows.Forms.Cursors.Default;
             this.label19.Font = new System.Drawing.Font("Actor", 11.25F, System.Drawing.FontStyle.Bold);
             this.label19.Location = new System.Drawing.Point(3, 4);
             this.label19.Name = "label19";
@@ -531,32 +593,69 @@
             // panel9
             // 
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.radioButton2);
-            this.panel9.Controls.Add(this.radioButton1);
+            this.panel9.Controls.Add(this.GCASHRAD);
+            this.panel9.Controls.Add(this.CASHRAD);
             this.panel9.Controls.Add(this.label18);
             this.panel9.Controls.Add(this.label17);
+            this.panel9.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(1, 1);
             this.panel9.Margin = new System.Windows.Forms.Padding(0);
             this.panel9.Name = "panel9";
             this.panel9.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.panel9.Size = new System.Drawing.Size(139, 183);
+            this.panel9.Size = new System.Drawing.Size(132, 143);
             this.panel9.TabIndex = 0;
+            // 
+            // GCASHRAD
+            // 
+            this.GCASHRAD.AutoSize = true;
+            this.GCASHRAD.Cursor = System.Windows.Forms.Cursors.Default;
+            this.GCASHRAD.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.GCASHRAD.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.GCASHRAD.Location = new System.Drawing.Point(0, 59);
+            this.GCASHRAD.Name = "GCASHRAD";
+            this.GCASHRAD.Padding = new System.Windows.Forms.Padding(10, 0, 0, 10);
+            this.GCASHRAD.Size = new System.Drawing.Size(130, 36);
+            this.GCASHRAD.TabIndex = 5;
+            this.GCASHRAD.Text = "GCASH";
+            this.GCASHRAD.UseVisualStyleBackColor = true;
+            this.GCASHRAD.CheckedChanged += new System.EventHandler(this.GCASHRAD_CheckedChanged);
+            this.GCASHRAD.Click += new System.EventHandler(this.GCASHRAD_Click);
+            // 
+            // CASHRAD
+            // 
+            this.CASHRAD.AutoSize = true;
+            this.CASHRAD.Checked = true;
+            this.CASHRAD.Cursor = System.Windows.Forms.Cursors.Default;
+            this.CASHRAD.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.CASHRAD.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.CASHRAD.Location = new System.Drawing.Point(0, 95);
+            this.CASHRAD.Name = "CASHRAD";
+            this.CASHRAD.Padding = new System.Windows.Forms.Padding(10, 0, 0, 10);
+            this.CASHRAD.Size = new System.Drawing.Size(130, 36);
+            this.CASHRAD.TabIndex = 4;
+            this.CASHRAD.TabStop = true;
+            this.CASHRAD.Text = "CASH";
+            this.CASHRAD.UseVisualStyleBackColor = true;
+            this.CASHRAD.CheckedChanged += new System.EventHandler(this.CASHRAD_CheckedChanged);
+            this.CASHRAD.Click += new System.EventHandler(this.CASHRAD_Click);
             // 
             // label18
             // 
             this.label18.AutoSize = true;
+            this.label18.Cursor = System.Windows.Forms.Cursors.Default;
             this.label18.Font = new System.Drawing.Font("Actor", 11.25F);
             this.label18.ForeColor = System.Drawing.Color.Red;
             this.label18.Location = new System.Drawing.Point(8, 26);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(52, 19);
+            this.label18.Size = new System.Drawing.Size(45, 19);
             this.label18.TabIndex = 3;
-            this.label18.Text = "label18";
+            this.label18.Text = "CASH";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
+            this.label17.Cursor = System.Windows.Forms.Cursors.Default;
             this.label17.Font = new System.Drawing.Font("Actor", 11.25F, System.Drawing.FontStyle.Bold);
             this.label17.Location = new System.Drawing.Point(4, 4);
             this.label17.Name = "label17";
@@ -583,6 +682,7 @@
             // 
             this.panel7.Controls.Add(this.confirmorder);
             this.panel7.Controls.Add(this.backtosales);
+            this.panel7.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Margin = new System.Windows.Forms.Padding(0);
@@ -594,6 +694,7 @@
             // confirmorder
             // 
             this.confirmorder.BackColor = System.Drawing.Color.LightGreen;
+            this.confirmorder.Cursor = System.Windows.Forms.Cursors.Default;
             this.confirmorder.Dock = System.Windows.Forms.DockStyle.Top;
             this.confirmorder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.confirmorder.Font = new System.Drawing.Font("Actor", 8.25F);
@@ -608,6 +709,7 @@
             // 
             // backtosales
             // 
+            this.backtosales.Cursor = System.Windows.Forms.Cursors.Default;
             this.backtosales.Dock = System.Windows.Forms.DockStyle.Top;
             this.backtosales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backtosales.Font = new System.Drawing.Font("Actor", 8.25F);
@@ -660,6 +762,7 @@
             // 
             // zero
             // 
+            this.zero.Cursor = System.Windows.Forms.Cursors.Default;
             this.zero.Dock = System.Windows.Forms.DockStyle.Fill;
             this.zero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.zero.Font = new System.Drawing.Font("Actor", 14.25F, System.Drawing.FontStyle.Bold);
@@ -673,6 +776,7 @@
             // 
             // doublezero
             // 
+            this.doublezero.Cursor = System.Windows.Forms.Cursors.Default;
             this.doublezero.Dock = System.Windows.Forms.DockStyle.Fill;
             this.doublezero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.doublezero.Font = new System.Drawing.Font("Actor", 14.25F, System.Drawing.FontStyle.Bold);
@@ -686,6 +790,7 @@
             // 
             // dot
             // 
+            this.dot.Cursor = System.Windows.Forms.Cursors.Default;
             this.dot.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dot.Font = new System.Drawing.Font("Actor", 14.25F, System.Drawing.FontStyle.Bold);
@@ -699,6 +804,7 @@
             // 
             // nine
             // 
+            this.nine.Cursor = System.Windows.Forms.Cursors.Default;
             this.nine.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.nine.Font = new System.Drawing.Font("Actor", 14.25F, System.Drawing.FontStyle.Bold);
@@ -712,6 +818,7 @@
             // 
             // eight
             // 
+            this.eight.Cursor = System.Windows.Forms.Cursors.Default;
             this.eight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.eight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.eight.Font = new System.Drawing.Font("Actor", 14.25F, System.Drawing.FontStyle.Bold);
@@ -725,6 +832,7 @@
             // 
             // seven
             // 
+            this.seven.Cursor = System.Windows.Forms.Cursors.Default;
             this.seven.Dock = System.Windows.Forms.DockStyle.Fill;
             this.seven.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.seven.Font = new System.Drawing.Font("Actor", 14.25F, System.Drawing.FontStyle.Bold);
@@ -738,6 +846,7 @@
             // 
             // six
             // 
+            this.six.Cursor = System.Windows.Forms.Cursors.Default;
             this.six.Dock = System.Windows.Forms.DockStyle.Fill;
             this.six.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.six.Font = new System.Drawing.Font("Actor", 14.25F, System.Drawing.FontStyle.Bold);
@@ -751,6 +860,7 @@
             // 
             // five
             // 
+            this.five.Cursor = System.Windows.Forms.Cursors.Default;
             this.five.Dock = System.Windows.Forms.DockStyle.Fill;
             this.five.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.five.Font = new System.Drawing.Font("Actor", 14.25F, System.Drawing.FontStyle.Bold);
@@ -764,6 +874,7 @@
             // 
             // four
             // 
+            this.four.Cursor = System.Windows.Forms.Cursors.Default;
             this.four.Dock = System.Windows.Forms.DockStyle.Fill;
             this.four.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.four.Font = new System.Drawing.Font("Actor", 14.25F, System.Drawing.FontStyle.Bold);
@@ -777,6 +888,7 @@
             // 
             // threee
             // 
+            this.threee.Cursor = System.Windows.Forms.Cursors.Default;
             this.threee.Dock = System.Windows.Forms.DockStyle.Fill;
             this.threee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.threee.Font = new System.Drawing.Font("Actor", 14.25F, System.Drawing.FontStyle.Bold);
@@ -790,6 +902,7 @@
             // 
             // ttwo
             // 
+            this.ttwo.Cursor = System.Windows.Forms.Cursors.Default;
             this.ttwo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ttwo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ttwo.Font = new System.Drawing.Font("Actor", 14.25F, System.Drawing.FontStyle.Bold);
@@ -803,6 +916,7 @@
             // 
             // one
             // 
+            this.one.Cursor = System.Windows.Forms.Cursors.Default;
             this.one.Dock = System.Windows.Forms.DockStyle.Fill;
             this.one.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.one.Font = new System.Drawing.Font("Actor", 14.25F, System.Drawing.FontStyle.Bold);
@@ -831,6 +945,7 @@
             // 
             // clear
             // 
+            this.clear.Cursor = System.Windows.Forms.Cursors.Default;
             this.clear.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clear.Font = new System.Drawing.Font("Actor", 9.75F, System.Drawing.FontStyle.Bold);
@@ -846,6 +961,7 @@
             // 
             this.Backsoace.BackgroundImage = global::JUFAV_System.Properties.Resources.Backspace;
             this.Backsoace.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Backsoace.Cursor = System.Windows.Forms.Cursors.Default;
             this.Backsoace.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Backsoace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Backsoace.Font = new System.Drawing.Font("Actor", 14.25F, System.Drawing.FontStyle.Bold);
@@ -855,34 +971,6 @@
             this.Backsoace.TabIndex = 0;
             this.Backsoace.UseVisualStyleBackColor = true;
             this.Backsoace.Click += new System.EventHandler(this.Backsoace_Click);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.radioButton1.Location = new System.Drawing.Point(0, 135);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 10);
-            this.radioButton1.Size = new System.Drawing.Size(137, 36);
-            this.radioButton1.TabIndex = 4;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "CASH";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.radioButton2.Location = new System.Drawing.Point(0, 99);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Padding = new System.Windows.Forms.Padding(10, 0, 0, 10);
-            this.radioButton2.Size = new System.Drawing.Size(137, 36);
-            this.radioButton2.TabIndex = 5;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "GCASH";
-            this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // SalesPaymentMethod
             // 
@@ -982,7 +1070,9 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox Deliveryfee;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton GCASHRAD;
+        private System.Windows.Forms.RadioButton CASHRAD;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.LinkLabel REFERENCENUM;
     }
 }

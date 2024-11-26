@@ -28,7 +28,7 @@ namespace JUFAV_System.Components
             this.Dock = DockStyle.Top;
             ProducName1.Text = Prodname;
             label15.Text = UOM;
-            label14.Text = Origprice.ToString();
+            label14.Text = Origprice.ToString() + ".00";
             Origprice1 = Origprice;
             ProdID1 = ProdID;
             quantitytxtbox.Text = itemcount.ToString();
@@ -61,7 +61,7 @@ namespace JUFAV_System.Components
                 msg2.Show();
 
             }
-            TotalValue.Text = (itemcount * Origprice1).ToString();
+            TotalValue.Text = (itemcount * Origprice1).ToString() + ".00";
             //problem here setting the subtotal of the  label
         }
         private int generateID(int type)//for hashtable/dictionary

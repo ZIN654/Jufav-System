@@ -15,21 +15,23 @@ using System.IO;
 using System.Net;
 using System.Threading;
 
+
 namespace JUFAV_System.ModulesMain.LOGIN
 {
     public partial class LoginPanel : UserControl
     {
         private static Hashtable account = new Hashtable();
         private static int switch1 = 1;
+
        //ERROR SA FIRST RUN UNG SUBMODULE ID
         public LoginPanel()
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
-          
+           
             addevents();
-            
-           // Fetchdata();
+       
+          
         }
         public void addevents()
         {
@@ -45,11 +47,29 @@ namespace JUFAV_System.ModulesMain.LOGIN
         private void loginBTN(object sender, EventArgs e)
         {
             //revise
+            //     initd.con1.Dispose();
+            String TouseIP = "";
+            var hostname = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var IP in hostname.AddressList)
+            {
+                if (IP.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    TouseIP = IP.ToString();
+                    break;
+                }
+            }
+
+            initd.con1 = new MySql.Data.MySqlClient.MySqlConnection(@"server=" + TouseIP.Trim() + ";user=root;password=zxcvbnm12;port=3306;database=jufav2;");//add to sa part pag coconnect si client
+            GC.Collect();
+
+            if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }
             this.Cursor = Cursors.WaitCursor;
             Fetchdata();
             Thread.Sleep(500);
             verlogin();
             this.Cursor = Cursors.Default;
+          
+
         }
         private void hideshowpassBTN(object sender, EventArgs e)
         {
@@ -107,43 +127,69 @@ namespace JUFAV_System.ModulesMain.LOGIN
         //===========================DATABASE FETCHING  DATA AND VEIFY LOGIN
         public void Fetchdata()
         {
-            initd.opendatabase();
+           
+
             account.Clear();
-            SQLiteCommand scom = new SQLiteCommand("SELECT USERNAME,PASSWORDS FROM USER_INFO;", initd.scon);
-            SQLiteDataReader sread = scom.ExecuteReader();
-            while (sread.Read())
+                MySql.Data.MySqlClient.MySqlCommand scom = new MySql.Data.MySqlClient.MySqlCommand("SELECT USERNAME,PASSWORDS FROM USER_INFO;", initd.con1);
+                MySql.Data.MySqlClient.MySqlDataReader sread = scom.ExecuteReader();
+                while (sread.Read())
+                {
+                    //hindi pwede ang same username thats why we shoudl create a counter measure 
+                    account.Add(sread["USERNAME"].ToString(), sread["PASSWORDS"].ToString());
+                    //kapag gumagawa ng account make sure na yung ininsert na user  name ay walang ka same value
+                    //reader can not execute other commands when actives
+                }
+                sread.Close();
+             
+                scom = null;
+                sread = null;
+                GC.Collect();
+       
+        }
+        private int GenID() {
+            String IDtouse = "";
+            var ran = new Random();
+            for (int i = 0;i != 8;i++)
             {
-                //hindi pwede ang same username thats why we shoudl create a counter measure 
-                account.Add(sread["USERNAME"].ToString(), sread["PASSWORDS"].ToString());
-                //kapag gumagawa ng account make sure na yung ininsert na user  name ay walang ka same value
-                Console.WriteLine(sread["USERNAME"]);
-                Console.WriteLine(sread["PASSWORDS"]);
-                //reader can not execute other commands when actives
+                IDtouse = IDtouse + ran.Next(0,9);
             }
-            sread.Close();
-            scom = null;
-            sread = null;
-          
+            GC.Collect();
+            return Convert.ToInt32(IDtouse);
         }
         public void verlogin()
         {
+           
             //check kung admin tas kunin yungmga access level sa modules sa modulesmain na yun each button click check kung available aky user 
             //2 options store globaly ung data ng access level or each click retreive ? may audit trail pa tandaaan mo 
             //LARGE SPIKE HERE 
+            GC.Collect();
             if (account.ContainsKey(txtBxUSER.Text.ToString()) == true)
             {
                 //paano to please explain
                 if (account[txtBxUSER.Text.ToString()].Equals(txtboxPASS.Text.ToString()))
                 {
-                    //change into the main form
-                    initd.UserID = initd.getID(txtBxUSER.Text, initd.scon);
+
+                    //change into the main form 
+                  
+                    initd.UserID = initd.getID(txtBxUSER.Text);
                     initd.username = txtBxUSER.Text;
                     txtboxPASS.PasswordChar = '\0';
                     txtboxPASS.Clear();
                     this.Hide();
+
+             
+                    int Touse = GenID();
+                   initd.UserIDACtionAudit = Touse;
+                   
+                   MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("INSERT INTO AUDITTRAIL VALUES(" + Touse + "," + initd.UserID + ",'" + txtBxUSER.Text + "','" + DateTime.Now.ToShortDateString() + "','" + DateTime.Now.ToShortTimeString() + "','0:00',0);", initd.con1);
+                   scom1.ExecuteNonQueryAsync();
+                    initd.scon.Close();
+
+               
                     ModulesMain.CORE core1 = new CORE(this,(Panel)this.Parent);//last stop here
                     core1.Show();
                     core1.BringToFront();
+               
 
 
                 }
@@ -174,34 +220,51 @@ namespace JUFAV_System.ModulesMain.LOGIN
         }
         private void detectNet()
         {
-
-            String hostnam = Dns.GetHostName().ToString();
-            String ip = Dns.GetHostByName(hostnam).AddressList[0].ToString();
-            if ("127.0.0.1" == ip)
+            String TouseIP = "";
+            var hostname = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var IP in hostname.AddressList)
             {
-                MessageBox.Show(this, "PLEASE CONNECT TO INTERNET AND TRY AGAIN", "INTERNET CONNECTION", MessageBoxButtons.OK);
-            }
-            else
-            {
-                //sendemail();
-                if (MessageBox.Show(this, "NETWORK IS AVAILABLE, YOU CAN NOW RECOVER EMAIL", "INTERNET CONNECTION", MessageBoxButtons.OK) == DialogResult.OK)
+                if (IP.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
                 {
-                    //transfer to other panel then fill up some nessescary info
-                    changepanel();
-
+                    TouseIP = IP.ToString();
+                    break;
                 }
             }
-            hostnam = null;
-            ip = null;
+     
+                if ("127.0.0.1" == TouseIP)
+                {
+                    MessageBox.Show(this, "PLEASE CONNECT TO INTERNET AND TRY AGAIN", "INTERNET CONNECTION", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    //sendemail();
+                    if (MessageBox.Show(this, "NETWORK IS AVAILABLE, YOU CAN NOW RECOVER EMAIL", "INTERNET CONNECTION", MessageBoxButtons.OK) == DialogResult.OK)
+                    {
+                        //transfer to other panel then fill up some nessescary info
+                        changepanel();
+
+                    }
+                }
+            TouseIP = null;
+          
+            
+            
         }
         private void changepanel()
         {
             //changes the panel
-            ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();//error here outside the array
-            ModulesMain.LOGIN.Fogotpass forgotpas = new ModulesMain.LOGIN.Fogotpass(txtBxUSER.Text);
-            ResponsiveUI1.title = "Fogotpass";
-            ResponsiveUI1.spl1.Controls.Add(forgotpas);
-
+            try
+            {
+                ResponsiveUI1.spl2.Controls.Find(ResponsiveUI1.title3, true)[0].Dispose();//error here outside the array
+                ModulesMain.LOGIN.Fogotpass forgotpas = new ModulesMain.LOGIN.Fogotpass(txtBxUSER.Text);
+                ResponsiveUI1.title3 = "Fogotpass";
+                ResponsiveUI1.spl2.Controls.Add(forgotpas);
+                initd.closedatabase();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("ERROR SA CHANGE PANELs");
+            }
         }
         private void JUFAV_LOGIN_VisibleChanged(object sender, EventArgs e)
         {
@@ -209,7 +272,41 @@ namespace JUFAV_System.ModulesMain.LOGIN
         }
         private void forgotBTN_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            detectNet();
+            changepanel();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ResponsiveUI1.spl2.Controls.Find(ResponsiveUI1.title3, true)[0].Dispose();//error here outside the array
+            ModulesMain.LOGIN.ConnectToOther connect= new ModulesMain.LOGIN.ConnectToOther();
+            ResponsiveUI1.title3 = "ConnectToOther";
+            ResponsiveUI1.spl2.Controls.Add(connect);
+            initd.closedatabase();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (label4.Visible == false)
+            {
+                String TouseIP = "";
+                var hostname = Dns.GetHostEntry(Dns.GetHostName());
+                foreach (var IP in hostname.AddressList)
+                {
+                    if (IP.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                    {
+                        TouseIP = IP.ToString();
+                        break;
+                    }
+                }
+                label4.Text = TouseIP;
+                label4.Visible = true;
+
+                
+            }
+            else
+            {
+                label4.Visible = false;
+            }
         }
     }
 }

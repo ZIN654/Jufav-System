@@ -37,15 +37,13 @@ namespace JUFAV_System.Ffirstrun
         {
             InitializeComponent();
             addevent();
-            initd.opendatabase();
+           initd.opendatabase();// Exception already open must be  closedfirst perhaps my naka open dun sa SETUPDB
         }
         public void addevent()
         {
             AddBTN.Click += (sender,e) => { addaccounts(); };
             clearBTN.Click += (sender, e) => { clear(); };
             doneBTN.Click += Done;
-           
-            
 
         }
         public void clear()
@@ -68,8 +66,9 @@ namespace JUFAV_System.Ffirstrun
             bool isgood = true;
             //important things when checking for duplicate is : name/
             //search must be selected in all  fields
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM USER_INFO WHERE USERNAME LIKE '%"+USERNAME.Text+"%'",initd.scon);
-            SQLiteDataReader sread1 = scom1.ExecuteReader();
+            //fataerror
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM USER_INFO WHERE USERNAME LIKE '%"+USERNAME.Text+"%'",initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
             {
                 if (USERNAME.Text == sread1["USERNAME"].ToString())
@@ -80,7 +79,7 @@ namespace JUFAV_System.Ffirstrun
                     break;
                 }
             }
-            
+            sread1.Close();
             if (Regex.IsMatch(EMAIL.Text,"@gmail.com") == false)
             {
                 MessageBox.Show(this, "Invalid email,Please try again", "Email not Valid", MessageBoxButtons.OK);
@@ -184,7 +183,7 @@ namespace JUFAV_System.Ffirstrun
         public int hasaccount()
         {
             int accountcount = 0;
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT COUNT(*) AS TOTAL FROM USER_INFO;",initd.scon);
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT COUNT(*) AS TOTAL FROM USER_INFO;",initd.con1);
             accountcount = Convert.ToInt32(scom1.ExecuteScalar());
             return accountcount;
         }
@@ -203,7 +202,7 @@ namespace JUFAV_System.Ffirstrun
                 id = string.Concat(id, rs1.Next(0, 9).ToString());
 
             }
-            SQLiteCommand scom = new SQLiteCommand("INSERT INTO USERS VALUES (" + Convert.ToInt32(id) + ");", initd.scon);
+            MySql.Data.MySqlClient.MySqlCommand scom = new MySql.Data.MySqlClient.MySqlCommand("INSERT INTO USERS VALUES (" + Convert.ToInt32(id) + ");", initd.con1);
             scom.ExecuteNonQuery();
             scom.CommandText = "INSERT INTO ARCUSERS VALUES (" + Convert.ToInt32(id) + ");";
             scom.ExecuteNonQuery();
@@ -230,6 +229,9 @@ namespace JUFAV_System.Ffirstrun
             MessageBox.Show("ACCOUNT SUCCESSFULLY CREATED!");
             this.Cursor = Cursors.Default;
 
+            //mag oopen nalng sa login
+           
+
         }
         private void Done2(object sender, EventArgs e)
         {
@@ -252,6 +254,7 @@ namespace JUFAV_System.Ffirstrun
         {
             //revise initd 
             if (hasaccount() != 0) {
+             
                 ModulesMain.LOGIN.JUFAV_LOGIN log = new ModulesMain.LOGIN.JUFAV_LOGIN();
                 log.Show();
          

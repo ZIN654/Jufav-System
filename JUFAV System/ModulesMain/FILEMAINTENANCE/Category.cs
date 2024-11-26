@@ -40,10 +40,10 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
         }
         private void loaddata()
         {
-
-            SQLiteCommand scom = new SQLiteCommand("SELECT * FROM CATEGORY;", initd.scon);
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
+            MySql.Data.MySqlClient.MySqlCommand scom = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM CATEGORY;", initd.con1);
             //
-            SQLiteDataReader sq1 = scom.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlDataReader sq1 = scom.ExecuteReader();
             while (sq1.Read())
             {
                 //much better approach insted of using Find()
@@ -52,26 +52,30 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
 
 
             }
-
+            sq1.Close();
+            initd.con1.Close(); 
 
 
         }
         private void search(String text)
         {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
             foreach (UserControl i in ItemsBox.Controls)
             {
                 i.Dispose();
             }
             ItemsBox.Controls.Clear();
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM CATEGORY WHERE CATEGORYDESC LIKE '%" + text + "%';", initd.scon);
-            SQLiteDataReader sq1 = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM CATEGORY WHERE CATEGORYDESC LIKE '%" + text + "%';", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sq1 = scom1.ExecuteReader();
             while (sq1.Read())
             {
                 Components.CategoryComponent cat1 = new Components.CategoryComponent(sq1["CATEGORYDESC"].ToString(), Convert.ToInt32(sq1["CATEGORYID"]));
                 ItemsBox.Controls.Add(cat1);
             }
+            sq1.Close();
             scom1 = null;
             sq1 = null;
+            initd.con1.Close();
         }
         private void srchBTN_Click(object sender, EventArgs e)
         {

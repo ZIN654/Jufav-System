@@ -12,7 +12,7 @@ namespace JUFAV_System.Components
 {
     public partial class InverntoryReportsComponents : UserControl
     {
-        public InverntoryReportsComponents(string ProductName, double RemainingStock, double ReorderPoint, double OrderQuantity, String UnitofMeasurement)
+        public InverntoryReportsComponents(string ProductName, double RemainingStock)
         {
             InitializeComponent();
 
@@ -20,9 +20,7 @@ namespace JUFAV_System.Components
 
             label1.Text = ProductName;
             label2.Text = RemainingStock.ToString();
-            label3.Text = ReorderPoint.ToString();
-            label4.Text = OrderQuantity.ToString();
-            label5.Text = UnitofMeasurement;
+           
   
         }
     }

@@ -21,14 +21,16 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
         private bool isverfied1;
         private bool isverfied2;
         private bool isverified4;
+        private bool isverfied5;
         private bool isverfied3;
         int idtoedit1;
         int summontype1;
-        public AddSubCategory(int summontype,int idtoedit,String Category)
+        String texttouse = "";
+        public AddSubCategory(int summontype, int idtoedit, String Category)
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
-            summontype1=  summontype;
+            summontype1 = summontype;
             if (summontype == 0)
             {
                 onload();//loads items of the category
@@ -44,32 +46,35 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
 
 
             }
-           
+
             //verify na numbers lang ang makakapasok sa markup
             //di pwedeng mag typ si user sa combo box
         }
         private void onload2()
         {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
             //load database
-          
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM SUBCATEGORY WHERE SUBCATEGORYID = "+idtoedit1+";",initd.scon);
-            SQLiteDataReader sread1 = scom1.ExecuteReader();
+
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM SUBCATEGORY WHERE SUBCATEGORYID = " + idtoedit1 + ";", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
             {
                 SubCattxtbox.Text = sread1["SUBCATEGORYDESC"].ToString();
+                texttouse = sread1["SUBCATEGORYDESC"].ToString();
                 markupTxtBx.Text = sread1["MARKUPVALUE"].ToString();
 
             }
+            sread1.Close();
 
 
-
-
+            initd.con1.Close();
         }
         private void update()
         {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
             this.Cursor = Cursors.WaitCursor;
             //Update function here 
-            SQLiteCommand scom1 = new SQLiteCommand("UPDATE SUBCATEGORY SET SUBCATEGORYDESC = '" + SubCattxtbox.Text.ToLower() + "',CATEGORYID = (SELECT CATEGORYID FROM CATEGORY WHERE CATEGORYDESC = '"+comboBox1.Text+ "'),MARKUPVALUE = "+Convert.ToDouble(markupTxtBx.Text)+" WHERE SUBCATEGORYID = " + idtoedit1 + ";", initd.scon);
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("UPDATE SUBCATEGORY SET SUBCATEGORYDESC = '" + SubCattxtbox.Text.ToLower() + "',CATEGORYID = (SELECT CATEGORYID FROM CATEGORY WHERE CATEGORYDESC = '" + comboBox1.Text + "'),MARKUPVALUE = " + Convert.ToDouble(markupTxtBx.Text) + " WHERE SUBCATEGORYID = " + idtoedit1 + ";", initd.con1);
             scom1.ExecuteNonQuery();
             scom1 = null;
 
@@ -79,15 +84,16 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
             msg2.Show();
 
 
-            
+            initd.con1.Close();
         }
 
-       private void onload()
+        private void onload()
         {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
             //use dispose
             category.Clear();
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT CATEGORYDESC,CATEGORYID FROM CATEGORY;", initd.scon);
-            SQLiteDataReader sq1 = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT CATEGORYDESC,CATEGORYID FROM CATEGORY;", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sq1 = scom1.ExecuteReader();
             while (sq1.Read())
             {
                 category.Add(sq1["CATEGORYDESC"], sq1["CATEGORYID"]);
@@ -97,7 +103,66 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
 
             //insert into combobox
 
+            initd.con1.Close();
+        }
+        public bool checkDuplicate()
+        {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
+            bool test1 = true;
+            //important things when checking for duplicate is : name/
+            //search must be selected in all  fields
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM SUBCATEGORY WHERE SUBCATEGORYDESC LIKE '%" + SubCattxtbox.Text.Normalize().ToLower().Trim() + "%'", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
+            while (sread1.Read())
+            {
+                if (SubCattxtbox.Text == sread1["SUBCATEGORYDESC"].ToString())
+                {
+                    Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(goback, 1, "SUBCATEGORY NAME", "THE SUBCATEGORY NAME IS ALREADY IN USE IN THIS CATEGORY\n PLEASE USE OTHER NAME.", "OK", 0);
+                    msg2.Show();
+                    test1 = false;
+                    break;
+                }
+            }
+            sread1.Close();
+            /*
+            if (Regex.IsMatch(Cattxtbox.Text, "@gmail.com") == false)
+            {
+                MessageBox.Show(this, "Invalid email,Please try again", "Email not Valid", MessageBoxButtons.OK);
+                Cattxtbox.Text = "";
+            }
+            */
+            initd.con1.Close();
+            return test1;
+        }
+        public bool checkDuplicate2()
+        {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
+            bool test1 = true;
+            //important things when checking for duplicate is : name/
+            //search must be selected in all  fields
 
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM SUBCATEGORY WHERE SUBCATEGORYDESC != '" + texttouse.Normalize().ToLower().Trim() + "'", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
+            while (sread1.Read())
+            {
+                if (SubCattxtbox.Text == sread1["SUBCATEGORYDESC"].ToString())
+                {
+                    Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(goback, 1, "SUBCATEGORY NAME", "THE SUBCATEGORY NAME IS ALREADY IN USE IN THIS CATEGORY\n PLEASE USE OTHER NAME.", "OK", 0);
+                    msg2.Show();
+                    test1 = false;
+                    break;
+                }
+            }
+            sread1.Close();
+            /*
+            if (Regex.IsMatch(Cattxtbox.Text, "@gmail.com") == false)
+            {
+                MessageBox.Show(this, "Invalid email,Please try again", "Email not Valid", MessageBoxButtons.OK);
+                Cattxtbox.Text = "";
+            }
+            */
+            initd.con1.Close();
+            return test1;
         }
         //core
         public void verify()
@@ -105,11 +170,11 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
             isverfied1 = true;
             isverfied2 = true;
             isverfied3 = true;
-            Control[] textboxes = { SubCattxtbox,comboBox1, markupTxtBx };
-            PictureBox[] notificationimage = { subCatIm,catimg,Markupimg };
-            Label[] textnoti = { subCatnot ,catnotassignment,markupnot};
+            Control[] textboxes = { SubCattxtbox, comboBox1, markupTxtBx };
+            PictureBox[] notificationimage = { subCatIm, catimg, Markupimg };
+            Label[] textnoti = { subCatnot, catnotassignment, markupnot };
             //check pass and conf is =
-            if (SubCattxtbox.Text == "" || comboBox1.Text == ""|| markupTxtBx.Text == "")
+            if (SubCattxtbox.Text == "" || comboBox1.Text == "" || markupTxtBx.Text == "")
             {
                 for (int i = 0; i != 3; i++)
                 {
@@ -144,8 +209,9 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
                 }
             }
             //
-            if (summontype1 != 0) { 
-                if (isverfied2 == true && isverfied1 == true && algos1.DetectInputifDupplicate(new String[] { SubCattxtbox.Text.ToLower() },3) == false)
+            if (summontype1 != 0)
+            {
+                if (isverfied2 == true && isverfied1 == true && algos1.DetectInputifDupplicate(new String[] { SubCattxtbox.Text.Normalize().ToLower().Trim() }, 3) == false)
                 {
                     isverfied3 = false;
                 }
@@ -168,7 +234,40 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
             {
                 isverified4 = true;
             }
-            if (isverfied2 == true && isverfied1 == true && isverfied3 == true && isverified4 == true)
+            if (summontype1 != 0)
+            {
+                if (isverfied2 == true && isverfied1 == true && isverfied3 == true && isverified4 == true && checkDuplicate() == false)
+                {
+                    isverfied5 = false;
+                }
+                else
+                {
+                    isverfied5 = true;
+
+
+                }
+
+
+            }
+            else
+            {
+                if (isverfied2 == true && isverfied1 == true && isverfied3 == true && isverified4 == true && checkDuplicate2() == false)
+                {
+                    isverfied5 = false;
+                }
+                else
+                {
+                    isverfied5 = true;
+
+
+                }
+
+
+
+            }
+
+
+            if (isverfied2 == true && isverfied1 == true && isverfied3 == true && isverified4 == true && isverfied5 == true)
             {
                 //are you sure 
                 if (summontype1 == 1)
@@ -206,10 +305,11 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
         }
         private void Insertdata()
         {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
             this.Cursor = Cursors.WaitCursor;
             Random rs1 = new Random();
             String unitid = "";//Users table
-          
+
 
             //retreive make sure it doesnt match any in the db
             //CATEGORY 8
@@ -217,13 +317,13 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.SubCategory
             {
                 unitid = string.Concat(unitid, rs1.Next(0, 9).ToString());
             }
-           //make msg box if user entered a text in markup value
-            SQLiteCommand scom = new SQLiteCommand("INSERT INTO SUBCATEGORY VALUES (" + Convert.ToInt32(unitid) + "," + initd.UserID + "," + category[comboBox1.Text] + ",'" + SubCattxtbox.Text.ToLower() + "'," + Convert.ToInt32(markupTxtBx.Text) + ");", initd.scon);
+            //make msg box if user entered a text in markup value
+            MySql.Data.MySqlClient.MySqlCommand scom = new MySql.Data.MySqlClient.MySqlCommand("INSERT INTO SUBCATEGORY VALUES (" + Convert.ToInt32(unitid) + "," + initd.UserID + "," + category[comboBox1.Text] + ",'" + SubCattxtbox.Text.Normalize().ToLower().Trim() + "'," + Convert.ToInt32(markupTxtBx.Text) + ");", initd.con1);
             scom.ExecuteNonQuery();
-           
+
             this.Cursor = Cursors.Default;
 
-
+            initd.con1.Close();
             Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(goback, 0, "ADD SUB CATEGORY", "ITEM SUCCESSFULLY ADDED! \n WOULD YOU LIKE TO GO BACK AT THE FRONT PAGE?", "OK", 0);
             msg2.Show();
         }

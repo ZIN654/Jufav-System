@@ -17,23 +17,23 @@ namespace JUFAV_System.Components
 
         private Panel itembox;
         public String username1;
-        public DataBox(Panel itemsbox,String name,String Username,String role)
+        public DataBox(Panel itemsbox, String name, String Username, String role)
         {
-            
+
             InitializeComponent();
             this.itembox = itemsbox;
             this.Dock = DockStyle.Top;
-           
+
             lblname.Text = name;
             lblusername.Text = Username;
             lblrole.Text = role;
             this.username1 = Username;
             Console.WriteLine(Username + username1);
         }
-          
+
         private void successfully()
         {
-           
+
             Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(successfully, 1, "ACCOUNT DELETION", "ACCOUNT SUCCESSFULLY DELETED", "OK", 2);
             msg1.Show();
             this.Dispose();
@@ -44,21 +44,21 @@ namespace JUFAV_System.Components
             int id = 0;
             //here items from database must be delete
             //indicate warning if  the name is used
-            SQLiteCommand sq1 = new SQLiteCommand("SELECT USERIDS FROM USER_INFO WHERE NAME = '" + lblname.Text + "';", initd.scon);
-            SQLiteDataReader read1 = sq1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand sq1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT USERIDS FROM USER_INFO WHERE NAME = '" + lblname.Text + "';", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader read1 = sq1.ExecuteReader();
             while (read1.Read())
             {
                 id = Convert.ToInt32(read1["USERIDS"]);
             }
             read1.Close();
             //achive to hindi delete
-         
+
             sq1.CommandText = "DELETE FROM USERS WHERE USERID = " + id + ";";
             sq1.ExecuteNonQuery();
 
             this.Cursor = Cursors.Default;
             successfully();
-            
+
         }
         private void determine2()
         {
@@ -87,15 +87,15 @@ namespace JUFAV_System.Components
                 Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(delete, 0, "ACCOUNT DELETION", "ARE YOU SURE YOU WANT TO DELETE THIS ACCOUNT? \n NOTE: ALL OF RECORDS OF THIS ACCOUNT WILL BE ARCHIVED AS WELL.", "DELETE", 1);
                 msg1.Show();
             }
-            
-            
+
+
         }
         private void goedit()
         {
             //updating tayo ngayon
             ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
-           
-            ModulesSecond.UsersettingsAddUser unit1 = new ModulesSecond.UsersettingsAddUser(0,this.username1);
+
+            ModulesSecond.UsersettingsAddUser unit1 = new ModulesSecond.UsersettingsAddUser(0, this.username1);
             initd.UsernameToedit = this.username1;
             Console.WriteLine("USER TO EDIT IN DATABOX US" + username1);
             unit1.Name = "EDITUSERACCOUNT";
@@ -118,8 +118,8 @@ namespace JUFAV_System.Components
         {
             String username = "";
             String password = "";
-            SQLiteCommand sq1 = new SQLiteCommand("SELECT USERNAME,PASSWORDS FROM USER_INFO WHERE NAME = '" + lblname.Text + "';", initd.scon);
-            SQLiteDataReader read1 = sq1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand sq1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT USERNAME,PASSWORDS FROM USER_INFO WHERE NAME = '" + lblname.Text + "';", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader read1 = sq1.ExecuteReader();
             while (read1.Read())
             {
                 username = read1["USERNAME"].ToString();

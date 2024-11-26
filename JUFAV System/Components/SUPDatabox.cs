@@ -15,7 +15,7 @@ namespace JUFAV_System.Components
     public partial class SUPDatabox : UserControl
     {
         public int id;
-        public SUPDatabox(String Suppliername,String COntacPerson,String ContactNum,String Address,int ID)
+        public SUPDatabox(String Suppliername, String COntacPerson, String ContactNum, String Address, int ID)
         {
             InitializeComponent();
             Dock = DockStyle.Top;
@@ -24,14 +24,14 @@ namespace JUFAV_System.Components
             lblContactbumber.Text = ContactNum;
             ContactPersonlbl.Text = COntacPerson;
             id = ID;
-           
+
         }
         private void CallEdit(int summontype)
         {
             //revise paano kung same yung name
             //how do we fetch the data if it has a same name ?
             ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
-            ModulesSecond.FileMaintenance.Supplier.Addsupplier sup1 = new ModulesSecond.FileMaintenance.Supplier.Addsupplier(summontype,id);
+            ModulesSecond.FileMaintenance.Supplier.Addsupplier sup1 = new ModulesSecond.FileMaintenance.Supplier.Addsupplier(summontype, id);
             sup1.Name = "editsupplier";
             ResponsiveUI1.title = "editsupplier";
             ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
@@ -39,25 +39,26 @@ namespace JUFAV_System.Components
         }
         private void ArchiveRecords()
         {
-            try { 
-            this.Cursor = Cursors.WaitCursor;
-            String[] Querys = { "INSERT INTO ARCSUPPLIERS (SUPPLIERID,USERID,SUPPLIERNAME,CONTACTPERSON,CONTACTNUMBER,COMPANYADDRESS) SELECT * FROM SUPPLIERS;", "DELETE FROM SUPPLIERS WHERE SUPPLIERID = "+id+";" };
-            SQLiteCommand scom1 = new SQLiteCommand("",initd.scon);
-            foreach (String i in Querys)
+            try
             {
-                scom1.CommandText = i;
-                scom1.ExecuteNonQuery();
-            }
-            scom1 = null;
-            //debug delete /archive
-            //test "INSERT INTO ARCHIVESUPPLIERS SELECT * FROM SUPPLIERS WHERE USERSID = "+userid+";"
+                this.Cursor = Cursors.WaitCursor;
+                String[] Querys = { "INSERT INTO ARCSUPPLIERS (SUPPLIERID,USERID,SUPPLIERNAME,CONTACTPERSON,CONTACTNUMBER,COMPANYADDRESS) SELECT * FROM SUPPLIERS;", "DELETE FROM SUPPLIERS WHERE SUPPLIERID = " + id + ";" };
+                MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("", initd.con1);
+                foreach (String i in Querys)
+                {
+                    scom1.CommandText = i;
+                    scom1.ExecuteNonQuery();
+                }
+                scom1 = null;
+                //debug delete /archive
+                //test "INSERT INTO ARCHIVESUPPLIERS SELECT * FROM SUPPLIERS WHERE USERSID = "+userid+";"
 
-            //what if other user uses same the dleted RECORD ?
-            //data must not be deleted must be moved in the archive table
-            this.Cursor = Cursors.Default;
-            Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(null, 1, "SUPPLIER ARCHIVE", "SUPPLIER SUCCESSFULLY ARCHIVED", "OK", 2);
-            msg1.Show();
-            this.Dispose();
+                //what if other user uses same the dleted RECORD ?
+                //data must not be deleted must be moved in the archive table
+                this.Cursor = Cursors.Default;
+                Messageboxes.MessageboxConfirmation msg1 = new Messageboxes.MessageboxConfirmation(null, 1, "SUPPLIER ARCHIVE", "SUPPLIER SUCCESSFULLY ARCHIVED", "OK", 2);
+                msg1.Show();
+                this.Dispose();
             }
             catch (Exception e)
             {
@@ -78,7 +79,7 @@ namespace JUFAV_System.Components
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                SQLiteCommand sq1 = new SQLiteCommand("DELETE FROM SUPPLIERS WHERE SUPPLIERID = " + id + ";", initd.scon);
+                MySql.Data.MySqlClient.MySqlCommand sq1 = new MySql.Data.MySqlClient.MySqlCommand("DELETE FROM SUPPLIERS WHERE SUPPLIERID = " + id + ";", initd.con1);
                 sq1.ExecuteNonQuery();
                 sq1 = null;
                 //  successfully();

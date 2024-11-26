@@ -40,9 +40,10 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
 
         private void UserSettings_Load(object sender, EventArgs e)
         {
+            if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }
             initd.hs1.Clear();
-            SQLiteCommand scom = new SQLiteCommand("SELECT * FROM USER_INFO WHERE USERIDS = "+initd.UserID +";",initd.scon);
-            SQLiteDataReader sq1 = scom.ExecuteReader();
+             MySql.Data.MySqlClient.MySqlCommand scom = new  MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM USER_INFO WHERE USERIDS = "+initd.UserID +";",initd.con1);
+             MySql.Data.MySqlClient.MySqlDataReader sq1 = scom.ExecuteReader();
             while (sq1.Read())
             {
                 //if the current user was deleted his/her own account usin his/her account it might show a warning to prevent the inconsistency like : unable  to delete account since it is logged in unless use another Master account
@@ -64,8 +65,10 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
                
 
             }
+            sq1.Close();
             //load all data from database 
             //add containter  containing the data from database
+            initd.con1.Close();
         }
         private void AddacountClick(object sender,EventArgs e)
         {
@@ -131,6 +134,5 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
 
 
         }
-
     }
 }

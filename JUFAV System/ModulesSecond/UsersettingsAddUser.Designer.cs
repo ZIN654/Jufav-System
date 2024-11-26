@@ -362,6 +362,7 @@
             this.USERNAME_FIELD.Name = "USERNAME_FIELD";
             this.USERNAME_FIELD.Size = new System.Drawing.Size(565, 20);
             this.USERNAME_FIELD.TabIndex = 1;
+            this.USERNAME_FIELD.TextChanged += new System.EventHandler(this.USERNAME_FIELD_TextChanged);
             // 
             // NAME_FIELD
             // 

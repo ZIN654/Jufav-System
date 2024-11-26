@@ -40,8 +40,8 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
         }
         private void loadandinsertAccesslevel()
         {
-            SQLiteCommand scom = new SQLiteCommand("SELECT SUBMODULENAME,HASACCESS FROM SUBMODULES WHERE USERID = " + initd.UserID + ";", initd.scon);
-            SQLiteDataReader sq1 = scom.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom = new MySql.Data.MySqlClient.MySqlCommand("SELECT SUBMODULENAME,HASACCESS FROM SUBMODULES WHERE USERID = " + initd.UserID + ";", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sq1 = scom.ExecuteReader();
             while (sq1.Read())
             {
                 accountaccesslevel.Add(sq1["SUBMODULENAME"], sq1["HASACCESS"]);
@@ -182,7 +182,7 @@ namespace JUFAV_System.ModulesMain.COREUTILITIES
             {
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                 ResponsiveUI1.title = "ProductList";
-                ResponsiveUI1.title2 = "Product List";
+                ResponsiveUI1.title2 = "Product Master List";
                 ModulesMain.INVENTORY.ProductList prdlist = new ModulesMain.INVENTORY.ProductList();
                 ResponsiveUI1.spl1.Controls.Add(prdlist);
                 ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title2.ToUpper();

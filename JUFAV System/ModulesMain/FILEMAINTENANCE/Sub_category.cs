@@ -28,36 +28,38 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
         }
         private void onload()
         {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
             subcatinfo.Clear();
             foreach(UserControl i in ItemsBox.Controls)
             {
                 i.Dispose();
             }
             ItemsBox.Controls.Clear();
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT CATEGORYDESC,CATEGORYID FROM CATEGORY;", initd.scon);
-            SQLiteDataReader sq1 = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT CATEGORYDESC,CATEGORYID FROM CATEGORY;", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sq1 = scom1.ExecuteReader();
             while (sq1.Read()) {
                 subcatinfo.Add(sq1["CATEGORYID"], sq1["CATEGORYDESC"]);
             }
             sq1.Close();
             ///delay a bit
             scom1.CommandText = "SELECT SUBCATEGORYID,SUBCATEGORYDESC,MARKUPVALUE,CATEGORYID FROM SUBCATEGORY;";
-            SQLiteDataReader sq2 = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlDataReader sq2 = scom1.ExecuteReader();
             while (sq2.Read())
             {
                 Components.Sub_Category item1 = new Components.Sub_Category(sq2["SUBCATEGORYDESC"].ToString(), subcatinfo[sq2["CATEGORYID"]].ToString(), sq2["MARKUPVALUE"].ToString(),Convert.ToInt32(sq2["SUBCATEGORYID"]));
                 ItemsBox.Controls.Add(item1);
             }
-             
-
-
+            sq2.Close();
+            sq1.Close();
+            initd.con1.Close();
         }
         private void Filter(String filterval)
         {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
             subfilter.Clear();
             subcatinfo.Clear();
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT CATEGORYDESC,CATEGORYID FROM CATEGORY WHERE CATEGORYDESC = '" +filterval+"';", initd.scon);//where category is only woods
-            SQLiteDataReader sq1 = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT CATEGORYDESC,CATEGORYID FROM CATEGORY WHERE CATEGORYDESC = '" +filterval+"';", initd.con1);//where category is only woods
+            MySql.Data.MySqlClient.MySqlDataReader sq1 = scom1.ExecuteReader();
             while (sq1.Read())
             {
                 subfilter.Add(sq1["CATEGORYDESC"], sq1["CATEGORYID"]);
@@ -66,28 +68,30 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
             sq1.Close();
             ///delay a bit
             scom1.CommandText = "SELECT SUBCATEGORYID,SUBCATEGORYDESC,MARKUPVALUE,CATEGORYID FROM SUBCATEGORY WHERE CATEGORYID = "+subfilter[filterval]+ ";";
-            SQLiteDataReader sq2 = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlDataReader sq2 = scom1.ExecuteReader();
             ItemsBox.Controls.Clear();//much better kung dispose ang gagamitin
             while (sq2.Read())
             {
                 Components.Sub_Category item1 = new Components.Sub_Category(sq2["SUBCATEGORYDESC"].ToString(), subcatinfo[sq2["CATEGORYID"]], sq2["MARKUPVALUE"].ToString(),Convert.ToInt32(sq2["SUBCATEGORYID"]));
                 ItemsBox.Controls.Add(item1);
             }
+            sq2.Close();
+            sq1.Close();
 
-
-
+            initd.con1.Close();
         }
 
         private void onloadcombo()
         {
-
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT CATEGORYDESC,CATEGORYID FROM CATEGORY;", initd.scon);
-            SQLiteDataReader sq1 = scom1.ExecuteReader();
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT CATEGORYDESC,CATEGORYID FROM CATEGORY;", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sq1 = scom1.ExecuteReader();
             while (sq1.Read())
             {
                 comboBox1.Items.Add(sq1["CATEGORYDESC"]);
             }
             sq1.Close();
+            initd.con1.Close();
 
         }
         public void releaseMem()
@@ -112,20 +116,23 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
         }
         private  void search(String text)
         {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
             foreach (UserControl i in ItemsBox.Controls)
             {
                 i.Dispose();
             }
             ItemsBox.Controls.Clear();
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT SUBCATEGORYID,SUBCATEGORYDESC,MARKUPVALUE,CATEGORYID FROM SUBCATEGORY WHERE SUBCATEGORYDESC LIKE '%"+text+ "%';", initd.scon);
-            SQLiteDataReader sq2 = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT SUBCATEGORYID,SUBCATEGORYDESC,MARKUPVALUE,CATEGORYID FROM SUBCATEGORY WHERE SUBCATEGORYDESC LIKE '%"+text+ "%';", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sq2 = scom1.ExecuteReader();
             while (sq2.Read())
             {
                 Components.Sub_Category item1 = new Components.Sub_Category(sq2["SUBCATEGORYDESC"].ToString(), subcatinfo[sq2["CATEGORYID"]].ToString(), sq2["MARKUPVALUE"].ToString(), Convert.ToInt32(sq2["SUBCATEGORYID"]));
                 ItemsBox.Controls.Add(item1);
             }
+            sq2.Close();
             scom1 = null;
             sq2 = null;
+            initd.con1.Close();
         }
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {

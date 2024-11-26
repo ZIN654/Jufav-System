@@ -22,24 +22,23 @@ namespace JUFAV_System.ModulesMain.FILEMAINTENANCE
         }
         private void onload1()
         {
-            SQLiteCommand sq1 = new SQLiteCommand("SELECT * FROM VAT;", initd.scon);
-            SQLiteDataReader sread1 = sq1.ExecuteReader();
-            while (sread1.Read())
-            {
-                Vattxtbox.Text = sread1["VATVALUE"].ToString();
-            }
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
+            MySql.Data.MySqlClient.MySqlCommand sq1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM VAT;", initd.con1);
+            Vattxtbox.Text = sq1.ExecuteScalar().ToString();
             sq1 = null;
-            sread1 = null;
+           
+            initd.con1.Close();
         }
 
         private void setvat()
         {
-            SQLiteCommand sq1 = new SQLiteCommand("UPDATE VAT SET VATVALUE =" + Convert.ToDouble("0."+Vattxtbox.Text)+ " WHERE VATID = 01100001;", initd.scon);
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
+            MySql.Data.MySqlClient.MySqlCommand sq1 = new MySql.Data.MySqlClient.MySqlCommand("UPDATE VAT SET VATVALUE =" + Convert.ToDouble(Vattxtbox.Text)+ " WHERE VATID = 01100001;", initd.con1);
             sq1.ExecuteNonQuery();
 
             sq1 = null;
             GC.Collect();
-          
+            initd.con1.Close();
 
         }
         private void onclose()

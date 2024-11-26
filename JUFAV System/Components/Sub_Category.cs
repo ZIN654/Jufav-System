@@ -15,13 +15,13 @@ namespace JUFAV_System.Components
 {
     public partial class Sub_Category : UserControl
     {
-        int Idtoedit1= 0;
+        int Idtoedit1 = 0;
         String categoryname;
-        public Sub_Category(String Subcatname,object Catname,String markup,int idtoedit)
+        public Sub_Category(String Subcatname, object Catname, String markup, int idtoedit)
         {
             InitializeComponent();
             this.Dock = DockStyle.Top;
-            Idtoedit1=  idtoedit;
+            Idtoedit1 = idtoedit;
             categoryname = Catname.ToString();
             label5.Text = Subcatname;
             label6.Text = Catname.ToString();
@@ -33,7 +33,7 @@ namespace JUFAV_System.Components
             //revise paano kung same yung name
             //how do we fetch the data if it has a same name ?
             ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
-            ModulesSecond.FileMaintenance.SubCategory.AddSubCategory sup1 = new ModulesSecond.FileMaintenance.SubCategory.AddSubCategory(summontype,Idtoedit1, categoryname);
+            ModulesSecond.FileMaintenance.SubCategory.AddSubCategory sup1 = new ModulesSecond.FileMaintenance.SubCategory.AddSubCategory(summontype, Idtoedit1, categoryname);
             sup1.Name = "editSubCategory";
             ResponsiveUI1.title = "editSubCategory";
             ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
@@ -42,14 +42,21 @@ namespace JUFAV_System.Components
         private void archive()
         {
             this.Cursor = Cursors.WaitCursor;
-            SQLiteCommand scom1 = new SQLiteCommand("", initd.scon);
-            String[] query = { "INSERT INTO ARCSUBCATEGORY (SUBCATEGORYID,USERID,CATEGORYID,SUBCATEGORYDESC,MARKUPVALUE) SELECT * FROM SUBCATEGORY WHERE SUBCATEGORYID = " + Idtoedit1 + ";", "INSERT INTO ARCPRODUCTS (PRODUCTID,USERID,CATEGORYID,SUBCATEGORYID,UOMID,PRODUCTNAME,ORIGINALPICE,MARKUPVALUE,QUANTITY,SUPPLIERID,PERISHABLEPRODUCT,ISBATCH,EXPIRINGDATE) SELECT * FROM PRODUCTS WHERE SUBCATEGORYID = " + Idtoedit1+";"};
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("", initd.con1);
+
+            //array ng query
+            //unahin mo munang insert ung tatlong column tas ung PO na madaming column
+            String[] query = { "INSERT INTO ARCSUBCATEGORY (SUBCATEGORYID,USERID,CATEGORYID,SUBCATEGORYDESC,MARKUPVALUE) SELECT * FROM SUBCATEGORY WHERE SUBCATEGORYID = " + Idtoedit1 + ";"
+       , "INSERT INTO ARCPRODUCTS (PRODUCTID,USERID,CATEGORYID,SUBCATEGORYID,PRODUCTNAME,ORIGINALPICE,MARKUPVALUE,QUANTITY) SELECT PRODUCTID,USERID,CATEGORYID,SUBCATEGORYID,PRODUCTNAME,ORIGINALPICE,MARKUPVALUE,QUANTITY FROM PRODUCTS WHERE SUBCATEGORYID = " + Idtoedit1+";"};
+
+            //execute nya yunh bawat laman nung string query
             foreach (String i in query)
             {
                 scom1.CommandText = i;
                 scom1.ExecuteNonQuery();
 
             }
+
             Thread.Sleep(2000);
             scom1.CommandText = "DELETE FROM SUBCATEGORY WHERE SUBCATEGORYID = " + Idtoedit1 + ";";//bug because of references
             scom1.ExecuteNonQuery();
@@ -62,7 +69,7 @@ namespace JUFAV_System.Components
         private void delete()
         {
             this.Cursor = Cursors.WaitCursor;
-            SQLiteCommand scom1 = new SQLiteCommand("DELETE FROM SUBCATEGORY WHERE SUBCATEGORYID = " + Idtoedit1 + ";", initd.scon);
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("DELETE FROM SUBCATEGORY WHERE SUBCATEGORYID = " + Idtoedit1 + ";", initd.con1);
             scom1.ExecuteNonQuery();
             scom1 = null;
             GC.Collect();

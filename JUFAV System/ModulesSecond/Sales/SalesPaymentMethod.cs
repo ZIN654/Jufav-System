@@ -26,7 +26,8 @@ namespace JUFAV_System.ModulesSecond.Sales
         List<double> subtotal = new List<double>();
         List<double> total = new List<double>();
         int index = 0;
-        public SalesPaymentMethod(String custname,String Custaddress)
+        double total2;
+        public SalesPaymentMethod(String custname, String Custaddress, int ordertype1)
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
@@ -35,24 +36,39 @@ namespace JUFAV_System.ModulesSecond.Sales
             label4.Text = Custaddress;
             loaddata();
             totalall();
+            determineordertype(ordertype1);
             genereteTransactionID();
+            DeterminePaymentType2();
+        }
+        private void determineordertype(int type)
+        {
+            switch (type)
+            {
+                case 0:
+                    ordertype.Text = "SALES RECEIPT";
+                    break;
+                case 1:
+                    ordertype.Text = "DELIVERY";
+                    break;
+                case 2:
+                    ordertype.Text = "RESERVATION";
+                    break;
+            }
         }
         private void totalall()
         {
             totalITEMS = 0;
-            foreach(UserControl i in itemlist.Controls)
+            foreach (UserControl i in itemlist.Controls)
             {
                 subtotal.Add(Convert.ToDouble(i.Controls.Find("Price", true)[0].Text));
                 total.Add(Convert.ToDouble(i.Controls.Find("label1", true)[0].Text) * VATtouse);//vat 12
                 totalITEMS++;
             }
             label11.Text = VATtouse.ToString();
-            label12.Text = subtotal.Sum().ToString() + ".00";
-            label16.Text = (subtotal.Sum() + total.Sum()).ToString();
+            label12.Text = subtotal.Sum().ToString() + ".00₱";
+            label16.Text = subtotal.Sum().ToString() + ".00₱";
+            total2 = subtotal.Sum();
             //vat and subottal are also here
-
-
-
         }
         private void loaddata()
         {
@@ -63,11 +79,11 @@ namespace JUFAV_System.ModulesSecond.Sales
 
             }
             itemlist.Controls.Clear();
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM ORDERSTEMPO;",initd.scon);
-            SQLiteDataReader sread1 = scom1.ExecuteReader();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM ORDERSTEMPO;", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
             {
-                Components.SalesPaymentMethodOrderList orderlist1 = new Components.SalesPaymentMethodOrderList(sread1["ProductDesc"].ToString(),Convert.ToInt32(sread1["QUANTITY"]), Convert.ToInt32(sread1["TOTALPRICE"]), Convert.ToInt32(sread1["PRODUCTID"]), Convert.ToInt32(sread1["PRICE"]));
+                Components.SalesPaymentMethodOrderList orderlist1 = new Components.SalesPaymentMethodOrderList(sread1["ProductDesc"].ToString(), Convert.ToInt32(sread1["QUANTITY"]), Convert.ToInt32(sread1["TOTALPRICE"]), Convert.ToInt32(sread1["PRODUCTID"]), Convert.ToInt32(sread1["PRICE"]));
                 itemlist.Controls.Add(orderlist1);
             }
             //new part
@@ -85,13 +101,15 @@ namespace JUFAV_System.ModulesSecond.Sales
         }
         private void goback()
         {
-            if (cleardata() == true) {
+            if (cleardata() == true)
+            {
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
                 ModulesMain.SALES.SALES cat1 = new ModulesMain.SALES.SALES();
                 ResponsiveUI1.title = "SALES";
                 ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
                 ResponsiveUI1.spl1.Controls.Add(cat1);
-            }else
+            }
+            else
             {
                 cleardata();
                 ResponsiveUI1.spl1.Controls.Find(ResponsiveUI1.title, false)[0].Dispose();
@@ -100,8 +118,9 @@ namespace JUFAV_System.ModulesSecond.Sales
                 ResponsiveUI1.headingtitle.Text = ResponsiveUI1.title.ToUpper();
                 ResponsiveUI1.spl1.Controls.Add(cat1);
             }
+            initd.thisform1.BringToFront();
             //itemlist.Controls.Clear();
-           
+
         }
         public bool cleardata()
         {
@@ -109,24 +128,25 @@ namespace JUFAV_System.ModulesSecond.Sales
             Cursor = Cursors.WaitCursor;
             //bug when deleting
             ArrayList ar1 = new ArrayList();
-            
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM ORDERSTEMPO;", initd.scon);
-            SQLiteDataReader sread1 = scom1.ExecuteReader();
+
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM ORDERSTEMPO;", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
             {
                 ar1.Add(Convert.ToInt32(sread1["PRODUCTID"]));
             }
             sread1.Close();
-            foreach(int i in ar1)
+            foreach (int i in ar1)
             {
-                scom1.CommandText = "DELETE FROM ORDERSTEMPO WHERE PRODUCTID = "+i+";";
+                scom1.CommandText = "DELETE FROM ORDERSTEMPO WHERE PRODUCTID = " + i + ";";
                 scom1.ExecuteNonQuery();
             }
             scom1.CommandText = "SELECT COUNT(*) FROM ORDERSTABLE";
             int count = Convert.ToInt32(scom1.ExecuteScalar());
             Console.WriteLine(count);
-            if (count != 0){
-               
+            if (count != 0)
+            {
+
                 test1 = false;
             }
             else
@@ -138,19 +158,51 @@ namespace JUFAV_System.ModulesSecond.Sales
             Cursor = Cursors.Default;
 
             return test1;
-         
-        }   
-        public void gcash(object sender,EventArgs e) { }
-        public void COP(object sender,EventArgs e) { }
-        public void COD(object sender,EventArgs e) { }
+
+        }
+        public void gcash(object sender, EventArgs e) { }
+        public void COP(object sender, EventArgs e) { }
+        public void COD(object sender, EventArgs e) { }
+        private void DeterminePaymentType2()
+        {
+
+            if (GCASHRAD.Checked == true)
+            {
+                label15.Text = "AMOUNT PAID:";
+            }
+            else
+            {
+                label15.Text = "CASH/TENDER:";
+            }
+
+        }
+        private String DeterminePaymentType()
+        {
+            String type = "";
+            if (GCASHRAD.Checked == true)
+            {
+                type = GCASHRAD.Text;
+
+
+            }
+            else
+            {
+
+                type = CASHRAD.Text;
+
+            }
+
+            return type;
+        }
         private void genereteTransactionID()
         {
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT SALEID FROM SALES ORDER BY SALEID DESC LIMIT 1;", initd.scon);
-            int intouse = Convert.ToInt32(scom1.ExecuteScalar());
-            IDtouse1 = generateSALEID();
-            label21.Text = IDtoUse.ToString();
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT SALEID FROM SALES ORDER BY SALEID DESC LIMIT 1;", initd.con1);
+            int intouse = Convert.ToInt32(scom1.ExecuteScalar()) + 1;
+            IDtouse1 = intouse;
+            //IDtouse1 = generateSALEID();
+            label21.Text = intouse.ToString();
 
-            firstrun = "INSERT INTO SALES(SALEID,USERID,CUSTOMERNAME,CUSTOMERADDRESS,DATEOFSALE,TOTALITEMS,TOTALPRICE) VALUES (" + IDtouse1 + "," + initd.UserID + ",'" + label2.Text + "','" + label4.Text + "','" + DateTime.Now.ToShortDateString() + "'," + totalITEMS + "," + label16.Text + ");";
+            firstrun = "INSERT INTO SALES(SALEID,USERID,CUSTOMERNAME,CUSTOMERADDRESS,DATEOFSALE,TOTALITEMS,TOTALPRICE,PAYMENTVALUE,DISCOUNT,PAYMENTTYPE,CUSTOMERPAYMENT,ORDERTYPE,GCASHREFERENCE) VALUES (" + IDtouse1 + "," + initd.UserID + ",'" + label2.Text + "','" + label4.Text + "','" + DateTime.Now.ToShortDateString() + "'," + totalITEMS + "," + label16.Text + "," + Payment.Text + "," + Discount.Text + ",'" + DeterminePaymentType() + "'," + Payment.Text + ",'" + ordertype.Text + "','" + REFERENCENUM.Text + "');";
             /*
             if (intouse != 0)   
                         {
@@ -185,52 +237,55 @@ namespace JUFAV_System.ModulesSecond.Sales
         private void Confirmsales()
         {
             Cursor = Cursors.WaitCursor;
-            if (Payment.Text == "0" || Regex.IsMatch(Payment.Text,@"[^0-9]"))
+            if (Payment.Text == "0" || Regex.IsMatch(Payment.Text, @"[^0-9.]") || Regex.IsMatch(Discount.Text, @"[^0-9.]") || Regex.IsMatch(Deliveryfee.Text, @"[^0-9.]"))
             {
                 Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "PAYMENT", "PLEASE ADD VALUE TO PAYMENT FIELD.", "RETRY", 1);
                 ms.Show();
 
-            }else
+            }
+            else
             {
-                
-                    insertintodatabase();
-                
+
+                insertintodatabase();
+
                 //deduct to database and insert sales
-                
+
             }
             Cursor = Cursors.Default;
         }
         private void insertintodatabase()
         {
             //pag iinsert mo na sa sales table dapat naka set den kung magkano ang binayad.sino ang kustomer at mag kano ang sukli
-            SQLiteCommand scom2 = new SQLiteCommand("", initd.scon);
-            SQLiteCommand scom1 = new SQLiteCommand(firstrun, initd.scon);
+            MySql.Data.MySqlClient.MySqlCommand scom2 = new MySql.Data.MySqlClient.MySqlCommand("", initd.con1);
+            firstrun = "INSERT INTO SALES(SALEID,USERID,CUSTOMERNAME,CUSTOMERADDRESS,DATEOFSALE,TOTALITEMS,TOTALPRICE,PAYMENTVALUE,DISCOUNT,PAYMENTTYPE,CUSTOMERPAYMENT,ORDERTYPE,GCASHREFERENCE) VALUES (" + IDtouse1 + "," + initd.UserID + ",'" + label2.Text + "','" + label4.Text + "','" + DateTime.Now.ToShortDateString() + "'," + totalITEMS + "," + total2 + "," + Convert.ToDouble(Payment.Text) + "," + Discount.Text + ",'" + DeterminePaymentType() + "'," + Payment.Text + ",'" + ordertype.Text + "','" + REFERENCENUM.Text + "');";
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand(firstrun, initd.con1);
             scom1.ExecuteNonQuery();
             Thread.Sleep(500);
             scom1.CommandText = "SELECT * FROM ORDERSTEMPO;";
-            SQLiteDataReader sread1 = scom1.ExecuteReader();
-            while (sread1.Read()) {
-                
-                scom2.CommandText = "INSERT INTO ORDERSTABLE(SALEID,ITEMID,ITEMNAME,ITEMPRICE,QUANTITY,TOTALPURCHASE) VALUES ("+IDtouse1+","+Convert.ToInt32(sread1["ProductID"])+",'"+ sread1["ProductDesc"].ToString() + "',"+ Convert.ToInt32(sread1["PRICE"]) + "," + Convert.ToInt32(sread1["QUANTITY"]) + "," + Convert.ToInt32(sread1["TOTALPRICE"]) + ");";
+            MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
+            while (sread1.Read())
+            {
+
+                scom2.CommandText = "INSERT INTO ORDERSTABLE(SALEID,ITEMID,ITEMNAME,ITEMPRICE,QUANTITY,TOTALPURCHASE) VALUES (" + IDtouse1 + "," + Convert.ToInt32(sread1["ProductID"]) + ",'" + sread1["ProductDesc"].ToString() + "'," + Convert.ToInt32(sread1["PRICE"]) + "," + Convert.ToInt32(sread1["QUANTITY"]) + "," + Convert.ToInt32(sread1["TOTALPRICE"]) + ");";
                 scom2.ExecuteNonQuery();
                 Thread.Sleep(500);
-                
+
             }
             //deduction ng quatity
             sread1.Close();
             sread1 = null;
-            scom1.CommandText = "SELECT * FROM ORDERSTABLE WHERE SALEID = "+ IDtouse1 + ";";
+            scom1.CommandText = "SELECT * FROM ORDERSTABLE WHERE SALEID = " + IDtouse1 + ";";
             Console.WriteLine("ID TO USE : " + IDtouse1);
             sread1 = scom1.ExecuteReader();
             while (sread1.Read())
             {//tempo yung 2
                 //error to
-                scom2.CommandText = "UPDATE PRODUCTS SET QUANTITY = QUANTITY -" + Convert.ToInt32(sread1["QUANTITY"]) + " WHERE PRODUCTID = "+Convert.ToInt32(sread1["ITEMID"]) +";";
+                scom2.CommandText = "UPDATE PRODUCTS SET QUANTITY = QUANTITY -" + Convert.ToInt32(sread1["QUANTITY"]) + " WHERE PRODUCTID = " + Convert.ToInt32(sread1["ITEMID"]) + ";";
                 scom2.ExecuteNonQuery();
                 Thread.Sleep(500);
-                
-                Console.WriteLine(" itemquantity" +Convert.ToInt32(sread1["QUANTITY"]));
-                Console.WriteLine("ITEM ID" +Convert.ToInt32(sread1["ITEMID"]));
+
+                Console.WriteLine(" itemquantity" + Convert.ToInt32(sread1["QUANTITY"]));
+                Console.WriteLine("ITEM ID" + Convert.ToInt32(sread1["ITEMID"]));
             }
 
 
@@ -239,16 +294,16 @@ namespace JUFAV_System.ModulesSecond.Sales
             scom1 = null;
             scom2 = null;
             GC.Collect();
-          
+
 
             Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(showChanges, 0, "SALES", "SALES ARE SUCCESSFULY PROCESSED", "YES", 0);
-            msg2.Controls.Find("btnclose",true)[0].Visible = false;
+            msg2.Controls.Find("btnclose", true)[0].Visible = false;
             msg2.Show();
-           
+
         }
         private void showChanges()
         {
-            Messageboxes.ShowChanges pas1 = new Messageboxes.ShowChanges(Convert.ToDouble(Payment.Text) - (Convert.ToDouble(label16.Text)- Convert.ToDouble(Discount.Text)), goback);
+            Messageboxes.ShowChanges pas1 = new Messageboxes.ShowChanges(Convert.ToDouble(Payment.Text) - (Convert.ToDouble(total2) - Convert.ToDouble(Discount.Text)), goback, IDtouse1);
             pas1.Show();
 
         }
@@ -326,16 +381,17 @@ namespace JUFAV_System.ModulesSecond.Sales
             if (texttouse.Text == "")
             {
                 texttouse.Text = 0.ToString();
-            }else
+            }
+            else
             {
                 texttouse.Text = texttouse.Text.Remove(texttouse.Text.Length - 1);
             }
-          
+
         }
         private void backtosales_Click(object sender, EventArgs e)
         {
             Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(goback, 0, "CANCEL ORDER", "ARE YOU SURE YOU WANT TO GO BACK TO ORDER LIST? \n ALL ITEMS WILL BE REMOVED", "YES", 2);
-            msg2.Show();  
+            msg2.Show();
         }
         private void SalesPaymentMethod_Leave(object sender, EventArgs e)
         {
@@ -354,11 +410,11 @@ namespace JUFAV_System.ModulesSecond.Sales
             cleardata();
             initd.QueryIDsSALES.Clear();
             GC.Collect();
-          
+
         }
         private void confirmorder_Click(object sender, EventArgs e)
         {
-            if (Convert.ToDouble(Payment.Text) < Convert.ToDouble(label16.Text))
+            if (Convert.ToDouble(Payment.Text) < total2)
             {
                 Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "PAYMENT", "PAYMENT VALUE NOT ENOUGH", "RETRY", 2);
                 ms.Show();
@@ -368,7 +424,89 @@ namespace JUFAV_System.ModulesSecond.Sales
                 Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(Confirmsales, 0, " CONFIRM SALES", "ARE YOU SURE YOU WANT TO PROCESS THIS SALE?", "YES", 2);
                 msg2.Show();
             }
-            
+
+        }
+
+        private void GCASHRAD_CheckedChanged(object sender, EventArgs e)
+        {
+            if (GCASHRAD.Checked == true)
+            {
+                label18.Text = "GCASH";
+                label24.Visible = true;
+                REFERENCENUM.Visible = true;
+            }
+            else
+            {
+                label24.Visible = false;
+                REFERENCENUM.Visible = false;
+
+            }
+
+        }
+        private void CASHRAD_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CASHRAD.Checked == true)
+            {
+                label18.Text = "CASH";
+            }
+        }
+
+        private void GCASHRAD_Click(object sender, EventArgs e)
+        {
+            DeterminePaymentType2();
+            Messageboxes.GCASHREF gcsh1 = new Messageboxes.GCASHREF(REFERENCENUM);
+            gcsh1.ShowDialog();
+        }
+
+        private void CASHRAD_Click(object sender, EventArgs e)
+        {
+            DeterminePaymentType2();
+        }
+
+        private void REFERENCENUM_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Messageboxes.GCASHREF gcsh1 = new Messageboxes.GCASHREF(REFERENCENUM);
+            gcsh1.ShowDialog();
+        }
+
+        private void Payment_TextChanged(object sender, EventArgs e)
+        {
+            if (Regex.IsMatch(Payment.Text, @"[^0-9]"))
+            {
+                Payment.Text = 0.ToString();
+
+            }
+        }
+
+        private void Payment_Click(object sender, EventArgs e)
+        {
+            Payment.SelectAll();
+        }
+
+        private void Discount_TextChanged(object sender, EventArgs e)
+        {
+            if (Regex.IsMatch(Discount.Text, @"[^0-9]"))
+            {
+                Discount.Text = 0.ToString();
+
+
+            }
+        }
+
+        private void Discount_Click(object sender, EventArgs e)
+        {
+            Discount.SelectAll();
+        }
+
+        private void Deliveryfee_TextChanged(object sender, EventArgs e)
+        {
+
+            if (Regex.IsMatch(Deliveryfee.Text, @"[^0-9]"))
+            {
+                Deliveryfee.Text = 0.ToString();
+
+
+            }
         }
     }
 }

@@ -20,9 +20,11 @@ namespace JUFAV_System.Components
         int queryID1 = 0;//magnangaling sa parent
         int quantity = 1;
         int price1 = 0;
-        public SalesOrdersList(String Prodname1,int Price2,int ProductID,int QueryID)
+        int currentstock;
+        public SalesOrdersList(String Prodname1,int Price2,int ProductID,int QueryID,int currentquantity)
         {
             InitializeComponent();
+            currentstock = currentquantity;
             queryID1 = QueryID;
             Dock = DockStyle.Top;
             ItemID = ProductID;
@@ -107,13 +109,26 @@ namespace JUFAV_System.Components
         }
         private void quantitytxtbox_TextChanged(object sender, EventArgs e)
         {
-            if (detectnonDigit() == true)
+            if (detectnonDigit() == true )
             {
-                insertintoquery();
-                initd.salestoexe.totalallSales();
+                if (Convert.ToInt32(quantitytxtbox.Text) > currentstock)
+                {
+                    Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(null, 1, "QUANTITY", "INSERTED VALUE CANNOT BE HIGHER THAN THE CURRENT QUANTITY  OF THE PRODUCT", "OK", 2);
+                    msg2.Show();
+                    quantitytxtbox.Text = currentstock.ToString();
+                }
+                else
+                {
+                    insertintoquery();
+                    initd.salestoexe.totalallSales();
+                }         
             }
-            
 
+        }
+
+        private void quantitytxtbox_Click(object sender, EventArgs e)
+        {
+            quantitytxtbox.SelectAll();
         }
     }
 }

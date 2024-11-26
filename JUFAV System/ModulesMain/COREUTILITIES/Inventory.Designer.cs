@@ -48,7 +48,7 @@
             this.ProdLstBTN.Name = "ProdLstBTN";
             this.ProdLstBTN.Size = new System.Drawing.Size(234, 38);
             this.ProdLstBTN.TabIndex = 17;
-            this.ProdLstBTN.Text = "Product List";
+            this.ProdLstBTN.Text = "Product Master List";
             this.ProdLstBTN.UseVisualStyleBackColor = false;
             // 
             // StckAdjBTN
@@ -131,7 +131,7 @@
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "Inventory";
-            this.Size = new System.Drawing.Size(234, 40);
+            this.Size = new System.Drawing.Size(234, 38);
             this.ResumeLayout(false);
 
         }

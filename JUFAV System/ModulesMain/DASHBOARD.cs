@@ -15,21 +15,24 @@ namespace JUFAV_System.ModulesMain
 {
     public partial class DASHBOARD : UserControl
     {
+        int generatereportype = 0;
         public DASHBOARD()
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             loaddata();
             loadLowOnstocks();
+            label8.Text = LoadDataCount("SELECT COUNT(*) FROM SALES WHERE DATEOFSALE = '" + DateTime.Now.ToShortDateString() + "';").ToString();
         }
         private void loaddata()
         {
+            if (initd.con1.State == ConnectionState.Closed) { initd.con1.Open(); }
             initd.titleofprint = "LOW ON STOCKS PRODUCTS";
-            String[] queries = { "SELECT COUNT(*) AS VALUE FROM PRODUCTS WHERE QUANTITY < 3;", "SELECT COUNT(*) AS VALUE FROM PRODUCTS WHERE QUANTITY < 5;", "SELECT COUNT(*) AS VALUE FROM PRODUCTS WHERE QUANTITY = 0;", "SELECT COUNT(*) AS VALUE FROM PRODUCTS WHERE QUANTITY < 3;" };
-            Label[] labels = {label5,label6,label8};
-            SQLiteCommand scom1 = new SQLiteCommand("", initd.scon);
-            SQLiteDataReader sread1;
-            for (int i = 0;i != 3;i++)
+            String[] queries = { "SELECT COUNT(*) AS VALUE FROM PRODUCTS WHERE QUANTITY <= 3 AND QUANTITY > 0;", "SELECT COUNT(*) AS VALUE FROM PRODUCTS WHERE QUANTITY = 0;" };
+            Label[] labels = {label5,label6};
+             MySql.Data.MySqlClient.MySqlCommand scom1 = new  MySql.Data.MySqlClient.MySqlCommand("", initd.con1);
+             MySql.Data.MySqlClient.MySqlDataReader sread1;
+            for (int i = 0;i != 2;i++)
             {
                 scom1.CommandText = queries[i];
                 sread1 = scom1.ExecuteReader();
@@ -40,8 +43,13 @@ namespace JUFAV_System.ModulesMain
                     break;
                 }
                 sread1.Close();
+                
                 Thread.Sleep(250);
             }
+            initd.con1.Close();
+            sread1 = null;
+            scom1 = null;
+            GC.Collect();
         }
         private void determineiftoomany(int count,Label toedit)
         {
@@ -72,105 +80,103 @@ namespace JUFAV_System.ModulesMain
         }
         private void loadOutOfstocks()
         {
+            initd.con1.Open();
             foreach (UserControl i in itemsbox1.Controls)
             {
                 i.Dispose();
             }
             itemsbox1.Controls.Clear();
             label9.Text = "OUT OF STOCKS PRODUCTS";
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM PRODUCTS WHERE QUANTITY = 0;",initd.scon);
-            SQLiteDataReader sread1 = scom1.ExecuteReader();
+             MySql.Data.MySqlClient.MySqlCommand scom1 = new  MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM PRODUCTS WHERE QUANTITY = 0;",initd.con1);
+             MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
             {
                 Components.OutOfStocksDataBox db1 = new Components.OutOfStocksDataBox(sread1["PRODUCTNAME"].ToString(),Convert.ToInt32(sread1["QUANTITY"]));
                 itemsbox1.Controls.Add(db1);
             }
             sread1.Close();
-            sread1 = null;
-            scom1 = null;
+            initd.con1.Close();
+            GC.Collect();
 
         }
         private void loadLowOnstocks()
         {
+            initd.con1.Close();
+            initd.con1.Open();
             foreach (UserControl i in itemsbox1.Controls)
             {
                 i.Dispose();
             }
             itemsbox1.Controls.Clear();
             label9.Text = "LOW ON STOCKS PRODUCTS";
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM PRODUCTS WHERE QUANTITY < 3;", initd.scon);
-            SQLiteDataReader sread1 = scom1.ExecuteReader();
+             MySql.Data.MySqlClient.MySqlCommand scom1 = new  MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM PRODUCTS WHERE QUANTITY <= 3 AND QUANTITY > 0;", initd.con1);
+             MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
             while (sread1.Read())
             {
                 Components.OutOfStocksDataBox db1 = new Components.OutOfStocksDataBox(sread1["PRODUCTNAME"].ToString(), Convert.ToInt32(sread1["QUANTITY"]));
                 itemsbox1.Controls.Add(db1);
             }
             sread1.Close();
-            sread1 = null;
-            scom1 = null;
+            initd.con1.Close();
+            GC.Collect();
         }
-        private void loadProdWithinReorder()
+        private void LoadSalesOftheDay()
         {
+            initd.con1.Open();
             foreach (UserControl i in itemsbox1.Controls)
             {
                 i.Dispose();
             }
             itemsbox1.Controls.Clear();
-            label9.Text = "PRODUCTS WITHIN REORDER POINT";
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM PRODUCTS WHERE QUANTITY < 3;", initd.scon);
-            SQLiteDataReader sread1 = scom1.ExecuteReader();
+            label9.Text = "TOTAL SALES OF THE DAY";
+             MySql.Data.MySqlClient.MySqlCommand scom1 = new  MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM SALES WHERE DATEOFSALE = '"+DateTime.Now.ToShortDateString()+"';", initd.con1);
+             MySql.Data.MySqlClient.MySqlDataReader sread1 = scom1.ExecuteReader();
+            Double value = 0;
             while (sread1.Read())
             {
-                Components.OutOfStocksDataBox db1 = new Components.OutOfStocksDataBox(sread1["PRODUCTNAME"].ToString(), Convert.ToInt32(sread1["QUANTITY"]));
+                value = Convert.ToDouble(sread1["TOTALPRICE"]);
+                Components.OutOfStocksDataBox db1 = new Components.OutOfStocksDataBox(sread1["CUSTOMERNAME"].ToString(),Convert.ToInt32(value));
                 itemsbox1.Controls.Add(db1);
             }
             sread1.Close();
+            initd.con1.Close();
             sread1 = null;
             scom1 = null;
         }
-        private void loadExpiredProd()
+        private int LoadDataCount(String querytoues)
         {
-            foreach (UserControl i in itemsbox1.Controls)
-            {
-                i.Dispose();
-            }
-            itemsbox1.Controls.Clear();
-            label9.Text = "EXPIRED PRODUCTS";
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM PRODUCTS WHERE QUANTITY < 3;", initd.scon);
-            SQLiteDataReader sread1 = scom1.ExecuteReader();
-            while (sread1.Read())
-            {
-                Components.OutOfStocksDataBox db1 = new Components.OutOfStocksDataBox(sread1["PRODUCTNAME"].ToString(), Convert.ToInt32(sread1["QUANTITY"]));
-                itemsbox1.Controls.Add(db1);
-            }
-            sread1.Close();
-            sread1 = null;
-            scom1 = null;
+            initd.con1.Open();
+            int count = 0;
+             MySql.Data.MySqlClient.MySqlCommand sq = new  MySql.Data.MySqlClient.MySqlCommand(querytoues, initd.con1);
+            count = Convert.ToInt32(sq.ExecuteScalar());
+            sq = null;
+            GC.Collect();
+            initd.con1.Close();
+            return count;
         }
-        private void OutOfStocksbtn_Click(object sender, EventArgs e)
-        {
-            
-            loadOutOfstocks();
-            initd.titleofprint = "OUT_OF_STOCKS";
-        }
+       
+      
         private void LowStocksProd_Click(object sender, EventArgs e)
         {
+            generatereportype = 0;
             loadLowOnstocks();
             initd.titleofprint = "LOW_ON_STOCKS_PRODUCTS";
         }
         private void ProdWithinreorder_Click(object sender, EventArgs e)
         {
+            generatereportype = 1;
             loadOutOfstocks();
             initd.titleofprint = "OUT_OF_STOCKS_PRODUCTS";
         }
         private void ExpiredBTN_Click(object sender, EventArgs e)
         {
-            loadExpiredProd();
-            initd.titleofprint = "EXPIRED_PRODUCTS";
+            generatereportype = 2;
+            LoadSalesOftheDay();
+            initd.titleofprint = "TOTAL SALES OF THE DAY";
         }
         private void Options_Click(object sender, EventArgs e)
         {
-            Components.SmalloptionDashBoard item1 = new Components.SmalloptionDashBoard();
+            Components.SmalloptionDashBoard item1 = new Components.SmalloptionDashBoard(generatereportype);
             item1.Location = new Point(Options.Location.X - 150, Options.Location.Y +150);//fic bug
             this.Controls.Add(item1);
             item1.BringToFront();

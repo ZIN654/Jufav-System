@@ -17,7 +17,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Supplier
     {
         int summonmode = 0;
         int idtoedit1;
-        public Addsupplier(int summontype,int idtoedit)
+        public Addsupplier(int summontype, int idtoedit)
         {
             InitializeComponent();
             summonmode = summontype;
@@ -30,7 +30,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Supplier
                 AddSupplierBTn.Text = "UPDATE SUPPLIER";
 
             }
-          
+
         }
         public bool isverfied1 = true;
         public bool isverfied2 = true;
@@ -38,8 +38,9 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Supplier
         //core
         private void loaddata(int id)
         {
-            SQLiteCommand scom1 = new SQLiteCommand("SELECT * FROM SUPPLIERS WHERE SUPPLIERID = " + id + ";", initd.scon);
-            SQLiteDataReader srea1 = scom1.ExecuteReader();
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("SELECT * FROM SUPPLIERS WHERE SUPPLIERID = " + id + ";", initd.con1);
+            MySql.Data.MySqlClient.MySqlDataReader srea1 = scom1.ExecuteReader();
             while (srea1.Read())
             {
                 ComapnynametxtBX.Text = srea1["SUPPLIERNAME"].ToString();
@@ -50,14 +51,15 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Supplier
             srea1.Close();
             srea1 = null;
             scom1 = null;
-
+           initd.con1.Close(); 
 
         }
         private void UpdateDb()
         {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
             this.Cursor = Cursors.WaitCursor;
             //SQLIETE using idtoedit  (SUPPLIERID INT NOT NULL PRIMARY KEY,USERID INT,SUPPLIERNAME VARCHAR(50),CONTACTPERSON VARCHAR(50),CONTACTNUMBER VARCHAR(50),COMPANYADDRESS VARCHAR(100)
-            SQLiteCommand sq1 = new SQLiteCommand("UPDATE SUPPLIERS SET SUPPLIERNAME = '"+ ComapnynametxtBX.Text.ToLower() + "',CONTACTPERSON= '"+ ContactPersontxtbox.Text.ToLower() + "',CONTACTNUMBER = '"+ ContactNotxtbox.Text.ToLower() + "' ,COMPANYADDRESS = '"+Addresstxtbox.Text.ToLower() + "' WHERE SUPPLIERID = "+idtoedit1+";", initd.scon);
+            MySql.Data.MySqlClient.MySqlCommand sq1 = new MySql.Data.MySqlClient.MySqlCommand("UPDATE SUPPLIERS SET SUPPLIERNAME = '" + ComapnynametxtBX.Text.ToLower().Trim() + "',CONTACTPERSON= '" + ContactPersontxtbox.Text.ToLower().Trim() + "',CONTACTNUMBER = '" + ContactNotxtbox.Text.ToLower().Trim() + "' ,COMPANYADDRESS = '" + Addresstxtbox.Text.ToLower().Trim() + "' WHERE SUPPLIERID = " + idtoedit1 + ";", initd.con1);
             sq1.ExecuteNonQuery();
             sq1 = null;
 
@@ -65,18 +67,18 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Supplier
 
             Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(goback, 0, "UPDATE SUPPLIER", "ITEM SUCCESSFULLY UPDATED! \n WOULD YOU LIKE TO GO BACK AT THE FRONT PAGE?", "OK", 0);
             msg2.Show();
-
+            initd.con1.Close();
         }
         public void verify(int summonmode)
         {
             isverfied1 = true;
             isverfied2 = true;
             isverified3 = true;
-            TextBox[] textboxes = {ComapnynametxtBX,ContactPersontxtbox,ContactNotxtbox,Addresstxtbox};
-            PictureBox[] notificationimage = { CompanynameIMG,ContactPersonIMG,ContactNoIMG,addressIMG };
-            Label[] textnoti = {CmpanynameNot,Contactpernot,COntactNoNot,AddressNot };
+            TextBox[] textboxes = { ComapnynametxtBX, ContactPersontxtbox, ContactNotxtbox, Addresstxtbox };
+            PictureBox[] notificationimage = { CompanynameIMG, ContactPersonIMG, ContactNoIMG, addressIMG };
+            Label[] textnoti = { CmpanynameNot, Contactpernot, COntactNoNot, AddressNot };
             //check pass and conf is =
-            if (ComapnynametxtBX.Text == ""|| ContactPersontxtbox.Text == ""||ContactNotxtbox.Text == "" || Addresstxtbox.Text == "")
+            if (ComapnynametxtBX.Text == "" || ContactPersontxtbox.Text == "" || ContactNotxtbox.Text == "" || Addresstxtbox.Text == "")
             {
                 for (int i = 0; i != 4; i++)
                 {
@@ -99,7 +101,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Supplier
                 for (int i = 0; i != 1; i++)
                 {
                     // \\W\\S
-                    if (Regex.IsMatch(textboxes[i].Text, "\\W"))
+                    if (Regex.IsMatch(textboxes[i].Text, @"[^\w\s\d]"))
                     {
                         Messageboxes.MessageboxConfirmation ms = new Messageboxes.MessageboxConfirmation(null, 1, "NON CHARACTER INPUT", "Please Remove a non - letter character in " + textboxes[i].Name + " field where text '" + textboxes[i].Text + "' contains the non letter character.", "RETRY", 1);
                         ms.Show();
@@ -111,8 +113,9 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Supplier
                 }
             }
             //
-            if (summonmode != 0) {//ad for updating bug
-                if (isverfied2 == true && isverfied1 == true && algos1.DetectInputifDupplicate(new String[] { ComapnynametxtBX.Text.ToLower(), ContactPersontxtbox.Text.ToLower(), ContactNotxtbox.Text.ToLower(), Addresstxtbox.Text.ToLower() }, 0) == false)
+            if (summonmode != 0)
+            {//ad for updating bug
+                if (isverfied2 == true && isverfied1 == true && algos1.DetectInputifDupplicate(new String[] { ComapnynametxtBX.Text.Normalize().ToLower().Trim(), ContactPersontxtbox.Text.Normalize().ToLower().Trim(), ContactNotxtbox.Text.Normalize().ToLower().Trim(), Addresstxtbox.Text.Normalize().ToLower().Trim() }, 0) == false)
                 {
                     isverified3 = false;
                 }
@@ -144,7 +147,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Supplier
 
 
                 }
-              
+
             }
 
         }
@@ -161,6 +164,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Supplier
         }
         private void Insertdata()
         {
+            if (initd.con1.State == System.Data.ConnectionState.Closed) { initd.con1.Open(); }
             this.Cursor = Cursors.WaitCursor;
             Random rs1 = new Random();
             String unitid = "";//Users table
@@ -172,14 +176,15 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Supplier
                 unitid = string.Concat(unitid, rs1.Next(0, 9).ToString());
             }
 
-           SQLiteCommand scom = new SQLiteCommand("INSERT INTO SUPPLIERS VALUES(" + Convert.ToInt32(unitid) + "," + initd.UserID + ",'" +ComapnynametxtBX.Text.ToLower() + "','"+ ContactPersontxtbox.Text.ToLower() + "','" + ContactNotxtbox.Text.ToLower() + "','" + Addresstxtbox.Text.ToLower() + "');", initd.scon);
-           scom.ExecuteNonQuery();
-           
+            MySql.Data.MySqlClient.MySqlCommand scom = new MySql.Data.MySqlClient.MySqlCommand("INSERT INTO SUPPLIERS VALUES(" + Convert.ToInt32(unitid) + "," + initd.UserID + ",'" + ComapnynametxtBX.Text.Normalize().ToLower().Trim() + "','" + ContactPersontxtbox.Text.Normalize().ToLower().Trim() + "','" + ContactNotxtbox.Text.Normalize().ToLower().Trim() + "','" + Addresstxtbox.Text.Normalize().ToLower().Trim() + "');", initd.con1);
+            scom.ExecuteNonQuery();
+
             this.Cursor = Cursors.Default;
 
 
-            Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(goback, 0, "ADD UNIT OF MEASUREMENT", "ITEM SUCCESSFULLY ADDED! \n WOULD YOU LIKE TO GO BACK AT THE FRONT PAGE?", "OK", 0);
+            Messageboxes.MessageboxConfirmation msg2 = new Messageboxes.MessageboxConfirmation(goback, 0, "ADD NEW SUPPLIER", "ITEM SUCCESSFULLY ADDED! \n WOULD YOU LIKE TO GO BACK AT THE FRONT PAGE?", "OK", 0);
             msg2.Show();
+          initd.con1.Close();
         }
         private void goback()
         {
@@ -194,7 +199,7 @@ namespace JUFAV_System.ModulesSecond.FileMaintenance.Supplier
         private void AddSupplierBTn_Click(object sender, EventArgs e)
         {
             hide();
-            verify(summonmode); 
+            verify(summonmode);
         }
 
         private void CanceleSupplierBTN_Click(object sender, EventArgs e)

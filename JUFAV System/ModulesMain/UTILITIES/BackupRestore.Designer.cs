@@ -30,16 +30,15 @@
         {
             this.Pane = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.bxkBTN = new System.Windows.Forms.Button();
-            this.rstrBTN = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.bxkBTN = new System.Windows.Forms.Button();
+            this.rstrBTN = new System.Windows.Forms.Button();
             this.Pane.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -65,6 +64,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.bxkBTN);
             this.panel1.Controls.Add(this.rstrBTN);
             this.panel1.Controls.Add(this.label2);
@@ -75,35 +75,6 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(403, 191);
             this.panel1.TabIndex = 0;
-            // 
-            // bxkBTN
-            // 
-            this.bxkBTN.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.bxkBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bxkBTN.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.bxkBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bxkBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bxkBTN.Location = new System.Drawing.Point(5, 56);
-            this.bxkBTN.Margin = new System.Windows.Forms.Padding(10);
-            this.bxkBTN.Name = "bxkBTN";
-            this.bxkBTN.Size = new System.Drawing.Size(393, 65);
-            this.bxkBTN.TabIndex = 3;
-            this.bxkBTN.Text = "BACKUP DATABASE";
-            this.bxkBTN.UseVisualStyleBackColor = false;
-            // 
-            // rstrBTN
-            // 
-            this.rstrBTN.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.rstrBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.rstrBTN.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.rstrBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rstrBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rstrBTN.Location = new System.Drawing.Point(5, 121);
-            this.rstrBTN.Name = "rstrBTN";
-            this.rstrBTN.Size = new System.Drawing.Size(393, 65);
-            this.rstrBTN.TabIndex = 2;
-            this.rstrBTN.Text = "RESTORE DATABASE";
-            this.rstrBTN.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
@@ -130,6 +101,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -146,7 +118,7 @@
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(3, 24);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(283, 164);
+            this.label4.Size = new System.Drawing.Size(281, 162);
             this.label4.TabIndex = 5;
             this.label4.Text = "00/00/00";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -165,19 +137,56 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "Database Name.sqlite";
-            this.openFileDialog1.Filter = "sqlite file (*.sqlite)|*.sqlite";
+            this.openFileDialog1.DefaultExt = "sql";
+            this.openFileDialog1.FileName = "JufavDatabase.sql";
+            this.openFileDialog1.Filter = "sql files (*.sql)|*.sql|All files (*.*)|*.*";
+            this.openFileDialog1.InitialDirectory = "C:\\";
             this.openFileDialog1.Tag = "Restore database sample format \"databasename\".sqlite";
             this.openFileDialog1.Title = "Restore Database";
             // 
-            // folderBrowserDialog1
-            // 
-            this.folderBrowserDialog1.Description = "Folder path where the database is backed up";
-            this.folderBrowserDialog1.RootFolder = System.Environment.SpecialFolder.CommonDocuments;
-            // 
             // saveFileDialog1
             // 
+            this.saveFileDialog1.DefaultExt = "sql";
+            this.saveFileDialog1.FileName = "JufavDatabase.sql";
+            this.saveFileDialog1.Filter = "sql files (*.sql)|*.sql|All files (*.*)|*.*";
+            this.saveFileDialog1.InitialDirectory = "C:\\";
             this.saveFileDialog1.RestoreDirectory = true;
+            // 
+            // bxkBTN
+            // 
+            this.bxkBTN.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.bxkBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bxkBTN.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.bxkBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bxkBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bxkBTN.Image = global::JUFAV_System.Properties.Resources.Backupicon;
+            this.bxkBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bxkBTN.Location = new System.Drawing.Point(5, 54);
+            this.bxkBTN.Margin = new System.Windows.Forms.Padding(10);
+            this.bxkBTN.Name = "bxkBTN";
+            this.bxkBTN.Size = new System.Drawing.Size(391, 65);
+            this.bxkBTN.TabIndex = 3;
+            this.bxkBTN.Text = "BACKUP DATABASE";
+            this.bxkBTN.UseVisualStyleBackColor = false;
+            this.bxkBTN.Click += new System.EventHandler(this.bxkBTN_Click);
+            // 
+            // rstrBTN
+            // 
+            this.rstrBTN.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.rstrBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.rstrBTN.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.rstrBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rstrBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rstrBTN.Image = global::JUFAV_System.Properties.Resources.RestoreIcon;
+            this.rstrBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rstrBTN.Location = new System.Drawing.Point(5, 119);
+            this.rstrBTN.Margin = new System.Windows.Forms.Padding(10);
+            this.rstrBTN.Name = "rstrBTN";
+            this.rstrBTN.Size = new System.Drawing.Size(391, 65);
+            this.rstrBTN.TabIndex = 2;
+            this.rstrBTN.Text = "RESTORE DATABASE";
+            this.rstrBTN.UseVisualStyleBackColor = false;
+            this.rstrBTN.Click += new System.EventHandler(this.rstrBTN_Click);
             // 
             // BCKRS
             // 
@@ -210,7 +219,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

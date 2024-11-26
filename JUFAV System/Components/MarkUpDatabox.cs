@@ -15,7 +15,7 @@ namespace JUFAV_System.Components
     public partial class MarkUpDatabox : UserControl
     {
         int id;
-        public MarkUpDatabox(String value ,int IDtoedit)
+        public MarkUpDatabox(String value, int IDtoedit)
         {
 
             InitializeComponent();
@@ -38,7 +38,7 @@ namespace JUFAV_System.Components
         private void delete()
         {
             this.Cursor = Cursors.WaitCursor;
-            SQLiteCommand scom1 = new SQLiteCommand("DELETE FROM MARKUP WHERE MARKUPID = " + id + ";", initd.scon);
+            MySql.Data.MySqlClient.MySqlCommand scom1 = new MySql.Data.MySqlClient.MySqlCommand("DELETE FROM MARKUP WHERE MARKUPID = " + id + ";", initd.con1);
             scom1.ExecuteNonQuery();
             scom1 = null;
             GC.Collect();
@@ -60,6 +60,6 @@ namespace JUFAV_System.Components
         {
             editBTN.Click += null;
             trash.Click += null;
-        }     
+        }
     }
 }

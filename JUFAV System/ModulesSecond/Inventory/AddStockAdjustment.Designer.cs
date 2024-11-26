@@ -37,8 +37,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.batchdchbx = new System.Windows.Forms.CheckBox();
-            this.prshblchbx = new System.Windows.Forms.CheckBox();
             this.srchbox = new System.Windows.Forms.TextBox();
             this.search = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -50,7 +48,6 @@
             this.itemsBoxs = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +59,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.03755F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.83284F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 48F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 51F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.comboBox2, 1, 2);
@@ -85,10 +82,10 @@
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(814, 27);
+            this.panel1.Location = new System.Drawing.Point(813, 27);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(51, 26);
+            this.panel1.Size = new System.Drawing.Size(52, 26);
             this.panel1.TabIndex = 5;
             // 
             // label3
@@ -156,34 +153,12 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.batchdchbx);
-            this.panel3.Controls.Add(this.prshblchbx);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(333, 27);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(232, 26);
             this.panel3.TabIndex = 6;
-            // 
-            // batchdchbx
-            // 
-            this.batchdchbx.AutoSize = true;
-            this.batchdchbx.Location = new System.Drawing.Point(152, 5);
-            this.batchdchbx.Name = "batchdchbx";
-            this.batchdchbx.Size = new System.Drawing.Size(66, 17);
-            this.batchdchbx.TabIndex = 1;
-            this.batchdchbx.Text = "Batched";
-            this.batchdchbx.UseVisualStyleBackColor = true;
-            // 
-            // prshblchbx
-            // 
-            this.prshblchbx.AutoSize = true;
-            this.prshblchbx.Location = new System.Drawing.Point(23, 6);
-            this.prshblchbx.Name = "prshblchbx";
-            this.prshblchbx.Size = new System.Drawing.Size(75, 17);
-            this.prshblchbx.TabIndex = 0;
-            this.prshblchbx.Text = "Perishable";
-            this.prshblchbx.UseVisualStyleBackColor = true;
             // 
             // srchbox
             // 
@@ -192,7 +167,7 @@
             this.srchbox.Location = new System.Drawing.Point(565, 28);
             this.srchbox.Margin = new System.Windows.Forms.Padding(0, 1, 0, 3);
             this.srchbox.Name = "srchbox";
-            this.srchbox.Size = new System.Drawing.Size(208, 24);
+            this.srchbox.Size = new System.Drawing.Size(207, 24);
             this.srchbox.TabIndex = 0;
             this.srchbox.WordWrap = false;
             // 
@@ -202,7 +177,7 @@
             this.search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.search.Dock = System.Windows.Forms.DockStyle.Fill;
             this.search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.search.Location = new System.Drawing.Point(773, 27);
+            this.search.Location = new System.Drawing.Point(772, 27);
             this.search.Margin = new System.Windows.Forms.Padding(0);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(41, 26);
@@ -227,7 +202,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.37945F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.62055F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 227F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 132F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.label14, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label11, 1, 0);
@@ -246,9 +221,9 @@
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Actor", 9F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(734, 1);
+            this.label1.Location = new System.Drawing.Point(732, 1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 27);
+            this.label1.Size = new System.Drawing.Size(129, 27);
             this.label1.TabIndex = 9;
             this.label1.Text = "ACTIONS";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -260,7 +235,7 @@
             this.label14.Font = new System.Drawing.Font("Actor", 8.25F, System.Drawing.FontStyle.Bold);
             this.label14.Location = new System.Drawing.Point(4, 1);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(336, 27);
+            this.label14.Size = new System.Drawing.Size(335, 27);
             this.label14.TabIndex = 0;
             this.label14.Text = "PRODUCT NAME";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -270,9 +245,9 @@
             this.label11.AutoSize = true;
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label11.Font = new System.Drawing.Font("Actor", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label11.Location = new System.Drawing.Point(347, 1);
+            this.label11.Location = new System.Drawing.Point(346, 1);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(152, 27);
+            this.label11.Size = new System.Drawing.Size(151, 27);
             this.label11.TabIndex = 3;
             this.label11.Text = "QUANTITY";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -282,7 +257,7 @@
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Actor", 9F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(506, 1);
+            this.label5.Location = new System.Drawing.Point(504, 1);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(221, 27);
             this.label5.TabIndex = 4;
@@ -313,8 +288,6 @@
             this.tableLayoutPanel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
@@ -334,8 +307,6 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.TextBox srchbox;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.CheckBox batchdchbx;
-        private System.Windows.Forms.CheckBox prshblchbx;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label11;

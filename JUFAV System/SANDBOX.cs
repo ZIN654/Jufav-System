@@ -126,7 +126,7 @@ namespace JUFAV_System
         }
         private void detectNet()
         {
-           
+           /*
             String hostnam = Dns.GetHostName().ToString();
             String ip = Dns.GetHostByName(hostnam).AddressList[0].ToString();
             if ("127.0.0.1" == ip){
@@ -137,6 +137,7 @@ namespace JUFAV_System
             }
             hostnam = null;
             ip = null; 
+            */
         }
         private void sendemail()
         {

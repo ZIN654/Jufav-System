@@ -27,7 +27,8 @@ namespace JUFAV_System.Messageboxes
             ProdCat.Text = Category;
             ProdSubCat.Text = SubCategory;
             CurrentVallbl.Text = quantity.ToString();
-            UpdateQuantity.Text = adjustments.ToString();
+            adjustments = Convert.ToInt32(CurrentVallbl.Text);
+            UpdateQuantity.Text = adjustments.ToString() ;
             if (isperishable == false)
             {
                 EXPIRED.Enabled = false;
@@ -49,7 +50,7 @@ namespace JUFAV_System.Messageboxes
             //STOCKADJUSTMENTID,USERID,DATEOFADJUSTMENT,PRODUCTID,PRODUCTNAME,ADJUSTMENTTYPE,PREVIOUSQUANTITY,ADJUSTEDQUANTITY,REASON 
             //STOCKADJUSTMENTID,USERS,DATEOFADJUSTMENT,PRODUCTID,PRODUCTNAME,ADJUSTMENTTYPE,PREVIOUSQUANTITY,ADJUSTEDQUANTITY,REASON
             //error here insertion of adjustments
-            scom1.CommandText = "INSERT INTO STOCKADJUSTMENTS(USERID,DATEOFADJUSTMENT,PRODUCTID,PRODUCTNAME,ADJUSTMENTTYPE,PREVIOUSQUANTITY,ADJUSTEDQUANTITY,REASON,OTHERS) VALUES(" + initd.UserID+",'"+DateTime.Now.ToShortDateString()+"',"+ProductID1+",'"+prodName.Text+"','"+ determinetypeofAdjustment(determineadjustment(Convert.ToInt32(CurrentVallbl.Text), Convert.ToInt32(UpdateQuantity.Text))) +"',"+ Convert.ToInt32(CurrentVallbl.Text) +","+ (Convert.ToInt32(UpdateQuantity.Text) - Convert.ToInt32(CurrentVallbl.Text)) + ",'"+ DetermineReason().ToString() +"','"+Remarks.Text+"');";
+            scom1.CommandText = "INSERT INTO STOCKADJUSTMENTS(USERID,DATEOFADJUSTMENT,TIMEOFADJUSTMENT,PRODUCTID,PRODUCTNAME,ADJUSTMENTTYPE,PREVIOUSQUANTITY,ADJUSTEDQUANTITY,REASON,OTHERS) VALUES(" + initd.UserID+",'"+DateTime.Now.ToShortDateString()+"','"+DateTime.Now.ToShortTimeString()+"',"+ProductID1+",'"+prodName.Text+"','"+ determinetypeofAdjustment(determineadjustment(Convert.ToInt32(CurrentVallbl.Text), Convert.ToInt32(UpdateQuantity.Text))) +"',"+ Convert.ToInt32(CurrentVallbl.Text) +","+ (Convert.ToInt32(UpdateQuantity.Text) - Convert.ToInt32(CurrentVallbl.Text)) + ",'"+ DetermineReason().ToString() +"','"+Remarks.Text+"');";
             scom1.ExecuteNonQuery();
 
 

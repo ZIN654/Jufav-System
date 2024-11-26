@@ -32,7 +32,6 @@
             this.ProdBTN = new System.Windows.Forms.Button();
             this.SubCatBTN = new System.Windows.Forms.Button();
             this.CategoryBTN = new System.Windows.Forms.Button();
-            this.UoMBTN = new System.Windows.Forms.Button();
             this.SplrBTN = new System.Windows.Forms.Button();
             this.UsrSetBTN = new System.Windows.Forms.Button();
             this.FmBTN = new System.Windows.Forms.Button();
@@ -46,7 +45,7 @@
             this.VatBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.VatBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VatBTN.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.VatBTN.Location = new System.Drawing.Point(0, 266);
+            this.VatBTN.Location = new System.Drawing.Point(0, 228);
             this.VatBTN.Margin = new System.Windows.Forms.Padding(0);
             this.VatBTN.Name = "VatBTN";
             this.VatBTN.Size = new System.Drawing.Size(234, 38);
@@ -62,7 +61,7 @@
             this.ProdBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ProdBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProdBTN.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.ProdBTN.Location = new System.Drawing.Point(0, 228);
+            this.ProdBTN.Location = new System.Drawing.Point(0, 190);
             this.ProdBTN.Margin = new System.Windows.Forms.Padding(0);
             this.ProdBTN.Name = "ProdBTN";
             this.ProdBTN.Size = new System.Drawing.Size(234, 38);
@@ -78,7 +77,7 @@
             this.SubCatBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SubCatBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubCatBTN.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.SubCatBTN.Location = new System.Drawing.Point(0, 190);
+            this.SubCatBTN.Location = new System.Drawing.Point(0, 152);
             this.SubCatBTN.Margin = new System.Windows.Forms.Padding(0);
             this.SubCatBTN.Name = "SubCatBTN";
             this.SubCatBTN.Size = new System.Drawing.Size(234, 38);
@@ -94,29 +93,13 @@
             this.CategoryBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CategoryBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CategoryBTN.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.CategoryBTN.Location = new System.Drawing.Point(0, 152);
+            this.CategoryBTN.Location = new System.Drawing.Point(0, 114);
             this.CategoryBTN.Margin = new System.Windows.Forms.Padding(0);
             this.CategoryBTN.Name = "CategoryBTN";
             this.CategoryBTN.Size = new System.Drawing.Size(234, 38);
             this.CategoryBTN.TabIndex = 17;
             this.CategoryBTN.Text = "Category";
             this.CategoryBTN.UseVisualStyleBackColor = false;
-            // 
-            // UoMBTN
-            // 
-            this.UoMBTN.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.UoMBTN.Dock = System.Windows.Forms.DockStyle.Top;
-            this.UoMBTN.FlatAppearance.BorderSize = 0;
-            this.UoMBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UoMBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UoMBTN.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.UoMBTN.Location = new System.Drawing.Point(0, 114);
-            this.UoMBTN.Margin = new System.Windows.Forms.Padding(0);
-            this.UoMBTN.Name = "UoMBTN";
-            this.UoMBTN.Size = new System.Drawing.Size(234, 38);
-            this.UoMBTN.TabIndex = 16;
-            this.UoMBTN.Text = "Unit Of Measures";
-            this.UoMBTN.UseVisualStyleBackColor = false;
             // 
             // SplrBTN
             // 
@@ -178,7 +161,6 @@
             this.Controls.Add(this.ProdBTN);
             this.Controls.Add(this.SubCatBTN);
             this.Controls.Add(this.CategoryBTN);
-            this.Controls.Add(this.UoMBTN);
             this.Controls.Add(this.SplrBTN);
             this.Controls.Add(this.UsrSetBTN);
             this.Controls.Add(this.FmBTN);
@@ -186,7 +168,7 @@
             this.Font = new System.Drawing.Font("Actor", 8.25F);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "Filemaintenance";
-            this.Size = new System.Drawing.Size(234, 38);
+            this.Size = new System.Drawing.Size(234, 266);
             this.ResumeLayout(false);
 
         }
@@ -196,7 +178,6 @@
         private System.Windows.Forms.Button ProdBTN;
         private System.Windows.Forms.Button SubCatBTN;
         private System.Windows.Forms.Button CategoryBTN;
-        private System.Windows.Forms.Button UoMBTN;
         private System.Windows.Forms.Button SplrBTN;
         private System.Windows.Forms.Button UsrSetBTN;
         private System.Windows.Forms.Button FmBTN;

@@ -58,12 +58,32 @@
       <HintPath>..\packages\Apitron.PDF.Controls.1.0.175\lib\net48\Apitron.PDF.Rasterizer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.2.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.25.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.25.1\lib\net45\Google.Protobuf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.3.5.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.1.3.5\lib\net462\K4os.Compression.LZ4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.3.5.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.3.5\lib\net462\K4os.Compression.LZ4.Streams.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.8.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.8\lib\net462\K4os.Hash.xxHash.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Konscious.Security.Cryptography.Argon2, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -74,6 +94,10 @@
       <HintPath>..\packages\Konscious.Security.Cryptography.Blake2.1.1.1\lib\net46\Konscious.Security.Cryptography.Blake2.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MigraDoc.DocumentObjectModel-gdi">
       <HintPath>x64\MigraDoc.DocumentObjectModel-gdi.dll</HintPath>
     </Reference>
@@ -82,6 +106,14 @@
     </Reference>
     <Reference Include="MigraDoc.RtfRendering-gdi">
       <HintPath>x64\MigraDoc.RtfRendering-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.3.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.3.0\lib\net48\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySqlBackup, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySqlBackup.1.0.1\lib\MySqlBackup.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="PdfSharp-gdi">
       <HintPath>x64\PdfSharp-gdi.dll</HintPath>
@@ -103,6 +135,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.4.4.1\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.118.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\lib\net46\System.Data.SQLite.dll</HintPath>
@@ -116,7 +153,16 @@
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.118.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=7.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.7.0.2\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.IO.Pipelines, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.5.0.2\lib\net461\System.IO.Pipelines.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
       <Private>True</Private>
@@ -132,6 +178,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -141,6 +192,10 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="ZstdSharp, Version=0.7.1.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZstdSharp.Port.0.7.1\lib\net461\ZstdSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\AccessDenied.cs">
@@ -148,6 +203,12 @@
     </Compile>
     <Compile Include="Components\AccessDenied.Designer.cs">
       <DependentUpon>AccessDenied.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\AuditTrailComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\AuditTrailComponent.Designer.cs">
+      <DependentUpon>AuditTrailComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\BatchDataBox.cs">
       <SubType>UserControl</SubType>
@@ -161,11 +222,29 @@
     <Compile Include="Components\CategoryComponent.Designer.cs">
       <DependentUpon>CategoryComponent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\FINrepComp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\FINrepComp.Designer.cs">
+      <DependentUpon>FINrepComp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\InverntoryReportsComponents.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\InverntoryReportsComponents.Designer.cs">
       <DependentUpon>InverntoryReportsComponents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ItemsComparison.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ItemsComparison.Designer.cs">
+      <DependentUpon>ItemsComparison.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ItemsReceive.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ItemsReceive.Designer.cs">
+      <DependentUpon>ItemsReceive.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\MarkUpDatabox.cs">
       <SubType>UserControl</SubType>
@@ -184,6 +263,12 @@
     </Compile>
     <Compile Include="Components\OfferedProdsPODataBox.Designer.cs">
       <DependentUpon>OfferedProdsPODataBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\OrderSummaryProducts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\OrderSummaryProducts.Designer.cs">
+      <DependentUpon>OrderSummaryProducts.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\OutOfStocksDataBox.cs">
       <SubType>UserControl</SubType>
@@ -221,6 +306,12 @@
     <Compile Include="Components\RemarksBox.Designer.cs">
       <DependentUpon>RemarksBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\SalesComponentReports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\SalesComponentReports.Designer.cs">
+      <DependentUpon>SalesComponentReports.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\SalesOrdersList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -244,6 +335,12 @@
     </Compile>
     <Compile Include="Components\SmalloptionDashBoard.Designer.cs">
       <DependentUpon>SmalloptionDashBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\StockAdjustmentComponentReports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\StockAdjustmentComponentReports.Designer.cs">
+      <DependentUpon>StockAdjustmentComponentReports.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\StockAdjustmentsDatabox.cs">
       <SubType>UserControl</SubType>
@@ -289,6 +386,7 @@
     </Compile>
     <Compile Include="dll\algos1.cs" />
     <Compile Include="dll\initd.cs" />
+    <Compile Include="dll\NetworkClass.cs" />
     <Compile Include="dll\ResponsiveUI1.cs" />
     <Compile Include="Ffirstrun\DbSetup.cs">
       <SubType>Form</SubType>
@@ -302,6 +400,12 @@
     <Compile Include="Ffirstrun\FirstRun.Designer.cs">
       <DependentUpon>FirstRun.cs</DependentUpon>
     </Compile>
+    <Compile Include="Messageboxes\GCASHREF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messageboxes\GCASHREF.Designer.cs">
+      <DependentUpon>GCASHREF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Messageboxes\MessageboxAreyousure.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -314,11 +418,29 @@
     <Compile Include="Messageboxes\newsupplierAddProd.Designer.cs">
       <DependentUpon>newsupplierAddProd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Messageboxes\NOTIFICATIONS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messageboxes\NOTIFICATIONS.Designer.cs">
+      <DependentUpon>NOTIFICATIONS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Messageboxes\ORdersum\OrderSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messageboxes\ORdersum\OrderSummary.Designer.cs">
+      <DependentUpon>OrderSummary.cs</DependentUpon>
+    </Compile>
     <Compile Include="Messageboxes\PdfFileViewer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Messageboxes\PdfFileViewer.Designer.cs">
       <DependentUpon>PdfFileViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Messageboxes\POhowmuchReceived.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messageboxes\POhowmuchReceived.Designer.cs">
+      <DependentUpon>POhowmuchReceived.cs</DependentUpon>
     </Compile>
     <Compile Include="Messageboxes\SalesPrintreceipt.cs">
       <SubType>Form</SubType>
@@ -476,6 +598,12 @@
     <Compile Include="ModulesMain\INVENTORY\StockAdjustment.Designer.cs">
       <DependentUpon>StockAdjustment.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModulesMain\LOGIN\ConnectToOther.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\LOGIN\ConnectToOther.Designer.cs">
+      <DependentUpon>ConnectToOther.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModulesMain\LOGIN\Fogotpass.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -499,6 +627,12 @@
     </Compile>
     <Compile Include="ModulesMain\REPORTS\AuditTrailReports.Designer.cs">
       <DependentUpon>AuditTrailReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesMain\REPORTS\FInancialReports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModulesMain\REPORTS\FInancialReports.Designer.cs">
+      <DependentUpon>FInancialReports.cs</DependentUpon>
     </Compile>
     <Compile Include="ModulesMain\REPORTS\InventoryReports.cs">
       <SubType>UserControl</SubType>
@@ -654,14 +788,26 @@
     <EmbeddedResource Include="Components\AccessDenied.resx">
       <DependentUpon>AccessDenied.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\AuditTrailComponent.resx">
+      <DependentUpon>AuditTrailComponent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\BatchDataBox.resx">
       <DependentUpon>BatchDataBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\CategoryComponent.resx">
       <DependentUpon>CategoryComponent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\FINrepComp.resx">
+      <DependentUpon>FINrepComp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\InverntoryReportsComponents.resx">
       <DependentUpon>InverntoryReportsComponents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ItemsComparison.resx">
+      <DependentUpon>ItemsComparison.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ItemsReceive.resx">
+      <DependentUpon>ItemsReceive.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\MarkUpDatabox.resx">
       <DependentUpon>MarkUpDatabox.cs</DependentUpon>
@@ -671,6 +817,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\OfferedProdsPODataBox.resx">
       <DependentUpon>OfferedProdsPODataBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\OrderSummaryProducts.resx">
+      <DependentUpon>OrderSummaryProducts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\OutOfStocksDataBox.resx">
       <DependentUpon>OutOfStocksDataBox.cs</DependentUpon>
@@ -690,6 +839,9 @@
     <EmbeddedResource Include="Components\RemarksBox.resx">
       <DependentUpon>RemarksBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\SalesComponentReports.resx">
+      <DependentUpon>SalesComponentReports.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\SalesOrdersList.resx">
       <DependentUpon>SalesOrdersList.cs</DependentUpon>
     </EmbeddedResource>
@@ -701,6 +853,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\SmalloptionDashBoard.resx">
       <DependentUpon>SmalloptionDashBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\StockAdjustmentComponentReports.resx">
+      <DependentUpon>StockAdjustmentComponentReports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\StockAdjustmentsDatabox.resx">
       <DependentUpon>StockAdjustmentsDatabox.cs</DependentUpon>
@@ -729,14 +884,26 @@
     <EmbeddedResource Include="Ffirstrun\FirstRun.resx">
       <DependentUpon>FirstRun.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Messageboxes\GCASHREF.resx">
+      <DependentUpon>GCASHREF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Messageboxes\MessageboxAreyousure.resx">
       <DependentUpon>MessageboxAreyousure.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Messageboxes\newsupplierAddProd.resx">
       <DependentUpon>newsupplierAddProd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Messageboxes\ORdersum\OrderSummary.resx">
+      <DependentUpon>OrderSummary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Messageboxes\PdfFileViewer.resx">
       <DependentUpon>PdfFileViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messageboxes\POhowmuchReceived.resx">
+      <DependentUpon>POhowmuchReceived.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messageboxes\SalesPrintreceipt.resx">
+      <DependentUpon>SalesPrintreceipt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Messageboxes\ShowChanges.resx">
       <DependentUpon>ShowChanges.cs</DependentUpon>
@@ -813,6 +980,9 @@
     <EmbeddedResource Include="ModulesMain\INVENTORY\StockAdjustment.resx">
       <DependentUpon>StockAdjustment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\LOGIN\ConnectToOther.resx">
+      <DependentUpon>ConnectToOther.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModulesMain\LOGIN\Fogotpass.resx">
       <DependentUpon>Fogotpass.cs</DependentUpon>
     </EmbeddedResource>
@@ -822,8 +992,26 @@
     <EmbeddedResource Include="ModulesMain\LOGIN\Log_in.resx">
       <DependentUpon>Log_in.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\REPORTS\AuditTrailReports.resx">
+      <DependentUpon>AuditTrailReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\REPORTS\FInancialReports.resx">
+      <DependentUpon>FInancialReports.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModulesMain\REPORTS\InventoryReports.resx">
       <DependentUpon>InventoryReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\REPORTS\ProductListReports.resx">
+      <DependentUpon>ProductListReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\REPORTS\ReturnOrdersReports.resx">
+      <DependentUpon>ReturnOrdersReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\REPORTS\SalesReports.resx">
+      <DependentUpon>SalesReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulesMain\REPORTS\StockAdjustmentsReports.resx">
+      <DependentUpon>StockAdjustmentsReports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModulesMain\SALES\ReservedProducts.resx">
       <DependentUpon>ReservedProducts.cs</DependentUpon>
@@ -951,6 +1139,12 @@
     <None Include="Resources\Close.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\CustomerIcon32.png" />
+    <Content Include="Resources\Invoice.png" />
+    <Content Include="Resources\Payment.png" />
+    <Content Include="Resources\Peso.png" />
+    <Content Include="Resources\ReservationIcon.png" />
+    <None Include="Resources\RestoreIcon.png" />
     <None Include="Resources\Shutdown.png" />
     <None Include="Resources\UTILITIES.png" />
     <None Include="Resources\Minus.png" />
@@ -967,6 +1161,11 @@
     <None Include="Resources\Export Pdf.png" />
     <Content Include="Resources\Archive.png" />
     <None Include="Resources\Backspace.png" />
+    <None Include="Resources\Backupicon.png" />
+    <Content Include="Resources\ClearItems.png" />
+    <Content Include="Resources\DelFee.png" />
+    <Content Include="Resources\DeliveryIcon.png" />
+    <Content Include="Resources\Discount.png" />
     <Content Include="Resources\Hide.png" />
   </ItemGroup>
   <ItemGroup>

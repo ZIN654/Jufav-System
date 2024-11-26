@@ -214,9 +214,9 @@
             this.label4.Font = new System.Drawing.Font("Actor", 11.25F);
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(140, 19);
+            this.label4.Size = new System.Drawing.Size(175, 19);
             this.label4.TabIndex = 0;
-            this.label4.Text = "EXPIRED PRODUCTS";
+            this.label4.Text = "TOTAL SALES OF THE DAY";
             // 
             // itemsbox1
             // 
